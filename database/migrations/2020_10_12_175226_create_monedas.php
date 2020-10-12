@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePrecios extends Migration
+class CreateMonedas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreatePrecios extends Migration
      */
     public function up()
     {
-        Schema::create('precios', function (Blueprint $table) {
+        Schema::create('monedas', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->bigInteger('de');
-            $table->bigInteger('hasta');
-
-            $table->integer('moneda_id')->unsigned();
-            $table->foreign('moneda_id')->references('id')->on('monedas')->onDelete('cascade')->onUpdate('cascade');
             
+            $table->string('nombre');
+            $table->string('simbolo');
+
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreatePrecios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('precios');
+        Schema::dropIfExists('monedas');
     }
 }
