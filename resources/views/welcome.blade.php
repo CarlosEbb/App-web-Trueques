@@ -1,6 +1,4 @@
-<html>
-    <body>
-        
-        <a href="{{route('login')}}">Login</a>
-    </body>
-</html>
+@extends('layouts.app')
+@section('content')
+    <a href="{{route('login')}}">Login</a>
+@endsection
