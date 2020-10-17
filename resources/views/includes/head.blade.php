@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
 <!-- MDB -->
-<link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 
 <!-- Styles -->
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">

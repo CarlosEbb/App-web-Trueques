@@ -1,0 +1,120 @@
+:root {
+    --color-white: #fff;
+    --color-white-dark: #c3c3c3;
+    --color-dark: #000000;
+    --color-primary: #01a0b8;
+    --color-segundary: #f1f1f1;
+    --btn-dark: #009fb7;
+}
+
+/* style text */
+a {
+    text-decoration: none !important;
+}
+
+/* style btn */
+.btn-rounded {
+    padding: 10px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-border-dark {
+    border: 4px solid #006877;
+}
+
+.btn-rounded-light {
+    background-color: var(--color-segundary);
+    transition: 0.5s;
+}
+
+.btn-rounded-light-hover:hover {
+    background-color: var(--color-white-dark);
+}
+
+.btn-primary {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+.btn-primary-dark {
+    background-color: var(--btn-dark);
+}
+
+.btn-primary-dark:hover {
+    background-color: #005764;
+    border: 4px solid #006877;
+}
+
+.btn-primary:focus {
+    background-color: var(--btn-dark) !important;
+    border-color: #006877 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.btn-categorias {
+    font-weight: bold;
+    color: var(--color-dark);
+    border-bottom: 2px solid var(--color-primary);
+    text-decoration: none !important;
+}
+
+.btn-categorias:hover {
+    color: var(--color-dark);
+    border-bottom: 2px solid var(--btn-dark);
+}
+
+/* style input navbar */
+.input-search,
+.select-city {
+    background-color: var(--color-segundary);
+    border-radius: 11px;
+    border-color: var(--color-segundary);
+}
+
+.input-search:focus,
+.select-city:focus {
+    color: #495057;
+    background-color: var(--color-segundary);
+    border-color: var(--color-white-dark);
+    outline: 0;
+    box-shadow: 0 0 0 0;
+}
+
+/* Tooltip container */
+.tooltips {
+    position: relative;
+}
+
+.tooltips .tooltiptext {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.616);
+    color: #fff;
+    text-align: center;
+    padding: 6px 6px;
+    border-radius: 6px;
+    top: 120%;
+    font-size: 12px;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltips:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* navbar categorias */
+.nav-link-text-categorias {
+    font-size: 13px;
+    color: var(--color-dark);
+}
+
+.nav-link-text-categorias:hover {
+    color: var(--color-dark);
+    text-decoration: underline !important;
+}
