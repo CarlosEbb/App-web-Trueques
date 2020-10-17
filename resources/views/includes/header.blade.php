@@ -50,6 +50,18 @@
       todas las categorias
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5.843 9.593L11.5 15.25l5.657-5.657l-.707-.707l-4.95 4.95l-4.95-4.95l-.707.707z" fill="black"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
     </a>
+    <div class="menu-category mt-2">
+      <ul class="list-group">
+        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Cras justo odio</li>
+        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Dapibus ac facilisis in</li>
+        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Morbi leo risus</li>
+        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Porta ac consectetur ac</li>
+        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Vestibulum at eros</li>
+        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Vestibulum at eros</li>
+        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Vestibulum at eros</li>
+        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Vestibulum at eros</li>
+      </ul>
+    </div>
   </li>
   <li class="nav-item d-flex align-items-center">
     <a class="nav-link nav-link-text-categorias text-uppercase" href="#">Link</a>

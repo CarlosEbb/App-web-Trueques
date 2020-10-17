@@ -12,6 +12,33 @@ a {
     text-decoration: none !important;
 }
 
+/* style scroll */
+body::-webkit-scrollbar {
+    width: 3px;
+    height: 8px;
+    display: none;
+    padding: 0 2px;
+}
+
+body:hover::-webkit-scrollbar {
+    display: block; /* Ocultar scroll */
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+body::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+body::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* Cambiamos el fondo cuando esté en active */
+body::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
 /* style btn */
 .btn-rounded {
     padding: 10px;
@@ -69,6 +96,8 @@ a {
     border-bottom: 2px solid var(--btn-dark);
 }
 
+/* style scroll */
+
 /* style input navbar */
 .input-search,
 .select-city {
@@ -111,10 +140,62 @@ a {
 /* navbar categorias */
 .nav-link-text-categorias {
     font-size: 13px;
+    font-weight: 600;
     color: var(--color-dark);
 }
 
 .nav-link-text-categorias:hover {
     color: var(--color-dark);
     text-decoration: underline !important;
+}
+
+/* navbar category */
+.menu-category {
+    position: absolute;
+    width: 18% !important;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-segundary);
+    border-radius: 11px;
+    padding: 0 10px;
+    max-height: 40%;
+    overflow-y: scroll;
+    display: none;
+}
+
+.btn-categorias:focus + .menu-category {
+    display: block;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item-hover:hover {
+    color: var(--color-primary);
+}
+
+.menu-category::-webkit-scrollbar {
+    width: 3px;
+    height: 8px;
+    display: none;
+    padding: 0 2px;
+}
+
+.menu-category:hover::-webkit-scrollbar {
+    display: block; /* Ocultar scroll */
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+.menu-category::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.menu-category::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* Cambiamos el fondo cuando esté en active */
+.menu-category::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
 }
