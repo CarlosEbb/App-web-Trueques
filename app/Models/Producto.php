@@ -11,4 +11,11 @@ class Producto extends Model
 
     protected $table ='productos';
 
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'categoria_id',
+        'municipio_id',
+        'departamento_id',
+    ];
 }
