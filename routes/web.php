@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/prueba', function () {
+    return view('prueba');
+});
+
+Route::get('/mapa', function () {
+    return view('mapa');
+});
+
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Auth::routes();
@@ -28,3 +36,5 @@ Route::get('home', 'HomeController@index');
 
 Route::resource('productos', ProductoController::class);
 Route::resource('categorias', CategoriaController::class);
+
+

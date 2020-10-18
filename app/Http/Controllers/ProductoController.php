@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use Session;
+use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
@@ -15,8 +16,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
+        $email = DB::table('productos')->where('nombre', 'Xiaomi')->value('descripcion');
+        dd($email);
         
-        $productos = Producto::all();
 
         return view('admin.productos.listar')->with(compact('productos'));
     }
