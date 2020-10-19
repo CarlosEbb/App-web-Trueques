@@ -5,6 +5,7 @@
     --color-primary: #01a0b8;
     --color-segundary: #f1f1f1;
     --btn-dark: #009fb7;
+    --shadow: 0 0 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24);
 }
 
 /* style text */
@@ -40,6 +41,17 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 /* style btn */
+.btn-iniciar-sesion {
+    font-weight: bold;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.btn-iniciar-sesion:hover {
+    color: var(--btn-dark);
+    border-bottom: 2px solid var(--color-primary);
+}
+
 .btn-rounded {
     padding: 10px;
     border-radius: 50px;
@@ -149,21 +161,35 @@ body::-webkit-scrollbar-thumb:active {
     text-decoration: underline !important;
 }
 
-/* navbar category */
-.menu-category {
-    position: absolute;
-    width: 18% !important;
-    background-color: var(--color-white);
-    border: 2px solid var(--color-segundary);
-    border-radius: 11px;
-    padding: 0 10px;
-    max-height: 40%;
-    overflow-y: scroll;
-    display: none;
+/* navbar categorias */
+.btn-categorias:focus + .menu-categorias {
+    display: block;
 }
 
-.btn-categorias:focus + .menu-category {
-    display: block;
+/* menus */
+.menu {
+    position: absolute;
+    padding: 15px;
+    box-shadow: var(--shadow);
+    background-color: var(--color-white);
+    border-radius: 11px;
+    display: none;
+    z-index: 2000;
+}
+
+.menu-navbar {
+    top: 70px;
+    min-width: 280px;
+    max-width: 300px;
+    max-height: 713px;
+}
+
+/* menu categorias */
+.menu-categorias {
+    width: 20%;
+    min-width: 20% !important;
+    max-height: 40%;
+    overflow-y: scroll;
 }
 
 .list-group-item {
@@ -174,28 +200,150 @@ body::-webkit-scrollbar-thumb:active {
     color: var(--color-primary);
 }
 
-.menu-category::-webkit-scrollbar {
+.menu-categorias::-webkit-scrollbar {
     width: 3px;
-    height: 8px;
+    height: 3px;
     display: none;
-    padding: 0 2px;
 }
 
-.menu-category:hover::-webkit-scrollbar {
+.menu-categorias:hover::-webkit-scrollbar {
     display: block; /* Ocultar scroll */
 }
 
 /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
-.menu-category::-webkit-scrollbar-thumb {
+.menu-categorias::-webkit-scrollbar-thumb {
     background: #ccc;
     border-radius: 4px;
 }
 /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
-.menu-category::-webkit-scrollbar-thumb:hover {
+.menu-categorias::-webkit-scrollbar-thumb:hover {
     background: #b3b3b3;
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 /* Cambiamos el fondo cuando esté en active */
-.menu-category::-webkit-scrollbar-thumb:active {
+.menu-categorias::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
+/* menu user */
+.btn-user:focus {
+    background-color: var(--color-white-dark);
+}
+.btn-user:focus + .menu-user {
+    display: block;
+}
+
+.menu-user {
+    right: 220px;
+}
+
+.datos-users {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.img-user {
+    max-width: 50px;
+    max-height: 55px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.link-perfil-user {
+    font-size: 13px;
+}
+
+.menu-user-list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0px;
+}
+
+.menu-user-list li {
+    color: var(--color-dark);
+    margin-bottom: 15px;
+}
+
+.menu-user-list li a {
+    color: var(--btn-dark);
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.menu-user-list li:hover > a {
+    color: #005764;
+}
+
+/* menu notificaciones */
+.btn-menu-notificaciones:focus {
+    background-color: var(--color-white-dark);
+}
+
+.btn-menu-notificaciones:focus + .menu-notificaciones {
+    display: block;
+}
+
+.menu-notificaciones {
+    right: 280px;
+    overflow-y: scroll;
+}
+
+.menu-notificaciones-list {
+    padding: 0px;
+}
+
+.menu-notificaciones-title {
+    color: #005764;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.menu-notificaciones-list li {
+    list-style: none;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-white-dark);
+}
+
+.menu-notificaciones-list li:hover {
+    background-color: #f5f5f5;
+}
+
+.menu-notificacion-mensaje a {
+    color: var(--btn-dark);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.menu-notificacion-mensaje:hover > a {
+    color: #005764;
+    cursor: pointer;
+}
+
+.menu-notificaciones::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    display: none;
+}
+
+.menu-notificaciones:hover::-webkit-scrollbar {
+    display: block; /* Ocultar scroll */
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+.menu-notificaciones::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.menu-notificaciones::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* Cambiamos el fondo cuando esté en active */
+.menu-notificaciones::-webkit-scrollbar-thumb:active {
     background-color: #999999;
 }
