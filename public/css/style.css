@@ -41,6 +41,9 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 /* style btn */
+button {
+    border: none;
+}
 .btn-iniciar-sesion {
     font-weight: bold;
     color: var(--color-primary);
@@ -79,6 +82,7 @@ body::-webkit-scrollbar-thumb:active {
     font-weight: bold;
     font-size: 14px;
     transition: 0.5s;
+    /* border-color: #006877; */
 }
 
 .btn-primary-dark {
@@ -87,7 +91,7 @@ body::-webkit-scrollbar-thumb:active {
 
 .btn-primary-dark:hover {
     background-color: #005764;
-    border: 4px solid #006877;
+    border-color: #006877;
 }
 
 .btn-primary:focus {
@@ -178,10 +182,20 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 .menu-navbar {
-    top: 70px;
+    margin-top: 50px;
     min-width: 280px;
     max-width: 300px;
     max-height: 713px;
+}
+
+.active-menu {
+    display: block;
+}
+
+.content-item-menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
 
 /* menu categorias */
@@ -229,12 +243,12 @@ body::-webkit-scrollbar-thumb:active {
 .btn-user:focus {
     background-color: var(--color-white-dark);
 }
-.btn-user:focus + .menu-user {
+.btn-menu-user:focus + .menu-user {
     display: block;
 }
 
 .menu-user {
-    right: 220px;
+    /* right: 220px; */
 }
 
 .datos-users {
@@ -285,7 +299,7 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 .menu-notificaciones {
-    right: 280px;
+    /* right: 280px; */
     overflow-y: scroll;
 }
 
@@ -346,4 +360,13 @@ body::-webkit-scrollbar-thumb:active {
 /* Cambiamos el fondo cuando esté en active */
 .menu-notificaciones::-webkit-scrollbar-thumb:active {
     background-color: #999999;
+}
+
+/* menu buscar */
+.btn-buscar:focus {
+    background-color: var(--color-white-dark);
+}
+
+.menu-buscar {
+    /* right: 380px; */
 }
