@@ -9,7 +9,7 @@
         <div class="col-12 section-content">
           <h1 class="title">Productos recientes</h1> 
         </div>
-        <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+        <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
           <div class="card card-product">
           <img class="card-img-top card-img-product" src="{{asset('img/laptops.jpg')}}" alt="Card image cap">
             <div class="card-body">
@@ -27,7 +27,7 @@
             </div>
           </div>
         </article>
-        <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+        <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
           <div class="card card-product">
           <img class="card-img-top card-img-product" src="{{asset('img/laptops.jpg')}}" alt="Card image cap">
             <div class="card-body">
@@ -45,7 +45,7 @@
             </div>
           </div>
         </article>
-        <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+        <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
           <div class="card card-product">
           <img class="card-img-top card-img-product" src="{{asset('img/laptops.jpg')}}" alt="Card image cap">
             <div class="card-body">
@@ -63,7 +63,7 @@
             </div>
           </div>
         </article>
-        <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+        <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
           <div class="card card-product">
           <img class="card-img-top card-img-product" src="{{asset('img/laptops.jpg')}}" alt="Card image cap">
             <div class="card-body">
@@ -123,7 +123,7 @@
         <div class="col-12 section-content">
           <h1 class="title">Productos destacados</h1> 
         </div>
-        <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+        <article class="col-12 col-sm-6 col-md-4 col-lg-3 px-5 px-sm-3 mb-4 py-1">
           <div class="card card-product">
           <img class="card-img-top card-img-product" src="{{asset('img/laptops.jpg')}}" alt="Card image cap">
             <div class="card-body">
@@ -141,7 +141,7 @@
             </div>
           </div>
         </article>
-        <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+        <article class="col-12 col-sm-6 col-md-4 col-lg-3 px-5 px-sm-3 mb-4 py-1">
           <div class="card card-product">
           <img class="card-img-top card-img-product" src="{{asset('img/laptops.jpg')}}" alt="Card image cap">
             <div class="card-body">
@@ -159,7 +159,7 @@
             </div>
           </div>
         </article>
-        <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+        <article class="col-12 col-sm-6 col-md-4 col-lg-3 px-5 px-sm-3 mb-4 py-1">
           <div class="card card-product">
           <img class="card-img-top card-img-product" src="{{asset('img/laptops.jpg')}}" alt="Card image cap">
             <div class="card-body">
@@ -177,7 +177,7 @@
             </div>
           </div>
         </article>
-        <article class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+        <article class="col-12 col-sm-6 col-md-4 col-lg-3 px-5 px-sm-3 mb-4 py-1">
           <div class="card card-product">
           <img class="card-img-top card-img-product" src="{{asset('img/laptops.jpg')}}" alt="Card image cap">
             <div class="card-body">
