@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Producto;
 use Session;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class ProductoController extends Controller
 {
@@ -42,13 +43,22 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $datos = $this->validate(request(), [
-        'nombre' => 'required|string',
-        'descripcion' => 'required|string'
+            'nombre' => 'required|string',
+            'descripcion' => 'required|string',
+            'categoria_id' => 'required|string',
+            'precio_id' => 'required|string',
         ]);
-            
-        $producto = Producto::create($request->all());
+        $request['user_id'] = Auth::user()->id;
+
         
+        $producto = Producto::create($request->all());
+           
         Session::flash('mensaje','Registrado correctamente');
+        
+        if(Auth::user()->rol_id == '2'){
+            return redirect('/');
+        }
+
         return back();
     }
 
@@ -60,7 +70,8 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+        $producto = Producto::find($id);
+        return view('users.mostrarProducto')->with(compact('producto'));
     }
 
     /**

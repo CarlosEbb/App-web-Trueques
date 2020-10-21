@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light shadow-0 border-bottom d-flex">
     <div class="container">
-      <a class="navbar-brand w-100 text-center d-md-none d-block" href="#">
+      <a class="navbar-brand w-100 text-center d-md-none d-block" href="/">
         <img
           src="{{asset('img/Logo.png')}}"
           height="30"
@@ -9,7 +9,7 @@
         />
       </a>
 
-      <a class="navbar-brand d-none d-md-block" href="#">
+      <a class="navbar-brand d-none d-md-block" href="/">
         <img
           src="{{asset('img/Logo.png')}}"
           height="30"
@@ -23,9 +23,9 @@
           <div class="col-md-4">
             <select class="form-control select-city">
               <option selected disabled >Ciudad</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+                @foreach( \App\Models\Departamento::all() as $ciudad)
+                <option value="{{$ciudad->id}}">{{$ciudad->departamento}}</option>
+                @endforeach
             </select>
           </div>
           <div class="col-md-8">
@@ -34,7 +34,9 @@
         </div>
       </form>
 
-      {{-- <a class="btn-iniciar-sesion mx-2" href="{{route('login')}}">iniciar sesion</a> --}}
+      @guest
+        <a class="btn-iniciar-sesion mx-2" href="{{route('login')}}">iniciar sesion</a>
+      @else
       <div style="display: contents;">
         <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips" href="#">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M3 20.586L6.586 17H18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14.586zM3 22H2V6a3 3 0 0 1 3-3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7l-4 4zM6 7h11v1H6V7zm0 3h11v1H6v-1zm0 3h8v1H6v-1z" fill="black"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
@@ -101,8 +103,8 @@
             <div class="datos-users border-bottom">
               <img class="rounded-circle img-user" src="{{asset('img/avatar.png')}}" alt="">
               <div class="name-user">
-                <p class="mb-0 font-weight-bold">name user</p>
-                <p class="mb-2">correo@gmail.com</p>
+                <p class="mb-0 font-weight-bold">{{Auth::user()->name}}</p>
+                <p class="mb-2">{{Auth::user()->mail}}</p>
                 <a class="link-perfil-user" href="#">Ver perfil y editar</a>
               </div>
             </div>
@@ -121,12 +123,13 @@
               </li>
               <li>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M15 3H9a3 3 0 0 0-3 3v4h1V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-4H6v4a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM3 12h10.25L10 8.75l.664-.75l4.5 4.5l-4.5 4.5l-.664-.75L13.25 13H3v-1z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                <a class="ml-2" href="/">Cerrar sesión</a>
+                <a class="ml-2" href="{{route('logout')}}">Cerrar sesión</a>
               </li>
             </ul>
           </div>
         </div>
-        <a class="btn-rounded btn-primary btn-primary-dark btn-border-dark mx-1" href="#" target="_blank" rel="noopener noreferrer">
+      @endauth
+        <a class="btn-rounded btn-primary btn-primary-dark btn-border-dark mx-1" href="publicar-productos" rel="noopener noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 13v-1h6V6h1v6h6v1h-6v6h-1v-6H5z" fill="white"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
           <span class="d-none d-md-block">Publicar</span>
         </a>
@@ -141,24 +144,17 @@
     </a>
     <div class="menu menu-categorias mt-2">
       <ul class="list-group">
-        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Cras justo odio</li>
-        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Dapibus ac facilisis in</li>
-        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Morbi leo risus</li>
-        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Porta ac consectetur ac</li>
-        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Vestibulum at eros</li>
-        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Vestibulum at eros</li>
-        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Vestibulum at eros</li>
-        <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">Vestibulum at eros</li>
+        @foreach( \App\Models\Categoria::all() as $categoria)
+          <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">
+            <a href="{{route('categorias.show', $categoria->id)}}">{{$categoria->nombre}}</a>
+          </li>
+        @endforeach
       </ul>
     </div>
   </li>
+  @foreach( \App\Models\Categoria::all() as $categoriaside)
   <li class="nav-item d-md-flex align-items-center d-none d-md-block">
-    <a class="nav-link nav-link-text-categorias text-uppercase" href="#">Link</a>
+    <a class="nav-link nav-link-text-categorias text-uppercase" href="{{route('categorias.show', $categoriaside->id)}}">{{$categoriaside->nombre}}</a>
   </li>
-  <li class="nav-item d-md-flex align-items-center d-none d-md-block">
-    <a class="nav-link nav-link-text-categorias text-uppercase" href="#">Link</a>
-  </li>
-  <li class="nav-item d-md-flex align-items-center d-none d-md-block">
-    <a class="nav-link nav-link-text-categorias text-uppercase" href="#">Disabled</a>
-  </li>
+  @endforeach
 </ul>

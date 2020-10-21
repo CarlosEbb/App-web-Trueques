@@ -4,17 +4,17 @@
       <div class="col-md-5">
         <ul class="list-group ">
           <li class="list-group-item border-0 py-2 bg-transparent text-uppercase font-weight-bold">CATEGORIAS POPULARES</li>
-          <li class="list-group-item border-0 py-2 bg-transparent"><a href="#" class="link-footer" target="_blank" rel="noopener noreferrer">carros</a></li>
-          <li class="list-group-item border-0 py-2 bg-transparent"><a href="#" class="link-footer" target="_blank" rel="noopener noreferrer">motos</a></li>
-          <li class="list-group-item border-0 py-2 bg-transparent"><a href="#" class="link-footer" target="_blank" rel="noopener noreferrer">casa</a></li>
+          @foreach(\App\Models\Categoria::all() as $categoria)
+            <li class="list-group-item border-0 py-2 bg-transparent"><a href="{{route('categorias.show', $categoria->id)}}" class="link-footer" rel="noopener noreferrer">{{$categoria->nombre}}</a></li>
+          @endforeach
         </ul>        
       </div>
       <div class="col-md-4">
         <ul class="list-group ">
           <li class="list-group-item border-0 py-2 bg-transparent text-uppercase font-weight-bold">LO MAS BUSCADO</li>
-          <li class="list-group-item border-0 py-2 bg-transparent"><a href="#" class="link-footer" target="_blank" rel="noopener noreferrer">carros</a></li>
-          <li class="list-group-item border-0 py-2 bg-transparent"><a href="#" class="link-footer" target="_blank" rel="noopener noreferrer">telefono</a></li>
-          <li class="list-group-item border-0 py-2 bg-transparent"><a href="#" class="link-footer" target="_blank" rel="noopener noreferrer">apartamento</a></li>
+          @foreach(\App\Models\Categoria::all() as $buscado)
+            <li class="list-group-item border-0 py-2 bg-transparent"><a href="{{route('categorias.show', $buscado->id)}}" class="link-footer" rel="noopener noreferrer">{{$categoria->nombre}}</a></li>
+          @endforeach
         </ul>   
       </div>
       <div class="col-md-3">

@@ -11,4 +11,8 @@ class Precio extends Model
 
     protected $table ='precios';
 
+    public function moneda()
+    {
+        return $this->belongsTo(Moneda::class, 'moneda_id');
+    }
 }

@@ -37,4 +37,10 @@ Route::get('home', 'HomeController@index');
 Route::resource('productos', ProductoController::class);
 Route::resource('categorias', CategoriaController::class);
 
+// productos usuarios 
+Route::get('publicar-productos', function () {
+    return view('/users/publicarProductos');
+});
 
+
+Route::post('addFavoritos','HomeController@addFavoritos');
