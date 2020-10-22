@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         Collective\Html\HtmlServiceProvider::class,
-
+        Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,6 +230,7 @@ return [
 
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

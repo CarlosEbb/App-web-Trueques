@@ -25,8 +25,11 @@ class LoginController extends Controller
             session()->put('redirect_to', $request->input('redirect_to'));
             return redirect('/user/create');
         }
-
-        return view('auth.login');
+        if(auth()->check()){
+            return back();
+        }else{
+            return view('auth.login');
+        }
     }
 
     public function redirectTo()

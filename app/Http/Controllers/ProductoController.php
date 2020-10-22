@@ -42,6 +42,9 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        $image = $request->file('file');
+        dd($image);
+
         $datos = $this->validate(request(), [
             'nombre' => 'required|string',
             'descripcion' => 'required|string',

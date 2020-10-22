@@ -42,5 +42,8 @@ Route::get('publicar-productos', function () {
     return view('/users/publicarProductos');
 });
 
+//socialite
+Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
+Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
 Route::post('addFavoritos','HomeController@addFavoritos');

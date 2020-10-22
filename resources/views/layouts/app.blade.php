@@ -6,6 +6,7 @@
 	<body>
 		<header>
 			@include('includes.header')
+			@yield('scriptCSS')
 		</header>
 				
 		<main>
