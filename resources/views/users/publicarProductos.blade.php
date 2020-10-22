@@ -20,7 +20,7 @@
         <h2 class="text-uppercase">publica tu producto</h2>
       </div>
       <div class="col-12 mb-4">
-        <div class="card card-content-form p-4 p-md-5">
+        <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Seleccionar categoria</h4>
 
           <label for="descripcion">Categorias</label>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="col-12 mb-4">
-        <div class="card card-content-form p-4 p-md-5">
+        <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Detalles del anuncio</h4>
           <label for="nombreProducto">Nombre del producto</label>
           <input class="input" type="text" placeholder="Nombre del producto" name="nombre" id="nombreProducto" value="{{old('nombreProducto')}}">
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="col-12 mb-4">
-        <div class="card card-content-form p-4 p-md-5">
+        <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Rango de precio</h4>
 
           <label for="precio">Precios</label>
@@ -54,13 +54,13 @@
         </div>
       </div>
       <div class="col-12 mb-4">
-        <div class="card card-content-form p-4 p-md-5">
+        <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Adjuntar fotos del producto</h4>
 
         </div>
       </div>
         <div class="col-12 mb-4">
-          <div class="card card-content-form p-4 p-md-5">
+          <div class="card card-border-radius p-4 p-md-5">
             <h4 class="mb-4">Confirma tu ubicación</h4>
 
             <label for="ciudad">Ciudad</label>
