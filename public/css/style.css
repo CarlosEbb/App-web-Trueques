@@ -506,3 +506,8 @@ button {
 .content-img-product::-webkit-scrollbar-thumb:active {
     background-color: #999999;
 }
+
+/* login */
+.card-login-register {
+    box-shadow: 0px 10px 17px 0px #cccc;
+}
