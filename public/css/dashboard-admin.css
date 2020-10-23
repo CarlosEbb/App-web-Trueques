@@ -1,3 +1,5 @@
+@import url("./media-query.css");
+
 .wrapper {
     display: block;
     overflow-x: hidden;
