@@ -4,14 +4,15 @@
     @include('includes.head')
     <link rel="stylesheet" href="{{ asset('css/dashboard-admin.css') }}">
 	</head>
-	<body>
+	<body style="overflow-y: hidden;">
     <div class="wrapper">
       <!-- Sidebar -->
       @include('includes.sidebar-admin')        
 
       <!-- Page Content -->
+      @include('includes.navbar-admin')
+
       <div id="content">
-        @include('includes.navbar-admin')
         @yield('content')
       </div>
 

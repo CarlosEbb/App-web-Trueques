@@ -489,6 +489,26 @@ button {
     /* padding: 10px; */
 }
 
+.title-card-product {
+    font-size: 23px;
+    color: #313131;
+}
+
+.name-product {
+    font-size: 18px;
+    color: #005764;
+    font-weight: 700;
+}
+
+.footer-product {
+    font-size: 14px;
+    color: #424242;
+}
+
+.card-border-active {
+    border-color: var(--color-primary);
+}
+
 .content-img-product::-webkit-scrollbar {
     height: 10px;
 }

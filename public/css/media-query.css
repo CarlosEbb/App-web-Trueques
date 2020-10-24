@@ -2,4 +2,12 @@
     .content-menu-logaut {
         width: 100%;
     }
+
+    #sidebar {
+        display: none;
+    }
+
+    #content {
+        left: 0px !important;
+    }
 }

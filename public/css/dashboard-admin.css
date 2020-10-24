@@ -1,16 +1,19 @@
 @import url("./media-query.css");
 
+:root {
+    --border: 1px solid rgb(182, 182, 182);
+}
+
 .wrapper {
     display: block;
     overflow-x: hidden;
 }
 
 .navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
+    padding: 14px 10px;
+    background: white;
+    height: 100%;
+    border-bottom: var(--border);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -34,16 +37,19 @@
 #sidebar {
     width: 250px;
     position: fixed;
-    top: 0;
-    /* left: -250px; */
-    height: 100vh;
+    bottom: 0;
+    height: 89.5vh;
     z-index: 999;
     background: #fff;
     color: rgb(48, 48, 48);
     transition: all 0.3s;
+    /* border-right: var(--border); */
+    /* left: -250px; */
     /* overflow-y: scroll; */
-    /* box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); */
-    border-right: 1px solid rgb(182, 182, 182);
+}
+
+.sidebar-hidden {
+    left: -250px;
 }
 
 #sidebar.active {
@@ -135,9 +141,13 @@ a[data-toggle="collapse"] {
 #content {
     min-height: 100vh;
     transition: all 0.3s;
-    position: absolute;
-    top: 0;
+    position: relative;
+    width: 100%;
     left: 250px;
+}
+
+.content-full {
+    left: 0px !important;
 }
 
 .overlay {
