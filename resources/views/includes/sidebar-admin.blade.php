@@ -1,7 +1,7 @@
 <nav id="sidebar">
   <ul class="list-unstyled components">
     <li class="">
-      <a href="{{route('users.index')}}" data-toggle="collapse" aria-expanded="false">Usuarios</a>
+      <a href="{{route('users.index')}}">Usuarios</a>
     </li>
     <li>
       <a href="{{route('categorias.index')}}">Categorias</a>

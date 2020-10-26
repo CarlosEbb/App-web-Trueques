@@ -6,6 +6,7 @@
 	</head>
 	<body style="overflow-y: hidden;">
     <div class="wrapper">
+      @if(Auth::user()->rol_id == 1)
       <!-- Sidebar -->
       @include('includes.sidebar-admin')        
 
@@ -18,6 +19,9 @@
 
       <!-- Dark Overlay element -->
       <div class="overlay"></div>
+      @else
+        <script>window.location.href = "/";</script>
+      @endif
     </div>
 
 		<!-- script -->
