@@ -17,8 +17,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $email = DB::table('productos')->where('nombre', 'Xiaomi')->value('descripcion');
-        dd($email);
+        $productos = Productos::all();
         
 
         return view('admin.productos.listar')->with(compact('productos'));

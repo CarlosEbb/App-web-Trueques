@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -13,7 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        
+
+        return view('admin.user.listar')->with(compact('users'));
     }
 
     /**
@@ -68,7 +72,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'              => 'required|string|max:255',
+            'email' => 'required|string|email|max:255||unique:users,email,'.Auth::user()->id,
+        ]);
+        
+        if($request->password ==! null){
+            $this->validate($request, [
+                'password'              => 'required|min:4|max:255',
+                'password_confirmation' => 'required|min:4|same:password',
+            ]);
+        }
+        $request['password'] = bcrypt($request->password);
+        $user = Auth::user();
+        /* $this->authorize('pass', $user); */
+
+        $user->fill($request->all())->save();
+
+        return back()->with('mensaje', 'Información Actualizada');
     }
 
     /**
@@ -79,6 +100,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id)->delete();
+        Session::flash('mensaje','Eliminado correctamente');
+        return back();
     }
 }

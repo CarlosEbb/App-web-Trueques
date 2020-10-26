@@ -1,10 +1,10 @@
 <nav id="sidebar">
   <ul class="list-unstyled components">
     <li class="">
-      <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home 1</a>
+      <a href="{{route('users.index')}}" data-toggle="collapse" aria-expanded="false">Usuarios</a>
     </li>
     <li>
-      <a href="#">Home 2</a>
+      <a href="{{route('categorias.index')}}">Categorias</a>
     </li>
     <li>
       <a href="#">Home 3</a>

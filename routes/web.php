@@ -36,6 +36,7 @@ Route::get('home', 'HomeController@index');
 
 Route::resource('productos', ProductoController::class);
 Route::resource('categorias', CategoriaController::class);
+Route::resource('users', UserController::class);
 
 // productos usuarios 
 Route::get('publicar-productos', function () {

@@ -12,7 +12,8 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/home';
+    protected $redirectToAdmin = '/home';
+    protected $redirectToUser = '/homeUser';
 
     public function __construct()
     {
@@ -21,10 +22,10 @@ class LoginController extends Controller
 
     public function showLoginForm(Request $request)
     {
-        if ($request->has('redirect_to')) {
-            session()->put('redirect_to', $request->input('redirect_to'));
-            return redirect('/user/create');
-        }
+        //if ($request->has('redirect_to')) {
+        //    session()->put('redirect_to', $request->input('redirect_to'));
+        //    return redirect('/user/create');
+        //}
         if(auth()->check()){
             return back();
         }else{
@@ -34,9 +35,14 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        if (session()->has('redirect_to'))
+        if (session()->has('redirect_to')){
             return session()->pull('redirect_to');
-
-        return $this->redirectTo;
+        }
+        
+        if(Auth::user()->rol_id == 1){
+            return $this->redirectToAdmin;
+        }else{
+            return $this->redirectToAdmin;
+        }
     }
 }
