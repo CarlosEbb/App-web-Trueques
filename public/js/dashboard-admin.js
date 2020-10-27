@@ -1,1 +1,1 @@
-
+$("#myModal").modal("show");
