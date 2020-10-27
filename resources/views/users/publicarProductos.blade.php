@@ -103,7 +103,7 @@
       maxFilesize: 10, // Tamaño máximo en MB
       
       success: function(file, response){
-                  archivos = '<input type="text" name="archivos[]" value="'+response+'"/>';
+                  archivos = '<input type="text" name="archivos[]" value="'+response+'" hidden/>';
                   $("#archivos").append(archivos);
               }
     };
