@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <form action="{{route('productos.store')}}" class="container px-0 px-md-5 dropzone" method="post" enctype="multipart/form-data">@csrf
+  <form action="{{route('productos.store')}}" class="container px-0 px-md-5" method="post" enctype="multipart/form-data">@csrf
         @foreach ( $errors->all() as $error)
             <div class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -53,13 +53,6 @@
           </select>
         </div>
       </div>
-      <div class="col-12 mb-4">
-        <div class="card card-border-radius p-4 p-md-5">
-          <h4 class="mb-4">Adjuntar fotos del producto</h4>
-          <button class="dz-button" type="button">
-          <div class="dz-default dz-message">Drop files here to upload</button></div>
-        </div>
-      </div>
         <div class="col-12 mb-4">
           <div class="card card-border-radius p-4 p-md-5">
             <h4 class="mb-4">Confirma tu ubicación</h4>
@@ -85,6 +78,13 @@
       </div>
     </div>
   </form>
+      <div class="col-12 mb-4">
+        <div class="card card-border-radius p-4 p-md-5">
+          <h4 class="mb-4">Adjuntar fotos del producto</h4>
+          <button class="dz-button" type="button">
+          <form action="subir" class="dropzone" id="my-awesome-dropzone" method="get" enctype="multipart/form-data">@csrf</form>
+        </div>
+      </div>
 @endsection
 
 @section('scriptCSS')
@@ -97,54 +97,11 @@
 
 <script type="text/javascript">
 
-  Dropzone.options.dropzoneForm = {
-    autoProcessQueue : false,
-    acceptedFiles : ".png,.jpg,.gif,.bmp,.jpeg",
-
-    init:function(){
-      var submitButton = document.querySelector("#submit-all");
-      myDropzone = this;
-
-      submitButton.addEventListener('click', function(){
-        myDropzone.processQueue();
-      });
-
-      this.on("complete", function(){
-        if(this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0)
-        {
-          var _this = this;
-          _this.removeAllFiles();
-        }
-        load_images();
-      });
-
-    }
-
-  };
-
-  load_images();
-
-  function load_images()
-  {
-    $.ajax({
-      url:"{{route('productos.store')}}",
-      success:function(data)
-      {
-        $('#uploaded_image').html(data);
-      }
-    })
-  }
-
-  $(document).on('click', '.remove_image', function(){
-    var name = $(this).attr('id');
-    $.ajax({
-      url:"{{route('productos.destroy',"+name+")}}",
-      data:{name : name},
-      success:function(data){
-        load_images();
-      }
-    })
-  });
-
+  Dropzone.options.myAwesomeDropzone = {
+      paramName: "file", // Las imágenes se van a usar bajo este nombre de parámetro
+      maxFilesize: 10 // Tamaño máximo en MB
+      
+    };
+ 
 </script>  
 @endsection

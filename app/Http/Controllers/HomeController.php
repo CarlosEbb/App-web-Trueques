@@ -7,6 +7,9 @@ use App\Models\Producto;
 use App\Models\ProductoFavorito;
 use Session;
 use Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 class HomeController extends Controller
 {
     /**
@@ -42,4 +45,12 @@ class HomeController extends Controller
         return $request->producto_id;
     }
     
+    public function upload(Request $request)
+    {
+        $foto = $request->file("file");
+        $nombre = $foto->getClientOriginalName();
+        
+        $url = Storage::disk('public')->put($nombre, File::get($foto));
+       
+    }
 }

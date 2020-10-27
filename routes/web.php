@@ -21,6 +21,10 @@ Route::get('/prueba', function () {
     return view('prueba');
 });
 
+Route::get('/prueba2', function () {
+    return view('prueba2');
+});
+
 Route::get('/mapa', function () {
     return view('mapa');
 });
@@ -33,6 +37,10 @@ Auth::routes();
 
 
 Route::get('home', 'HomeController@index');
+
+Route::post('/subir', 'HomeController@upload');
+
+
 
 Route::resource('productos', ProductoController::class);
 Route::resource('categorias', CategoriaController::class);
