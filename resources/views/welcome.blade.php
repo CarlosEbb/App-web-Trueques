@@ -65,9 +65,10 @@
           <h1 class="title">Productos destacados</h1> 
         </div>
         @foreach( \App\Models\Producto::all() as $destacado)
+        @if($destacado->foto->first() != null)
         <article class="col-12 col-sm-6 col-md-4 col-lg-3 px-5 px-sm-3 mb-4 py-1">
           <div class="card card-product">
-          <img class="card-img-top card-img-product" src="{{asset('img/laptops.jpg')}}" alt="Card image cap">
+          <img class="card-img-top card-img-product" src="\uploads\{{$destacado->foto->first()->ruta}}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title mb-5 card-title-product">{{$destacado->nombre}}</h5>
               <div class="card-footer card-footer-product">
@@ -83,6 +84,7 @@
             </div>
           </div>
         </article>
+        @endif
         @endforeach
       </section>
     </div>
