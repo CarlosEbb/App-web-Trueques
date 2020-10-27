@@ -7,7 +7,7 @@
         <form method="POST" action="{{ route('register') }}">@csrf
           <div class="card p-4 card-border-radius border-0 card-login-register">
             <div class="card-header bg-transparent border-0 mx-auto mt-1 mt-md-3">
-              <img src="{{asset('img/Logo.png')}}" width="150" class="" alt="Trueque">
+              <a href="/"><img src="{{asset('img/Logo.png')}}" width="150" class="" alt="Trueque"></a>
               <h4 class="text-center my-1 my-md-3">Registrase</h4>
             </div>
             <div class="form-group">

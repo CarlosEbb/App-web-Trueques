@@ -5,7 +5,7 @@
       <div class="col-12 col-md-8 col-lg-5 p-0 p-md-1">
         <div class="card p-4 card-border-radius border-0 card-login-register">
           <div class="card-header bg-transparent border-0 mx-auto mt-1 mt-md-3 d-flex flex-column align-items-center">
-            <img src="{{asset('img/Logo.png')}}" width="150" class="" alt="Trueque">
+            <a href="/"><img src="{{asset('img/Logo.png')}}" width="150" class="" alt="Trueque"></a>
             <h4 class="text-center my-1 my-md-3">Cambiar contraseña</h4>
           </div>
           @if (session('status'))
