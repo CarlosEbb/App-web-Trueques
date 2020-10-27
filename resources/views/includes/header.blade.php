@@ -203,7 +203,7 @@
     </div>
   </div>
 </li>
-@foreach( \App\Models\Categoria::all() as $categoriaside)
+@foreach( \App\Models\Categoria::paginate(5) as $categoriaside)
 <li class="nav-item d-md-flex align-items-center d-none d-md-block">
   <a class="nav-link nav-link-text-categorias text-uppercase" href="{{route('categorias.show', $categoriaside->id)}}">{{$categoriaside->nombre}}</a>
 </li>
