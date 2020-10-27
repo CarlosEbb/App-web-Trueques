@@ -20,4 +20,9 @@ class Producto extends Model
         'user_id',
         'precio_id',
     ];
+
+    public function foto()
+    {
+        return $this->hasMany(Foto::class, 'producto_id');
+    }
 }

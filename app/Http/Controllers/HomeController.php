@@ -47,10 +47,12 @@ class HomeController extends Controller
     
     public function upload(Request $request)
     {
-        $foto = $request->file("file");
-        $nombre = $foto->getClientOriginalName();
         
-        $url = Storage::disk('public')->put($nombre, File::get($foto));
+        $foto = $request->file("file");
+        $extension = $foto->getClientOriginalExtension();
+        $url = Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
+        $request['foto'] = $foto->getFilename().".".$extension;
        
+        return $request['foto'];
     }
 }

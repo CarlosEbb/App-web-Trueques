@@ -73,6 +73,7 @@
           </div>
         </div>
         <div class="col-12">
+        <div id="archivos"></div>
           <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips">Publicar</button>
         </div>
       </div>
@@ -99,9 +100,15 @@
 
   Dropzone.options.myAwesomeDropzone = {
       paramName: "file", // Las imágenes se van a usar bajo este nombre de parámetro
-      maxFilesize: 10 // Tamaño máximo en MB
+      maxFilesize: 10, // Tamaño máximo en MB
       
+      success: function(file, response){
+                  archivos = '<input type="text" name="archivos[]" value="'+response+'"/>';
+                  $("#archivos").append(archivos);
+              }
     };
  
+
+      
 </script>  
 @endsection

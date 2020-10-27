@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\Foto;
 use Session;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -41,20 +42,24 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $image = $request->file('file');
-        dd($image);
-
         $datos = $this->validate(request(), [
             'nombre' => 'required|string',
             'descripcion' => 'required|string',
             'categoria_id' => 'required|string',
             'precio_id' => 'required|string',
+            'archivos' => 'required',
         ]);
+
+        
         $request['user_id'] = Auth::user()->id;
 
         
         $producto = Producto::create($request->all());
-           
+     
+        foreach($request->archivos as $file){
+            Foto::create(['ruta' => $file, 'producto_id' => $producto->id]);
+        }
+
         Session::flash('mensaje','Registrado correctamente');
         
         if(Auth::user()->rol_id == '2'){

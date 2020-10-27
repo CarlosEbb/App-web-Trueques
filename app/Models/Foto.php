@@ -11,4 +11,9 @@ class Foto extends Model
 
     protected $table ='fotos';
 
+    protected $fillable = [
+        'ruta',
+        'producto_id',
+        'principal',
+    ];
 }
