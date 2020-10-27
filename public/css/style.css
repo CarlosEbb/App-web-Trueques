@@ -164,6 +164,7 @@ button {
 .input,
 .textarea {
     font-size: 1rem;
+    width: 100%;
     font-weight: 400;
     letter-spacing: 0.00625em;
     border-radius: 5px;

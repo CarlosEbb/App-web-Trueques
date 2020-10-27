@@ -3,11 +3,24 @@
         width: 100%;
     }
 
-    #sidebar {
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
+    #sidebarCollapse span {
         display: none;
     }
 
-    #content {
+    .content-dashboar {
         left: 0px !important;
+    }
+
+    .title-icon {
+        display: none;
     }
 }
