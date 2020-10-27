@@ -42,7 +42,7 @@
         <article class="col-12 col-md-6 mb-4">
           <div class="card card-banner-product">
             <div class="card-body card-body-banner-categorias">
-              <img src="{{asset('img/laptop.png')}}" width="250" height="250" alt="">
+              <img src="{{asset('img/laptop.png')}}" width="250" height="200" alt="">
               <h5>{{$categoria->nombre}}</h5>
             </div>
             <div class="card-footer card-footer-product" style="right: 20px; position: absolute; bottom: 20px;">

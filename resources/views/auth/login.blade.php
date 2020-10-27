@@ -1,6 +1,5 @@
-{{-- @extends('layouts.app') --}}
+
 @include('includes.head')
-{{-- @section('content') --}}
 <body class="d-flex align-items-center " style="background-color:#F5FEFF;">
   <div class="container">
     <div class="row justify-content-center">
@@ -50,7 +49,7 @@
               Google
             </a>
             
-            <a class="mt-3 text-center" href="">¿No tienes una cuenta? Registrate</a>
+            <a class="mt-3 text-center" href="/register">¿No tienes una cuenta? Registrate</a>
           </div>
         </form>
       </div>
