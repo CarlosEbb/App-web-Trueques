@@ -3,7 +3,7 @@
     <a id="sidebarCollapse">
       <svg class="mr-3 ml-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
     </a>
-    <a class="navbar-brand" href="#" target="_blank" rel="noopener noreferrer">
+    <a class="navbar-brand" href="/" rel="noopener noreferrer">
       <img src="{{asset('img/Logo.png')}}" alt="Logo">
     </a>
 

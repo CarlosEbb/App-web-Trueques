@@ -35,7 +35,7 @@
                             </a>
 
                             @if($user->id != Auth::user()->id)
-                                {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'DELETE']) !!}
+                                {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE']) !!}
                                     <button class="btn btn-default tooltips action-items">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                                 <span class="tooltiptext">Eliminar</span>
@@ -66,7 +66,7 @@
                                     <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="" class="d-block">Nombre</label>
-                                                <input class="input" type="text" name="nombre" value="{{$user->nombre}}" required>
+                                                <input class="input" type="text" name="name" value="{{$user->name}}" required>
                                             </div>
 
                                             <div class="form-group">
@@ -115,7 +115,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="" class="d-block">Nombre</label>
-                            <input class="input" type="text" name="nombre" value="{{old('nombre')}}" required>
+                            <input class="input" type="text" name="name" value="{{old('name')}}" required>
                         </div>
 
                         <div class="form-group">

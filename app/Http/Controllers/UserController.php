@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
+use Session;
 
 class UserController extends Controller
 {
@@ -38,7 +40,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = $this->validate(request(), [
+            'email' => 'email|required|string|unique:users',
+            'password' => 'required|string',
+            'name' => 'required|string',
+        ]);
+
+        $request['password'] = bcrypt($request->password);
+        $user = User::create($request->all());
+        
+        //Session::flash('mensaje','Registrado correctamente');
+        
+        if(Auth::user() != null)
+            if(Auth::user()->rol_id == 1)
+                return back();
+    
+         if (Auth::attempt($datos)) {
+             if (session()->has('redirect_to')){
+                 //$this->correoBienvenida();
+                return redirect(session()->pull('redirect_to'));
+             }
+          }
+        
+        //$this->correoBienvenida();
+        return redirect('/');
     }
 
     /**
