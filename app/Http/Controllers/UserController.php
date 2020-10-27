@@ -46,6 +46,10 @@ class UserController extends Controller
             'name' => 'required|string',
         ]);
 
+        if($request->rol_id == null){
+            $request['rol_id'] = 2;
+        }
+        
         $request['password'] = bcrypt($request->password);
         $user = User::create($request->all());
         
