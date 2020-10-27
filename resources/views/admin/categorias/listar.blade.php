@@ -58,6 +58,11 @@
                                         <input class="input" type="text" name="nombre" value="{{$categoria->nombre}}" required>
                                     </div>
                                     
+                                    <div class="form-group">
+                                        <label for="" class="d-block" >Descripcion</label>
+                                        <input type="text" name="descripcion" class="input" value="" required>
+                                    </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-rounded btn-close border-0 bg-light" data-dismiss="modal">Cancelar</button>
                                         <input class="btn-rounded btn-primary btn-primary-dark border-0" type="submit" value="Actualizar">
@@ -93,6 +98,12 @@
                             <label for="" class="d-block" >Descripcion</label>
                             <input type="text" name="descripcion" class="input" value="" required>
                         </div>
+
+                        <div class="form-group">
+                            <label for="" class="d-block" >Foto</label>
+                            <input type="file" name="img" class="input" required>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-rounded btn-close border-0 bg-light" data-dismiss="modal">Cancelar</button>

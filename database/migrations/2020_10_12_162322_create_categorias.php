@@ -18,6 +18,7 @@ class CreateCategorias extends Migration
 
             $table->string('nombre');
             $table->text('descripcion');
+            $table->string('foto')->nullable();
             
             $table->timestamps();
         });

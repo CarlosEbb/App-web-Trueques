@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class CategoriaController extends Controller
 {
@@ -42,6 +44,14 @@ class CategoriaController extends Controller
         'descripcion' => 'required|string'
         ]);
             
+        if($request->img != null){
+            $foto = $request->file("img");
+            $extension = $foto->getClientOriginalExtension();
+            $url = Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
+            $request['foto'] = $foto->getFilename().".".$extension;
+        }
+        
+
         $categorias = Categoria::create($request->all());
         
         Session::flash('mensaje','Registrado correctamente');

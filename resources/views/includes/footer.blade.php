@@ -4,7 +4,7 @@
       <div class="col-md-5">
         <ul class="list-group ">
           <li class="list-group-item border-0 py-2 bg-transparent text-uppercase font-weight-bold">CATEGORIAS POPULARES</li>
-          @foreach(\App\Models\Categoria::all() as $categoria)
+          @foreach(\App\Models\Categoria::paginate(4) as $categoria)
             <li class="list-group-item border-0 py-2 bg-transparent"><a href="{{route('categorias.show', $categoria->id)}}" class="link-footer" rel="noopener noreferrer">{{$categoria->nombre}}</a></li>
           @endforeach
         </ul>        
@@ -12,8 +12,8 @@
       <div class="col-md-4">
         <ul class="list-group ">
           <li class="list-group-item border-0 py-2 bg-transparent text-uppercase font-weight-bold">LO MAS BUSCADO</li>
-          @foreach(\App\Models\Categoria::all() as $buscado)
-            <li class="list-group-item border-0 py-2 bg-transparent"><a href="{{route('categorias.show', $buscado->id)}}" class="link-footer" rel="noopener noreferrer">{{$categoria->nombre}}</a></li>
+          @foreach(\App\Models\Categoria::paginate(4) as $buscado)
+            <li class="list-group-item border-0 py-2 bg-transparent"><a href="{{route('categorias.show', $buscado->id)}}" class="link-footer" rel="noopener noreferrer">{{$buscado->nombre}}</a></li>
           @endforeach
         </ul>   
       </div>
