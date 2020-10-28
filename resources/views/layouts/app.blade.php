@@ -21,6 +21,44 @@
 		<script src="{{asset('js/jquery.js')}}"></script>
 		<script src="{{asset('js/bootstrap.min.js')}}"></script>
 		<script src="{{asset('js/app.js')}}"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+         
+		 <script>
+		  $.ajaxSetup({
+			  headers: {
+				  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')     
+			  }
+		  }); 
+	  
+		function addFavoritos(producto_id) {
+		  var corazon = $('.addFavoritoCorazon_'+producto_id);
+			 $.ajax({
+				url:'/addFavoritos',
+	  
+				data:{'producto_id': producto_id},
+				type:'post',
+				success: function (response) {
+					console.log('favorito',response);
+					if(corazon.attr("fill") == 'red'){
+					  corazon.attr("fill", "#009fb7");
+					}else{
+					  corazon.attr("fill", "red");
+					}
+				},
+				statusCode: {
+				   404: function() {
+					  alert('web not found');
+				   }
+				},
+				error:function(x,xs,xt){
+					//nos dara el error si es que hay alguno
+					window.open(JSON.stringify(x));
+					//alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+				}
+			 });
+		}
+		
+		</script>
 		@yield('scriptJS')
 	</body>
 </html>

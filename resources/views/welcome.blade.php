@@ -19,7 +19,7 @@
                   <h5 class="card-title mb-5 card-title-product">{{$producto->nombre}}</h5>
                   <div class="card-footer card-footer-product">
                     <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$producto->id}}) @endauth">
-                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path class="addFavoritoCorazon_{{$producto->id}}" d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z" fill="#009fb7"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path class="addFavoritoCorazon_{{$producto->id}}" d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z"  @if(App\Models\ProductoFavorito::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() == null) fill="#009fb7" @else fill="red" @endif/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                     <span class="tooltiptext">favorito</span>
                   </a>
                   <a href="{{route('productos.show', $producto->id)}}" class="btn-rounded btn-primary btn-primary-dark  mx-1 tooltips">
@@ -66,6 +66,7 @@
         </div>
         @foreach( \App\Models\Producto::all() as $destacado)
         @if($destacado->foto->first() != null)
+        
         <article class="col-12 col-sm-6 col-md-4 col-lg-3 px-5 px-sm-3 mb-4 py-1">
           <div class="card card-product">
           <img class="card-img-top card-img-product" src="\uploads\{{$destacado->foto->first()->ruta}}" alt="Card image cap">
@@ -73,7 +74,7 @@
               <h5 class="card-title mb-5 card-title-product">{{$destacado->nombre}}</h5>
               <div class="card-footer card-footer-product">
                 <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar" onclick="addFavoritos({{$destacado->id}})">
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path class="addFavoritoCorazon_{{$destacado->id}}" d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z" fill="#009fb7"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path class="addFavoritoCorazon_{{$destacado->id}}" d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z" @if(App\Models\ProductoFavorito::where('producto_id', $destacado->id)->where('user_id', Auth::user()->id)->first() == null) fill="#009fb7" @else fill="red" @endif/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                 <span class="tooltiptext">favorito</span>
               </a>
               <a href="{{route('productos.show', $destacado->id)}}" class="btn-rounded btn-primary btn-primary-dark  mx-1 tooltips">
@@ -91,43 +92,6 @@
 @endsection
 
 @section('scriptJS')
-
-  <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')     
-        }
-    }); 
-
-  function addFavoritos(producto_id) {
-    var corazon = $('.addFavoritoCorazon_'+producto_id);
-       $.ajax({
-          url:'addFavoritos',
-
-          data:{'producto_id': producto_id},
-          type:'post',
-          success: function (response) {
-              console.log('favorito',response);
-              if(corazon.attr("fill") == 'red'){
-                corazon.attr("fill", "#009fb7");
-              }else{
-                corazon.attr("fill", "red");
-              }
-          },
-          statusCode: {
-             404: function() {
-                alert('web not found');
-             }
-          },
-          error:function(x,xs,xt){
-              //nos dara el error si es que hay alguno
-              window.open(JSON.stringify(x));
-              //alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
-          }
-       });
-  }
-  
-  </script>
 
 
 @endsection

@@ -1,7 +1,11 @@
 INSERT INTO `roles` (`id`, `nombre`, `descripcion`, `status`, `created_at`, `updated_at`) VALUES (NULL, 'Administrador', 'Usuario tipo administrador', '1', NULL, NULL);
 INSERT INTO `roles` (`id`, `nombre`, `descripcion`, `status`, `created_at`, `updated_at`) VALUES (NULL, 'Cliente', 'Usuario tipo cliente', '1', NULL, NULL);
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `rol_id`, `ciudad`, `remember_token`, `status`, `created_at`, `updated_at`) VALUES (NULL, 'administrador', 'admin@admin.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', '1', NULL, NULL, '1', NULL, NULL);
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`, `rol_id`, `ciudad`, `remember_token`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'administrador', 'admin@admin.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', NULL, 1, NULL, NULL, 1, '2020-10-27 23:00:00', '2020-10-27 23:00:00'),
+(2, 'Cliente', 'cliente@cliente.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', NULL, 2, NULL, NULL, 1, '2020-10-27 23:00:00', '2020-10-27 23:00:00');
+
 
 INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `foto`, `created_at`, `updated_at`) VALUES
 (1, 'Vehículos', 'Vehículos', 'vehiculos.png', '2020-10-16 03:19:02', '2020-10-27 07:44:19'),

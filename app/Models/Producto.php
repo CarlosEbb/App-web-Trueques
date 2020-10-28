@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Auth; 
 
 class Producto extends Model
 {
@@ -25,4 +26,25 @@ class Producto extends Model
     {
         return $this->hasMany(Foto::class, 'producto_id');
     }
+
+    public function precio()
+    {
+        return $this->belongsTo(Precio::class, 'categoria_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class, 'departamento_id', 'id_departamento');
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class, 'categoria_id');
+    }
+
 }

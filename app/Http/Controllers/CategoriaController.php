@@ -67,7 +67,9 @@ class CategoriaController extends Controller
     public function show($id)
     {
         $categoria = Categoria::find($id);
-        return view('users.mostrarProductoCategoria')->with(compact('categoria'));
+        $productos = $categoria->productos;
+
+        return view('users.mostrarProductoCategoria')->with(compact('productos'));
     }
 
     /**
