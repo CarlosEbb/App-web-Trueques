@@ -82,11 +82,8 @@ button {
 }
 
 .btn-iniciar-sesion:hover {
-    color: var(--color-white);
-}
-
-.btn-iniciar-sesion:hover svg path {
-    fill: var(--color-white);
+    background-color: var(--color-white-dark);
+    color: var(--color-primary);
 }
 
 .btn-rounded {

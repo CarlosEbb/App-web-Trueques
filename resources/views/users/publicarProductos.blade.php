@@ -103,18 +103,15 @@
 @section('scriptJS')
 
 <script type="text/javascript">
-
   Dropzone.options.myAwesomeDropzone = {
-      paramName: "file", // Las imágenes se van a usar bajo este nombre de parámetro
-      maxFilesize: 10, // Tamaño máximo en MB
-      
-      success: function(file, response){
-                  archivos = '<input type="text" name="archivos[]" value="'+response+'" hidden/>';
-                  $("#archivos").append(archivos);
-              }
-    };
- 
-
-      
+    paramName: "file", // Las imágenes se van a usar bajo este nombre de parámetro
+    maxFilesize: 10, // Tamaño máximo en MB
+    dictDefaultMessage: "Ingrese las fotos del producto", // Mensaje de la casa de imagenes
+    
+    success: function(file, response){
+      archivos = '<input type="text" name="archivos[]" value="'+response+'" hidden/>';
+      $("#archivos").append(archivos);
+    }
+  };
 </script>  
 @endsection
