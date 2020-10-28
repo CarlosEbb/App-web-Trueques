@@ -51,6 +51,10 @@ Route::get('publicar-productos', function () {
     return view('/users/publicarProductos');
 });
 
+Route::get('productos', function () {
+    return view('/users/productos');
+});
+
 //socialite
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
