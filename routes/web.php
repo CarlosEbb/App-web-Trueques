@@ -49,7 +49,7 @@ Route::resource('users', UserController::class);
 // productos usuarios 
 Route::get('publicar-productos', function () {
     return view('/users/publicarProductos');
-});
+})->name('publicar-productos');
 
 Route::get('productos', function () {
     return view('/users/productos');

@@ -25,4 +25,24 @@ class Producto extends Model
     {
         return $this->hasMany(Foto::class, 'producto_id');
     }
+
+    public function precio()
+    {
+        return $this->belongsTo(Precio::class, 'categoria_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class, 'departamento_id', 'id_departamento');
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(CAtegoria::class, 'categoria_id');
+    }
 }
