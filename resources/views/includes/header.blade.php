@@ -48,7 +48,7 @@
             <span class="tooltiptext">Buscar</span>
           </a>
         
-          <div class="dropdown-menu menu menu-navbar menu-buscar" aria-labelledby="dropdownMenuBuscar">
+          <div class="dropdown-menu dropdown-menu-right menu menu-navbar menu-buscar" aria-labelledby="dropdownMenuBuscar">
             <p class="menu-notificaciones-title">Buscar producto</p>
             <form action="" class="flex-fill">
               <div class="form-row align-items-center">
