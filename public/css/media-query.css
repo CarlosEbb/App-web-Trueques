@@ -1,4 +1,8 @@
 @media (max-width: 765px) {
+    .menu-navbar {
+        min-width: 250px !important;
+    }
+
     .content-menu-logaut {
         width: 100%;
     }
@@ -6,12 +10,15 @@
     #sidebar.active {
         margin-left: 0;
     }
+
     #content {
         width: 100%;
     }
+
     #content.active {
         width: calc(100% - 250px);
     }
+
     #sidebarCollapse span {
         display: none;
     }

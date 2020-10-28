@@ -76,14 +76,17 @@ button {
 }
 
 .btn-iniciar-sesion {
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 15px;
     color: var(--color-primary);
-    border-bottom: 2px solid var(--color-primary);
 }
 
 .btn-iniciar-sesion:hover {
-    color: var(--btn-dark);
-    border-bottom: 2px solid var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-iniciar-sesion:hover svg path {
+    fill: var(--color-white);
 }
 
 .btn-rounded {
@@ -229,7 +232,6 @@ button {
 }
 
 .menu-navbar {
-    margin-top: 50px;
     min-width: 280px;
     max-width: 300px;
     max-height: 713px;
@@ -289,12 +291,9 @@ button {
 .btn-user:focus {
     background-color: var(--color-white-dark);
 }
-.btn-menu-user:focus + .menu-user {
-    display: block;
-}
 
-.menu-user {
-    /* right: 220px; */
+.dropdown-toggle::after {
+    display: none;
 }
 
 .datos-users {
