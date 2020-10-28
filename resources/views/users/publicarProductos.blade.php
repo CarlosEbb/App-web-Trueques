@@ -1,24 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-  <form action="{{route('productos.store')}}" class="container px-0 px-md-5" method="post" enctype="multipart/form-data">@csrf
-        @foreach ( $errors->all() as $error)
-            <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            {{$error}}
-            </div>
-        @endforeach
-
-        @if(Session::has('mensaje'))
-            <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            {{Session::get('mensaje')}}
-            </div>
-        @endif
-    <div class="row px-3  px-md-5">
+  <div class="container px-0 px-md-5">
+    <div class="row px-3 px-md-5">
       <div class="col-12 text-center mt-5">
         <h2 class="text-uppercase">publica tu producto</h2>
       </div>
+      <div class="col-12">
+        @foreach ( $errors->all() as $error)
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{$error}}
+          </div>
+        @endforeach
+
+        @if(Session::has('mensaje'))
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{Session::get('mensaje')}}
+          </div>
+        @endif
+      </div>
+      <div class="col-12 mb-4">
+        <div class="card card-border-radius p-4 p-md-5">
+          <h4 class="mb-4">Adjuntar fotos del producto</h4>
+          <button class="dz-button" type="button">
+          <form action="subir" class="dropzone" id="my-awesome-dropzone" method="get" enctype="multipart/form-data">@csrf</form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form action="{{route('productos.store')}}" class="container px-0 px-md-5" method="post" enctype="multipart/form-data">@csrf
+    <div class="row px-3  px-md-5">
       <div class="col-12 mb-4">
         <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Seleccionar categoria</h4>
@@ -53,39 +66,32 @@
           </select>
         </div>
       </div>
-        <div class="col-12 mb-4">
-          <div class="card card-border-radius p-4 p-md-5">
-            <h4 class="mb-4">Confirma tu ubicación</h4>
+      <div class="col-12 mb-4">
+        <div class="card card-border-radius p-4 p-md-5">
+          <h4 class="mb-4">Confirma tu ubicación</h4>
 
-            <label for="ciudad">Ciudad</label>
-            <select name="departamento_id" id="ciudad" class="select">
-                @foreach( \App\Models\Departamento::all() as $ciudad)
-                <option value="{{$ciudad->id_departamento}}">{{$ciudad->departamento}}</option>
-                @endforeach    
-            </select>
+          <label for="ciudad">Ciudad</label>
+          <select name="departamento_id" id="ciudad" class="select">
+              @foreach( \App\Models\Departamento::all() as $ciudad)
+              <option value="{{$ciudad->id_departamento}}">{{$ciudad->departamento}}</option>
+              @endforeach    
+          </select>
 
-            <label for="municipio" class="mt-4">Municipio</label>
-            <select name="municipio_id" id="municipio" class="select">
-                @foreach( \App\Models\Municipio::all() as $municipio)
-                <option value="{{$municipio->id_municipio}}">{{$municipio->municipio}}</option>
-                @endforeach
-            </select>
-          </div>
+          <label for="municipio" class="mt-4">Municipio</label>
+          <select name="municipio_id" id="municipio" class="select">
+              @foreach( \App\Models\Municipio::all() as $municipio)
+              <option value="{{$municipio->id_municipio}}">{{$municipio->municipio}}</option>
+              @endforeach
+          </select>
         </div>
-        <div class="col-12">
-        <div id="archivos"></div>
+      </div>
+      <div class="col-12">
+        <div id="archivos">
           <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips">Publicar</button>
         </div>
       </div>
     </div>
   </form>
-      <div class="col-12 mb-4">
-        <div class="card card-border-radius p-4 p-md-5">
-          <h4 class="mb-4">Adjuntar fotos del producto</h4>
-          <button class="dz-button" type="button">
-          <form action="subir" class="dropzone" id="my-awesome-dropzone" method="get" enctype="multipart/form-data">@csrf</form>
-        </div>
-      </div>
 @endsection
 
 @section('scriptCSS')

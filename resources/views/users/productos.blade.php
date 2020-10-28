@@ -3,6 +3,7 @@
 @section('content')
     <div class="container mt-5">
       <section class="row">
+        {{-- sidebar Filtrar productos desktop --}}
         <div class="col-12 col-md-3 d-none d-md-block" style="min-height: 100vh;">
           <h5 class="border-bottom py-2 text-body">Filtrar busqueda</h5>
           <div class="accordion" id="accordionExample">
@@ -51,6 +52,7 @@
             </div>
           </div>
         </div>
+        {{-- sidebar Filtrar productos movil --}}
         <div class="col-12 col-md-3 d-block d-md-none">
           <div class="accordion" id="accordionExample">
             <div class="card border-0">
