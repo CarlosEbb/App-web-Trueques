@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Auth; 
 
 class Producto extends Model
 {
@@ -43,6 +44,7 @@ class Producto extends Model
 
     public function categoria()
     {
-        return $this->belongsTo(CAtegoria::class, 'categoria_id');
+        return $this->belongsTo(Categoria::class, 'categoria_id');
     }
+
 }

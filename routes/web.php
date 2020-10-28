@@ -59,6 +59,6 @@ Route::get('productos', function () {
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
-Route::post('addFavoritos','HomeController@addFavoritos');
+Route::post('/addFavoritos','HomeController@addFavoritos');
 
 Route::get('/password/reset/{token}/{email}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
