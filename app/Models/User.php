@@ -54,4 +54,9 @@ class User extends Authenticatable
         // Your your own implementation.
         $this->notify(new ResetPasswordNotification($token));
     }
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'user_id');
+    }
 }

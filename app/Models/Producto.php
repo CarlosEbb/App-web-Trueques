@@ -20,6 +20,7 @@ class Producto extends Model
         'departamento_id',
         'user_id',
         'precio_id',
+        'status',
     ];
 
     public function foto()
@@ -29,7 +30,7 @@ class Producto extends Model
 
     public function precio()
     {
-        return $this->belongsTo(Precio::class, 'categoria_id');
+        return $this->belongsTo(Precio::class, 'precio_id');
     }
 
     public function user()
