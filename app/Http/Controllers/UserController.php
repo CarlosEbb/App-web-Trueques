@@ -101,18 +101,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name'              => 'required|string|max:255',
-            'email' => 'required|string|email|max:255||unique:users,email,'.Auth::user()->id,
-        ]);
-        
-        if($request->password ==! null){
+        if(($request->name != null) and ($request->email != null)){ 
+            $this->validate($request, [
+                'name'              => 'required|string|max:255',
+                'email' => 'required|string|email|max:255||unique:users,email,'.Auth::user()->id,
+            ]);
+        }
+        if($request->password !== null){
             $this->validate($request, [
                 'password'              => 'required|min:4|max:255',
                 'password_confirmation' => 'required|min:4|same:password',
             ]);
+            $request['password'] = bcrypt($request->password);
         }
-        $request['password'] = bcrypt($request->password);
         $user = Auth::user();
         /* $this->authorize('pass', $user); */
 

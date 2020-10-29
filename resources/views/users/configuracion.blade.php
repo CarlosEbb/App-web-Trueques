@@ -12,25 +12,39 @@
       </ul>
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-contraseña" role="tabpanel" aria-labelledby="pills-contraseña-tab">
-          <form class="row">
+        
+          {!! Form::model(Auth::user(), ['route' => ['users.update', Auth::user()->id], 'method' => 'PUT', 'files' => true, 'class' => 'row']) !!}
             <div class="col-12 text-center mt-5">
               <h2 class="title">Contraseña</h2>
             </div>
             <div class="col-12 mb-4">
               <div class="card card-border-radius p-4 p-md-5">
+              @foreach ( $errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  {{$error}}
+                </div>
+              @endforeach
+
+              @if(Session::has('mensaje'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  {{Session::get('mensaje')}}
+                </div>
+              @endif
                 <h4 class="mb-4">Ingrese la contraseña nueva</h4>
       
                 <label for="Nuevacontraseña">Nueva contraseña</label>
-                <input class="input" type="text" placeholder="Nueva contraseña" name="Nuevacontraseña" id="Nuevacontraseña" value="">
+                <input class="input" type="password" placeholder="Nueva contraseña" name="password" id="Nuevacontraseña" value="">
 
                 <label for="contraseña" class="mt-4">Confirme la contraseña</label>
-                <input class="input" type="text" placeholder="contraseña" name="contraseña" id="contraseña" value="">
+                <input class="input" type="password" placeholder="contraseña" name="password_confirmation" id="contraseña" value="">
               </div>
             </div>
             <div class="col-12">
               <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips">Cambiar contraseña</button>
             </div>
-          </form>
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
