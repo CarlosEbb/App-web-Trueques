@@ -213,9 +213,6 @@ button {
 }
 
 /* navbar categorias */
-.btn-categorias:focus + .menu-categorias {
-    display: block;
-}
 
 /* menus */
 .menu {
@@ -528,4 +525,19 @@ button {
 /* login */
 .card-login-register {
     box-shadow: 0px 10px 17px 0px #cccc;
+}
+
+/* editar perfil */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    border-radius: 50px !important;
+    background-color: var(--color-primary) !important;
+}
+
+/* anuncios */
+.card-img-anucios {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    /* height: 180px; */
 }

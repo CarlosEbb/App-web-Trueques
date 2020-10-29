@@ -55,6 +55,18 @@ Route::get('productos', function () {
     return view('/users/productos');
 });
 
+Route::get('perfil', function () {
+    return view('/users/perfil');
+});
+
+Route::get('configuracion', function () {
+    return view('/users/configuracion');
+});
+
+Route::get('anuncios', function () {
+    return view('/users/anuncios');
+});
+
 //socialite
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
