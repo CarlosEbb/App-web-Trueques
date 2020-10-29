@@ -16,7 +16,7 @@
           @if($producto->foto->first() != null)
             <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
               <div class="card card-product">
-              <img class="card-img-top card-img-product" src="\uploads\{{$producto->foto->first()->ruta}}" alt="Card image cap">
+              <img class="card-img-top card-img-product" src="{{$producto->foto->first()->ruta}}" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title mb-5 card-title-product">{{$producto->nombre}}</h5>
                   <div class="card-footer card-footer-product">
@@ -46,7 +46,7 @@
         <article class="col-12 col-md-6 mb-4">
           <div class="card card-banner-product">
             <div class="card-body card-body-banner-categorias">
-              <img src="\uploads\{{$categoria->foto}}" width="250" height="200" alt="">
+              <img src="{{$categoria->foto}}" width="250" height="200" alt="">
               <h5>{{$categoria->nombre}}</h5>
             </div>
             <div class="card-footer card-footer-product" style="right: 20px; position: absolute; bottom: 20px;">
@@ -71,7 +71,7 @@
         
         <article class="col-12 col-sm-6 col-md-4 col-lg-3 px-5 px-sm-3 mb-4 py-1">
           <div class="card card-product">
-          <img class="card-img-top card-img-product" src="\uploads\{{$destacado->foto->first()->ruta}}" alt="Card image cap">
+          <img class="card-img-top card-img-product" src="{{$destacado->foto->first()->ruta}}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title mb-5 card-title-product">{{$destacado->nombre}}</h5>
               <div class="card-footer card-footer-product">

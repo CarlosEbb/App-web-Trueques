@@ -62,6 +62,27 @@ return [
             'visibility' => 'public',
         ],
 
+        'categorias' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/categorias',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+
+        'users' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/users',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+
+        'productos' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/productos',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

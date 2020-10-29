@@ -113,7 +113,7 @@
             @if($producto->foto->first() != null)
             <article class="col-12 px-sm-3 col-sm-6 col-md-4 mb-4 px-5 py-1">
               <div class="card card-product">
-              <img class="card-img-top card-img-product" src="\uploads\{{$producto->foto->first()->ruta}}" alt="Card image cap">
+              <img class="card-img-top card-img-product" src="{{$producto->foto->first()->ruta}}" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title mb-5 card-title-product">{{$producto->nombre}}</h5>
                   <div class="card-footer card-footer-product">

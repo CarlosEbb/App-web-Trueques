@@ -29,7 +29,7 @@
           <div class="card shadow border-0 mb-3">
             <div class="row no-gutters">
               <div class="col-md-2">
-                <img src="@if($producto->foto->first() != null) \uploads\{{$producto->foto->first()->ruta}} @endif" class="card-img card-img-anucios" alt="...">
+                <img src="@if($producto->foto->first() != null) {{$producto->foto->first()->ruta}} @endif" class="card-img card-img-anucios" alt="...">
               </div>
               <div class="col-md-10">
                 <div class="card-body">

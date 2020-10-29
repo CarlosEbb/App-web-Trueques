@@ -7,13 +7,13 @@
       <section class="col-12 col-md-8">
         <div class="row px-1">
           <article class="card card-border-radius col-12 p-0">
-            <img src="\uploads\{{App\Models\Foto::where('producto_id', $producto->id)->first()->ruta}}" class="card-img-top card-img-rounded-top" alt="">
+            <img src="{{App\Models\Foto::where('producto_id', $producto->id)->first()->ruta}}" class="card-img-top card-img-rounded-top" alt="">
             <div class="content-img-product card-footer bg-transparent d-flex ">
               <?php           
                   $consulta = App\Models\Foto::where('producto_id', $producto->id)->get();
               ?>
                 @foreach($consulta->except(App\Models\Foto::where('producto_id', $producto->id)->first()->id) as $foto)
-                  <img src="\uploads\{{$producto->foto->first()->ruta}}" width="90" class="rounded-lg mx-1 mt-2" alt="">
+                  <img src="{{$foto->ruta}}" width="90" class="rounded-lg mx-1 mt-2" alt="">
                 @endforeach
             </div>
           </article>
@@ -57,7 +57,7 @@
             @if($articulo->foto->first() != null)
           <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
             <div class="card card-product">
-            <img class="card-img-top card-img-product" src="\uploads\{{$articulo->foto->first()->ruta}}" alt="Card image cap">
+            <img class="card-img-top card-img-product" src="{{$articulo->foto->first()->ruta}}" alt="Card image cap">
               <div class="card-body">
               <h5 class="card-title mb-5 card-title-product">{{$producto->nombre}}</h5>
                 <div class="card-footer card-footer-product">

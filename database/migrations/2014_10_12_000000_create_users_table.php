@@ -21,6 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->text('avatar')->nullable();
 
+            $table->text('informacion')->nullable();
+            $table->string('telefono')->nullable();
+
+            $table->string('foto')->nullable();
+
             $table->integer('rol_id')->unsigned();
             $table->foreign('rol_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
 

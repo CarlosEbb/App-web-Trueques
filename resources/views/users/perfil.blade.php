@@ -17,7 +17,7 @@
       </ul>
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-perfil" role="tabpanel" aria-labelledby="pills-perfil-tab">
-          <form class="row">
+        {!! Form::model(Auth::user(), ['route' => ['users.update', Auth::user()->id], 'method' => 'PUT', 'files' => true, 'class' => 'row']) !!}
             <div class="col-12 text-center mt-5">
               <h2 class="title">Editar perfil</h2>
             </div>
@@ -26,10 +26,10 @@
                 <h4 class="mb-4">Información básica</h4>
       
                 <label for="nombre">Nombre</label>
-                <input class="input" type="text" placeholder="Nombre" name="nombre" id="nombre" value="">
+                <input class="input" type="text" placeholder="Nombre" name="nombre" id="nombre" value="{{Auth::user()->name}}">
 
                 <label for="QuienSoy" class="mt-4">Quien soy</label>
-                <textarea class="textarea" placeholder="Quien soy (Opcional)" name="QuienSoy" id="QuienSoy" cols="20" rows="5" value=""></textarea>
+                <textarea class="textarea" placeholder="Quien soy (Opcional)" name="informacion" id="QuienSoy" cols="20" rows="5">{{Auth::user()->informacion}}</textarea>
               </div>
             </div>
             <div class="col-12 mb-4">
@@ -37,19 +37,19 @@
                 <h4 class="mb-4">Información de contacto</h4>
       
                 <label for="telefono">Número de télefono</label>
-                <input class="input" type="text" placeholder="3001111300" name="telefono" id="telefono" value="">
+                <input class="input" type="text" placeholder="3001111300" name="telefono" id="telefono" value="{{Auth::user()->telefono}}">
 
                 <label for="correo" class="mt-4">Correo electronico</label>
-                <input class="input" type="text" placeholder="perez@gmail.com" name="correo" id="correo" value="">
+                <input class="input" type="text" placeholder="perez@gmail.com" name="correo" id="correo" value="{{Auth::user()->email}}" disabled>
               </div>
             </div>
             <div class="col-12">
               <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips">Guardar cambios</button>
             </div>
-          </form>
+        {!! Form::close() !!}
         </div>
         <div class="tab-pane fade" id="pills-imagen-de-peril" role="tabpanel" aria-labelledby="pills-imagen-de-peril-tab">
-          <form class="row">
+        {!! Form::model(Auth::user(), ['route' => ['users.update', Auth::user()->id], 'method' => 'PUT', 'files' => true, 'class' => 'row']) !!}
             <div class="col-12 text-center mt-5">
               <h2 class="title">Editar foto perfil</h2>
             </div>
@@ -58,13 +58,13 @@
                 <h4 class="mb-4">Imagen de perfil</h4>
                 
                 <label for="nombre">Imagen</label>
-                <input type="file" class="input form-control-file" id="exampleFormControlFile1">
+                <input type="file" class="input form-control-file" id="exampleFormControlFile1" name="img">
               </div>
             </div>
             <div class="col-12">
               <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips">Guardar cambios</button>
             </div>
-          </form>
+        {!! Form::close() !!}
         </div>
       </div>
     </div>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 use Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -114,6 +116,17 @@ class UserController extends Controller
             ]);
             $request['password'] = bcrypt($request->password);
         }
+        if($request->file('img') != null){
+            $this->validate($request, [
+                'img'              => 'required',
+            ]);
+           
+            $foto = $request->file("img");
+            $extension = $foto->getClientOriginalExtension();
+            $url = Storage::disk('users')->put($foto->getFilename().".".$extension, File::get($foto));
+            $request['foto'] = '/uploads/users/'.$foto->getFilename().".".$extension;
+        }
+        
         $user = Auth::user();
         /* $this->authorize('pass', $user); */
 

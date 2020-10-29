@@ -47,8 +47,8 @@ class CategoriaController extends Controller
         if($request->img != null){
             $foto = $request->file("img");
             $extension = $foto->getClientOriginalExtension();
-            $url = Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
-            $request['foto'] = $foto->getFilename().".".$extension;
+            $url = Storage::disk('categorias')->put($foto->getFilename().".".$extension, File::get($foto));
+            $request['foto'] = '/uploads/categorias/'.$foto->getFilename().".".$extension;
         }
         
 

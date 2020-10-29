@@ -50,8 +50,8 @@ class HomeController extends Controller
         
         $foto = $request->file("file");
         $extension = $foto->getClientOriginalExtension();
-        $url = Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
-        $request['foto'] = $foto->getFilename().".".$extension;
+        $url = Storage::disk('productos')->put($foto->getFilename().".".$extension, File::get($foto));
+        $request['foto'] = '/uploads/productos/'.$foto->getFilename().".".$extension;
        
         return $request['foto'];
     }
