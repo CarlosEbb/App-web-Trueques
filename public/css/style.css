@@ -107,8 +107,9 @@ button {
     background-color: var(--color-white-dark);
 }
 
-.btn-rounded-delete {
-    background-color: #ffb9b9;
+.btn-rounded-delete,
+.btn-rounded-chat {
+    background-color: transparent;
     visibility: hidden;
 }
 
@@ -118,6 +119,12 @@ button {
 
 .btn-rounded-delete:hover {
     background-color: #fa7b7b;
+    transition: 0.5s;
+}
+
+.btn-rounded-chat:hover {
+    background-color: #cecece;
+    transition: 0.5s;
 }
 
 .btn-primary {
@@ -418,10 +425,6 @@ button {
     background-color: var(--color-white-dark);
 }
 
-.menu-buscar {
-    /* right: 380px; */
-}
-
 /*  */
 .card-border-radius {
     border-radius: 15px;
@@ -567,5 +570,9 @@ button {
 }
 
 .media-style:hover > div .btn-rounded-delete {
+    visibility: visible;
+}
+
+.media-style:hover > div .btn-rounded-chat {
     visibility: visible;
 }

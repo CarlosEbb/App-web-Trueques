@@ -71,6 +71,10 @@ Route::get('cambios', function () {
     return view('/users/cambios');
 });
 
+Route::get('favoritos', function () {
+    return view('/users/favoritos');
+});
+
 
 //socialite
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
