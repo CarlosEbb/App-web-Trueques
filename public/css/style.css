@@ -107,6 +107,19 @@ button {
     background-color: var(--color-white-dark);
 }
 
+.btn-rounded-delete {
+    background-color: #ffb9b9;
+    visibility: hidden;
+}
+
+.btn-rounded-delete svg path {
+    fill: #d63737;
+}
+
+.btn-rounded-delete:hover {
+    background-color: #fa7b7b;
+}
+
 .btn-primary {
     color: var(--color-white);
     text-decoration: none;
@@ -540,4 +553,19 @@ button {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     /* height: 180px; */
+}
+
+/* media mis anuncios */
+.media-style {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 15px 5px;
+    transition: 0.5s;
+}
+
+.media-style:hover {
+    background-color: rgb(247, 247, 247);
+}
+
+.media-style:hover > div .btn-rounded-delete {
+    visibility: visible;
 }

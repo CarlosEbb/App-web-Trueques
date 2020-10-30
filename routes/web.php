@@ -67,6 +67,11 @@ Route::get('anuncios', function () {
     return view('/users/anuncios');
 });
 
+Route::get('cambios', function () {
+    return view('/users/cambios');
+});
+
+
 //socialite
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
