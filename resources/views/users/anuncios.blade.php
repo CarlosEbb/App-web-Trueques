@@ -27,7 +27,7 @@
           </div>
         </div>
 
-        @foreach(Auth::user()->productos as $producto)
+        @forelse(Auth::user()->productos as $producto)
         <div class="col-12 mb-3">
           <div class="card shadow border-0 mb-3">
             <div class="row no-gutters">
@@ -119,7 +119,9 @@
             </div>
           </div>
         </div>
-        @endforeach
+        @empty
+          <p>No hay nada para mostrar</p>
+        @endforelse   
         
       </div>
     </div>

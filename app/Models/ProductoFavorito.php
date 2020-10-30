@@ -15,4 +15,9 @@ class ProductoFavorito extends Model
         'user_id',
         'producto_id',
     ];
+
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'producto_id');
+    }
 }

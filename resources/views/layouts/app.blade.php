@@ -33,7 +33,7 @@
 		function addFavoritos(producto_id) {
 		  var corazon = $('.addFavoritoCorazon_'+producto_id);
 			 $.ajax({
-				url:'/addFavoritos',
+				url:'{{route("favoritos.store")}}',
 	  
 				data:{'producto_id': producto_id},
 				type:'post',

@@ -32,7 +32,10 @@ class CreateProductos extends Migration
             $table->foreign('precio_id')->references('id')->on('precios')->onDelete('cascade')->onUpdate('cascade');
 
             $table->integer('status')->default(true);
-
+                //status 0 = Pausada
+                //status 1 = Publicada
+                //status 3 = Proceso de intercambio
+                //status 4 = intercambio Finalizado
             $table->timestamps();
         });
     }
