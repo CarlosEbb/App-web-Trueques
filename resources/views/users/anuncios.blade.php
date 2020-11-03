@@ -56,6 +56,7 @@
                     {!! Form::close() !!}
                     
                     <a class="btn btn-outline-info mx-2 mt-2 rounded-pill" data-toggle="modal" data-target="#editar_{{$producto->id}}">Editar</a>
+                    <a class="btn btn-outline-info mx-2 mt-2 rounded-pill">Destacar producto</a>
 
                     <!-- Modal Editar-->
                     <div class="modal fade" id="editar_{{$producto->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel_editar_{{$producto->id}}" aria-hidden="true">
