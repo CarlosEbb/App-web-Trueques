@@ -25,7 +25,7 @@
             <hr class="my-4">
             <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
             <p class="lead">
-              <a class="text-center btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips" href="#" role="button">Destacar producto</a>
+              <a class="text-center btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips" href="/planes" role="button">Destacar producto</a>
             </p>
           </div>
         @endif
