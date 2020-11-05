@@ -239,3 +239,19 @@ tr:hover .action-items {
 .modal-footer {
     border-top: none;
 }
+
+.icon-card-dashboard {
+    background-color: var(--color-primary);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.icon-card-dashboard svg path {
+    fill: white;
+}
+
+.list-hover:hover {
+    background-color: var(--color-segundary);
+}
