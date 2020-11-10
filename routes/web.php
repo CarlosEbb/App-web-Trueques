@@ -21,10 +21,6 @@ Route::get('/prueba', function () {
     return view('prueba');
 });
 
-Route::get('/prueba2', function () {
-    return view('prueba2');
-});
-
 Route::get('/mapa', function () {
     return view('mapa');
 });

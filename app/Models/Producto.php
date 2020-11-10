@@ -19,18 +19,14 @@ class Producto extends Model
         'municipio_id',
         'departamento_id',
         'user_id',
-        'precio_id',
+        'precio',
         'status',
+        'tipo_id',
     ];
 
     public function foto()
     {
         return $this->hasMany(Foto::class, 'producto_id');
-    }
-
-    public function precio()
-    {
-        return $this->belongsTo(Precio::class, 'precio_id');
     }
 
     public function user()
@@ -48,4 +44,8 @@ class Producto extends Model
         return $this->belongsTo(Categoria::class, 'categoria_id');
     }
 
+    public function tipo()
+    {
+        return $this->belongsTo(TipoAnuncio::class, 'tipo_id');
+    }
 }

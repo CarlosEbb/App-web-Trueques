@@ -27,12 +27,13 @@ INSERT INTO `monedas` (`id`, `nombre`, `simbolo`, `created_at`, `updated_at`) VA
 
 INSERT INTO `precios` (`id`, `de`, `hasta`, `moneda_id`, `created_at`, `updated_at`) VALUES (NULL, '0', '10000', '1', NULL, NULL), (NULL, '10000', '20000', '1', NULL, NULL), (NULL, '20000', '40000', '1', NULL, NULL), (NULL, '40000', '60000', '1', NULL, NULL), (NULL, '60000', '100000', '1', NULL, NULL);
 
+INSERT INTO `tipo_anuncio` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`) VALUES (NULL, 'Venta', 'Artículos dirigidos a la venta, con una compensación monetaria', NULL, NULL), (NULL, 'Trueque', 'Artículo dirigido al cambio, con una compensación de un objeto de interés o de igual valor', NULL, NULL);
 
-INSERT INTO `productos` (`id`, `user_id`, `nombre`, `descripcion`, `categoria_id`, `municipio_id`, `departamento_id`, `precio_id`, `status`, `created_at`, `updated_at`) VALUES
-(2, 2, 'Tensiómetro Digital De Muñeca', 'Excelente calidad garantizada', 2, 16, 44, 3, 1, '2020-10-28 23:20:14', '2020-10-28 23:20:14'),
-(4, 2, 'Volskwagen Escarabajo Sincrónico', 'Volkswagen año 69, en optimas condiciones, restaurado 100% con piezas originales Alemanas, juego de 5 cauchos nuevos, banda blanca farestone.', 1, 16, 41, 5, 1, '2020-10-28 23:27:47', '2020-10-28 23:27:47'),
-(5, 2, 'Cuadros Minimalistas Abstractos Modernos', '\"\"DECORA TU HOGAR\"\" CON \"BELLOS CUADROS DECORATIVOS CALIDAD AL MEJOR TRUEQUE\"\"', 3, 8, 13, 4, 1, '2020-10-28 23:37:06', '2020-10-28 23:37:06'),
-(6, 2, 'Yston Lente Mirror Para Natacion Adulto Ss99', 'LENTE MIRROR PARA NATACIÓN y TAPAOIDOS\r\nMarca: Yston\r\nTalla: Adulto\r\nColor: Aguamarina, Rosado, Azul Rey y Plateado.\r\n- Incluye tapaoidos\r\n- Cristal Mirror (Espejo)', 4, 1, 5, 1, 1, '2020-10-28 23:40:14', '2020-10-28 23:40:14');
+INSERT INTO `productos` (`id`, `user_id`, `nombre`, `descripcion`, `categoria_id`, `municipio_id`, `departamento_id`, `precio`, `status`, `created_at`, `updated_at`, `tipo_id`) VALUES
+(2, 2, 'Tensiómetro Digital De Muñeca', 'Excelente calidad garantizada', 2, 16, 44, '10000', 1, '2020-10-28 23:20:14', '2020-10-28 23:20:14', 1),
+(4, 2, 'Volskwagen Escarabajo Sincrónico', 'Volkswagen año 69, en optimas condiciones, restaurado 100% con piezas originales Alemanas, juego de 5 cauchos nuevos, banda blanca farestone.', 1, 16, 41, '30000', 1, '2020-10-28 23:27:47', '2020-10-28 23:27:47', 2),
+(5, 2, 'Cuadros Minimalistas Abstractos Modernos', '\"\"DECORA TU HOGAR\"\" CON \"BELLOS CUADROS DECORATIVOS CALIDAD AL MEJOR TRUEQUE\"\"', 3, 8, 13, '20000', 1, '2020-10-28 23:37:06', '2020-10-28 23:37:06', 1),
+(6, 2, 'Yston Lente Mirror Para Natacion Adulto Ss99', 'LENTE MIRROR PARA NATACIÓN y TAPAOIDOS\r\nMarca: Yston\r\nTalla: Adulto\r\nColor: Aguamarina, Rosado, Azul Rey y Plateado.\r\n- Incluye tapaoidos\r\n- Cristal Mirror (Espejo)', 4, 1, 5, '10000', 1, '2020-10-28 23:40:14', '2020-10-28 23:40:14', 2);
 
 
 
@@ -59,3 +60,5 @@ INSERT INTO `fotos` (`id`, `ruta`, `producto_id`, `principal`, `created_at`, `up
 (27, '\\uploads\\productos\\php4IJ8jm.webp', 6, 0, '2020-10-28 23:40:14', '2020-10-28 23:40:14'),
 (28, '\\uploads\\productos\\php8a9c2e.webp', 6, 0, '2020-10-28 23:40:14', '2020-10-28 23:40:14'),
 (29, '\\uploads\\productos\\php4Zoc2I.webp', 6, 0, '2020-10-28 23:40:14', '2020-10-28 23:40:14');
+
+

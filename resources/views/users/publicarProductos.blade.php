@@ -56,23 +56,26 @@
       <div class="col-12 mb-4">
         <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Detalles del anuncio</h4>
+
+          <label for="descripcion">Tipo de anuncio</label>
+          <select name="tipo_id" class="select">
+              @foreach( \App\Models\TipoAnuncio::all() as $tipo)
+                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+              @endforeach
+          </select>
+          <br>
+
           <label for="nombreProducto">Nombre del producto</label>
           <input class="input" type="text" placeholder="Nombre del producto" name="nombre" id="nombreProducto" value="{{old('nombreProducto')}}">
-
           <label for="descripcion" class="mt-4">Descripción</label>
           <textarea class="textarea" placeholder="Descripción" name="descripcion" id="descripcion" cols="20" rows="5" value="{{old('descripcion')}}"></textarea>
         </div>
       </div>
       <div class="col-12 mb-4">
         <div class="card card-border-radius p-4 p-md-5">
-          <h4 class="mb-4">Rango de precio</h4>
-
-          <label for="precio">Precios</label>
-          <select name="precio_id" class="select" id="precio">
-            @foreach( \App\Models\Precio::all() as $precio)
-              <option value="{{$precio->id}}">De {{number_format($precio->de, 2, ",", ".")}} a {{number_format($precio->hasta, 2, ",", ".")}} {{$precio->moneda->nombre}}</</option>
-            @endforeach
-          </select>
+        <h4 class="mb-4">Precio del producto</h4>
+            <label for="nombreProducto">Precio</label>
+            <input class="input" type="number" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}">
         </div>
       </div>
       <div class="col-12 mb-4">

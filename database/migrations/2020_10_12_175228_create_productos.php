@@ -24,13 +24,15 @@ class CreateProductos extends Migration
 
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->integer('tipo_id')->unsigned();
+            $table->foreign('tipo_id')->references('id')->on('tipo_anuncio')->onDelete('cascade')->onUpdate('cascade');
             
             $table->integer('municipio_id')->nullable();
             $table->integer('departamento_id')->nullable();
 
-            $table->integer('precio_id')->unsigned();
-            $table->foreign('precio_id')->references('id')->on('precios')->onDelete('cascade')->onUpdate('cascade');
-
+            $table->string('precio');
+           
             $table->integer('status')->default(true);
                 //status 0 = Pausada
                 //status 1 = Publicada

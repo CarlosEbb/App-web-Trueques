@@ -12,14 +12,15 @@
           <h1 class="title">Productos recientes</h1> 
         </div>
 
-        @foreach( \App\Models\Producto::all() as $producto)
+        @foreach( \App\Models\Producto::orderBy('created_at','DESC')->paginate(4) as $producto)
           @if($producto->foto->first() != null)
             <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
               <div class="card card-product">
               <img class="card-img-top card-img-product" src="{{$producto->foto->first()->ruta}}" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title mb-3 card-title-product text-truncate">{{$producto->nombre}}</h5>
-                  <span class="badge badge-pill badge-danger">Gratis</span>
+                  @if($producto->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
+                  <span class="badge badge-pill badge-success">{{$producto->tipo->nombre}}</span>
                   <div class="card-footer card-footer-product">
                     <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$producto->id}}) @endauth">
                       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path class="addFavoritoCorazon_{{$producto->id}}" d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z" @Auth @if(App\Models\ProductoFavorito::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() == null) fill="#009fb7" @else fill="red" @endif @else fill="#009fb7" @endauth/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
@@ -67,7 +68,7 @@
         <div class="col-12 section-content">
           <h1 class="title">Productos destacados</h1> 
         </div>
-        @foreach( \App\Models\Producto::all() as $destacado)
+        @foreach( \App\Models\Producto::paginate(4) as $destacado)
         @if($destacado->foto->first() != null)
         
         <article class="col-12 col-sm-6 col-md-4 col-lg-3 px-5 px-sm-3 mb-4 py-1">
@@ -75,7 +76,8 @@
           <img class="card-img-top card-img-product" src="{{$destacado->foto->first()->ruta}}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title mb-3 card-title-product text-truncate">{{$destacado->nombre}}</h5>
-              <span class="badge badge-pill badge-warning">Destacado</span>
+              @if($destacado->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
+                  <span class="badge badge-pill badge-success">{{$destacado->tipo->nombre}}</span>
               <div class="card-footer card-footer-product">
                 <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar" onclick="addFavoritos({{$destacado->id}})">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path class="addFavoritoCorazon_{{$destacado->id}}" d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z" @Auth @if(App\Models\ProductoFavorito::where('producto_id', $destacado->id)->where('user_id', Auth::user()->id)->first() == null) fill="#009fb7" @else fill="red" @endif @else fill="#009fb7" @endauth/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>

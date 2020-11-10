@@ -3,43 +3,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h2 class="title">Bienvenido, Juan Perez</h2>
+                <h2 class="title">Bienvenido, {{Auth::user()->name}}</h2>
             </div>
-            <div class="col-12 col-md-4 ">
-                <div class="card card-border-radius">
-                    <div class="card-body">
-                        <div class="header-card-dashboard d-flex mb-4" style="align-items: flex-end;">
-                            <div class="icon-card-dashboard">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="3em" height="3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3l7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                            </div>
-                            <h5 class="card-title ml-3">
-                                Productos destacados <br>
-                                <span class="card-text lead">10</span>
-                            </h5>
-                        </div>
-                        <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;" >
-                            <div class="media-body p-2">
-                                <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
-                                <span class="mt-3 text-secondary">cliente</span> 
-                            </div>
-                        </a>
-                        <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                            <div class="media-body p-2">
-                                <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
-                                <span class="mt-3 text-secondary">cliente</span> 
-                            </div>
-                        </a>
-                        <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                            <div class="media-body p-2">
-                                <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
-                                <span class="mt-3 text-secondary">cliente</span> 
-                            </div>
-                        </a>
-                        <p class="text-right mt-3"><a href="#" class="">Ver todos</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4">
+           
+            <div class="col-12 col-md-6">
                 <div class="card card-border-radius">
                     <div class="card-body">
                         <div class="header-card-dashboard d-flex mb-4" style="align-items: flex-end;">
@@ -48,10 +15,10 @@
                             </div>
                             <h5 class="card-title ml-3">
                                 Productos registrados <br>
-                                <span class="card-text lead">10</span>
+                                <span class="card-text lead">{{\App\Models\Producto::count()}}</span>
                             </h5>
                         </div>
-                        <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
+                        {{-- <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
                             <div class="media-body p-2">
                                 <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
                                 <span class="mt-3 text-secondary">cliente</span> 
@@ -69,11 +36,11 @@
                                 <span class="mt-3 text-secondary">cliente</span> 
                             </div>
                         </a>
-                        <p class="text-right mt-3"><a href="#" class="">Ver todos</a></p>
+                        <p class="text-right mt-3"><a href="#" class="">Ver todos</a></p> --}}
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 ">
+            <div class="col-12 col-md-6">
                 <div class="card card-border-radius">
                     <div class="card-body">
                         <div class="header-card-dashboard d-flex mb-4" style="align-items: flex-end;">
@@ -82,10 +49,10 @@
                             </div>
                             <h5 class="card-title ml-3">
                                 Productos cambiados <br>
-                                <span class="card-text lead">10</span>
+                                <span class="card-text lead">{{\App\Models\Producto::where('status', 3)->count()}}</span>
                             </h5>
                         </div>
-                        <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
+                        {{-- <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
                             <div class="media-body p-2">
                                 <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
                                 <span class="mt-3 text-secondary">cliente</span> 
@@ -103,7 +70,7 @@
                                 <span class="mt-3 text-secondary">cliente</span> 
                             </div>
                         </a>
-                        <p class="text-right mt-3"><a href="#" class="">Ver todos</a></p>
+                        <p class="text-right mt-3"><a href="#" class="">Ver todos</a></p> --}}
                     </div>
                 </div>
             </div>
@@ -120,56 +87,22 @@
                             </h5>
                         </div>
                         <ul class="list-unstyled">
+                            @foreach(\App\Models\User::paginate(5) as $user)
                             <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
                               <img class="mr-3 p-1 rounded-circle" src="{{asset('img/avatar.png')}}" width="35" height="35" alt="Generic placeholder image">
                               <div class="media-body">
                                 <p class="lead mb-0" style="font-size: 15px;">
-                                    <span class="font-weight-500 ml-3 mr-5"><b>Juan Perez</b></span>
-                                    <span class="mx-5">cliente</span> 
-                                    <span class="mx-5">12/01/2021</span> 
-                                    <span class="mx-5">calificacion: 12</span>
-                                    <span class="mx-5">estado:activo</span>
+                                    <span class="font-weight-500 ml-3 mr-5"><b>{{$user->name}}</b></span>
+                                    <span class="mx-5">{{$user->roles->nombre}}</span> 
+                                    <span class="mx-5">{{$user->created_at->format('d/m/Y')}}</span> 
+                                    
+                                    <span class="mx-5">estado: @if($user->status) activo @else suspendido @endif</span>
                                 </p>
                               </div>
                             </a>
-                            <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                              <img class="mr-3 p-1 rounded-circle" src="{{asset('img/avatar.png')}}" width="35" height="35" alt="Generic placeholder image">
-                              <div class="media-body d-flex aling-items-center">
-                                <p class="lead mb-0" style="font-size: 15px;">
-                                    <span class="font-weight-500 ml-3 mr-5"><b>Juan Perez</b></span>
-                                    <span class="mx-5">cliente</span> 
-                                    <span class="mx-5">12/01/2021</span> 
-                                    <span class="mx-5">calificacion: 12</span>
-                                    <span class="mx-5">estado:no activo</span>
-                                </p>
-                              </div>
-                            </a>
-                            <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                              <img class="mr-3 p-1 rounded-circle" src="{{asset('img/avatar.png')}}" width="35" height="35" alt="Generic placeholder image">
-                              <div class="media-body">
-                                <p class="lead mb-0" style="font-size: 15px;">
-                                    <span class="font-weight-500 ml-3 mr-5"><b>Juan Perez</b></span>
-                                    <span class="mx-5">cliente</span> 
-                                    <span class="mx-5">12/01/2021</span> 
-                                    <span class="mx-5">calificacion: 12</span>
-                                    <span class="mx-5">estado:activo</span>
-                                </p>
-                              </div>
-                            </a>
-                            <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                                <img class="mr-3 p-1 rounded-circle" src="{{asset('img/avatar.png')}}" width="35" height="35" alt="Generic placeholder image">
-                                <div class="media-body">
-                                  <p class="lead mb-0" style="font-size: 15px;">
-                                      <span class="font-weight-500 ml-3 mr-5"><b>Juan Perez</b></span>
-                                      <span class="mx-5">cliente</span> 
-                                      <span class="mx-5">12/01/2021</span> 
-                                      <span class="mx-5">calificacion: 12</span>
-                                      <span class="mx-5">estado:activo</span>
-                                  </p>
-                                </div>
-                            </a>
+                            @endforeach
                         </ul>
-                        <p class="text-right mt-3"><a href="#" class="">Ver todos</a></p>
+                        <p class="text-right mt-3"><a href="http://localhost:8000/users" class="">Ver todos</a></p>
                     </div>
                 </div>
             </div>
