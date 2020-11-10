@@ -32,6 +32,11 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function prueba()
+    {
+        return view("home.index");
+    }
+
     
     public function upload(Request $request)
     {
