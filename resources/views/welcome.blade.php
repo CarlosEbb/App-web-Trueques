@@ -53,7 +53,7 @@
                   <img src="{{$categoria->foto}}" width="312" height="250" alt="">
                 </div>
                 <div class="col-12 col-md-6 d-flex align-items-center px-0">
-                  <h5 class="p-3 mb-5 mb-md-0">{{$categoria->nombre}}</h5>
+                  <h5 class="pl-3 p-md-0 mb-5 mb-md-0">{{$categoria->nombre}}</h5>
                 </div>
               </div>
             </div>
