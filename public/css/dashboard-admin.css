@@ -248,6 +248,14 @@ tr:hover .action-items {
     padding: 10px;
 }
 
+.header-card-dashboard {
+    align-items: flex-end;
+    background: #01a0b821;
+    padding: 11px;
+    border-radius: 15px;
+    color: #01a0b8;
+}
+
 .icon-card-dashboard svg path {
     fill: white;
 }

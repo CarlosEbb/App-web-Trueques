@@ -196,28 +196,120 @@
     @endauth
   </div>
 </nav>
-<ul class="nav container">
-<li class="nav-item">
-  <div class="dropdown">
-    <a class="nav-link btn-categorias text-uppercase dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      todas las categorias
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5.843 9.593L11.5 15.25l5.657-5.657l-.707-.707l-4.95 4.95l-4.95-4.95l-.707.707z" fill="black"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-    </a>
-  
-    <div class="dropdown-menu menu menu-categorias mt-2 px-1" aria-labelledby="dropdownMenuLink">
-      <ul class="list-group">
-        @foreach( \App\Models\Categoria::all() as $categoria)
-          <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">
-            <a href="{{route('categorias.show', $categoria->id)}}">{{$categoria->nombre}}</a>
-          </li>
-        @endforeach
-      </ul>
+<ul class="nav container mt-2 d-flex">
+  <li class="nav-item">
+    <div class="dropdown">
+      <a class="nav-link btn-categorias text-uppercase dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        todas las categorias
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5.843 9.593L11.5 15.25l5.657-5.657l-.707-.707l-4.95 4.95l-4.95-4.95l-.707.707z" fill="black"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+      </a>
+    
+      <div class="dropdown-menu menu menu-categorias mt-2 px-1" aria-labelledby="dropdownMenuLink">
+        <ul class="list-group">
+          @foreach( \App\Models\Categoria::all() as $categoria)
+            <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">
+              <a href="{{route('categorias.show', $categoria->id)}}">{{$categoria->nombre}}</a>
+            </li>
+          @endforeach
+        </ul>
+      </div>
     </div>
-  </div>
-</li>
-@foreach( \App\Models\Categoria::paginate(5) as $categoriaside)
+  </li>
+  {{-- Precio --}}
+  <li class="nav-item">
+    <div class="dropdown mt-1 mx-3">
+      <button class="btn btn-outline-light rounded-pill dropdown-toggle text-dark btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15c0-1.09 1.01-1.85 2.7-1.85c1.42 0 2.13.54 2.39 1.4c.12.4.45.7.87.7h.3c.66 0 1.13-.65.9-1.27c-.42-1.18-1.4-2.16-2.96-2.54V4.5c0-.83-.67-1.5-1.5-1.5S10 3.67 10 4.5v.66c-1.94.42-3.5 1.68-3.5 3.61c0 2.31 1.91 3.46 4.7 4.13c2.5.6 3 1.48 3 2.41c0 .69-.49 1.79-2.7 1.79c-1.65 0-2.5-.59-2.83-1.43c-.15-.39-.49-.67-.9-.67h-.28c-.67 0-1.14.68-.89 1.3c.57 1.39 1.9 2.21 3.4 2.53v.67c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-.65c1.95-.37 3.5-1.5 3.5-3.55c0-2.84-2.43-3.81-4.7-4.4z" fill="#009fb7"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+        Precio
+      </button>
+      <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
+        <p class="menu-notificaciones-title">¿Cuánto quieres pagar?</p>
+        <form action="">
+          <div class="row">
+            <div class="col-6">
+              <label for="">Desde</label>
+              <input type="number" class="input">
+            </div>
+            <div class="col-6">
+              <label for="">Hasta</label>
+              <input type="number" class="input">
+            </div>
+            <div class="col-12">
+              <button class="btn-rounded btn-primary btn-primary-dark btn-block py-2 mt-3">Aplicar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </li>
+  {{-- Estado del producto --}}
+  <li class="nav-item">
+    <div class="dropdown mt-1 mx-3">
+      <button class="btn btn-outline-light rounded-pill dropdown-toggle text-dark btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M7 12c0 .55.45 1 1 1h8c.55 0 1-.45 1-1s-.45-1-1-1H8c-.55 0-1 .45-1 1zm5-10C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8z" fill="#009fb7"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+        Estado del producto
+      </button>
+      <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
+        <ul class="menu-notificaciones-list list-group-flush">
+          <p class="menu-notificaciones-title">Estado del producto</p>
+          <li class="list-group-item p-0">
+            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Nuevo</a></p>
+          </li>
+          <li class="list-group-item p-0">
+            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Como nuevo</a></p>
+          </li>
+          <li class="list-group-item p-0">
+            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Bueno</a></p>
+          </li>
+          <li class="list-group-item p-0">
+            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Aceptable</a></p>
+          </li>
+          <li class="list-group-item p-0">
+            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Lo ha dado todo</a></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+  {{-- Donde --}}
+  <li class="nav-item">
+    <div class="dropdown mt-1 mx-3">
+      <button class="btn btn-outline-light rounded-pill dropdown-toggle text-dark btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12 12c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2zm6-1.8C18 6.57 15.35 4 12 4s-6 2.57-6 6.2c0 2.34 1.95 5.44 6 9.14c4.05-3.7 6-6.8 6-9.14zM12 2c4.2 0 8 3.22 8 8.2c0 3.32-2.67 7.25-8 11.8c-5.33-4.55-8-8.48-8-11.8C4 5.22 7.8 2 12 2z" fill="#009fb7"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+        Ubicación
+      </button>
+      <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
+        <p class="menu-notificaciones-title">¿Dónde?</p>
+
+      </div>
+    </div>
+  </li>
+  {{-- Estado del producto --}}
+  <li class="nav-item">
+    <div class="dropdown mt-1 mx-3">
+      <button class="btn btn-outline-light rounded-pill dropdown-toggle text-dark btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8z" fill="#009fb7"/><path d="M12.5 7H11v6l5.25 3.15l.75-1.23l-4.5-2.67z" fill="#009fb7"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+        Publicado hace
+      </button>
+      <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
+        <ul class="menu-notificaciones-list list-group-flush">
+          <p class="menu-notificaciones-title">Publicado hace</p>
+          <li class="list-group-item p-0">
+            <p class=" text-dark p-2 mb-0"><a class="text-dark" href=""> <span class="px-2" style="font-size: 20px; font-weight: bold;">24</span> Horas</a></p>
+          </li>
+          <li class="list-group-item p-0">
+            <p class=" text-dark p-2 mb-0"><a class="text-dark" href=""> <span class="px-2 mx-1" style="font-size: 20px; font-weight: bold;">7</span> Días</a></p>
+          </li>
+          <li class="list-group-item p-0">
+            <p class=" text-dark p-2 mb-0"><a class="text-dark" href=""> <span class="px-2" style="font-size: 20px; font-weight: bold;">30</span> Días</a></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+{{-- @foreach( \App\Models\Categoria::paginate(5) as $categoriaside)
 <li class="nav-item d-md-flex align-items-center d-none d-md-block">
   <a class="nav-link nav-link-text-categorias text-uppercase" href="{{route('categorias.show', $categoriaside->id)}}">{{$categoriaside->nombre}}</a>
 </li>
-@endforeach
+@endforeach --}}
 </ul>

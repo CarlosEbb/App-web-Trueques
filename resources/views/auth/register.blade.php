@@ -3,52 +3,62 @@
 <body class="d-flex align-items-center " style="background-color:#F5FEFF;">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-5 p-0 p-md-1">
+      <div class="col-12 col-md-12 col-lg-9 p-0 p-md-1">
         <form method="POST" action="{{ route('users.store') }}">@csrf
           <div class="card p-4 card-border-radius border-0 card-login-register">
             <div class="card-header bg-transparent border-0 mx-auto mt-1 mt-md-3">
-              <a href="/"><img src="{{asset('img/Logo.png')}}" width="150" class="" alt="Trueque"></a>
-              <h4 class="text-center my-1 my-md-3">Registrase</h4>
+              <a href="/"><img src="{{asset('img/Logo.png')}}" width="180" class="" alt="Trueque"></a>
             </div>
-            <div class="form-group">
-              <label for="name" class="d-block">{{ __('Nombre') }}</label>
-              <input id="name" placeholder="Juan perez" type="text" class="input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-              
-              @error('name')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-              @enderror
+            <h3 class="my-1 my-md-5">Información para Registrarse</h3>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <h5 class="mb-4">Datos personales</h5>
+                <div class="form-group">
+                  <label for="name" class="d-block">{{ __('Nombre') }}</label>
+                  <input id="name" placeholder="Juan perez" type="text" class="input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                  
+                  @error('name')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="email" class="d-block">{{ __('Correo electronico') }}</label>
+                  <input id="email" placeholder="juanperez@correo.com" type="email" class="input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+    
+                  @error('email')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+                <div class="form-group w-100">
+                  <label for="fotoDocumento" class="d-block">Foto de documento</label>
+                  <input id="fotoDocumento" type="file" class="input" name="fotoDocumento" value="" required>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <h5 class="mb-4">Ingrese la contraseña</h5>
+                <div class="form-group">
+                  <label for="password" class="d-block">{{ __('Contraseña') }}</label>
+                  <input id="password" placeholder="**********" type="password" class="input @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+    
+                  @error('password')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+    
+                <div class="form-group">
+                  <label for="password-confirm" class="d-block">{{ __('Confirmar contraseña') }}</label>
+                  <input placeholder="**********" id="password-confirm" type="password" class="input" name="password_confirmation" required autocomplete="new-password">
+                </div>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="email" class="d-block">{{ __('Correo electronico') }}</label>
-              <input id="email" placeholder="juanperez@correo.com" type="email" class="input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-              @error('email')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-
-            <div class="form-group">
-              <label for="password" class="d-block">{{ __('Password') }}</label>
-              <input id="password" placeholder="**********" type="password" class="input @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-              @error('password')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-
-            <div class="form-group">
-              <label for="password-confirm" class="d-block">{{ __('Confirm Password') }}</label>
-              <input placeholder="**********" id="password-confirm" type="password" class="input" name="password_confirmation" required autocomplete="new-password">
-            </div>
-
-            <div class="form-group mb-0">
+            <div class="form-group mb-0 mt-4">
               <button type="submit" class="btn-rounded btn-primary btn-primary-dark d-block w-100">
                   Registrarse
               </button>

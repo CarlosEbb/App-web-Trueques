@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container-fluid m-0 p-0">
+    <div class="container-fluid m-0 mt-2 p-0">
         <img class="w-100 mt-1" src="{{asset('img/banner-home.png')}}" alt="">
     </div>
     <div class="container">
@@ -48,8 +48,14 @@
         <article class="col-12 col-md-6 mb-4">
           <div class="card card-banner-product">
             <div class="card-body card-body-banner-categorias">
-              <img src="{{$categoria->foto}}" width="250" height="200" alt="">
-              <h5>{{$categoria->nombre}}</h5>
+              <div class="row">
+                <div class="col-12 col-md-6 p-0">
+                  <img src="{{$categoria->foto}}" width="312" height="250" alt="">
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center px-0">
+                  <h5 class="p-3 mb-5 mb-md-0">{{$categoria->nombre}}</h5>
+                </div>
+              </div>
             </div>
             <div class="card-footer card-footer-product" style="right: 20px; position: absolute; bottom: 20px;">
               <a href="{{route('categorias.show', $categoria->id)}}" class="btn-rounded btn-primary btn-primary-dark  mx-1 tooltips">
