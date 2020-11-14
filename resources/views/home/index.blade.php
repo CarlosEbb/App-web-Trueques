@@ -3,7 +3,7 @@
 
 <div class="mx-3 my-3" style="min-height: 75vh;">
     <div class="row d-flex justify-content-center ">
-        <div class="col-8">
+        <div class="col-12 col-md-8">
             <div class="row">
                 <div class="col-12 text-center my-4">
                     <h2 class="title">Chat</h2>

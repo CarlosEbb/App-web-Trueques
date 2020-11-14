@@ -5,25 +5,22 @@
     </div>
     <div class="row">   
         <div class="col-12">
-            <div class="row d-flex align-items-center">
-                <div class="col-11">
-                    <div class="form-group">
-                        <label for="mensaje"><strong>Escribe tu mensaje</strong> <span></span></label>
-                        <input type="text" 
-                            wire:model="mensaje" 
-                            wire:keydown.enter="enviarMensaje"                         
-                            class="input" 
-                            id="mensaje">
-                        
+            <div class="row form-inline">
+                <div class="col-10 col-md-11">
+                    <div class="form-group mb-0">
+                        <label for="mensaje" class="mb-2"><strong>Escribe tu mensaje</strong> <span></span></label>
+                        <input type="text" wire:model="mensaje" wire:keydown.enter="enviarMensaje" class="input" id="mensaje">
+
                         <!-- Validación -->
                         @error("mensaje") 
-                            <small class="text-danger">{{ $message }}</small> 
+                            <small class="text-danger ml-2">{{ $message }}</small> 
                         @else 
-                            <small class="text-muted">Escribe tu mensaje y teclea <code>ENTER</code> para enviarlo</small> 
+                            <small class="text-muted ml-2">teclea <code>ENTER</code> para enviarlo</small> 
                         @enderror
+                        
                     </div>
                 </div>
-                <div class="col-1">
+                <div class="col-2 col-md-1 pl-md-0 pl-1">
                     <button 
                         class="btn-rounded btn-primary btn-primary-dark" 
                         wire:click="enviarMensaje"
@@ -35,10 +32,6 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-6">
-            <!-- Mensajes de alerta -->    
-            <div class="alert alert-success collapse" role="alert" id="avisoSuccess">Se ha enviado</div>        
-        </div>          --}}
     </div>
     
     <script>
