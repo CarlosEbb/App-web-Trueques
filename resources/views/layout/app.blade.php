@@ -1,40 +1,25 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <link href="https://fonts.googleapis.com/css?family=Baloo+2|PT+Sans&display=swap" rel="stylesheet">
-    <style>
-      html, body{
-        font-family: 'PT Sans', sans-serif;
-      }
-      input.form-control{
-      }
-    </style>
-
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-
-  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-
-    <title>Test</title>
-
+    @include('includes.head')
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     @livewireStyles
-    @livewireScripts
-
+    @livewireScripts 
   </head>
+
   <body>
-
-    @yield("contenido")
-
-
+    <header>
+      @include('includes.header')
+      @yield('scriptCSS')
+    </header>
+    <main>
+			@yield("contenido")
+    </main>
+    
+    <footer>
+			@include('includes.footer')
+		</footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

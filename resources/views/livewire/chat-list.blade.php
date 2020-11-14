@@ -1,28 +1,30 @@
-<div class="mt-3">
-
-    <h3><strong>Últimos 5 mensajes</strong></h3>    
-
-    <div class="card">        
-        <div class="card-body">
-            @foreach($mensajes as $mensaje)        
-                <div>
-                    
-                    @if($mensaje["recibido"])
-                        <div class="alert alert-warning" style="margin-right: 50px;">
-                            <strong>{{$mensaje["usuario"]}}</strong><small class="float-right">{{$mensaje["fecha"]}}</small>
-                            <br><span class="text-muted">{{$mensaje["mensaje"]}}</span>
-                        </div>
-                    @else
-                        <div class="alert alert-success" style="margin-left: 50px;">
-                            <strong>{{$mensaje["usuario"]}}</strong><small class="float-right">{{$mensaje["fecha"]}}</small>
-                            <br><span class="text-muted">{{$mensaje["mensaje"]}}</span>
-                        </div>
-                    @endif
-                    
-                </div>        
-            @endforeach 
-        </div>
-    </div>    
+<div class="">
+    <!-- El Usuario -->
+    <div class="card-header">
+        <p wire:model="usuario" id="usuario" class="mb-0" >{{$usuario}}</p>
+        @error("usuario") 
+            <small class="text-danger">{{ $message }}</small> 
+        @else 
+            <small class="text-muted">Tu nombre: {{$usuario}}</small> 
+        @enderror
+    </div>
+    <div class="card-body" style="height: 380px; overflow-y: auto;">
+        @foreach($mensajes as $mensaje)         
+            <div>
+                @if($mensaje["recibido"])
+                    <div class="alert alert-warning" style="margin-right: 50px;">
+                        <strong>{{$mensaje["usuario"]}}</strong><small class="float-right">{{$mensaje["fecha"]}}</small>
+                        <br><span class="text-muted">{{$mensaje["mensaje"]}}</span>
+                    </div>
+                @else
+                    <div class="alert alert-success" style="margin-left: 50px;">
+                        <strong>{{$mensaje["usuario"]}}</strong><small class="float-right">{{$mensaje["fecha"]}}</small>
+                        <br><span class="text-muted">{{$mensaje["mensaje"]}}</span>
+                    </div>
+                @endif
+            </div>        
+        @endforeach 
+    </div>   
 
     <script>
         
