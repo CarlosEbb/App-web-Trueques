@@ -48,4 +48,17 @@ class Producto extends Model
     {
         return $this->belongsTo(TipoAnuncio::class, 'tipo_id');
     }
+
+//scope
+    public function scopeNombre($query, $nombre) {
+    	if ($nombre) {
+    		return $query->where('nombre','like',"%$nombre%");
+    	}
+    }
+    
+    public function scopeDescripcion($query, $descripcion) {
+    	if ($descripcion) {
+    		return $query->where('descripcion','like',"%$descripcion%");
+    	}
+    }
 }

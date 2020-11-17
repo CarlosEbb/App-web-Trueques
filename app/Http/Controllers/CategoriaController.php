@@ -50,8 +50,7 @@ class CategoriaController extends Controller
             $url = Storage::disk('categorias')->put($foto->getFilename().".".$extension, File::get($foto));
             $request['foto'] = '/uploads/categorias/'.$foto->getFilename().".".$extension;
         }
-        
-
+    
         $categorias = Categoria::create($request->all());
         
         Session::flash('mensaje','Registrado correctamente');

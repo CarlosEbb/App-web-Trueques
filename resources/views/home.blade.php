@@ -49,7 +49,7 @@
                             </div>
                             <h5 class="card-title ml-3">
                                 Productos cambiados <br>
-                                <span class="card-text lead">{{\App\Models\Producto::where('status', 3)->count()}}</span>
+                                <span class="card-text lead">{{\App\Models\Producto::where('status', 4)->count()}}</span>
                             </h5>
                         </div>
                         {{-- <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
