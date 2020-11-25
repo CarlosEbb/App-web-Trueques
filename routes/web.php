@@ -85,3 +85,5 @@ Route::get('/password/reset/{token}/{email}', 'Auth\ResetPasswordController@show
 
 
 Route::get("prueba", "HomeController@prueba");
+
+Route::post("busqueda", "HomeController@busqueda");

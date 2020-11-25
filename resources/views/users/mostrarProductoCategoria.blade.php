@@ -109,7 +109,7 @@
         </div>
         <div class="col-12 col-md-9">
           <div class="row m-0 p-0">
-            @foreach($productos as $producto)
+            @forelse($productos as $producto)
             @if($producto->foto->first() != null)
             <article class="col-12 px-sm-3 col-sm-6 col-md-4 mb-4 px-5 py-1">
               <div class="card card-product">
@@ -131,7 +131,12 @@
               </div>
             </article>
             @endif
-            @endforeach
+            @empty
+              <div class="d-flex justify-content-center aling-items-center mt-5">
+              <h3 class="text-center" style="color: #737373;">No hay nada para mostrar.</h3>
+                <img src="{{asset('img/shopping.svg')}}" width="412" alt="">
+              </div>
+            @endforelse
 
           </div>
         </div>

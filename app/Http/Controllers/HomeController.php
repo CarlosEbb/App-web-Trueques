@@ -32,6 +32,14 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function busqueda(Request $request)
+    {
+        $nombre = $request->get('nombre');
+        $productos = Producto::nombre($nombre)->paginate(5);
+        
+        return view('users.mostrarProductoCategoria')->with(compact('productos'));
+    }
+    
     public function prueba()
     {
         return view("home.index");

@@ -7,7 +7,7 @@
     </div>
     <div class="col-12 mt-5">
       <ul class="list-unstyled">
-        @forelse(Auth::user()->productos as $producto)
+        @forelse(Auth::user()->productos->where('status', 4) as $producto)
           <li class="media media-style">
             <img class="mr-3" src="@if($producto->foto->first() != null) {{$producto->foto->first()->ruta}} @endif" width="64" height="64" style="border-radius: 15px;" alt="">
             <div class="media-body">
