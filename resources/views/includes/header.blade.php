@@ -87,24 +87,18 @@
           <div class="dropdown-menu menu menu-navbar" aria-labelledby="dropdownMenuNotificaciones">
             <ul class="menu-notificaciones-list">
               <p class="menu-notificaciones-title">Notificaciones</p>
-              <li>
-                <div class="menu-notificaciones-icon mx-2">
-                  <svg class="d-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 4h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3.5l-3 3l-3-3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm0 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3.914l2.586 2.586L14.086 18H18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5z" fill="#111"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                </div>
-                <div class="menu-notificacion-mensaje">
-                  <a href="">title</a>
-                  <p class="mb-1">Lorem ipsum dolor sit amet.</p>
-                </div>
-              </li>
-              <li>
-                <div class="menu-notificaciones-icon mx-2">
-                  <svg class="d-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 4h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3.5l-3 3l-3-3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm0 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3.914l2.586 2.586L14.086 18H18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5z" fill="#111"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                </div>
-                <div class="menu-notificacion-mensaje">
-                  <a href="">title</a>
-                  <p class="mb-1">Lorem ipsum dolor sit amet.</p>
-                </div>
-              </li>
+                @forelse(\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->get()->groupBy('chat-event') as $notificaciones)
+                <li>
+                  <div class="menu-notificaciones-icon mx-2">
+                    <svg class="d-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 4h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3.5l-3 3l-3-3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm0 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3.914l2.586 2.586L14.086 18H18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5z" fill="#111"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                  </div>
+                  <div class="menu-notificacion-mensaje">
+                    <a href="{{route('chat')}}?p={{$notificaciones[0]->producto_id}}&v={{$notificaciones[0]->user_id}}&c={{$notificaciones[0]->user_comprador_id}}">{{$notificaciones[0]->comprador->name}} pregunta en: {{$notificaciones[0]->producto->nombre}}</a>
+                  </div>
+                </li>
+                @empty
+                  No hay nada para mostrar
+                @endforelse
             </ul>
           </div>
         </div>
@@ -135,11 +129,11 @@
             </form>
           </div>
         </div>
-        {{-- Btn chat --}}
+        {{-- Btn chat 
         <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips" href="#">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M3 20.586L6.586 17H18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14.586zM3 22H2V6a3 3 0 0 1 3-3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7l-4 4zM6 7h11v1H6V7zm0 3h11v1H6v-1zm0 3h8v1H6v-1z" fill="black"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
           <span class="tooltiptext">Chat</span>
-        </a>
+        </a> --}}
         {{-- Btn menu user --}}
         <div class="dropdown">
           <a href="#" class="dropdown-toggle btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 btn-menu-user tooltips" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

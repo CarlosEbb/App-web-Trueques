@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\ProductoFavorito;
+use App\Chat;
 use Session;
 use Auth;
 use Illuminate\Support\Facades\Storage;

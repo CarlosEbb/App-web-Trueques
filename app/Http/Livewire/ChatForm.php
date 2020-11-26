@@ -160,6 +160,7 @@ class ChatForm extends Component
             "producto_id" => $this->producto,
             "mensaje" => $this->mensaje,
             "to_id" => Auth::user()->id,
+            "event" => "chat-event-".$this->producto."-".$this->usuario."-".$this->comprador,
         ]);
         
         // Generamos el evento para Pusher
