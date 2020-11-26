@@ -40,7 +40,7 @@ class HomeController extends Controller
         return view('users.mostrarProductoCategoria')->with(compact('productos'));
     }
     
-    public function prueba()
+    public function chat()
     {
         return view("home.index");
     }

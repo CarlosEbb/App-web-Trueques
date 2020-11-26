@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/prueba', function () {
-    return view('prueba');
-});
-
 Route::get('/mapa', function () {
     return view('mapa');
 });
@@ -84,6 +80,6 @@ Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProvider
 Route::get('/password/reset/{token}/{email}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 
-Route::get("prueba", "HomeController@prueba");
+Route::get("chat", "HomeController@chat")->name('chat');
 
 Route::post("busqueda", "HomeController@busqueda");
