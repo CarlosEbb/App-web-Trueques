@@ -22,13 +22,13 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
                     @foreach( \App\Models\Precio::all() as $precio)
-                      <a href="#" class="d-block text-uppercase py-1">{{number_format($precio->de, 2, ",", ".")}} a {{number_format($precio->hasta, 2, ",", ".")}} {{$precio->moneda->nombre}}</a>
+                      <a href="#" class="d-block text-uppercase py-1">{{number_format($precio->de, 0, ",", ".")}} a {{number_format($precio->hasta, 0, ",", ".")}} {{$precio->moneda->nombre}}</a>
                     @endforeach
 
                 </div>
               </div>
             </div>
-            <div class="card border-0 border-bottom">
+            {{--<div class="card border-0 border-bottom">
               <div class="card-header pl-1 bg-transparent" id="headingTwo">
                 <h2 class="mb-0">
                   <button class="btn btn-link btn-block text-left collapsed text-uppercase text-body" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -40,11 +40,11 @@
                 </h2>
               </div>
               <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                @foreach( \App\Models\Departamento::all() as $ciudad)
-                    <a href="" class="d-block text-uppercase py-1">{{$ciudad->departamento}}</a>
+                @foreach( \App\Models\Municipio::all() as $ciudad)
+                    <a href="" class="d-block text-uppercase py-1">{{$ciudad->municipio}}</a>
                 @endforeach    
               </div>
-            </div>
+            </div>--}}
           </div>
         </div>
         {{-- sidebar Filtrar productos movil --}}
@@ -113,7 +113,7 @@
             @if($producto->foto->first() != null)
             <article class="col-12 px-sm-3 col-sm-6 col-md-4 mb-4 px-5 py-1">
               <div class="card card-product">
-              <img class="card-img-top card-img-product" src="{{$producto->foto->first()->ruta}}" alt="Card image cap">
+              <a href="{{route('productos.show', $producto->id)}}"><img class="card-img-top card-img-product" src="{{$producto->foto->first()->ruta}}" alt="Card image cap"></a>
                 <div class="card-body">
                   <h5 class="card-title mb-3 card-title-product text-truncate">{{$producto->nombre}}</h5>
                   <span class="badge badge-pill badge-warning">Destacado</span>

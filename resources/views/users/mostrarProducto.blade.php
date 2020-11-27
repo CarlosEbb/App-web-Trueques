@@ -40,7 +40,7 @@
                 <span class="footer-product">Miembro desde {{$producto->user->created_at->format('d-m-Y')}}</span>
               </div>
             </div>
-            <a href="{{route('chat')}}?p={{$producto->id}}&v={{$producto->user_id}}&c={{Auth::user()->id}}" class=" mt-3 btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips"> <center>Chat</center></a>
+            <a @Auth href="{{route('chat')}}?p={{$producto->id}}&v={{$producto->user_id}}&c={{Auth::user()->id}}" @else href="{{route('login')}}" @endauth class=" mt-3 btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips"> <center>Chat</center></a>
           </article>
           <article class="card card-border-radius p-3 col-12 mt-3">
             <h3 class="title-card-product">Publicado en</h3>

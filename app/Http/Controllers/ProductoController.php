@@ -119,4 +119,12 @@ class ProductoController extends Controller
         Session::flash('mensaje','Eliminado correctamente');
         return back();
     }
+
+    public function busqueda(Request $request)
+    {
+        $nombre = $request->get('nombre');
+        $productos = Producto::nombre($nombre)->paginate(5);
+        
+        return view('users.mostrarProductoCategoria')->with(compact('productos'));
+    }
 }

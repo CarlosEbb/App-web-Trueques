@@ -21,15 +21,10 @@
     <form action="busqueda" method="POST" class="d-none d-md-none d-lg-block" style="width: 57%;">@csrf
       <div class="form-row align-items-center">
         <div class="col-md-4">
-          <select class="form-control p-2 select-city">
-            <option selected disabled >Departamentos</option>
-              @foreach( \App\Models\Departamento::all() as $ciudad)
-              <option value="{{$ciudad->id}}">{{$ciudad->departamento}}</option>
-              @endforeach
-          </select>
+        <input type="text" class="form-control input-search pl-5" placeholder="Municipio" name="municipio">
         </div>
         <div class="col-md-8 d-flex">
-          <input type="text" class="form-control input-search pl-5" placeholder="Buscar productos" name="nombre" required>
+          <input type="text" class="form-control input-search pl-5" placeholder="Buscar Productos" name="nombre" required>
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); left: 10px; top: 8px; position: absolute;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
         </div>
       </div>
@@ -39,7 +34,7 @@
       <div class="d-flex justify-content-end content-menu-logaut">
         <a class="btn-iniciar-sesion mx-2 btn btn-rounded-light btn-rounded" href="{{route('login')}}">
           <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11.5 14c4.142 0 7.5 1.567 7.5 3.5V20H4v-2.5c0-1.933 3.358-3.5 7.5-3.5zm6.5 3.5c0-1.38-2.91-2.5-6.5-2.5S5 16.12 5 17.5V19h13v-1.5zM11.5 5a3.5 3.5 0 1 1 0 7a3.5 3.5 0 0 1 0-7zm0 1a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5z" fill="#01a0b8"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-          Iniciar sesion
+          Regístrate o inicia sesión
         </a>
         
         {{-- Btn menu buscar --}}
@@ -200,9 +195,12 @@
     
       <div class="dropdown-menu menu menu-categorias mt-2 px-1" aria-labelledby="dropdownMenuLink">
         <ul class="list-group">
-          @foreach( \App\Models\Categoria::all() as $categoria)
+          @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
             <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">
-              <a href="{{route('categorias.show', $categoria->id)}}">{{$categoria->nombre}}</a>
+              <b><a href="{{route('categorias.show', $categoria->id)}}">{{$categoria->nombre}}</a></b> <br>
+                @foreach($categoria->subCategoria as $subCategoria)
+                      <a href="">{{$subCategoria->nombre}}</a> <br>
+                @endforeach
             </li>
           @endforeach
         </ul>

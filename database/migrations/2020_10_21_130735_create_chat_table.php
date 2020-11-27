@@ -14,7 +14,7 @@ class CreateChatTable extends Migration
     public function up()
     {
         Schema::create('chat', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('producto_id')->unsigned();
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
 

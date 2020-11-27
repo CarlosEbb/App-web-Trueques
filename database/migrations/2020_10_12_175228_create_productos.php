@@ -25,6 +25,9 @@ class CreateProductos extends Migration
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');
 
+            $table->integer('sub_categoria_id')->unsigned();
+            $table->foreign('sub_categoria_id')->references('id')->on('sub_categorias')->onDelete('cascade')->onUpdate('cascade');
+            
             $table->integer('tipo_id')->unsigned();
             $table->foreign('tipo_id')->references('id')->on('tipo_anuncio')->onDelete('cascade')->onUpdate('cascade');
             

@@ -11,7 +11,7 @@
               <h4 class="text-center my-1 my-md-3">Acceder</h4>
             </div>
 
-            <label for="email">Correo electronico</label>
+            <label for="email">Correo Electrónico</label>
             <input id="email" placeholder="correo@gmail.com" type="email" class="input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
             @error('email')
@@ -39,7 +39,7 @@
               <label class="form-check-label" for="remember">Recuerdame</label>
             </div>
 
-            <button type="submit" class="btn-rounded btn-primary btn-primary-dark">Iniciar sesion</button>
+            <button type="submit" class="btn-rounded btn-primary btn-primary-dark">Iniciar Sesión</button>
             <a class="py-2 btn-rounded bg-primary mt-2 text-white btn-primary-dark" href="{{ route('social.auth', 'facebook') }}">
               <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path d="M16 4C9.384 4 4 9.384 4 16s5.384 12 12 12s12-5.384 12-12S22.616 4 16 4zm0 2c5.535 0 10 4.465 10 10a9.977 9.977 0 0 1-8.512 9.879v-6.963h2.848l.447-2.893h-3.295v-1.58c0-1.2.395-2.267 1.518-2.267h1.805V9.652c-.317-.043-.988-.136-2.256-.136c-2.648 0-4.2 1.398-4.2 4.584v1.923h-2.722v2.893h2.722v6.938A9.975 9.975 0 0 1 6 16c0-5.535 4.465-10 10-10z" fill="white"/><rect x="0" y="0" width="32" height="32" fill="rgba(0, 0, 0, 0)" /></svg>
               Facebook
