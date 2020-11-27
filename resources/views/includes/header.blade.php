@@ -194,12 +194,12 @@
       </a>
     
       <div class="dropdown-menu menu menu-categorias mt-2 px-1" aria-labelledby="dropdownMenuLink">
-        <ul class="list-group">
+        <ul class="list-group flex-row row">
           @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
-            <li class="list-group-item border-top-0 border-right-0 border-left-0 border-bottom list-group-item-hover">
-              <b><a href="{{route('categorias.show', $categoria->id)}}">{{$categoria->nombre}}</a></b> <br>
+            <li class="list-group-item border-0 border-bottom list-group-item-hover col-md-3 col-12">
+              <b><a class="d-block" style="color: #333333;" href="{{route('categorias.show', $categoria->id)}}">{{$categoria->nombre}}</a></b>
                 @foreach($categoria->subCategoria as $subCategoria)
-                      <a href="">{{$subCategoria->nombre}}</a> <br>
+                  <a class="d-block" style="color: #3d3d3d;" href="">{{$subCategoria->nombre}}</a>
                 @endforeach
             </li>
           @endforeach
