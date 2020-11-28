@@ -72,6 +72,11 @@ Route::get('planes', function () {
     return view('/users/planes');
 });
 
+Route::get('selecionar-categorias', function () {
+    return view('/users/selecionarCategoria');
+});
+
+
 
 //socialite
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');

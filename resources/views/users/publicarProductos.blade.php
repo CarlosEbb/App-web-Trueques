@@ -4,7 +4,7 @@
   <div class="container px-0 px-md-5">
     <div class="row px-3 px-md-5">
       <div class="col-12 text-center mt-5">
-        <h2 class="text-uppercase">publica tu producto</h2>
+        <h2 class="text-uppercase">seleccionar</h2>
       </div>
       <div class="col-12">
         @foreach ( $errors->all() as $error)
@@ -43,39 +43,17 @@
     <div class="row px-3  px-md-5">
       <div class="col-12 mb-4">
         <div class="card card-border-radius p-4 p-md-5">
-          <h4 class="mb-4">Seleccionar categoria</h4>
-
-          <label for="descripcion">Categorias</label>
-          <select name="categoria_id" class="select">
-            @foreach( \App\Models\Categoria::all() as $categoria)
-              <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
-            @endforeach
-          </select>
-        </div>
-      </div>
-      <div class="col-12 mb-4">
-        <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Detalles del anuncio</h4>
-
-          <label for="descripcion">Tipo de anuncio</label>
-          <select name="tipo_id" class="select">
-              @foreach( \App\Models\TipoAnuncio::all() as $tipo)
-                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
-              @endforeach
-          </select>
-          <br>
 
           <label for="nombreProducto">Nombre del producto</label>
           <input class="input" type="text" placeholder="Nombre del producto" name="nombre" id="nombreProducto" value="{{old('nombreProducto')}}">
+
           <label for="descripcion" class="mt-4">Descripción</label>
           <textarea class="textarea" placeholder="Descripción" name="descripcion" id="descripcion" cols="20" rows="5" value="{{old('descripcion')}}"></textarea>
-        </div>
-      </div>
-      <div class="col-12 mb-4">
-        <div class="card card-border-radius p-4 p-md-5">
-        <h4 class="mb-4">Precio del producto</h4>
-            <label for="nombreProducto">Precio</label>
-            <input class="input" type="number" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}">
+          <br>
+
+          <label for="nombreProducto">Precio del producto</label>
+          <input class="input" type="number" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}">
         </div>
       </div>
       <div class="col-12 mb-4">
@@ -95,6 +73,42 @@
               <option value="{{$municipio->id_municipio}}">{{$municipio->municipio}}</option>
               @endforeach
           </select>
+        </div>
+      </div>
+      <div class="col-12 mb-4">
+        <div class="card card-border-radius p-4 p-md-5">
+          <h4 class="mb-4">Tipo de anuncio</h4>
+          <label for="descripcion">Seleccionar tipo de anuncio</label>
+          <select name="tipo_id" class="select">
+              @foreach( \App\Models\TipoAnuncio::all() as $tipo)
+                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+              @endforeach
+          </select>
+        </div>
+      </div>
+      <div class="col-12 mb-4">
+        <div class="card card-border-radius p-4 p-md-5">
+          <h4 class="mb-4">Seleccionar categoria</h4>
+
+          <div class="row">
+            <div class="col-12 col-md-6 mb-3 mb-md-1">
+              <label for="descripcion">Categorias</label>
+              <select name="categoria_id" class="select">
+                @foreach( \App\Models\Categoria::all() as $categoria)
+                  <option value="{{$categoria->id}}" id="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="descripcion">Sub categorias</label>
+              <select name="categoria_id" class="select">
+                {{-- @foreach( \App\Models\Categoria::all() as $categoria) --}}
+                <option value="">Carros</option>
+                <option value="">Motos</option>
+                {{-- @endforeach --}}
+              </select>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-12">

@@ -71,7 +71,7 @@
         </a>
       </div>
     @else
-      <div class="content-menu-login" style="display: contents;">
+      <div class="content-menu-login d-flex">
         {{-- Btn menu notificaciones --}}
         <div class="dropdown">
           <a class="dropdown-toggle btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 btn-menu-notificaciones tooltips" href="#" role="button" id="dropdownMenuNotificaciones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
