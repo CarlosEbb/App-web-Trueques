@@ -43,6 +43,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $datos = $this->validate(request(), [
             'nombre' => 'required|string',
             'descripcion' => 'required|string',

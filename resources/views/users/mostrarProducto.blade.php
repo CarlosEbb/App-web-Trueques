@@ -44,7 +44,7 @@
           </article>
           <article class="card card-border-radius p-3 col-12 mt-3">
             <h3 class="title-card-product">Publicado en</h3>
-            <span>{{$producto->departamento->departamento}}</span>
+            <span>{{$producto->departamento->nombre}}</span>
           </article>
         </div>
       </section>
