@@ -79,27 +79,33 @@
         <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Tipo de anuncio</h4>
           <label for="descripcion">Seleccionar tipo de anuncio</label>
-          <select name="tipo_id" class="select">
+          <select name="tipo_id" id="tipo_id" class="select">
               @foreach( \App\Models\TipoAnuncio::all() as $tipo)
-                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+                <option value="{{$tipo->id}}" id="{{$tipo->id}}">{{$tipo->nombre}}</option>
               @endforeach
           </select>
         </div>
       </div>
-      <div class="col-12 mb-4">
-        <div class="card card-border-radius p-4 p-md-5">
-          <h4 class="mb-4">Seleccionar categoria</h4>
+      <div class="col-12 mb-4" id="card-categoria" style="display: none;">
+        <div class="card card-border-radius p-4 p-md-5" id="add-card-categorias">
+          <h4 class="mb-4 d-flex justify-content-between">
+            Seleccionar categoria
+            <a class="text-center btn-rounded btn-primary btn-primary-dark tooltips p-1" id="btnAddCategoria">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="2em" height="2em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 13v-1h6V6h1v6h6v1h-6v6h-1v-6H5z" fill="white"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+              <span  class="tooltiptext">Agregar categoria</span>
+            </a>
+          </h4>
 
-          <div class="row">
-            <div class="col-12 col-md-6 mb-3 mb-md-1">
+          <div class="row" id="select-categoria">
+            <div class="col-12 col-md-6 mb-3 mb-md-3">
               <label for="descripcion">Categorias</label>
-              <select name="categoria_id" class="select">
+              <select name="categoria_id"  class="select">
                 @foreach( \App\Models\Categoria::all() as $categoria)
                   <option value="{{$categoria->id}}" id="{{$categoria->id}}">{{$categoria->nombre}}</option>
                 @endforeach
               </select>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mb-md-3">
               <label for="descripcion">Sub categorias</label>
               <select name="categoria_id" class="select">
                 {{-- @foreach( \App\Models\Categoria::all() as $categoria) --}}
@@ -108,6 +114,11 @@
                 {{-- @endforeach --}}
               </select>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="lead mb-0 mt-3" style="font-size: 12px;">Selecciona una (1), dos (2) o tres (3) opciones de productos o servicios que te gustaría recibir a cambio de lo que ofreces. De esta manera, los usuarios que tengan lo que estás buscando podrán contactarte para ofrecerte un trueque. Si no estás buscando algo en específico, pero te gustaría recibir propuestas, puedes seleccionar la categoría “Recibo Propuestas”.</p>
           </div>
         </div>
       </div>
@@ -139,5 +150,30 @@
       $("#archivos").append(archivos);
     }
   };
+
+  // mostrar categorias para realizar cambios
+  $('#tipo_id').change(function(){
+    const tipoAnuncio = $('select[id=tipo_id]').val()
+    if (tipoAnuncio == 2) {
+      $('#card-categoria').css('display', 'block')
+    }else{
+      $('#card-categoria').css('display', 'none')
+    }
+  })
+
+  // añadir categoria y subcategoria
+  let cantSelect = 0
+  $('#btnAddCategoria').on('click', function(){
+    const categoriaCopiar = $('#select-categoria').clone()
+    $('#add-card-categorias').append(categoriaCopiar)
+    cantSelect ++
+    
+    if (cantSelect == 2) {
+      $('#btnAddCategoria').css('display', 'none')
+    }
+  })
+
+  // limitar cantidad de categorias
+  // console.log($('#select-categoria').append())
 </script>  
 @endsection
