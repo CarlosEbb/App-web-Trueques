@@ -68,11 +68,11 @@ INSERT INTO `sub_categorias` (`id`, `nombre`, `descripcion`, `categoria_id`, `cr
 (39, 'Accesorios', NULL, 7, '2020-12-01 02:20:59', '2020-12-01 02:20:59');
 
 
+
 INSERT INTO `productos` (`id`, `user_id`, `nombre`, `descripcion`, `categoria_id`, `sub_categoria_id`, `tipo_id`, `municipio_id`, `departamento_id`, `precio`, `status`, `created_at`, `updated_at`) VALUES
-(2, 2, 'Tensiómetro Digital De Muñeca', 'Excelente calidad garantizada', 3, 19, 1, 1, 44, '10000', 1, '2020-10-29 05:20:14', '2020-10-29 05:20:14'),
-(4, 2, 'Volskwagen Escarabajo Sincrónico', 'Volkswagen año 69, en optimas condiciones, restaurado 100% con piezas originales Alemanas, juego de 5 cauchos nuevos, banda blanca farestone.', 1, 1, 2, 1, 41, '30000', 1, '2020-10-29 05:27:47', '2020-10-29 05:27:47'),
-(5, 2, 'Cuadros Minimalistas Abstractos Modernos', '\"\"DECORA TU HOGAR\"\" CON \"BELLOS CUADROS DECORATIVOS CALIDAD AL MEJOR TRUEQUE\"\"', 4, 25, 1, 1, 13, '20000', 1, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
-(6, 2, 'Yston Lente Mirror Para Natacion Adulto Ss99', 'LENTE MIRROR PARA NATACIÓN y TAPAOIDOS\r\nMarca: Yston\r\nTalla: Adulto\r\nColor: Aguamarina, Rosado, Azul Rey y Plateado.\r\n- Incluye tapaoidos\r\n- Cristal Mirror (Espejo)', 5, 29, 2, 1, 5, '10000', 1, '2020-10-29 05:40:14', '2020-10-29 05:40:14');
+(2, 2, 'Tensiómetro Digital De Muñecaa', 'Excelente calidad garantizadaa', 3, 19, 1, 1, 1, '10000', 1, '2020-10-29 05:20:14', '2020-12-01 02:58:52'),
+(5, 2, 'Cuadros Minimalistas Abstractos Modernos', '\"\"DECORA TU HOGAR\"\" CON \"BELLOS CUADROS DECORATIVOS CALIDAD AL MEJOR TRUEQUE\"\"', 4, 25, 1, 1, 2, '20000', 1, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
+(6, 2, 'Yston Lente Mirror Para Natacion Adulto Ss99', 'LENTE MIRROR PARA NATACIÓN y TAPAOIDOS\r\nMarca: Yston\r\nTalla: Adulto\r\nColor: Aguamarina, Rosado, Azul Rey y Plateado.\r\n- Incluye tapaoidos\r\n- Cristal Mirror (Espejo)', 5, 29, 2, 1, 3, '10000', 1, '2020-10-29 05:40:14', '2020-10-29 05:40:14');
 
 
 INSERT INTO `fotos` (`id`, `ruta`, `producto_id`, `principal`, `created_at`, `updated_at`) VALUES
