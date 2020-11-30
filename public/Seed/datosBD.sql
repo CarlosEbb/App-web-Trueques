@@ -16,7 +16,7 @@ INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `foto`, `created_at`, `
 (7, 'Juguetes y bebés', 'Juguetes y bebés', '/uploads/categorias/bebes.jpg', '2020-10-27 12:50:20', '2020-10-27 12:50:20'),
 (8, 'Herramientas e industrias', 'Herramientas e industrias', '/uploads/categorias/herramientas.png', '2020-10-27 12:50:42', '2020-10-27 12:50:42'),
 (9, 'Hobbies - Música - Arte - Libros', 'Instrumentos Musicales', '/uploads/categorias/musica.jpg', '2020-10-27 12:50:52', '2020-10-27 12:50:52'),
-(14, 'Productos ecológicos', 'Productos ecológicos', '/uploads/categorias/ecologicos.png', '2020-10-27 12:52:15', '2020-10-27 12:52:15'),
+
 (15, 'Otros', 'Otros', '/uploads/categorias/otros.jpg', '2020-10-27 12:52:23', '2020-10-27 12:52:23'),
 (16, 'Electrodomésticos', 'Electrodomésticos', '/uploads/categorias/electrodomesticos.jpg', NULL, NULL),
 (17, 'Propiedades - Inmuebles', 'Propiedades - Inmuebles', '/uploads/categorias/inmueble.jpg', NULL, NULL);

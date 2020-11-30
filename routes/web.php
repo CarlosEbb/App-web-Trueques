@@ -37,6 +37,7 @@ Route::post('/subir', 'HomeController@upload');
 Route::resource('productos', ProductoController::class);
 Route::resource('favoritos', ProductoFavoritoController::class);
 Route::resource('categorias', CategoriaController::class);
+Route::resource('subcategorias', SubCategoriaController::class);
 Route::resource('users', UserController::class);
 
 // productos usuarios 
@@ -75,6 +76,10 @@ Route::get('planes', function () {
 Route::get('selecionar-categorias', function () {
     return view('/users/selecionarCategoria');
 })->name('selecionar-categorias');
+
+Route::get('prueba', function () {
+    return view('/prueba');
+})->name('prueba');
 
 
 

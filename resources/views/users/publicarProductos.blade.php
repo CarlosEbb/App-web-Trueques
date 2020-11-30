@@ -96,8 +96,8 @@
 
           <div class="row" id="select-categoria">
             <div class="col-12 col-md-6 mb-3 mb-md-3">
-              <label for="descripcion">Categorias</label>
-              <select name="categoria_id"  class="select">
+              <label for="categoria">Categorias</label>
+              <select name=categoria class="select" onchange="cambia_categoria()" >
                 @foreach( \App\Models\Categoria::all() as $categoria)
                   <option value="{{$categoria->id}}" id="{{$categoria->id}}">{{$categoria->nombre}}</option>
                 @endforeach
@@ -105,11 +105,8 @@
             </div>
             <div class="col-12 col-md-6 mb-md-3">
               <label for="descripcion">Sub categorias</label>
-              <select name="categoria_id" class="select">
-                {{-- @foreach( \App\Models\Categoria::all() as $categoria) --}}
-                <option value="">Carros</option>
-                <option value="">Motos</option>
-                {{-- @endforeach --}}
+              <select name="subCategoria" class="select">
+                  <option value="-">- 
               </select>
             </div>
           </div>
@@ -139,6 +136,7 @@
 @section('scriptJS')
 
 <script type="text/javascript">
+
   Dropzone.options.myAwesomeDropzone = {
     paramName: "file", // Las imágenes se van a usar bajo este nombre de parámetro
     maxFilesize: 10, // Tamaño máximo en MB
@@ -160,6 +158,7 @@
     }
   })
 
+{{--
   // añadir categoria y subcategoria
   let cantSelect = 0
   $('#btnAddCategoria').on('click', function(){
@@ -171,13 +170,10 @@
       $('#btnAddCategoria').css('display', 'none')
     }
   })
+--}}
 
   // limitar cantidad de categorias
   // console.log($('#select-categoria').append())
-</script>  
-
-
-<script>
 
 @foreach(\App\Models\Departamento::all() as $departamento)
 
@@ -225,6 +221,56 @@ function cambia_provincia(){
    	//marco como seleccionada la opción primera de provincia 
    	document.f1.provincia.options[0].selected = true 
 }
+
+
+
+@foreach(\App\Models\Categoria::all() as $categoriaT)
+    var categorias_{{$categoriaT->id}}=new Array(
+      @foreach($categoriaT->subCategoria as $subCategoria)
+      "{{$subCategoria->nombre}}",
+      @endforeach
+      )   
+      
+@endforeach
+
+
+var todasCategorias = [
+    [],
+    @foreach(\App\Models\Categoria::all() as $categorias)
+        categorias_{{$categorias->id}},
+    @endforeach
+    
+];
+
+function cambia_categoria(){ 
+   	//tomo el valor del select del pais elegido 
+   	var categoria 
+   	categoria = document.f1.categoria[document.f1.categoria.selectedIndex].value 
+   	//miro a ver si el categoria está definido 
+   	if (categoria != 0) { 
+      	//si estaba definido, entonces coloco las opciones de la provincia correspondiente. 
+      	//selecciono el array de provincia adecuado 
+      	mis_subCategorias=todasCategorias[categoria] 
+      	//calculo el numero de provincias 
+      	num_subCategorias = mis_subCategorias.length 
+      	//marco el número de provincias en el select 
+      	document.f1.subCategoria.length = num_subCategorias 
+      	//para cada provincia del array, la introduzco en el select 
+      	for(i=0;i<num_subCategorias;i++){ 
+         	document.f1.subCategoria.options[i].value=mis_subCategorias[i] 
+         	document.f1.subCategoria.options[i].text=mis_subCategorias[i] 
+      	}	
+   	}else{ 
+      	//si no había provincia seleccionada, elimino las provincias del select 
+      	document.f1.subCategoria.length = 1 
+      	//coloco un guión en la única opción que he dejado 
+      	document.f1.subCategoria.options[0].value = "-" 
+      	document.f1.subCategoria.options[0].text = "-" 
+   	} 
+   	//marco como seleccionada la opción primera de provincia 
+   	document.f1.subCategoria.options[0].selected = true 
+}
+
 
 </script>
 @endsection
