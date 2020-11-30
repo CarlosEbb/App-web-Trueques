@@ -177,7 +177,7 @@
           </div>
         </div>
         {{-- Btn publicar producto --}}
-        <a class="btn-rounded btn-primary btn-primary-dark btn-border-dark mx-1" href="{{route('publicar-productos')}}" rel="noopener noreferrer">
+        <a class="btn-rounded btn-primary btn-primary-dark btn-border-dark mx-1" href="{{route('selecionar-categorias')}}" rel="noopener noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 13v-1h6V6h1v6h6v1h-6v6h-1v-6H5z" fill="white"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
           <span class="d-none d-md-block">Publicar</span>
         </a>

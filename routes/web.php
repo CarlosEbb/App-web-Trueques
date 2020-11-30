@@ -74,7 +74,7 @@ Route::get('planes', function () {
 
 Route::get('selecionar-categorias', function () {
     return view('/users/selecionarCategoria');
-});
+})->name('selecionar-categorias');
 
 
 

@@ -38,7 +38,7 @@
                 <input class="input" type="password" placeholder="Nueva contraseña" name="password" id="Nuevacontraseña" value="">
 
                 <label for="contraseña" class="mt-4">Confirme la contraseña</label>
-                <input class="input" type="password" placeholder="contraseña" name="password_confirmation" id="contraseña" value="">
+                <input class="input" type="password" placeholder="Contraseña" name="password_confirmation" id="contraseña" value="">
               </div>
             </div>
             <div class="col-12">

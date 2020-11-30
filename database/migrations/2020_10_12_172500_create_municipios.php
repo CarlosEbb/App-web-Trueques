@@ -14,12 +14,10 @@ class CreateMunicipios extends Migration
     public function up()
     {
         Schema::create('municipios', function (Blueprint $table) {
-            $table->integer('id_municipio');
-            $table->string('municipio');
-            $table->string('estado');       
-            
+            $table->integer('id');
             $table->integer('departamento_id');
-
+            $table->integer('codigo');
+            $table->string('nombre');
             //$table->timestamps();
         });
     }

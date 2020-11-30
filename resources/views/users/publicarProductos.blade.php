@@ -39,7 +39,7 @@
       </div>
     </div>
   </div>
-  <form action="{{route('productos.store')}}" class="container px-0 px-md-5" method="post" enctype="multipart/form-data">@csrf
+  <form name="f1" action="{{route('productos.store')}}" class="container px-0 px-md-5" method="post" enctype="multipart/form-data">@csrf
     <div class="row px-3  px-md-5">
       <div class="col-12 mb-4">
         <div class="card card-border-radius p-4 p-md-5">
@@ -61,17 +61,15 @@
           <h4 class="mb-4">Confirma tu ubicación</h4>
 
           <label for="ciudad">Ciudad</label>
-          <select name="departamento_id" id="ciudad" class="select">
-              @foreach( \App\Models\Departamento::all() as $ciudad)
-              <option value="{{$ciudad->id_departamento}}">{{$ciudad->departamento}}</option>
-              @endforeach    
+          <select name=pais onchange="cambia_provincia()" id="ciudad" class="select">
+              @foreach(\App\Models\Departamento::all() as $departamento)
+                  <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+              @endforeach
           </select>
 
           <label for="municipio" class="mt-4">Municipio</label>
-          <select name="municipio_id" id="municipio" class="select">
-              @foreach( \App\Models\Municipio::all() as $municipio)
-              <option value="{{$municipio->id_municipio}}">{{$municipio->municipio}}</option>
-              @endforeach
+          <select name=provincia id="municipio" class="select">
+              <option disabled>-</option>
           </select>
         </div>
       </div>
@@ -129,6 +127,7 @@
       </div>
     </div>
   </form>
+
 @endsection
 
 @section('scriptCSS')
@@ -176,4 +175,56 @@
   // limitar cantidad de categorias
   // console.log($('#select-categoria').append())
 </script>  
+
+
+<script>
+
+@foreach(\App\Models\Departamento::all() as $departamento)
+
+    var provincias_{{$departamento->id}}=new Array(
+      @foreach($departamento->municipio as $municipio)
+      "{{$municipio->nombre}}",
+      @endforeach
+      )   
+@endforeach
+
+
+var todasProvincias = [
+    [],
+    @foreach(\App\Models\Departamento::all() as $departamento)
+        provincias_{{$departamento->id}},
+    @endforeach
+    
+];
+
+function cambia_provincia(){ 
+   	//tomo el valor del select del pais elegido 
+   	var pais 
+   	pais = document.f1.pais[document.f1.pais.selectedIndex].value 
+   	//miro a ver si el pais está definido 
+   	if (pais != 0) { 
+      	//si estaba definido, entonces coloco las opciones de la provincia correspondiente. 
+      	//selecciono el array de provincia adecuado 
+      	mis_provincias=todasProvincias[pais] 
+      	//calculo el numero de provincias 
+      	num_provincias = mis_provincias.length 
+      	//marco el número de provincias en el select 
+      	document.f1.provincia.length = num_provincias 
+      	//para cada provincia del array, la introduzco en el select 
+      	for(i=0;i<num_provincias;i++){ 
+         	document.f1.provincia.options[i].value=mis_provincias[i] 
+         	document.f1.provincia.options[i].text=mis_provincias[i] 
+      	}	
+   	}else{ 
+      	//si no había provincia seleccionada, elimino las provincias del select 
+      	document.f1.provincia.length = 1 
+      	//coloco un guión en la única opción que he dejado 
+      	document.f1.provincia.options[0].value = "-" 
+      	document.f1.provincia.options[0].text = "-" 
+   	} 
+   	//marco como seleccionada la opción primera de provincia 
+   	document.f1.provincia.options[0].selected = true 
+}
+
+</script>
 @endsection
