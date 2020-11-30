@@ -158,7 +158,6 @@
     }
   })
 
-{{--
   // añadir categoria y subcategoria
   let cantSelect = 0
   $('#btnAddCategoria').on('click', function(){
@@ -170,7 +169,7 @@
       $('#btnAddCategoria').css('display', 'none')
     }
   })
---}}
+
 
   // limitar cantidad de categorias
   // console.log($('#select-categoria').append())

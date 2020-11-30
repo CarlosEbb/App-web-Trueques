@@ -96,7 +96,7 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="d-block" >Descripción</label>
-                            <input type="text" name="descripcion" class="input" value="" required>
+                            <input type="text" name="descripcion" class="input" value="">
                         </div>
 
                         <div class="form-group" hidden>

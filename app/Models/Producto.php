@@ -36,12 +36,22 @@ class Producto extends Model
 
     public function departamento()
     {
-        return $this->belongsTo(Departamento::class, 'departamento_id', 'id_departamento');
+        return $this->belongsTo(Departamento::class, 'departamento_id');
+    }
+
+    public function municipio()
+    {
+        return $this->belongsTo(Municipio::class, 'municipio_id');
     }
 
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'categoria_id');
+    }
+
+    public function subcategoria()
+    {
+        return $this->belongsTo(SubCategoria::class, 'sub_categoria_id');
     }
 
     public function tipo()

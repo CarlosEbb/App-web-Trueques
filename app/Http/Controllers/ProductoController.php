@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Foto;
+use App\Models\User;
 use Session;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -75,12 +76,19 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function listarProductosPorUsuario($id)
+    {
+        $users = User::find($id);
+        return view('admin.user.listarProductosPorUsuario')->with(compact('users'));
+    }
+
     public function show($id)
     {
         $producto = Producto::find($id);
         return view('users.mostrarProducto')->with(compact('producto'));
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      *
