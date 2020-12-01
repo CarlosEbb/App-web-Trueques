@@ -86,6 +86,15 @@
 			});
 		} );
 		</script>
+		
+		<script>
+			function enviar_formulario(){
+				document.estadoFormulario.submit()
+			}
+			function enviar_formulario_publicado(){
+				document.publicadoFormulario.submit()
+			}
+		</script>
 		@yield('scriptJS')
 	</body>
 </html>

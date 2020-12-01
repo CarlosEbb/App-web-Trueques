@@ -18,7 +18,7 @@
       />
     </a>
 
-    <form action="busqueda" method="POST" class="d-none d-md-none d-lg-block" style="width: 65%;">@csrf
+    <form action="busqueda" method="GET" class="d-none d-md-none d-lg-block" style="width: 65%;">@csrf
       <div class="form-row align-items-center">
         <div class="col-md-4 d-flex">
           <input type="text" class="form-control input-municipio pl-5" placeholder="Municipio" name="municipio" id="myInput">
@@ -218,15 +218,15 @@
       </button>
       <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
         <p class="menu-notificaciones-title">¿Cuánto quieres pagar?</p>
-        <form action="">
+        <form action="" method="GET">
           <div class="row">
             <div class="col-6">
               <label for="">Desde</label>
-              <input type="number" class="input">
+              <input type="number" class="input" name="precio_desde" @isset($_GET['precio_desde']) value="{{$_GET['precio_desde']}}" @endisset>
             </div>
             <div class="col-6">
               <label for="">Hasta</label>
-              <input type="number" class="input">
+              <input type="number" class="input" name="precio_hasta" @isset($_GET['precio_desde']) value="{{$_GET['precio_hasta']}}" @endisset>
             </div>
             <div class="col-12">
               <button class="btn-rounded btn-primary btn-primary-dark btn-block py-2 mt-3">Aplicar</button>
@@ -243,29 +243,31 @@
         <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M7 12c0 .55.45 1 1 1h8c.55 0 1-.45 1-1s-.45-1-1-1H8c-.55 0-1 .45-1 1zm5-10C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8z" fill="#009fb7"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
         Estado del producto
       </button>
+    <form action="" method="GET" name="estadoFormulario">
       <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
         <ul class="menu-notificaciones-list list-group-flush">
           <p class="menu-notificaciones-title">Estado del producto</p>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Nuevo</a></p>
+            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Nuevo" onchange="enviar_formulario()">Nuevo</p>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Como nuevo</a></p>
+            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Como nuevo" onchange="enviar_formulario()">Como nuevo</p>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Bueno</a></p>
+            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Bueno" onchange="enviar_formulario()">Bueno</p>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Aceptable</a></p>
+            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Aceptable" onchange="enviar_formulario()">Aceptable</p>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><a class="text-dark" href="">Lo ha dado todo</a></p>
+            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Lo ha dado todo" onchange="enviar_formulario()">Lo ha dado todo</p>
           </li>
         </ul>
       </div>
+    </form>
     </div>
   </li>
-  {{-- Donde --}}
+  {{-- Donde
   <li class="nav-item">
     <div class="dropdown mt-1 mx-3">
       <button class="btn btn-outline-light rounded-pill dropdown-toggle text-dark btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -277,7 +279,7 @@
 
       </div>
     </div>
-  </li>
+  </li>  --}}
   {{-- Estado del producto --}}
   <li class="nav-item">
     <div class="dropdown mt-1 mx-3">
@@ -285,20 +287,22 @@
         <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8z" fill="#009fb7"/><path d="M12.5 7H11v6l5.25 3.15l.75-1.23l-4.5-2.67z" fill="#009fb7"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
         Publicado hace
       </button>
+      <form action="" method="GET" name="publicadoFormulario">
       <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
         <ul class="menu-notificaciones-list list-group-flush">
           <p class="menu-notificaciones-title">Publicado hace</p>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><a class="text-dark" href=""> <span class="px-2" style="font-size: 20px; font-weight: bold;">24</span> Horas</a></p>
+            <p class=" text-dark p-2 mb-0"><input type="radio" name="publicado" class="text-dark" value="1" onchange="enviar_formulario_publicado()">24 </span> Horas</p>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><a class="text-dark" href=""> <span class="px-2 mx-1" style="font-size: 20px; font-weight: bold;">7</span> Días</a></p>
+            <p class=" text-dark p-2 mb-0"><input type="radio" name="publicado" class="text-dark" value="7" onchange="enviar_formulario_publicado()">7</span> Días</p>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><a class="text-dark" href=""> <span class="px-2" style="font-size: 20px; font-weight: bold;">30</span> Días</a></p>
+            <p class=" text-dark p-2 mb-0"><input type="radio" name="publicado" class="text-dark" value="20" onchange="enviar_formulario_publicado()">30</span> Días</p>
           </li>
         </ul>
       </div>
+      </form>
     </div>
   </li>
 {{-- @foreach( \App\Models\Categoria::paginate(5) as $categoriaside)

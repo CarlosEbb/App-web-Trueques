@@ -137,6 +137,12 @@ class ProductoController extends Controller
 
     public function busqueda(Request $request)
     {
+        //dd($request);
+
+        if($request->municipio != null){
+
+        }
+
         $nombre = $request->get('nombre');
         $productos = Producto::nombre($nombre)->paginate(5);
         
