@@ -176,14 +176,16 @@ button {
 
 /* style input navbar */
 .input-search,
-.select-city {
+.select-city,
+.input-municipio {
     background-color: var(--color-segundary);
     border-radius: 11px;
     border-color: var(--color-segundary);
 }
 
 .input-search:focus,
-.select-city:focus {
+.select-city:focus,
+.input-municipio:focus {
     color: #495057;
     background-color: var(--color-segundary);
     border-color: var(--color-white-dark);

@@ -18,10 +18,11 @@
       />
     </a>
 
-    <form action="busqueda" method="POST" class="d-none d-md-none d-lg-block" style="width: 57%;">@csrf
+    <form action="busqueda" method="POST" class="d-none d-md-none d-lg-block" style="width: 65%;">@csrf
       <div class="form-row align-items-center">
-        <div class="col-md-4">
-        <input type="text" class="form-control input-search pl-5" placeholder="Municipio" name="municipio">
+        <div class="col-md-4 d-flex">
+          <input type="text" class="form-control input-municipio pl-5" placeholder="Municipio" name="municipio">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); left: 10px; top: 8px; position: absolute;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" fill="#626262"/><circle cx="12" cy="9" r="2.5" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
         </div>
         <div class="col-md-8 d-flex">
           <input type="text" class="form-control input-search pl-5" placeholder="Buscar Productos" name="nombre" required>
