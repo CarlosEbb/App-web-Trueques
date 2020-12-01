@@ -57,7 +57,34 @@
 				}
 			 });
 		}
-		
+		</script>
+
+			<script>
+				$(document).ready(function() {
+				$("#myInput").on("keyup", function() {
+					var value = $(this).val().toLowerCase();
+					$("#myDIV .blog-inner").filter(function() {
+					$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+					});
+				});
+				});
+			</script>
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+			<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+			<script>
+				var availableTags = [
+				@foreach(\App\Models\Municipio::all() as $keywords)
+				"{{$keywords->nombre}}",
+				@endforeach
+				];
+				console.log(availableTags);
+			</script>
+			<script>
+		$( function() {
+			$( "#myInput" ).autocomplete({
+			source: availableTags
+			});
+		} );
 		</script>
 		@yield('scriptJS')
 	</body>
