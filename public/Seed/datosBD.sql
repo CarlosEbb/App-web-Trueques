@@ -75,26 +75,21 @@ INSERT INTO `productos` (`id`, `user_id`, `nombre`, `descripcion`, `categoria_id
 (6, 2, 'Yston Lente Mirror Para Natacion Adulto Ss99', 'LENTE MIRROR PARA NATACIÓN y TAPAOIDOS\r\nMarca: Yston\r\nTalla: Adulto\r\nColor: Aguamarina, Rosado, Azul Rey y Plateado.\r\n- Incluye tapaoidos\r\n- Cristal Mirror (Espejo)', 5, 29, 2, 1, 3, '10000', 1, '2020-10-29 05:40:14', '2020-10-29 05:40:14');
 
 
+
 INSERT INTO `fotos` (`id`, `ruta`, `producto_id`, `principal`, `created_at`, `updated_at`) VALUES
-(1, '\\uploads\\productos\\phpI4SOqU.webp', 2, 0, '2020-10-28 23:20:14', '2020-10-28 23:20:14'),
-(2, '\\uploads\\productos\\php13xDof.webp', 2, 0, '2020-10-28 23:20:14', '2020-10-28 23:20:14'),
-(3, '\\uploads\\productos\\phpIcEG8A.webp', 2, 0, '2020-10-28 23:20:14', '2020-10-28 23:20:14'),
-(4, '\\uploads\\productos\\phpS38TPW.webp', 2, 0, '2020-10-28 23:20:14', '2020-10-28 23:20:14'),
-(12, '\\uploads\\productos\\phpaDFkam.webp', 4, 0, '2020-10-28 23:27:47', '2020-10-28 23:27:47'),
-(13, '\\uploads\\productos\\phpjkD4wM.webp', 4, 0, '2020-10-28 23:27:47', '2020-10-28 23:27:47'),
-(14, '\\uploads\\productos\\php3blckj.webp', 4, 0, '2020-10-28 23:27:47', '2020-10-28 23:27:47'),
-(15, '\\uploads\\productos\\phpYcVcwq.webp', 4, 0, '2020-10-28 23:27:47', '2020-10-28 23:27:47'),
-(16, '\\uploads\\productos\\php8wDPx0.webp', 4, 0, '2020-10-28 23:27:47', '2020-10-28 23:27:47'),
-(17, '\\uploads\\productos\\php3kMIMa.webp', 4, 0, '2020-10-28 23:27:47', '2020-10-28 23:27:47'),
-(18, '\\uploads\\productos\\phpxrShqv.webp', 5, 0, '2020-10-28 23:37:06', '2020-10-28 23:37:06'),
-(19, '\\uploads\\productos\\phpconuRT.webp', 5, 0, '2020-10-28 23:37:06', '2020-10-28 23:37:06'),
-(20, '\\uploads\\productos\\phpeGovGB.webp', 5, 0, '2020-10-28 23:37:06', '2020-10-28 23:37:06'),
-(21, '\\uploads\\productos\\phpV2ku7l.webp', 5, 0, '2020-10-28 23:37:06', '2020-10-28 23:37:06'),
-(22, '\\uploads\\productos\\phpK5ZcT4.webp', 5, 0, '2020-10-28 23:37:06', '2020-10-28 23:37:06'),
-(23, '\\uploads\\productos\\phpK0qSiQ.webp', 5, 0, '2020-10-28 23:37:06', '2020-10-28 23:37:06'),
-(24, '\\uploads\\productos\\php8wgdEA.webp', 5, 0, '2020-10-28 23:37:06', '2020-10-28 23:37:06'),
-(25, '\\uploads\\productos\\phpID6rt3.webp', 6, 0, '2020-10-28 23:40:14', '2020-10-28 23:40:14'),
-(26, '\\uploads\\productos\\php9iBt1T.webp', 6, 0, '2020-10-28 23:40:14', '2020-10-28 23:40:14'),
-(27, '\\uploads\\productos\\php4IJ8jm.webp', 6, 0, '2020-10-28 23:40:14', '2020-10-28 23:40:14'),
-(28, '\\uploads\\productos\\php8a9c2e.webp', 6, 0, '2020-10-28 23:40:14', '2020-10-28 23:40:14'),
-(29, '\\uploads\\productos\\php4Zoc2I.webp', 6, 0, '2020-10-28 23:40:14', '2020-10-28 23:40:14');
+(1, '\\uploads\\productos\\phpI4SOqU.webp', 2, 0, '2020-10-29 05:20:14', '2020-10-29 05:20:14'),
+(2, '\\uploads\\productos\\php13xDof.webp', 2, 0, '2020-10-29 05:20:14', '2020-10-29 05:20:14'),
+(3, '\\uploads\\productos\\phpIcEG8A.webp', 2, 0, '2020-10-29 05:20:14', '2020-10-29 05:20:14'),
+(4, '\\uploads\\productos\\phpS38TPW.webp', 2, 0, '2020-10-29 05:20:14', '2020-10-29 05:20:14'),
+(18, '\\uploads\\productos\\phpxrShqv.webp', 5, 0, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
+(19, '\\uploads\\productos\\phpconuRT.webp', 5, 0, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
+(20, '\\uploads\\productos\\phpeGovGB.webp', 5, 0, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
+(21, '\\uploads\\productos\\phpV2ku7l.webp', 5, 0, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
+(22, '\\uploads\\productos\\phpK5ZcT4.webp', 5, 0, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
+(23, '\\uploads\\productos\\phpK0qSiQ.webp', 5, 0, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
+(24, '\\uploads\\productos\\php8wgdEA.webp', 5, 0, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
+(25, '\\uploads\\productos\\phpID6rt3.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14'),
+(26, '\\uploads\\productos\\php9iBt1T.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14'),
+(27, '\\uploads\\productos\\php4IJ8jm.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14'),
+(28, '\\uploads\\productos\\php8a9c2e.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14'),
+(29, '\\uploads\\productos\\php4Zoc2I.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14');
