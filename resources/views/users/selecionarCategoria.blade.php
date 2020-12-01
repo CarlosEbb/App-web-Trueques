@@ -19,7 +19,7 @@
       @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
           <div class="tab-pane fade show" id="v-pills-home-{{$categoria->id}}" role="tabpanel" aria-labelledby="v-pills-home-{{$categoria->id}}">
               @foreach($categoria->subCategoria as $subCategoria)
-                <a class="d-block border p-2 rounded my-2" href="/publicar-productos?subCategoria={{$subCategoria->id}}">{{$subCategoria->nombre}}</a>
+                <a class="d-block border p-2 rounded my-2" href="/publicar-productos?categoria_id={{$categoria->id}}&sub_categoria_id={{$subCategoria->id}}">{{$subCategoria->nombre}}</a>
               @endforeach
           </div>
         @endforeach

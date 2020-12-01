@@ -43,16 +43,22 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $datos = $this->validate(request(), [
             'nombre' => 'required|string',
             'descripcion' => 'required|string',
             'categoria_id' => 'required|string',
+            'sub_categoria_id' => 'required|string',
             'precio' => 'required|string',
             'archivos' => 'required',
+            //'categoria1' => 'required|string',
+            //'subCategoria1' => 'required|string',
+            'departamento' => 'required|string',
+            'municipio' => 'required|string',
         ]);
 
         
+        $request['departamento_id'] = $request->departamento;
+        $request['municipio_id'] = $request->municipio;
         $request['user_id'] = Auth::user()->id;
 
         

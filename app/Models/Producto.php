@@ -16,12 +16,19 @@ class Producto extends Model
         'nombre',
         'descripcion',
         'categoria_id',
+        'sub_categoria_id',
         'municipio_id',
         'departamento_id',
         'user_id',
         'precio',
         'status',
         'tipo_id',
+        'categoria1',
+        'categoria2',
+        'categoria3',
+        'subCategoria1',
+        'subCategoria2',
+        'subCategoria3',
     ];
 
     public function foto()

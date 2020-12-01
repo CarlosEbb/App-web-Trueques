@@ -61,14 +61,14 @@
           <h4 class="mb-4">Confirma tu ubicación</h4>
 
           <label for="ciudad">Ciudad</label>
-          <select name=pais onchange="cambia_provincia()" id="ciudad" class="select">
+          <select name=departamento onchange="cambia_provincia()" id="ciudad" class="select">
               @foreach(\App\Models\Departamento::all() as $departamento)
                   <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
               @endforeach
           </select>
 
           <label for="municipio" class="mt-4">Municipio</label>
-          <select name=provincia id="municipio" class="select">
+          <select name=municipio id="municipio" class="select">
               <option disabled>-</option>
           </select>
         </div>
@@ -93,22 +93,23 @@
               <span  class="tooltiptext">Agregar categoria</span>
             </a>
           </h4>
-
           <div class="row" id="select-categoria">
-            <div class="col-12 col-md-6 mb-3 mb-md-3">
+          @for($i = 1; $i <= 3; $i++)
+            <div class="col-12 col-md-6 mb-3 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="categoria">Categorias</label>
-              <select name=categoria class="select" onchange="cambia_categoria()" >
+              <select name=categoria{{$i}} class="select" onchange="cambia_categoria{{$i}}()" >
                 @foreach( \App\Models\Categoria::all() as $categoria)
                   <option value="{{$categoria->id}}" id="{{$categoria->id}}">{{$categoria->nombre}}</option>
                 @endforeach
               </select>
             </div>
-            <div class="col-12 col-md-6 mb-md-3">
+            <div class="col-12 col-md-6 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="descripcion">Sub categorias</label>
-              <select name="subCategoria" class="select">
+              <select name="subCategoria{{$i}}" class="select">
                   <option value="-">- 
               </select>
             </div>
+          @endfor
           </div>
         </div>
         <div class="row">
@@ -123,6 +124,8 @@
         </div>
       </div>
     </div>
+    <input type="text" name="categoria_id" value="{{$_GET['categoria_id']}}" hidden>
+    <input type="text" name="sub_categoria_id" value="{{$_GET['sub_categoria_id']}}" hidden>
   </form>
 
 @endsection
@@ -159,16 +162,16 @@
   })
 
   // añadir categoria y subcategoria
-  let cantSelect = 0
+  let cantSelect = 2
   $('#btnAddCategoria').on('click', function(){
-    const categoriaCopiar = $('#select-categoria').clone()
-    $('#add-card-categorias').append(categoriaCopiar)
-    cantSelect ++
+    $('.categoria'+cantSelect).css('display', 'block')
     
-    if (cantSelect == 2) {
+    if (cantSelect == 3) {
       $('#btnAddCategoria').css('display', 'none')
     }
+    cantSelect ++
   })
+
 
 
   // limitar cantidad de categorias
@@ -206,33 +209,33 @@ var todasProvinciasID = [
 
 
 function cambia_provincia(){ 
-   	//tomo el valor del select del pais elegido 
-   	var pais 
-   	pais = document.f1.pais[document.f1.pais.selectedIndex].value 
-   	//miro a ver si el pais está definido 
-   	if (pais != 0) { 
+   	//tomo el valor del select del departamento elegido 
+   	var departamento 
+   	departamento = document.f1.departamento[document.f1.departamento.selectedIndex].value 
+   	//miro a ver si el departamento está definido 
+   	if (departamento != 0) { 
       	//si estaba definido, entonces coloco las opciones de la provincia correspondiente. 
       	//selecciono el array de provincia adecuado 
-      	mis_provincias=todasProvincias[pais] 
-      	mis_provinciasID=todasProvinciasID[pais] 
+      	mis_provincias=todasProvincias[departamento] 
+      	mis_provinciasID=todasProvinciasID[departamento] 
       	//calculo el numero de provincias 
       	num_provincias = mis_provincias.length 
       	//marco el número de provincias en el select 
-      	document.f1.provincia.length = num_provincias 
+      	document.f1.municipio.length = num_provincias 
       	//para cada provincia del array, la introduzco en el select 
       	for(i=0;i<num_provincias;i++){ 
-         	document.f1.provincia.options[i].value=mis_provinciasID[i] 
-         	document.f1.provincia.options[i].text=mis_provincias[i] 
+         	document.f1.municipio.options[i].value=mis_provinciasID[i] 
+         	document.f1.municipio.options[i].text=mis_provincias[i] 
       	}	
    	}else{ 
       	//si no había provincia seleccionada, elimino las provincias del select 
-      	document.f1.provincia.length = 1 
+      	document.f1.municipio.length = 1 
       	//coloco un guión en la única opción que he dejado 
-      	document.f1.provincia.options[0].value = "-" 
-      	document.f1.provincia.options[0].text = "-" 
+      	document.f1.municipio.options[0].value = "-" 
+      	document.f1.municipio.options[0].text = "-" 
    	} 
    	//marco como seleccionada la opción primera de provincia 
-   	document.f1.provincia.options[0].selected = true 
+   	document.f1.municipio.options[0].selected = true 
 }
 
 
@@ -255,35 +258,49 @@ var todasCategorias = [
     
 ];
 
-function cambia_categoria(){ 
-   	//tomo el valor del select del pais elegido 
-   	var categoria 
-   	categoria = document.f1.categoria[document.f1.categoria.selectedIndex].value 
-   	//miro a ver si el categoria está definido 
-   	if (categoria != 0) { 
-      	//si estaba definido, entonces coloco las opciones de la provincia correspondiente. 
-      	//selecciono el array de provincia adecuado 
-      	mis_subCategorias=todasCategorias[categoria] 
-      	//calculo el numero de provincias 
-      	num_subCategorias = mis_subCategorias.length 
-      	//marco el número de provincias en el select 
-      	document.f1.subCategoria.length = num_subCategorias 
-      	//para cada provincia del array, la introduzco en el select 
-      	for(i=0;i<num_subCategorias;i++){ 
-         	document.f1.subCategoria.options[i].value=mis_subCategorias[i] 
-         	document.f1.subCategoria.options[i].text=mis_subCategorias[i] 
-      	}	
-   	}else{ 
-      	//si no había provincia seleccionada, elimino las provincias del select 
-      	document.f1.subCategoria.length = 1 
-      	//coloco un guión en la única opción que he dejado 
-      	document.f1.subCategoria.options[0].value = "-" 
-      	document.f1.subCategoria.options[0].text = "-" 
-   	} 
-   	//marco como seleccionada la opción primera de provincia 
-   	document.f1.subCategoria.options[0].selected = true 
-}
+var todasCategoriasID = [
+    [],
+    @foreach(\App\Models\Categoria::all() as $categoriaID)
+      new Array(
+        @foreach($categoriaID->subCategoria as $subCategoriaID)
+            {{$subCategoriaID->id}},
+        @endforeach
+      ),
+    @endforeach
+    
+];
 
+@for($j = 1; $j <= 3; $j++)
+  function cambia_categoria{{$j}}(){ 
+      //tomo el valor del select del departamento elegido 
+      var categoria 
+      categoria = document.f1.categoria{{$j}}[document.f1.categoria{{$j}}.selectedIndex].value 
+      //miro a ver si el categoria está definido 
+      if (categoria != 0) { 
+          //si estaba definido, entonces coloco las opciones de la provincia correspondiente. 
+          //selecciono el array de provincia adecuado 
+          mis_subCategorias=todasCategorias[categoria] 
+          mis_categoriasID=todasCategoriasID[categoria] 
+          //calculo el numero de provincias 
+          num_subCategorias = mis_subCategorias.length 
+          //marco el número de provincias en el select 
+          document.f1.subCategoria{{$j}}.length = num_subCategorias 
+          //para cada provincia del array, la introduzco en el select 
+          for(i=0;i<num_subCategorias;i++){ 
+            document.f1.subCategoria{{$j}}.options[i].value=mis_categoriasID[i] 
+            document.f1.subCategoria{{$j}}.options[i].text=mis_subCategorias[i] 
+          }	
+      }else{ 
+          //si no había provincia seleccionada, elimino las provincias del select 
+          document.f1.subCategoria{{$j}}.length = 1 
+          //coloco un guión en la única opción que he dejado 
+          document.f1.subCategoria{{$j}}.options[0].value = "-" 
+          document.f1.subCategoria{{$j}}.options[0].text = "-" 
+      } 
+      //marco como seleccionada la opción primera de provincia 
+      document.f1.subCategoria{{$j}}.options[0].selected = true 
+  }
+@endfor
 
 </script>
 @endsection
