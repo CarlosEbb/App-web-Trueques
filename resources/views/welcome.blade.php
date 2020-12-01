@@ -42,7 +42,7 @@
             <div class="product-description">
               <span class="mb-3">{{$destacado->descripcion}}</span>
             </div>
-            <p class="mb-0" style="font-size: 12px">publicado en: Bogota</p>
+            <p class="mb-0" style="font-size: 12px">publicado en: {{$destacado->departamento->nombre}}</p>
             @if($destacado->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
                 <span class="badge badge-pill badge-success">{{$destacado->tipo->nombre}}</span>
           </div>
@@ -74,7 +74,7 @@
             <div class="card-body card-body-banner-categorias">
               <div class="row">
                 <div class="col-12 col-md-6 p-0">
-                  <a href="{{route('categorias.show', $categoria->id)}}"><img src="{{$categoria->foto}}" width="312" height="250" alt=""></a>
+                  <a href="{{route('busqueda')}}?categoria={{$categoria->id}}"><img src="{{$categoria->foto}}" width="312" height="250" alt=""></a>
                 </div>
                 <div class="col-12 col-md-6 d-flex align-items-center px-0">
                   <h5 class="pl-3 p-md-0 mb-5 mb-md-0">{{$categoria->nombre}}</h5>
@@ -82,7 +82,7 @@
               </div>
             </div>
             <div class="card-footer card-footer-product" style="right: 20px; position: absolute; bottom: 20px;">
-              <a href="{{route('categorias.show', $categoria->id)}}" class="btn-rounded btn-primary btn-primary-dark  mx-1 tooltips">
+              <a href="{{route('busqueda')}}?categoria={{$categoria->id}}" class="btn-rounded btn-primary btn-primary-dark  mx-1 tooltips">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M8.593 18.157L14.25 12.5L8.593 6.843l-.707.707l4.95 4.95l-4.95 4.95l.707.707z" fill="white"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                 <span class="tooltiptext">Caracteristicas</span>
               </a>
@@ -104,9 +104,9 @@
                 <div class="card-body">
                   <h5 class="card-title mb-3 card-title-product text-truncate">{{$producto->nombre}}</h5>
                   <div class="product-description">
-                    <span class="mb-3">{{$destacado->descripcion}}</span>
+                    <span class="mb-3">{{$producto->descripcion}}</span>
                   </div>
-                  <p class="mb-0 text-truncate" style="font-size: 12px">Bogota</p>
+                  <p class="mb-0 text-truncate" style="font-size: 12px">publicado en: {{$producto->departamento->nombre}}</p>
                   @if($producto->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
                   <span class="badge badge-pill badge-success">{{$producto->tipo->nombre}}</span>
                 </div>

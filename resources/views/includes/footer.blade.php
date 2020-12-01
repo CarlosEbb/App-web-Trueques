@@ -5,7 +5,7 @@
         <ul class="list-group ">
           <li class="list-group-item border-0 py-2 bg-transparent text-uppercase font-weight-bold">CATEGORIAS POPULARES</li>
           @foreach(\App\Models\Categoria::paginate(4) as $categoria)
-            <li class="list-group-item border-0 py-2 bg-transparent"><a href="{{route('categorias.show', $categoria->id)}}" class="link-footer" rel="noopener noreferrer">{{$categoria->nombre}}</a></li>
+            <li class="list-group-item border-0 py-2 bg-transparent"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}" class="link-footer" rel="noopener noreferrer">{{$categoria->nombre}}</a></li>
           @endforeach
         </ul>        
       </div>

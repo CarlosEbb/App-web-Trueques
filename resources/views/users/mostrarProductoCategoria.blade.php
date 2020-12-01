@@ -119,7 +119,7 @@
                   <div class="product-description">
                     <span class="mb-3">{{$producto->descripcion}}</span>
                   </div>
-                  <p class="mb-0" style="font-size: 12px">publicado en: Bogota</p>
+                  <p class="mb-0" style="font-size: 12px">publicado en: {{$producto->departamento->nombre}}</p>
                   <span class="badge badge-pill badge-warning">Destacado</span>
                 </div>
                 <div class="card-footer card-footer-product px-3 pb-3">

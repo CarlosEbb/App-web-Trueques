@@ -92,7 +92,7 @@ Route::get('/password/reset/{token}/{email}', 'Auth\ResetPasswordController@show
 
 Route::get("chat", "HomeController@chat")->name('chat');
 
-Route::get("busqueda", "ProductoController@busqueda");
+Route::get("busqueda", "ProductoController@busqueda")->name('busqueda');
 
 Route::get("listarProductosPorUsuario/{id}", "ProductoController@listarProductosPorUsuario");
 

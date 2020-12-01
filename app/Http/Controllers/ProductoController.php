@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\Municipio;
+use App\Models\Departamento;
 use App\Models\Foto;
 use App\Models\User;
 use Session;
@@ -137,14 +139,50 @@ class ProductoController extends Controller
 
     public function busqueda(Request $request)
     {
-        //dd($request);
 
+        if($request->busqueda != null){
+            $productos = Producto::nombre($request->busqueda)->get();
+
+        }else{
+            $productos = Producto::get();
+        }
+        
         if($request->municipio != null){
-
+            $mun = Municipio::where('nombre', $request->municipio)->get();
+            if($mun->count() >= 1){
+                $productos = $productos->where('municipio_id',$mun->first()->id);
+                
+            }
         }
 
-        $nombre = $request->get('nombre');
-        $productos = Producto::nombre($nombre)->paginate(5);
+        if($request->categoria != null){
+            $productos = $productos->where('categoria_id', $request->categoria);
+        }
+
+        if($request->subCategoria != null){
+            $productos = $productos->where('sub_categoria_id', $request->subCategoria);
+        }
+
+        if(($request->precio_hasta != null) and ($request->precio_desde != null)){
+            $productos = $productos->where('precio','>=', $request->precio_desde);
+            $productos = $productos->where('precio','<=', $request->precio_hasta);
+        }
+
+        if($request->estado != null){
+            //dd('estado');
+        }
+
+        if($request->publicado != null){
+            if($request->publicado == 1){
+                $productos = $productos->where('created_at','>=', date("Y-m-d H:i:s",strtotime(date('Y-m-d H:i:s')."- 1 days")));
+            }
+            if($request->publicado == 7){
+                $productos = $productos->where('created_at','>=', date("Y-m-d H:i:s",strtotime(date('Y-m-d H:i:s')."- 7 days")));
+            }
+            if($request->publicado == 30){
+                $productos = $productos->where('created_at','>=', date("Y-m-d H:i:s",strtotime(date('Y-m-d H:i:s')."- 30 days")));
+            }
+        }
         
         return view('users.mostrarProductoCategoria')->with(compact('productos'));
     }

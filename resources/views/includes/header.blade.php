@@ -18,18 +18,20 @@
       />
     </a>
 
-    <form action="busqueda" method="GET" class="d-none d-md-none d-lg-block" style="width: 65%;">@csrf
+    <form action="{{route('busqueda')}}" method="GET" class="d-none d-md-none d-lg-block" style="width: 65%;">@csrf
+        @include('includes.addBuscador')
       <div class="form-row align-items-center">
         <div class="col-md-4 d-flex">
-          <input type="text" class="form-control input-municipio pl-5" placeholder="Municipio" name="municipio" id="myInput">
+          <input type="text" class="form-control input-municipio pl-5" placeholder="Municipio" name="municipio" id="myInput" @isset($_GET['municipio']) value="{{$_GET['municipio']}}" @endisset>
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); left: 10px; top: 8px; position: absolute;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" fill="#626262"/><circle cx="12" cy="9" r="2.5" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
         </div>
         <div class="col-md-8 d-flex">
-          <input type="text" class="form-control input-search pl-5" placeholder="Buscar Productos" name="nombre" required>
+          <input type="text" class="form-control input-search pl-5" placeholder="Buscar Productos" name="busqueda" required @isset($_GET['busqueda']) value="{{$_GET['busqueda']}}" @endisset>
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); left: 10px; top: 8px; position: absolute;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
         </div>
       </div>
       <button hidden></button>
+
     </form>
 
     @guest
@@ -49,6 +51,7 @@
           <div class="dropdown-menu dropdown-menu-right menu menu-navbar menu-buscar" aria-labelledby="dropdownMenuBuscar">
             <p class="menu-notificaciones-title">Buscar producto</p>
             <form action="" class="flex-fill">
+              @include('includes.addBuscador')
               <div class="form-row align-items-center">
                 <div class="col-md-12 ">
                   <input type="text" class="form-control input-search" placeholder="Buscar productos">
@@ -109,6 +112,7 @@
           <div class="dropdown-menu menu menu-navbar menu-buscar" aria-labelledby="dropdownMenuBuscar">
             <p class="menu-notificaciones-title">Buscar producto</p>
             <form action="" class="flex-fill">
+              @include('includes.addBuscador')
               <div class="form-row align-items-center">
                 <div class="col-md-12 ">
                   <input type="text" class="form-control input-search" placeholder="Buscar productos">
@@ -199,9 +203,9 @@
         <ul class="list-group flex-row row">
           @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
             <li class="list-group-item border-0 border-bottom list-group-item-hover col-md-3 col-12">
-              <b><a class="d-block" style="color: #333333;" href="{{route('categorias.show', $categoria->id)}}">{{$categoria->nombre}}</a></b>
+              <b><a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">{{$categoria->nombre}}</a></b>
                 @foreach($categoria->subCategoria as $subCategoria)
-                  <a class="d-block" style="color: #3d3d3d;" href="">{{$subCategoria->nombre}}</a>
+                  <a class="d-block" style="color: #3d3d3d;" href="{{route('busqueda')}}?categoria={{$categoria->id}}&subCategoria={{$subCategoria->id}}">{{$subCategoria->nombre}}</a>
                 @endforeach
             </li>
           @endforeach
@@ -219,6 +223,7 @@
       <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
         <p class="menu-notificaciones-title">¿Cuánto quieres pagar?</p>
         <form action="" method="GET">
+          @include('includes.addBuscador')
           <div class="row">
             <div class="col-6">
               <label for="">Desde</label>
@@ -244,6 +249,7 @@
         Estado del producto
       </button>
     <form action="" method="GET" name="estadoFormulario">
+      @include('includes.addBuscador')
       <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
         <ul class="menu-notificaciones-list list-group-flush">
           <p class="menu-notificaciones-title">Estado del producto</p>
@@ -288,6 +294,7 @@
         Publicado hace
       </button>
       <form action="" method="GET" name="publicadoFormulario">
+      @include('includes.addBuscador')
       <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
         <ul class="menu-notificaciones-list list-group-flush">
           <p class="menu-notificaciones-title">Publicado hace</p>
