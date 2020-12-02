@@ -18,8 +18,8 @@
       />
     </a>
 
-    <form action="{{route('busqueda')}}" method="GET" class="d-none d-md-none d-lg-block" style="width: 65%;">@csrf
-        @include('includes.addBuscador')
+    <form action="{{route('busqueda')}}" method="GET" class="d-none d-md-none d-lg-block" style="width: 58%;">@csrf
+      @include('includes.addBuscador')
       <div class="form-row align-items-center">
         <div class="col-md-4 d-flex">
           <input type="text" class="form-control input-municipio pl-5" placeholder="Municipio" name="municipio" id="myInput" @isset($_GET['municipio']) value="{{$_GET['municipio']}}" @endisset>
@@ -31,7 +31,6 @@
         </div>
       </div>
       <button hidden></button>
-
     </form>
 
     @guest
@@ -254,19 +253,24 @@
         <ul class="menu-notificaciones-list list-group-flush">
           <p class="menu-notificaciones-title">Estado del producto</p>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Nuevo" onchange="enviar_formulario()">Nuevo</p>
+            <input hidden type="radio" name="estado" class="text-dark" id="estado-nuevo" value="Nuevo" onchange="enviar_formulario()">
+            <label for="estado-nuevo" class="text-dark p-2 mb-0">Nuevo</label>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Como nuevo" onchange="enviar_formulario()">Como nuevo</p>
+            <input hidden type="radio" name="estado" id="como-nuevo" class="text-dark" value="Como nuevo" onchange="enviar_formulario()">
+            <label for="como-nuevo" class="text-dark p-2 mb-0">Como nuevo</label>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Bueno" onchange="enviar_formulario()">Bueno</p>
+            <input hidden type="radio" id="bueno" name="estado" class="text-dark" value="Bueno" onchange="enviar_formulario()">
+            <label for="bueno" class="text-dark p-2 mb-0">Bueno</label>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Aceptable" onchange="enviar_formulario()">Aceptable</p>
+            <input hidden type="radio" id="aceptable" name="estado" class="text-dark" value="Aceptable" onchange="enviar_formulario()">
+            <label for="aceptable" class="text-dark p-2 mb-0">Aceptable</label>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><input type="radio" name="estado" class="text-dark" value="Lo ha dado todo" onchange="enviar_formulario()">Lo ha dado todo</p>
+            <input hidden type="radio" name="estado" id="lo-ha-dado-todo" class="text-dark" value="Lo ha dado todo" onchange="enviar_formulario()">
+            <label for="lo-ha-dado-todo" class="text-dark p-2 mb-0">Lo ha dado todo</label>
           </li>
         </ul>
       </div>
@@ -298,14 +302,17 @@
       <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
         <ul class="menu-notificaciones-list list-group-flush">
           <p class="menu-notificaciones-title">Publicado hace</p>
-          <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><input type="radio" name="publicado" class="text-dark" value="1" onchange="enviar_formulario_publicado()">24 </span> Horas</p>
+          <li class="list-group-item p-0 active">
+            <input hidden type="radio" id="horas" name="publicado" class="text-dark" value="1" onchange="enviar_formulario_publicado()">
+            <label class="text-dark p-2 mb-0" for="horas"><span><b class="mx-1">24</b></span> Horas</label>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><input type="radio" name="publicado" class="text-dark" value="7" onchange="enviar_formulario_publicado()">7</span> Días</p>
+            <input hidden type="radio" id="dias-7" name="publicado" class="text-dark" value="7" onchange="enviar_formulario_publicado()">
+            <label for="dias-7" class="text-dark p-2 mb-0"><span><b class="ml-1 mr-3">7</b></span> Días</label>
           </li>
           <li class="list-group-item p-0">
-            <p class=" text-dark p-2 mb-0"><input type="radio" name="publicado" class="text-dark" value="20" onchange="enviar_formulario_publicado()">30</span> Días</p>
+            <input hidden type="radio" id="dias-30" name="publicado" class="text-dark" value="20" onchange="enviar_formulario_publicado()">
+            <label for="dias-30" class="text-dark p-2 mb-0"><span><b class="mx-1">30</b></span> Días</label>
           </li>
         </ul>
       </div>

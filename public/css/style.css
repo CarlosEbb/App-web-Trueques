@@ -617,3 +617,57 @@ button {
 .media-style:hover > div .btn-rounded-chat {
     visibility: visible;
 }
+
+/* sistema de recomendaciones */
+.form-recomendaciones {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.form-recomendaciones p {
+    text-align: left;
+}
+
+.form-recomendaciones label {
+    font-size: 20px;
+}
+
+.clasificacion input[type="radio"] {
+    display: none;
+}
+
+.clasificacion label {
+    color: grey;
+    font-size: 20px;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+.clasificacion label:hover,
+.clasificacion label:hover ~ label {
+    color: orange;
+}
+
+.clasificacion input[type="radio"]:checked ~ label {
+    color: orange;
+}
+
+/* comentarios */
+.list-comentarios {
+    height: 70%;
+    max-height: 70%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* active list */
+.list-group-item.active {
+    z-index: 2;
+    color: #fff !important;
+    background-color: #01a0b881;
+    border-color: #01a0b8;
+}
