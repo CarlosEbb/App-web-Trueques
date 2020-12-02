@@ -252,26 +252,12 @@
       <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
         <ul class="menu-notificaciones-list list-group-flush">
           <p class="menu-notificaciones-title">Estado del producto</p>
-          <li class="list-group-item p-0">
-            <input hidden type="radio" name="estado" class="text-dark" id="estado-nuevo" value="Nuevo" onchange="enviar_formulario()">
-            <label for="estado-nuevo" class="text-dark p-2 mb-0">Nuevo</label>
+          @foreach(\App\Models\Condicion::all() as $condicion)
+          <li class="list-group-item p-0 @isset($_GET['estado']) @if($_GET['estado'] == $condicion->id) active @endif @endisset">
+            <input hidden type="radio" name="estado" class="text-dark" id="estado-{{$condicion->nombre}}" value="{{$condicion->id}}" onchange="enviar_formulario()">
+            <label for="estado-{{$condicion->nombre}}" class="text-dark p-2 mb-0">{{$condicion->nombre}}</label>
           </li>
-          <li class="list-group-item p-0">
-            <input hidden type="radio" name="estado" id="como-nuevo" class="text-dark" value="Como nuevo" onchange="enviar_formulario()">
-            <label for="como-nuevo" class="text-dark p-2 mb-0">Como nuevo</label>
-          </li>
-          <li class="list-group-item p-0">
-            <input hidden type="radio" id="bueno" name="estado" class="text-dark" value="Bueno" onchange="enviar_formulario()">
-            <label for="bueno" class="text-dark p-2 mb-0">Bueno</label>
-          </li>
-          <li class="list-group-item p-0">
-            <input hidden type="radio" id="aceptable" name="estado" class="text-dark" value="Aceptable" onchange="enviar_formulario()">
-            <label for="aceptable" class="text-dark p-2 mb-0">Aceptable</label>
-          </li>
-          <li class="list-group-item p-0">
-            <input hidden type="radio" name="estado" id="lo-ha-dado-todo" class="text-dark" value="Lo ha dado todo" onchange="enviar_formulario()">
-            <label for="lo-ha-dado-todo" class="text-dark p-2 mb-0">Lo ha dado todo</label>
-          </li>
+          @endforeach
         </ul>
       </div>
     </form>
@@ -302,16 +288,16 @@
       <div class="dropdown-menu menu menu-filtro" aria-labelledby="dropdownMenuButton">
         <ul class="menu-notificaciones-list list-group-flush">
           <p class="menu-notificaciones-title">Publicado hace</p>
-          <li class="list-group-item p-0 active">
+          <li class="list-group-item p-0 @isset($_GET['publicado']) @if($_GET['publicado'] == 1) active @endif @endisset">
             <input hidden type="radio" id="horas" name="publicado" class="text-dark" value="1" onchange="enviar_formulario_publicado()">
             <label class="text-dark p-2 mb-0" for="horas"><span><b class="mx-1">24</b></span> Horas</label>
           </li>
-          <li class="list-group-item p-0">
+          <li class="list-group-item p-0 @isset($_GET['publicado']) @if($_GET['publicado'] == 7) active @endif @endisset">
             <input hidden type="radio" id="dias-7" name="publicado" class="text-dark" value="7" onchange="enviar_formulario_publicado()">
             <label for="dias-7" class="text-dark p-2 mb-0"><span><b class="ml-1 mr-3">7</b></span> Días</label>
           </li>
-          <li class="list-group-item p-0">
-            <input hidden type="radio" id="dias-30" name="publicado" class="text-dark" value="20" onchange="enviar_formulario_publicado()">
+          <li class="list-group-item p-0 @isset($_GET['publicado']) @if($_GET['publicado'] == 30) active @endif @endisset">
+            <input hidden type="radio" id="dias-30" name="publicado" class="text-dark" value="30" onchange="enviar_formulario_publicado()">
             <label for="dias-30" class="text-dark p-2 mb-0"><span><b class="mx-1">30</b></span> Días</label>
           </li>
         </ul>

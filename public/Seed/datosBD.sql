@@ -67,12 +67,13 @@ INSERT INTO `sub_categorias` (`id`, `nombre`, `descripcion`, `categoria_id`, `cr
 (38, 'Zapatos', NULL, 7, '2020-12-01 02:20:41', '2020-12-01 02:20:41'),
 (39, 'Accesorios', NULL, 7, '2020-12-01 02:20:59', '2020-12-01 02:20:59');
 
+INSERT INTO `condicion` (`id`, `nombre`, `created_at`, `updated_at`) VALUES (NULL, 'Nuevo', NULL, NULL), (NULL, 'Como nuevo', NULL, NULL), (NULL, 'Bueno', NULL, NULL), (NULL, 'Aceptable', NULL, NULL), (NULL, 'Lo ha dado todo', NULL, NULL);
 
 
-INSERT INTO `productos` (`id`, `user_id`, `nombre`, `descripcion`, `categoria_id`, `sub_categoria_id`, `tipo_id`, `municipio_id`, `departamento_id`, `precio`, `status`, `created_at`, `updated_at`) VALUES
-(2, 2, 'Tensiómetro Digital De Muñecaa', 'Excelente calidad garantizadaa', 3, 19, 1, 1, 1, '10000', 1, '2020-10-29 05:20:14', '2020-12-01 02:58:52'),
-(5, 2, 'Cuadros Minimalistas Abstractos Modernos', '\"\"DECORA TU HOGAR\"\" CON \"BELLOS CUADROS DECORATIVOS CALIDAD AL MEJOR TRUEQUE\"\"', 4, 25, 1, 1, 2, '20000', 1, '2020-10-29 05:37:06', '2020-10-29 05:37:06'),
-(6, 2, 'Yston Lente Mirror Para Natacion Adulto Ss99', 'LENTE MIRROR PARA NATACIÓN y TAPAOIDOS\r\nMarca: Yston\r\nTalla: Adulto\r\nColor: Aguamarina, Rosado, Azul Rey y Plateado.\r\n- Incluye tapaoidos\r\n- Cristal Mirror (Espejo)', 5, 29, 2, 1, 3, '10000', 1, '2020-10-29 05:40:14', '2020-10-29 05:40:14');
+INSERT INTO `productos` (`id`, `user_id`, `nombre`, `descripcion`, `categoria_id`, `sub_categoria_id`, `tipo_id`, `municipio_id`, `departamento_id`, `precio`, `condicion_id`, `categoria1`, `subCategoria1`, `categoria2`, `subCategoria2`, `categoria3`, `subCategoria3`, `status`, `created_at`, `updated_at`) VALUES
+(2, 2, 'Tensiómetro Digital De Muñecaa', 'Excelente calidad garantizadaa', 3, 19, 1, 1, 1, '10000', 4, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-10-29 11:20:14', '2020-12-01 08:58:52'),
+(5, 2, 'Cuadros Minimalistas Abstractos Modernos', '\"\"DECORA TU HOGAR\"\" CON \"BELLOS CUADROS DECORATIVOS CALIDAD AL MEJOR TRUEQUE\"\"', 4, 25, 1, 1, 2, '20000', 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-10-29 11:37:06', '2020-10-29 11:37:06'),
+(6, 2, 'Yston Lente Mirror Para Natacion Adulto Ss99', 'LENTE MIRROR PARA NATACIÓN y TAPAOIDOS\r\nMarca: Yston\r\nTalla: Adulto\r\nColor: Aguamarina, Rosado, Azul Rey y Plateado.\r\n- Incluye tapaoidos\r\n- Cristal Mirror (Espejo)', 5, 29, 2, 1, 3, '10000', 3, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-10-29 11:40:14', '2020-10-29 11:40:14');
 
 
 
@@ -93,3 +94,4 @@ INSERT INTO `fotos` (`id`, `ruta`, `producto_id`, `principal`, `created_at`, `up
 (27, '\\uploads\\productos\\php4IJ8jm.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14'),
 (28, '\\uploads\\productos\\php8a9c2e.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14'),
 (29, '\\uploads\\productos\\php4Zoc2I.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14');
+
