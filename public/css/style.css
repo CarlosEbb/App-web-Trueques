@@ -620,7 +620,7 @@ button {
 
 /* sistema de recomendaciones */
 .form-recomendaciones {
-    width: 250px;
+    width: 180px;
     margin: 0 auto;
     height: 50px;
 }
@@ -670,4 +670,10 @@ button {
     color: #fff !important;
     background-color: #01a0b881;
     border-color: #01a0b8;
+}
+
+ul.ui-autocomplete.ui-menu {
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }

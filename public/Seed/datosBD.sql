@@ -95,3 +95,6 @@ INSERT INTO `fotos` (`id`, `ruta`, `producto_id`, `principal`, `created_at`, `up
 (28, '\\uploads\\productos\\php8a9c2e.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14'),
 (29, '\\uploads\\productos\\php4Zoc2I.webp', 6, 0, '2020-10-29 05:40:14', '2020-10-29 05:40:14');
 
+INSERT INTO `comentarios` (`id`, `contenido`, `user_id`, `producto_id`, `created_at`, `updated_at`) VALUES
+(1, 'El producto es lo ofrecido y la atención rápida y muy buena, lo recomiendo ampliamente', 1, 2, '2020-12-04 02:00:23', '2020-12-04 02:00:23');
+
