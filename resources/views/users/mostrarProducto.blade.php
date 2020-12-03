@@ -24,70 +24,26 @@
           </article>
           <article class="card card-border-radius p-3 col-12 mt-3 h-50" style="max-height: 600px;">
             <h3 class="title-card-product">Comentarios</h3>
-            <form class="form-inline justify-content-center mt-3" action="">
+            <form action="{{route('comentarios.store')}}" class="form-inline justify-content-center mt-3" method="post">@csrf
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-4.586l-3.707 3.707A1 1 0 0 1 8 21v-3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm13 1H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4v4l4-4h5a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM5 7h13v1H5V7zm0 3h12v1H5v-1zm0 3h8v1H5v-1z" fill="#009fb7"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-              <input type="text" class="input w-75 mx-2" placeholder="Ingresa tu comentario">
+              <input name="contenido" type="text" class="input w-75 mx-2" placeholder="Ingresa tu comentario">
+              <input name="producto_id" type="text" class="input w-75 mx-2" value="{{$producto->id}}" hidden>
               <button class="text-center btn-rounded btn-primary btn-primary-dark tooltips p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M4.01 6.03l7.51 3.22l-7.52-1l.01-2.22m7.5 8.72L4 17.97v-2.22l7.51-1M2.01 3L2 10l15 2l-15 2l.01 7L23 12L2.01 3z" fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
               </button>
             </form>
             <ul class="list-unstyled px-5 mt-5 list-comentarios">
+            @forelse(\App\Models\Comentario::where('producto_id', $producto->id)->get() as $comentarios)
               <li class="media mb-4">
                 <svg class="mx-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-4.586l-3.707 3.707A1 1 0 0 1 8 21v-3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm13 1H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4v4l4-4h5a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM5 7h13v1H5V7zm0 3h12v1H5v-1zm0 3h8v1H5v-1z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                 <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-dark">List-based media object</h6>
-                  <p class="text-secondary" style="font-size: 13px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                  <h6 class="mt-0 mb-1 text-dark">{{$comentarios->user->name}}</h6>
+                  <p class="text-secondary" style="font-size: 13px;">{{$comentarios->contenido}}</p>
                 </div>
               </li>
-              <li class="media mb-4">
-                <svg class="mx-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-4.586l-3.707 3.707A1 1 0 0 1 8 21v-3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm13 1H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4v4l4-4h5a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM5 7h13v1H5V7zm0 3h12v1H5v-1zm0 3h8v1H5v-1z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-dark">List-based media object</h6>
-                  <p class="text-secondary" style="font-size: 13px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                </div>
-              </li>
-              <li class="media mb-4">
-                <svg class="mx-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-4.586l-3.707 3.707A1 1 0 0 1 8 21v-3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm13 1H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4v4l4-4h5a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM5 7h13v1H5V7zm0 3h12v1H5v-1zm0 3h8v1H5v-1z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-dark">List-based media object</h6>
-                  <p class="text-secondary" style="font-size: 13px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                </div>
-              </li>
-              <li class="media mb-4">
-                <svg class="mx-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-4.586l-3.707 3.707A1 1 0 0 1 8 21v-3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm13 1H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4v4l4-4h5a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM5 7h13v1H5V7zm0 3h12v1H5v-1zm0 3h8v1H5v-1z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-dark">List-based media object</h6>
-                  <p class="text-secondary" style="font-size: 13px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                </div>
-              </li>
-              <li class="media mb-4">
-                <svg class="mx-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-4.586l-3.707 3.707A1 1 0 0 1 8 21v-3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm13 1H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4v4l4-4h5a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM5 7h13v1H5V7zm0 3h12v1H5v-1zm0 3h8v1H5v-1z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-dark">List-based media object</h6>
-                  <p class="text-secondary" style="font-size: 13px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                </div>
-              </li>
-              <li class="media mb-4">
-                <svg class="mx-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-4.586l-3.707 3.707A1 1 0 0 1 8 21v-3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm13 1H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4v4l4-4h5a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM5 7h13v1H5V7zm0 3h12v1H5v-1zm0 3h8v1H5v-1z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-dark">List-based media object</h6>
-                  <p class="text-secondary" style="font-size: 13px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                </div>
-              </li>
-              <li class="media mb-4">
-                <svg class="mx-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-4.586l-3.707 3.707A1 1 0 0 1 8 21v-3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm13 1H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4v4l4-4h5a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM5 7h13v1H5V7zm0 3h12v1H5v-1zm0 3h8v1H5v-1z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-dark">List-based media object</h6>
-                  <p class="text-secondary" style="font-size: 13px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                </div>
-              </li>
-              <li class="media mb-4">
-                <svg class="mx-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-4.586l-3.707 3.707A1 1 0 0 1 8 21v-3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm13 1H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h4v4l4-4h5a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM5 7h13v1H5V7zm0 3h12v1H5v-1zm0 3h8v1H5v-1z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1 text-dark">List-based media object</h6>
-                  <p class="text-secondary" style="font-size: 13px;">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                </div>
-              </li>
+            @empty
+              No hay nada para mostrar
+            @endforelse
             </ul>
           </article>
         </div>
@@ -108,15 +64,15 @@
                 <span class="footer-product">Miembro desde {{$producto->user->created_at->format('d-m-Y')}}</span>
                 <form class="form-recomendaciones d-block">
                   <p class="clasificacion">
-                    <input id="radio1" type="radio" name="estrellas" value="5">
+                    <input id="radio1" type="radio" name="estrellas" value="5" disabled>
                     <label for="radio1">★</label>
-                    <input id="radio2" type="radio" name="estrellas" value="4">
+                    <input id="radio2" type="radio" name="estrellas" value="4" disabled>
                     <label for="radio2">★</label>
-                    <input id="radio3" type="radio" name="estrellas" value="3">
+                    <input id="radio3" type="radio" name="estrellas" value="3" disabled>
                     <label for="radio3">★</label>
-                    <input id="radio4" type="radio" name="estrellas" value="2">
+                    <input id="radio4" type="radio" name="estrellas" value="2" disabled>
                     <label for="radio4">★</label>
-                    <input id="radio5" type="radio" name="estrellas" value="1">
+                    <input id="radio5" type="radio" name="estrellas" value="1" checked disabled>
                     <label for="radio5">★</label>
                   </p>
                 </form>

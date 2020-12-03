@@ -39,6 +39,7 @@ Route::resource('favoritos', ProductoFavoritoController::class);
 Route::resource('categorias', CategoriaController::class);
 Route::resource('subcategorias', SubCategoriaController::class);
 Route::resource('users', UserController::class);
+Route::resource('comentarios', ComentarioController::class);
 
 // productos usuarios 
 Route::get('publicar-productos', function () {
