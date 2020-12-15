@@ -29,16 +29,18 @@
         <h3 class="title">¿Qué está buscando hoy?</h3> 
       </div>
       <div class="owl-carousel owl-theme">
+          @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
         <div class="item d-flex justify-content-center">
-          <div class="card d-flex align-items-center item-categorias" style="width: 18rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="4em" height="4em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M9.5 4a6.5 6.5 0 0 1 4.932 10.734l5.644 5.644l-.707.707l-5.645-5.645A6.5 6.5 0 1 1 9.5 4zm0 1a5.5 5.5 0 1 0 0 11a5.5 5.5 0 0 0 0-11z" fill="black"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+          <div class="card d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+            <?php echo $categoria->icon; ?>
             <div class="card-body p-3">
               <h6 class="card-title text-center">
-                <a href="" class="text-cart-categoria">Card titlee</a>
+                <a href="{{route('busqueda')}}?categoria={{$categoria->id}}" class="text-cart-categoria">{{$categoria->nombre}}</a>
               </h6>
-            </div>
+            </div></a>
           </div>
         </div>
+         @endforeach
       </div>
     </div>
     {{-- Productos destacados --}}
@@ -77,7 +79,7 @@
       @endforeach
     </section>
 
-    {{-- Categorías Populares --}}
+    {{-- Categorías Populares 
     <section class="row">
       <div class="col-12 section-content">
         <h1 class="title">Categorías populares</h1> 
@@ -106,6 +108,7 @@
       </article>
       @endforeach
     </section>
+    --}}
 
     {{-- Productos recientes --}}
     <section class="row section-content-border">
