@@ -35,8 +35,6 @@
           <h4 class="mb-4">Adjuntar fotos del producto</h4>
           <button class="dz-button" type="button">
           <form action="subir" class="dropzone" id="my-awesome-dropzone" method="get" enctype="multipart/form-data">@csrf</form>
-          <div id="archivos">
-          </div>
         </div>
 
       </div>
@@ -122,8 +120,9 @@
         </div>
       </div>
       <div class="col-12">
-        
-          <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips">Publicar</button>
+        <div id="archivos">
+            <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips">Publicar</button>
+        </div>
         
       </div>
     </div>
@@ -142,6 +141,16 @@
 @section('scriptJS')
 
 <script type="text/javascript">
+  let = count = 0;
+
+  Dropzone.prototype.defaultOptions.dictDefaultMessage = "Drop files here to upload";
+  Dropzone.prototype.defaultOptions.dictFallbackMessage = "Your browser does not support drag'n'drop file uploads.";
+  Dropzone.prototype.defaultOptions.dictFallbackText = "Please use the fallback form below to upload your files like in the olden days.";
+  Dropzone.prototype.defaultOptions.dictInvalidFileType = "You can't upload files of this type.";
+  Dropzone.prototype.defaultOptions.dictCancelUpload = "Cancelar carga";
+  Dropzone.prototype.defaultOptions.dictCancelUploadConfirmation = "Are you sure you want to cancel this upload?";
+  Dropzone.prototype.defaultOptions.dictRemoveFile = "Eliminar";
+  Dropzone.prototype.defaultOptions.dictMaxFilesExceeded = "You can not upload any more files.";
 
   Dropzone.options.myAwesomeDropzone = {
     paramName: "file", // Las imágenes se van a usar bajo este nombre de parámetro
@@ -149,10 +158,23 @@
     dictDefaultMessage: "Ingrese las fotos del producto", // Mensaje de la casa de imagenes
     
     success: function(file, response){
-      archivos = '<input type="text" name="archivos[]" value="'+response+'"/>';
+      count = count + 1;
+      file.id = count;
+      archivos = '<input id=file_'+count+' type="text" name="archivos[]" value="'+response+'" hidden/>';
       $("#archivos").append(archivos);
-    }
+    },
+    addRemoveLinks: true,
+       removedfile: function(file) {
+         var fileName = file.name; 
+        
+         $('#file_'+file.id).remove();
+         var _ref;
+          return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+       }
+    
   };
+
+
 
   // mostrar categorias para realizar cambios
   $('#tipo_id').change(function(){
