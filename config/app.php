@@ -167,6 +167,7 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Alexo\LaravelPayU\LaravelPayUServiceProvider::class,
         /*
          * Application Service Providers...
          */

@@ -13,7 +13,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     protected $redirectToAdmin = '/home';
-    protected $redirectToUser = '/homeUser';
+    protected $redirectToUser = '/anuncios';
 
     public function __construct()
     {
@@ -42,7 +42,7 @@ class LoginController extends Controller
         if(Auth::user()->rol_id == 1){
             return $this->redirectToAdmin;
         }else{
-            return $this->redirectToAdmin;
+            return $this->redirectToUser;
         }
     }
 }

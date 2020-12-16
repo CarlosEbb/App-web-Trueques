@@ -35,7 +35,10 @@
           <h4 class="mb-4">Adjuntar fotos del producto</h4>
           <button class="dz-button" type="button">
           <form action="subir" class="dropzone" id="my-awesome-dropzone" method="get" enctype="multipart/form-data">@csrf</form>
+          <div id="archivos">
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -52,7 +55,7 @@
           <textarea class="textarea" placeholder="Descripción" name="descripcion" id="descripcion" cols="20" rows="5" value="{{old('descripcion')}}"></textarea>
           <br>
 
-          <label for="nombreProducto">Precio del producto o Producto de intercambio</label>
+          <label for="nombreProducto">Cambio Por:</label>
           <input class="input" type="text" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}">
         </div>
       </div>
@@ -73,18 +76,18 @@
           </select>
         </div>
       </div>
-      <div class="col-12 mb-4">
+      <div class="col-12 mb-4" hidden>
         <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Tipo de anuncio</h4>
           <label for="descripcion">Seleccionar tipo de anuncio</label>
           <select name="tipo_id" id="tipo_id" class="select">
-              @foreach( \App\Models\TipoAnuncio::all() as $tipo)
+              @foreach( \App\Models\TipoAnuncio::orderBy("id", "desc")->get() as $tipo)
                 <option value="{{$tipo->id}}" id="{{$tipo->id}}">{{$tipo->nombre}}</option>
               @endforeach
           </select>
         </div>
       </div>
-      <div class="col-12 mb-4" id="card-categoria" style="display: none;">
+      <div class="col-12 mb-4" id="card-categoria">
         <div class="card card-border-radius p-4 p-md-5" id="add-card-categorias">
           <h4 class="mb-4 d-flex justify-content-between">
             Seleccionar categoria
@@ -119,9 +122,9 @@
         </div>
       </div>
       <div class="col-12">
-        <div id="archivos">
+        
           <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips">Publicar</button>
-        </div>
+        
       </div>
     </div>
     <input type="text" name="categoria_id" value="{{$_GET['categoria_id']}}" hidden>
@@ -146,7 +149,7 @@
     dictDefaultMessage: "Ingrese las fotos del producto", // Mensaje de la casa de imagenes
     
     success: function(file, response){
-      archivos = '<input type="text" name="archivos[]" value="'+response+'" hidden/>';
+      archivos = '<input type="text" name="archivos[]" value="'+response+'"/>';
       $("#archivos").append(archivos);
     }
   };
