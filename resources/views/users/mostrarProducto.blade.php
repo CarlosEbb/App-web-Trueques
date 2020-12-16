@@ -74,7 +74,7 @@
         <div class="row px-1">
           <article class="card card-border-radius card-border-active p-3 col-12">
             <h3 class="title-card-product">{{$producto->nombre}}</h3>
-            <p class="name-product">$ {{$producto->precio}}</p>
+            <p class="name-product">@if(is_numeric($producto->precio)) ${{number_format($producto->precio, 0, ",", ".")}} @else letra @endif</p>
             <span class="badge badge-pill badge-warning w-25">Destacado</span>
           </article>
           <article class="card card-border-radius p-3 col-12 mt-3">

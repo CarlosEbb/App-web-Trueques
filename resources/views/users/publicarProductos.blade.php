@@ -52,8 +52,8 @@
           <textarea class="textarea" placeholder="Descripción" name="descripcion" id="descripcion" cols="20" rows="5" value="{{old('descripcion')}}"></textarea>
           <br>
 
-          <label for="nombreProducto">Precio del producto</label>
-          <input class="input" type="number" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}">
+          <label for="nombreProducto">Precio del producto o Producto de intercambio</label>
+          <input class="input" type="text" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}">
         </div>
       </div>
       <div class="col-12 mb-4">

@@ -58,12 +58,25 @@ class ProductoController extends Controller
             'municipio' => 'required|string',
         ]);
 
+        if($request->subCategoria1 == '-'){
+            $request['categoria1'] = null;
+            $request['subCategoria1'] = null;
+        }
+
+        if($request->subCategoria2 == '-'){
+            $request['categoria2'] = null;
+            $request['subCategoria2'] = null;
+        }
+
+        if($request->subCategoria3 == '-'){
+            $request['categoria3'] = null;
+            $request['subCategoria3'] = null;
+        }
         
         $request['departamento_id'] = $request->departamento;
         $request['municipio_id'] = $request->municipio;
         $request['user_id'] = Auth::user()->id;
 
-        
         $producto = Producto::create($request->all());
      
         foreach($request->archivos as $file){
