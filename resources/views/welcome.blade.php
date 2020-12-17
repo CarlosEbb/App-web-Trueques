@@ -58,7 +58,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 section-content">
-        <h3 class="title">¿Qué está buscando hoy?</h3> 
+        <h3 class="title">¿Qué estás buscando hoy?</h3> 
       </div>
       <div class="owl-carousel owl-theme">
           @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)

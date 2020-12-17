@@ -22,7 +22,7 @@
                   <span class="tooltiptext">Eliminar</span>
                 </button>
                 {!! Form::close() !!}
-                <h6 class="mt-0 mb-0"> De {{number_format($favorito->producto->precio->de, 2, ",", ".")}} a {{number_format($favorito->producto->precio->hasta, 2, ",", ".")}} {{$favorito->producto->precio->moneda->nombre}}</h6>
+                <h6 class="mt-0 mb-0">{{$favorito->producto->precio}}</h6>
                 <p class="text-muted mb-0">
                   <small>Publicado por:
                     <a href="#" target="_blank" rel="noopener noreferrer">{{$favorito->producto->user->name}}</a></small>

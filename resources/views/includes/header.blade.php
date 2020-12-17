@@ -18,7 +18,7 @@
       />
     </a>
 
-    <form action="{{route('busqueda')}}" method="GET" class="d-none d-md-none d-lg-block" style="width: 58%;">@csrf
+    <form name="formulariobusqueda" action="{{route('busqueda')}}" method="GET" class="d-none d-md-none d-lg-block" style="width: 58%;">@csrf
       @include('includes.addBuscador')
       <div class="form-row align-items-center">
         <div class="col-md-4 d-flex">

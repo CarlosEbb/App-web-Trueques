@@ -18,6 +18,7 @@
             <tr>
                 <th class="border-top-0 text-title-table">Nombre</th>
                 <th class="border-top-0 text-title-table">Descripcion</th>
+                <th class="border-top-0 text-title-table">Icono</th>
                 <th class="border-top-0 text-title-table"></th>
             </tr>
         </thead>
@@ -26,6 +27,12 @@
                 <tr class="py-0">
                     <td class="text-table"><span>{{$categoria->nombre}}</span></td>
                     <td class="text-table"><span>{{$categoria->descripcion}}</span></td>
+                    <td class="text-table">
+                    <a class="btn btn-default tooltips" href="{{route('subcategorias.show', $categoria->id)}}">
+                            <?php echo $categoria->icon ?>
+                            <span class="tooltiptext">Ver Sub-Categorias</span>
+                        </a>
+                    </td>
                     <td class="d-flex justify-content-end py-0">
                         <a class="btn btn-default tooltips action-items" href="{{route('subcategorias.show', $categoria->id)}}">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12 6.5a9.77 9.77 0 0 1 8.82 5.5c-1.65 3.37-5.02 5.5-8.82 5.5S4.83 15.37 3.18 12A9.77 9.77 0 0 1 12 6.5m0-2C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 5a2.5 2.5 0 0 1 0 5a2.5 2.5 0 0 1 0-5m0-2c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5s-2.02-4.5-4.5-4.5z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
@@ -64,7 +71,12 @@
                                     
                                     <div class="form-group">
                                         <label for="" class="d-block" >Descripcion</label>
-                                        <input type="text" name="descripcion" class="input" value="" required>
+                                        <input type="text" name="descripcion" class="input" value="{{$categoria->descripcion}}" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="" class="d-block" >Icono SVG</label>
+                                        <input type="text" name="icon" class="input" value="{{$categoria->icon}}" required>
                                     </div>
 
                                     <div class="modal-footer">
@@ -104,8 +116,13 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="" class="d-block" >Icono SVG</label>
+                            <input type="text" name="icon" class="input" value="" required>
+                        </div>
+
+                        <div class="form-group">
                             <label for="" class="d-block" >Foto</label>
-                            <input type="file" name="img" class="input" required>
+                            <input type="file" name="img" class="input">
                         </div>
 
                     </div>
