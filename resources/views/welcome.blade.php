@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
   {{-- slider home --}}
-  <div class="container-fluid m-0 mt-2 p-0">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="container-fluid m-0 mt-2 p-0 bg-slider" >
+    <div id="carouselExampleIndicators" class="carousel slide h-100 d-flex align-items-center" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -10,13 +10,37 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100 mt-1" src="{{asset('img/banner-home.png')}}" alt="">
+          <div class="p-3 d-flex">
+            <div class="w-50 d-flex justify-content-center align-items-center px-3">
+              <img src="{{asset('img/telefono.png')}}"  class="animate__animated animate__fadeInLeftBig animate__delay-1s img-responsive-slide" style="margin-right: 30%;" alt="telefono">
+            </div>
+            <div class="w-50 d-flex justify-content-center align-items-center px-3">
+              <img src="{{asset('img/tablet.png')}}"    class="animate__animated animate__fadeInRight animate__delay-1s img-responsive-slide" style="margin-left: 30%;"   alt="tablet">
+            </div>
+          </div>
+          <h2 class="title-slider animate__animated animate__fadeIn animate__delay-1s">TECNOLOGÍA</h2>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100 mt-1" src="http://placehold.jp/1440x361.png" alt="Second slide">
+          <div class="p-3 d-flex">
+            <div class="w-50 d-flex justify-content-center align-items-center px-3">
+              <img src="{{asset('img/carro.png')}}"  class="animate__animated animate__fadeInLeftBig animate__delay-1s img-responsive-slide" style="margin-right: 30%;" alt="telefono">
+            </div>
+            <div class="w-50 d-flex justify-content-center align-items-center px-3">
+              <img src="{{asset('img/moto.png')}}"    class="animate__animated animate__fadeInRight animate__delay-1s img-responsive-slide" style="margin-left: 30%;"   alt="tablet">
+            </div>
+          </div>
+          <h2 class="title-slider animate__animated animate__fadeIn animate__delay-1s">VEHÍCULOS</h2>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100 mt-1" src="http://placehold.jp/1440x361.png" alt="Third slide">
+          <div class="p-3 d-flex">
+            <div class="w-50 d-flex justify-content-center align-items-center px-3">
+              <img src="{{asset('img/televisor.png')}}"  class="animate__animated animate__fadeInLeftBig animate__delay-1s img-responsive-slide" style="margin-right: 30%;" alt="telefono">
+            </div>
+            <div class="w-50 d-flex justify-content-center align-items-center px-3">
+              <img src="{{asset('img/mueble.png')}}"    class="animate__animated animate__fadeInRight animate__delay-1s img-responsive-slide" style="margin-left: 30%;"   alt="tablet">
+            </div>
+          </div>
+          <h2 class="title-slider animate__animated animate__fadeIn animate__delay-1s">HOGAR</h2>
         </div>
       </div>
     </div>

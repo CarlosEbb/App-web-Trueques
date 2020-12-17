@@ -470,7 +470,6 @@ button {
     border-radius: 15px;
 }
 
-
 .card-product,
 .card-banner-product {
     border-radius: 30px;
@@ -687,19 +686,36 @@ ul.ui-autocomplete.ui-menu {
 }
 
 /* categorias slider */
-.item-categorias:hover{
+.item-categorias:hover {
     background-color: var(--color-primary);
     color: white;
 }
 
-.text-cart-categoria{
+.text-cart-categoria {
     color: var(--color-dark);
 }
 
-.item-categorias:hover .text-cart-categoria{
+.item-categorias:hover .text-cart-categoria {
     color: white;
 }
 
-.item-categorias:hover svg path{
+.item-categorias:hover svg path {
     fill: white;
+}
+
+/* slider home */
+.bg-slider {
+    height: 500px;
+    background-image: url("../img/slider-1.jpg");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+.title-slider {
+    font-size: 50px;
+    padding-left: 5%;
+    font-weight: 700;
+    color: #3bb3c6;
 }

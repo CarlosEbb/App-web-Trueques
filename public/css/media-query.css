@@ -30,4 +30,8 @@
     .title-icon {
         display: none;
     }
+
+    .img-responsive-slide {
+        width: 150px;
+    }
 }

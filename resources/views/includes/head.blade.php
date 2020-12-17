@@ -11,14 +11,16 @@
 <title>{{ config('app.name', 'Laravel') }}</title>
 
 <!-- Fonts -->
-<link rel="dns-prefetch" href="//fonts.gstatic.com">
-{{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
+
 
 <!-- MDB -->
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> --}}
 <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+
+{{-- animete --}}
+<link rel="stylesheet" href="{{asset('css/animate.css')}}">
 
 <!-- Styles -->
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
