@@ -6,22 +6,22 @@
 	</head>
 	<body>
     <div class="wrapper">
+      <!-- Sidebar -->
       @if(Auth::user()->rol_id == 1)
-        <!-- Sidebar -->
         @include('includes.sidebar-admin')        
+      @else
+        @include('includes.sidebar-cliente')
+      @endif
 
-        <!-- Page Content -->
-        <div id="content">
-          @include('includes.navbar-admin')
-          <div class="content-dashboar">
-            <div class="container p-0">
-              @yield('content')
-            </div>
+      <!-- Page Content -->
+      <div id="content">
+        @include('includes.navbar-admin')
+        <div class="content-dashboar">
+          <div class="container p-0">
+            @yield('content')
           </div>
         </div>
-      @else
-        <script>window.location.href = "/";</script>
-      @endif
+      </div>
     </div>
 
 		<!-- script -->

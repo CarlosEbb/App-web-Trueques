@@ -6,7 +6,7 @@
                 <h2 class="title">Bienvenido, {{Auth::user()->name}}</h2>
             </div>
            
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mb-5 mb-md-0">
                 <div class="card card-border-radius">
                     <div class="card-body">
                         <div class="header-card-dashboard d-flex mb-4" style="align-items: flex-end;">
@@ -67,22 +67,21 @@
                                 <span class="card-text lead">10</span>
                             </h5>
                         </div>
-                        <ul class="list-unstyled">
-                            @foreach(\App\Models\User::paginate(5) as $user)
-                            <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                              <img class="mr-3 p-1 rounded-circle" src="{{asset('img/avatar.png')}}" width="35" height="35" alt="Generic placeholder image">
-                              <div class="media-body">
-                                <p class="lead mb-0" style="font-size: 15px;">
-                                    <span class="font-weight-500 ml-3 mr-5"><b>{{$user->name}}</b></span>
-                                    <span class="mx-5">{{$user->roles->nombre}}</span> 
-                                    <span class="mx-5">{{$user->created_at->format('d/m/Y')}}</span> 
-                                    
-                                    <span class="mx-5">estado: @if($user->status) activo @else suspendido @endif</span>
-                                </p>
-                              </div>
-                            </a>
-                            @endforeach
-                        </ul>
+                        <table class="table table-sm table-hover">
+                            <tbody>
+                                @foreach(\App\Models\User::paginate(5) as $user)
+                                    <a class="media text-dark ml-3 d-flex align-items-center list-hover" style="cursor: pointer;">
+                                        <tr  class="border-0">
+                                            <td class="text-center p-0 small"><img class=" p-1 rounded-circle" src="{{asset('img/avatar.png')}}" width="35" height="35" alt="Generic placeholder image"></td>
+                                            <td class="text-center p-0 small  w-25">{{$user->name}}</td>
+                                            <td class="text-center p-0 small  w-25">{{$user->roles->nombre}}</td>
+                                            <td class="text-center p-0 small  w-25">{{$user->created_at->format('d/m/Y')}}</td>
+                                            <td class="text-center p-0 small  w-25"><b>estado:</b> @if($user->status) activo @else suspendido @endif</td>
+                                        </tr>
+                                    </a>
+                                @endforeach
+                            </tbody>
+                        </table>
                         <p class="text-right mt-3"><a href="http://localhost:8000/users" class="">Ver todos</a></p>
                     </div>
                 </div>

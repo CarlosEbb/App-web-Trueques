@@ -1,4 +1,4 @@
-@media (max-width: 765px) {
+@media (max-width: 768px) {
     .menu-navbar {
         min-width: 250px !important;
     }
@@ -33,5 +33,17 @@
 
     .img-responsive-slide {
         width: 150px;
+    }
+}
+
+@media (max-width: 992px) {
+    .content-dashboar {
+        left: 0px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .content-dashboar {
+        left: 0px !important;
     }
 }
