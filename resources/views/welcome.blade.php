@@ -110,6 +110,34 @@
       @endforeach
     </section>
 
+    {{-- Categorías Populares --}}
+    <section class="row">
+      <div class="col-12 section-content">
+        <h1 class="title">Categorías populares</h1> 
+      </div>
+  
+      @foreach( \App\Models\Categoria::paginate(4) as $categoria)
+        <article class="col-12 col-md-6 mb-4">
+          <div class="card card-banner-product p-1">
+            <div class="card-body card-body-banner-categorias">
+              <div class="row">
+                <div class="col-12 col-md-12">
+                  <a href="{{route('categorias.show', $categoria->id)}}">
+                    <img src="{{asset($categoria->foto)}}" width="300" height="250" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h5 class="p-3">
+              {{$categoria->nombre}}
+              <p class="lead p-0 m-0" style="font-size: 15px;">{{$categoria->productos->count()}} anuncios</p>
+            </h5>
+            
+          </div>
+        </article>
+      @endforeach
+    </section>
+
     {{-- Productos recientes --}}
     <section class="row section-content-border">
       <div class="col-12">
@@ -186,33 +214,7 @@
 
     --}}
 
-         {{-- Categorías Populares --}}
-    <section class="row">
-      <div class="col-12 section-content">
-        <h1 class="title">Categorías populares</h1> 
-      </div>
-  
-      @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->paginate(4) as $categoria)
-        <article class="col-12 col-md-6 mb-4">
-          <div class="card card-banner-product p-1">
-            <div class="card-body card-body-banner-categorias">
-              <div class="row">
-                <div class="col-12 col-md-12">
-                  <a href="{{route('categorias.show', $categoria->id)}}">
-                    <img src="{{asset('img/carro.png')}}" width="300" height="250" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <h5 class="p-3">
-              {{$categoria->nombre}}
-              <p class="lead p-0 m-0" style="font-size: 15px;">19.2000 anuncios</p>
-            </h5>
-            
-          </div>
-        </article>
-      @endforeach
-    </section>
+   
   </div>
 @endsection
 
