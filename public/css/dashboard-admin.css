@@ -43,7 +43,7 @@
 }
 
 #sidebar.active {
-    margin-left: -280px;
+    margin-left: 0px;
 }
 
 #sidebar ul.components {

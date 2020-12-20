@@ -3,16 +3,11 @@
   {{-- slider home --}}
   <div class="container-fluid m-0 mt-2 p-0 bg-slider" >
     <div id="carouselExampleIndicators" class="carousel slide h-100 d-flex align-items-center" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="p-3 d-flex">
             <div class="w-50 d-flex justify-content-center align-items-center px-3">
-              <img src="{{asset('img/telefono.png')}}"  class="animate__animated animate__fadeInLeftBig animate__delay-1s img-responsive-slide" style="margin-right: 30%;" alt="telefono">
+              <img src="{{asset('img/telefono.png')}}"  class="animate__animated animate__fadeInLeftBig animate__delay-1s img-responsive-slide img-slider-tlf" style="margin-right: 30%;" alt="telefono">
             </div>
             <div class="w-50 d-flex justify-content-center align-items-center px-3">
               <img src="{{asset('img/tablet.png')}}"    class="animate__animated animate__fadeInRight animate__delay-1s img-responsive-slide" style="margin-left: 30%;"   alt="tablet">
@@ -61,18 +56,20 @@
         <h3 class="title">¿Qué estás buscando hoy?</h3> 
       </div>
       <div class="owl-carousel owl-theme">
-          @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
-        <div class="item d-flex justify-content-center">
-          <div class="card d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
-            <?php echo $categoria->icon; ?>
-            <div class="card-body p-3">
-              <h6 class="card-title text-center">
-                <a href="{{route('busqueda')}}?categoria={{$categoria->id}}" class="text-cart-categoria">{{$categoria->nombre}}</a>
-              </h6>
-            </div></a>
+        @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
+          <div class="item d-flex justify-content-center">
+            <div class="card d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+              <div class="card-img-top mt-3">
+                <?php echo $categoria->icon; ?>
+              </div>
+              <div class="card-body py-1">
+                <h6 class="card-title text-center">
+                  <a href="{{route('busqueda')}}?categoria={{$categoria->id}}" class="text-cart-categoria" style="font-size: 15px;">{{$categoria->nombre}}</a>
+                </h6>
+              </div>
+            </div>
           </div>
-        </div>
-         @endforeach
+        @endforeach
       </div>
     </div>
     
@@ -85,7 +82,7 @@
       
       @foreach( \App\Models\Producto::paginate(4) as $destacado)
         @if($destacado->foto->first() != null)
-          <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+          <article class="col-12 px-3 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
             <div class="card card-product h-100">
             <a href="{{route('productos.show', $destacado->id)}}"><img class="card-img-top card-img-product" src="{{$destacado->foto->first()->ruta}}" alt="Card image cap"></a>
               <div class="card-body">
@@ -121,7 +118,7 @@
       
       @foreach( \App\Models\Producto::orderBy('created_at','DESC')->paginate(4) as $producto)
         @if($producto->foto->first() != null)
-          <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
+          <article class="col-12 px-3 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
             <div class="card card-product h-100">
             <a href="{{route('productos.show', $producto->id)}}"><img class="card-img-top card-img-product" src="{{$producto->foto->first()->ruta}}" alt="Card image cap"></a>
               <div class="card-body">
@@ -188,6 +185,34 @@
     </section>
 
     --}}
+
+         {{-- Categorías Populares --}}
+    <section class="row">
+      <div class="col-12 section-content">
+        <h1 class="title">Categorías populares</h1> 
+      </div>
+  
+      @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->paginate(4) as $categoria)
+        <article class="col-12 col-md-6 mb-4">
+          <div class="card card-banner-product p-1">
+            <div class="card-body card-body-banner-categorias">
+              <div class="row">
+                <div class="col-12 col-md-12">
+                  <a href="{{route('categorias.show', $categoria->id)}}">
+                    <img src="{{asset('img/carro.png')}}" width="300" height="250" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h5 class="p-3">
+              {{$categoria->nombre}}
+              <p class="lead p-0 m-0" style="font-size: 15px;">19.2000 anuncios</p>
+            </h5>
+            
+          </div>
+        </article>
+      @endforeach
+    </section>
   </div>
 @endsection
 

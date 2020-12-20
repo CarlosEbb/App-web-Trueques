@@ -496,8 +496,7 @@ button {
 
 .card-footer-product {
     border-top: none;
-    background-color: transparent;
-    padding: 0;
+    background-color: white;
     display: flex;
     justify-content: flex-end;
 }
@@ -510,6 +509,9 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--color-primary);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 .card-body-banner-categorias img {
@@ -712,30 +714,30 @@ ul.ui-autocomplete.ui-menu {
 
 .owl-prev,
 .owl-next {
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  border-radius: 50px;
-  color: white !important;
-  background: none;
-  border: none;
-  z-index: 100;
-  background-color: var(--color-primary) !important;
-  padding: 20px !important;
-  box-shadow: 0px 1px 3px 0px #817c7c;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    color: white !important;
+    background: none;
+    border: none;
+    z-index: 100;
+    background-color: var(--color-primary) !important;
+    padding: 20px !important;
+    box-shadow: 0px 1px 3px 0px #817c7c;
 }
 .owl-prev i,
 .owl-next i {
-  font-size: 2.5rem;
-  color: #cecece;
+    font-size: 2.5rem;
+    color: #cecece;
 }
 
 .owl-prev {
-  left: 0;
+    left: 0;
 }
 
 .owl-next {
-  right: 0;
+    right: 0;
 }
 
 /* slider home */
@@ -763,7 +765,8 @@ ul.ui-autocomplete.ui-menu {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/%3e%3c/svg%3e") !important;
 }
 
-.carousel-control-next-icon, .carousel-control-prev-icon {
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
     display: inline-block;
     width: 20px;
     height: 20px;
