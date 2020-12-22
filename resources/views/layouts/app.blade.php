@@ -69,6 +69,7 @@
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 				});
 			});
+			
 			});
 		</script>
 
@@ -98,6 +99,17 @@
 			function enviar_formulario_publicado(){
 				document.publicadoFormulario.submit()
 			}
+
+			function subirFoto(){
+				$('#fileinput').trigger('click'); 
+			}
+
+			$(document).ready(function() {
+				$("#fileinput").on("change", function() {
+					document.fotoformulario.submit();
+				});
+			});
+			
 		</script>
 		@yield('scriptJS')
 	</body>

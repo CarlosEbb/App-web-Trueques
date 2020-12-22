@@ -143,7 +143,10 @@
         
           <div class="dropdown-menu  dropdown-menu-right menu menu-navbar" aria-labelledby="dropdownMenuLink">
             <div class="datos-users border-bottom">
-              <img class="rounded-circle img-user" src="{{asset('img/avatar.png')}}" alt="">
+              <form action="subirFoto" name="fotoformulario" method="post" enctype="multipart/form-data">@csrf
+                <input type="file" id="fileinput" name="fotoPerfil" hidden>
+              </form>
+              <img class="rounded-circle img-user" @if(Auth::user()->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(Auth::user()->foto)}}"  @endif alt="" onclick="subirFoto();">
               <div class="name-user">
                 <p class="mb-0 font-weight-bold">{{Auth::user()->name}}</p>
                 <p class="mb-2">{{Auth::user()->mail}}</p>

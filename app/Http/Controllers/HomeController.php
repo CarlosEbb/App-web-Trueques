@@ -49,4 +49,19 @@ class HomeController extends Controller
        
         return $request['foto'];
     }
+
+    public function subirFoto(Request $request)
+    {
+        $foto = $request->file("fotoPerfil");
+        $extension = $foto->getClientOriginalExtension();
+        $url = Storage::disk('perfil')->put($foto->getFilename().".".$extension, File::get($foto));
+        $request['foto'] = '/uploads/perfil/'.$foto->getFilename().".".$extension;
+       
+        $user = Auth::user();
+        $user->fill($request->all())->save();
+
+        return back();
+    }
+
+    
 }

@@ -122,7 +122,7 @@
             <div class="card-body card-body-banner-categorias">
               <div class="row">
                 <div class="col-12 col-md-12">
-                  <a href="{{route('categorias.show', $categoria->id)}}">
+                  <a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
                     <img src="{{asset($categoria->foto)}}" width="300" height="250" alt="">
                   </a>
                 </div>

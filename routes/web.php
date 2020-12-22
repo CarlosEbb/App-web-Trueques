@@ -97,3 +97,5 @@ Route::get("busqueda", "ProductoController@busqueda")->name('busqueda');
 
 Route::get("listarProductosPorUsuario/{id}", "ProductoController@listarProductosPorUsuario");
 
+
+Route::post("subirFoto", "HomeController@subirFoto")->name('subirFoto');
