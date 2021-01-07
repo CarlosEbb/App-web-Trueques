@@ -117,3 +117,15 @@ INSERT INTO `sub_categorias` (`id`, `nombre`, `descripcion`, `categoria_id`, `cr
 
 INSERT INTO `condicion` (`id`, `nombre`, `created_at`, `updated_at`) VALUES (NULL, 'Nuevo', NULL, NULL), (NULL, 'Como nuevo', NULL, NULL), (NULL, 'Bueno', NULL, NULL), (NULL, 'Aceptable', NULL, NULL), (NULL, 'Lo ha dado todo', NULL, NULL);
 
+
+
+INSERT INTO `productos` (`id`, `user_id`, `nombre`, `descripcion`, `categoria_id`, `sub_categoria_id`, `tipo_id`, `municipio_id`, `departamento_id`, `precio`, `condicion_id`, `categoria1`, `subCategoria1`, `categoria2`, `subCategoria2`, `categoria3`, `subCategoria3`, `status`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Camara cannon 23 MP', 'en perfecto estado', 3, 20, 2, 733, 17, '300000', NULL, 1, 1, NULL, NULL, NULL, NULL, 1, '2021-01-07 18:12:52', '2021-01-07 18:12:52'),
+(2, 2, 'audifonos genericos', 'estado optimo', 3, 14, 2, 341, 6, '5000', NULL, 13, 68, NULL, NULL, NULL, NULL, 1, '2021-01-07 18:15:17', '2021-01-07 18:15:17'),
+(3, 2, 'Bateria GGHHSS', 'Nueva en su paquete, se cambia por no usar', 3, 13, 2, 710, 16, '50000', NULL, 12, 63, NULL, NULL, NULL, NULL, 1, '2021-01-07 18:19:11', '2021-01-07 18:19:11');
+
+
+INSERT INTO `fotos` (`id`, `ruta`, `producto_id`, `principal`, `created_at`, `updated_at`) VALUES
+(1, '/uploads/productos/phpD53E.tmp.png', 1, 0, '2021-01-07 18:12:54', '2021-01-07 18:12:54'),
+(2, '/uploads/productos/php67F0.tmp.png', 2, 0, '2021-01-07 18:15:18', '2021-01-07 18:15:18'),
+(3, '/uploads/productos/php5E98.tmp.png', 3, 0, '2021-01-07 18:19:11', '2021-01-07 18:19:11');
