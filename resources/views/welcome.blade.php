@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
   {{-- slider home --}}
-  <div class="container-fluid m-0 mt-2 p-0 bg-slider" >
+  {{-- <div class="container-fluid m-0 mt-2 p-0 bg-slider" >
     <div id="carouselExampleIndicators" class="carousel slide h-100 d-flex align-items-center" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -47,19 +47,20 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </div>
+  </div> --}}
 
   {{-- container home --}}
   <div class="container">
     <div class="row">
-      <div class="col-12 section-content">
-        <h3 class="title">¿Qué estás buscando hoy?</h3> 
+      <div class="col-12 section-content text-center">
+        <p>tu tines lo que quiero, yo tengo lo que quieres.</p>
+        <h1 class="title">¿Qué estás buscando hoy?</h1> 
       </div>
-      <div class="owl-carousel owl-theme">
+      <div class="owl-carousel owl-theme" id="owl-carousel-categorias">
         @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
           <div class="item d-flex justify-content-center">
-            <div class="card d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
-              <div class="card-img-top mt-3">
+            <div class="card border-0 d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+              <div class="card-img-top icon-categorias mt-3" style="background: palevioletred">
                 <?php echo $categoria->icon; ?>
               </div>
               <div class="card-body py-1">
@@ -75,7 +76,27 @@
     
 
     {{-- Productos populares de la semana --}}
-    <section class="row section-content-border">
+    <section class="row">
+      <div class="col-12 section-content">
+        <h1 class="title">Productos populares de la semana</h1> 
+      </div>
+      <div class="owl-carousel owl-theme" id="owl-carousel-productos-semana">
+        @foreach( \App\Models\Producto::paginate(4) as $destacado)
+          <div class="item d-flex justify-content-center">
+            @if($destacado->foto->first() != null)
+              <article class="col-12 px-3 px-sm-3 mb-4 py-1">
+                <div class="card card-product-s">
+                  <a href="{{route('productos.show', $destacado->id)}}">
+                    <img class="card-img-product-s" src="{{$destacado->foto->first()->ruta}}" height="150" width="150" alt="Card image cap">
+                  </a>
+                </div>
+              </article>
+            @endif
+          </div>
+        @endforeach
+      </div>
+    </section>
+    {{-- <section class="row section-content-border">
       <div class="col-12">
         <h1 class="title">Productos populares de la semana</h1> 
       </div>
@@ -84,7 +105,7 @@
         @if($destacado->foto->first() != null)
           <article class="col-12 px-3 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
             <div class="card card-product h-100">
-            <a href="{{route('productos.show', $destacado->id)}}"><img class="card-img-top card-img-product" src="{{$destacado->foto->first()->ruta}}" alt="Card image cap"></a>
+              <a href="{{route('productos.show', $destacado->id)}}"><img class="card-img-top card-img-product" src="{{$destacado->foto->first()->ruta}}" alt="Card image cap"></a>
               <div class="card-body">
                 <h5 class="card-title mb-3 card-title-product text-truncate">{{$destacado->nombre}}</h5>
                 <div class="product-description">
@@ -92,7 +113,6 @@
                 </div>
                 <p class="mb-0 text-truncate" style="font-size: 12px">publicado en: {{$destacado->departamento->nombre}}</p>
                 @if($destacado->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
-                
               </div>
               <div class="card-footer card-footer-product  px-3 pb-3">
                 <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$destacado->id}}) @endauth">
@@ -108,10 +128,33 @@
           </article>
         @endif
       @endforeach
-    </section>
+    </section> --}}
 
     {{-- Categorías Populares --}}
     <section class="row">
+      <div class="col-12 section-content">
+        <h1 class="title">Categorías populares</h1> 
+      </div>
+      <div class="owl-carousel owl-theme" id="owl-carousel-categorias-populares">
+        @foreach( \App\Models\Categoria::paginate(4) as $categoria)
+          <div class="item d-flex justify-content-center">
+            <article class="col-12 mb-4">
+                <div class="card-body card-body-banner-categorias">
+                  <div class="row">
+                    <div class="col-12 col-md-12">
+                      <a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+                        <img src="{{asset($categoria->foto)}}" width="300" height="250" alt="">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="p-3 text-center">{{$categoria->nombre}}</h5>
+            </article>
+          </div>
+        @endforeach
+      </div>
+    </section>
+    {{-- <section class="row">
       <div class="col-12 section-content">
         <h1 class="title">Categorías populares</h1> 
       </div>
@@ -136,10 +179,10 @@
           </div>
         </article>
       @endforeach
-    </section>
+    </section> --}}
 
     {{-- Productos recientes --}}
-    <section class="row section-content-border">
+    {{-- <section class="row section-content-border">
       <div class="col-12">
         <h1 class="title">Productos Recientes</h1> 
       </div>
@@ -172,55 +215,13 @@
           </article>
         @endif
       @endforeach
-    </section>
-
-    
-
-    {{-- Productos destacados 
-    <section class="row">
-      <div class="col-12 section-content">
-        <h1 class="title">Productos populares de la semana</h1> 
-      </div>
-      @foreach( \App\Models\Producto::paginate(4) as $destacado)
-      @if($destacado->foto->first() != null)
-      
-      <article class="col-12 col-sm-6 col-md-4 col-lg-3 px-5 px-sm-3 mb-4 py-1 ">
-        <div class="card card-product h-100">
-        <a href="{{route('productos.show', $destacado->id)}}"><img class="card-img-top card-img-product" src="{{$destacado->foto->first()->ruta}}" alt="Card image cap"></a>
-          <div class="card-body">
-            <h5 class="card-title mb-3 card-title-product text-truncate">{{$destacado->nombre}}</h5>
-            <div class="product-description">
-              <span class="mb-3">{{$destacado->descripcion}}</span>
-            </div>
-            <p class="mb-0" style="font-size: 12px">publicado en: {{$destacado->departamento->nombre}}</p>
-            @if($destacado->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
-                <span class="badge badge-pill badge-success">{{$destacado->tipo->nombre}}</span>
-          </div>
-          <div class="card-footer card-footer-product px-3 pb-3">
-            <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar" onclick="addFavoritos({{$destacado->id}})">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path class="addFavoritoCorazon_{{$destacado->id}}" d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z" @Auth @if(App\Models\ProductoFavorito::where('producto_id', $destacado->id)->where('user_id', Auth::user()->id)->first() == null) fill="#009fb7" @else fill="red" @endif @else fill="#009fb7" @endauth/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-              <span class="tooltiptext">favorito</span>
-            </a>
-            <a href="{{route('productos.show', $destacado->id)}}" class="btn-rounded btn-primary btn-primary-dark  mx-1 tooltips">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M8.593 18.157L14.25 12.5L8.593 6.843l-.707.707l4.95 4.95l-4.95 4.95l.707.707z" fill="white"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-              <span class="tooltiptext">producto</span>
-            </a>
-          </div>
-        </div>
-      </article>
-      @endif
-      @endforeach
-    </section>
-
-    --}}
-
-   
+    </section> --}}
   </div>
 @endsection
 
 @section('scriptJS')
   <script>
-    $('.owl-carousel').owlCarousel({
+    $('#owl-carousel-categorias').owlCarousel({
       loop:true,
       margin:10,
       nav:true,
@@ -232,7 +233,41 @@
               items:3
           },
           1000:{
-              items:5
+              items:6
+          }
+      }
+    })
+
+    $('#owl-carousel-productos-semana').owlCarousel({
+      loop:true,
+      margin:10,
+      nav:true,
+      responsive:{
+          0:{
+              items:1
+          },
+          600:{
+              items:3
+          },
+          1000:{
+              items:3
+          }
+      }
+    })
+
+    $('#owl-carousel-categorias-populares').owlCarousel({
+      loop:true,
+      margin:10,
+      nav:true,
+      responsive:{
+          0:{
+              items:1
+          },
+          600:{
+              items:3
+          },
+          1000:{
+              items:3
           }
       }
     })

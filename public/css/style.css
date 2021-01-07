@@ -4,7 +4,7 @@
     --color-white: #fff;
     --color-white-dark: #c3c3c3;
     --color-dark: #000000;
-    --color-primary: #01a0b8;
+    --color-primary: #25405f;
     --color-segundary: #f1f1f1;
     --btn-dark: #009fb7;
     --color-transparent: "transparent";
@@ -23,7 +23,7 @@ a:hover {
 
 .title {
     font-size: 40px;
-    color: #505050;
+    color: var(--color-primary);
 }
 
 /* colores */
@@ -153,13 +153,10 @@ button {
 .btn-categorias {
     font-weight: bold;
     color: var(--color-dark);
-    border-bottom: 2px solid var(--color-primary);
     text-decoration: none !important;
-}
-
-.btn-categorias:hover {
-    color: var(--color-dark);
-    border-bottom: 2px solid var(--btn-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-filter {
@@ -174,13 +171,22 @@ button {
     border-color: #f8f9fa;
 }
 
+.btn-publicar {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* style input navbar */
 .input-search,
 .select-city,
 .input-municipio {
     background-color: var(--color-segundary);
-    border-radius: 11px;
+    border-radius: 50px;
     border-color: var(--color-segundary);
+    color: var(--color-primary);
 }
 
 .input-search:focus,
@@ -191,6 +197,13 @@ button {
     border-color: var(--color-white-dark);
     outline: 0;
     box-shadow: 0 0 0 0;
+    color: var(--color-primary);
+}
+
+.input-municipio::placeholder,
+.input-search::placeholder {
+    color: var(--color-primary);
+    font-weight: 500;
 }
 
 /* style campos form */
@@ -460,7 +473,7 @@ button {
 }
 /* section productos recientes */
 .section-content {
-    margin: 10% 0 3% 0;
+    margin: 5% 0 3% 0;
 }
 
 .section-content-border {
@@ -510,8 +523,8 @@ button {
     justify-content: center;
     align-items: center;
     background-color: var(--color-primary);
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-radius: 30px;
+    box-shadow: 3px 3px 6px 0px #15151582;
 }
 
 .card-body-banner-categorias img {
@@ -527,6 +540,22 @@ button {
 .checkFavoritos {
     color: #009fb7;
     background-color: #009fb7;
+}
+
+/* card de Productos populares de la semana */
+.card-product-s,
+.card-banner-product-s {
+    border-radius: 30px;
+    box-shadow: 3px 3px 6px 0px #15151582;
+    border: none;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img-product-s {
+    height: 225px;
 }
 
 /* detalles de producto */
@@ -688,17 +717,8 @@ ul.ui-autocomplete.ui-menu {
 }
 
 /* categorias slider */
-.item-categorias:hover {
-    background-color: var(--color-primary);
-    color: white;
-}
-
 .text-cart-categoria {
     color: var(--color-dark);
-}
-
-.item-categorias:hover .text-cart-categoria {
-    color: white;
 }
 
 .item-categorias:hover svg path {
@@ -718,18 +738,16 @@ ul.ui-autocomplete.ui-menu {
     height: 30px;
     width: 30px;
     border-radius: 50px;
-    color: white !important;
+    color: var(--color-primary);
     background: none;
     border: none;
     z-index: 100;
-    background-color: var(--color-primary) !important;
     padding: 20px !important;
-    box-shadow: 0px 1px 3px 0px #817c7c;
 }
-.owl-prev i,
-.owl-next i {
-    font-size: 2.5rem;
-    color: #cecece;
+.owl-prev span,
+.owl-next span {
+    font-size: 3.5rem !important;
+    color: var(--color-primary);
 }
 
 .owl-prev {
@@ -738,6 +756,20 @@ ul.ui-autocomplete.ui-menu {
 
 .owl-next {
     right: 0;
+}
+
+.icon-categorias {
+    padding: 5px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-categorias svg path {
+    fill: white;
 }
 
 /* slider home */
