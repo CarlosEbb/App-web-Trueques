@@ -53,7 +53,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 section-content text-center">
-        <p style="font-size: 20px">tu tines lo que quiero, yo tengo lo que quieres.</p>
+        <p style="font-size: 20px">Tu tienes lo que quiero, yo tengo lo que quieres.</p>
         <h1 class="title-home">¿Qué estás buscando hoy?</h1> 
       </div>
       <div class="owl-carousel owl-theme" id="owl-carousel-categorias">
