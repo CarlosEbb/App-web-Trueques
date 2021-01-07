@@ -20,6 +20,7 @@ class CreateCategorias extends Migration
             $table->text('descripcion');
             $table->text('icon')->nullable();
             $table->string('foto')->nullable();
+            $table->string('color')->default('palevioletred');
             
             $table->timestamps();
         });

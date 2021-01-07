@@ -88,6 +88,12 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if($request->img != null){
+            $foto = $request->file("img");
+            $extension = $foto->getClientOriginalExtension();
+            $url = Storage::disk('categorias')->put($foto->getFilename().".".$extension, File::get($foto));
+            $request['foto'] = '/uploads/categorias/'.$foto->getFilename().".".$extension;
+        }
         $categoria = Categoria::find($id);
         $categoria->fill($request->all())->save();
         Session::flash('mensaje','Actualizado correctamente');

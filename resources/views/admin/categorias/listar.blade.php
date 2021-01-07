@@ -19,6 +19,7 @@
                 <th class="border-top-0 text-title-table">Nombre</th>
                 <th class="border-top-0 text-title-table">Descripcion</th>
                 <th class="border-top-0 text-title-table">Icono</th>
+                <th class="border-top-0 text-title-table">Imagen</th>
                 <th class="border-top-0 text-title-table"></th>
             </tr>
         </thead>
@@ -32,6 +33,9 @@
                             <?php echo $categoria->icon ?>
                             <span class="tooltiptext">Ver Sub-Categorias</span>
                         </a>
+                    </td>
+                    <td>
+                        <img src="{{$categoria->foto}}" width="100px" alt="">
                     </td>
                     <td class="d-flex justify-content-end py-0">
                         <a class="btn btn-default tooltips action-items" href="{{route('subcategorias.show', $categoria->id)}}">
@@ -77,6 +81,11 @@
                                     <div class="form-group">
                                         <label for="" class="d-block" >Icono SVG</label>
                                         <input type="text" name="icon" class="input" value="{{$categoria->icon}}" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="" class="d-block" >Foto</label>
+                                        <input type="file" name="img" class="input">
                                     </div>
 
                                     <div class="modal-footer">

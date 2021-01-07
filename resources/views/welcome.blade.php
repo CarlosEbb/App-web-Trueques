@@ -60,7 +60,7 @@
         @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
           <div class="item d-flex justify-content-center">
             <div class="card border-0 d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
-              <div class="card-img-top icon-categorias mt-3" style="background: palevioletred">
+              <div class="card-img-top icon-categorias mt-3" style="background: {{$categoria->color}}">
                 <?php echo $categoria->icon; ?>
               </div>
               <div class="card-body py-1">
@@ -136,7 +136,7 @@
         <h1 class="sub-title-home">Categorías populares</h1> 
       </div>
       <div class="owl-carousel owl-theme" id="owl-carousel-categorias-populares">
-        @foreach( \App\Models\Categoria::paginate(4) as $categoria)
+        @foreach( \App\Models\Categoria::where('foto', '!=', null)->orderBy('created_at','DESC')->paginate(5) as $categoria)
           <div class="item d-flex justify-content-center">
             <article class="col-12 mb-4">
                 <div class="card-body card-body-banner-categorias">
