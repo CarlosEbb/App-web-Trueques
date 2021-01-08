@@ -13,6 +13,35 @@
     --shadow: 0 0 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24);
 }
 
+@font-face {
+    font-family: "WorkSans-Italic";
+    src: url("../fonts/WorkSans-Italic.ttf");
+}
+
+@font-face {
+    font-family: "WorkSans-Regular";
+    src: url("../fonts/WorkSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: "WorkSans-Bold";
+    src: url("../fonts/WorkSans-Bold.ttf");
+}
+
+@font-face {
+    font-family: "RobotoCondensed-Bold";
+    src: url("../fonts/RobotoCondensed-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Ubuntu-Regular";
+    src: url("../fonts/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Ubuntu-Bold";
+    src: url("../fonts/Ubuntu-Bold.ttf");
+}
 /* style text */
 a {
     text-decoration: none !important;
@@ -32,11 +61,13 @@ a:hover {
     font-size: 60px;
     color: var(--color-primary);
     font-weight: 700;
+    font-family: "WorkSans-Bold";
 }
 
 .sub-title-home {
     color: var(--color-primary);
     font-weight: 400;
+    font-family: "Ubuntu-Regular";
 }
 
 /* colores */
@@ -78,6 +109,14 @@ body::-webkit-scrollbar-thumb:active {
 .footer-copyright {
     color: var(--color-white);
     background-color: var(--color-primary);
+}
+
+.title-list-footer {
+    font-family: "Ubuntu-Bold";
+}
+
+.sub-title-list-footer {
+    font-family: "WorkSans-Regular";
 }
 
 /* style btn */
@@ -167,6 +206,8 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "WorkSans-Regular";
+    font-size: 18px;
 }
 
 .btn-filter {
@@ -214,9 +255,10 @@ button {
 .input-municipio::placeholder,
 .input-search::placeholder {
     color: var(--color-primary);
-    font-weight: 500;
+    font-weight: 700;
     font-size: 20px;
     font-style: italic;
+    font-family: "WorkSans-Italic";
 }
 
 /* style campos form */
@@ -535,7 +577,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--bg-segundary);
+    background-color: #a6cde1;
     border-radius: 30px;
     box-shadow: 3px 3px 6px 0px #15151582;
 }
@@ -550,6 +592,7 @@ button {
     color: var(--color-primary);
     font-weight: 800;
     margin-top: 6%;
+    font-family: "RobotoCondensed-Bold";
 }
 
 .checkFavoritos {
@@ -570,7 +613,7 @@ button {
 }
 
 .card-img-product-s {
-    height: 225px;
+    height: 300px;
 }
 
 #owl-carousel-productos-semana .owl-nav,
@@ -579,6 +622,7 @@ button {
     top: 100px;
     left: 0;
     right: 0;
+    display: block;
 }
 
 /* detalles de producto */
@@ -742,6 +786,8 @@ ul.ui-autocomplete.ui-menu {
 /* categorias slider */
 .text-cart-categoria {
     color: var(--color-dark);
+    font-family: "RobotoCondensed-Bold";
+    font-size: 25px;
 }
 
 .item-categorias:hover svg path {
@@ -783,7 +829,7 @@ ul.ui-autocomplete.ui-menu {
 
 .icon-categorias {
     padding: 5px;
-    width: 90px;
+    width: 780px;
     height: 90px;
     border-radius: 50px;
     display: flex;
