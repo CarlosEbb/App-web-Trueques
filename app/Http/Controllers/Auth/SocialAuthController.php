@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Mail;
 
 class SocialAuthController extends Controller
 {
+
+    protected $redirectToAdmin = '/home';
+    protected $redirectToUser = '/anuncios';
+    
     // Metodo encargado de la redireccion a Facebook
     public function redirectToProvider($provider)
     {
@@ -48,10 +52,18 @@ class SocialAuthController extends Controller
         if($envio){
             //$this->correoBienvenida();
         }
-        if(Session::has('redirect_to')){
+
+        if(Auth::user()->rol_id == 1){
+            return redirect($this->redirectToAdmin);
+        }else{
+            return redirect($this->redirectToUser);
+        }
+
+        /* if(Session::has('redirect_to')){
             return redirect()->to(Session::get('redirect_to'));
         }else
             return redirect()->to('/home#');
+        */
     }
     
      public function correoBienvenida()
