@@ -53,8 +53,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 section-content text-center">
-        <p>tu tines lo que quiero, yo tengo lo que quieres.</p>
-        <h1 class="title">¿Qué estás buscando hoy?</h1> 
+        <p style="font-size: 20px">tu tines lo que quiero, yo tengo lo que quieres.</p>
+        <h1 class="title-home">¿Qué estás buscando hoy?</h1> 
       </div>
       <div class="owl-carousel owl-theme" id="owl-carousel-categorias">
         @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
@@ -78,7 +78,7 @@
     {{-- Productos populares de la semana --}}
     <section class="row">
       <div class="col-12 section-content">
-        <h1 class="title">Productos populares de la semana</h1> 
+        <h1 class="sub-title-home">Productos populares de la semana</h1> 
       </div>
       <div class="owl-carousel owl-theme" id="owl-carousel-productos-semana">
         @foreach( \App\Models\Producto::paginate(4) as $destacado)
@@ -133,7 +133,7 @@
     {{-- Categorías Populares --}}
     <section class="row">
       <div class="col-12 section-content">
-        <h1 class="title">Categorías populares</h1> 
+        <h1 class="sub-title-home">Categorías populares</h1> 
       </div>
       <div class="owl-carousel owl-theme" id="owl-carousel-categorias-populares">
         @foreach( \App\Models\Categoria::paginate(4) as $categoria)
@@ -148,7 +148,7 @@
                     </div>
                   </div>
                 </div>
-                <h5 class="p-3 text-center">{{$categoria->nombre}}</h5>
+                <h5 class="p-3 text-center card-title-banner-categorias">{{$categoria->nombre}}</h5>
             </article>
           </div>
         @endforeach

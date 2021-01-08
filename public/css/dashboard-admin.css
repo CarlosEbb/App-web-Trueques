@@ -3,7 +3,9 @@
     --color-white: #fff;
     --color-white-dark: #c3c3c3;
     --color-dark: #000000;
-    --color-primary: #01a0b8;
+    --color-primary: #25405f;
+    --bg-segundary: #90c9dd;
+    --bg-blue-segundary: #2376a6;
     --color-segundary: #f1f1f1;
     --btn-dark: #009fb7;
     --color-transparent: "transparent";
@@ -66,13 +68,13 @@
 }
 
 #sidebar ul li a:hover {
-    color: var(--btn-dark);
-    background: #1fa0b469;
+    color: var(--bg-segundary);
+    background: var(--color-primary);
     border-radius: 5px;
 }
 
 #sidebar ul li a:hover svg path {
-    fill: #1fa0b4;
+    fill: var(--bg-segundary);
 }
 
 #sidebar ul li.active > a,
@@ -205,11 +207,12 @@ ul.CTAs a {
 }
 
 .btn-menu:hover {
-    background: #1fa0b469;
+    background: var(--color-primary);
+    color: var(--bg-segundary);
 }
 
 .btn-menu:hover svg path {
-    fill: #1fa0b4e8;
+    fill: var(--bg-segundary);
 }
 
 .action-items {
@@ -225,10 +228,10 @@ tr:hover .action-items {
 }
 
 .action-items:hover svg path {
-    fill: #1fa0b4;
+    fill: var(--bg-blue-segundary);
 }
 .action-items svg path {
-    fill: #1fa0b4be;
+    fill: var(--color-primary);
 }
 
 .modal-content {
@@ -250,10 +253,10 @@ tr:hover .action-items {
 
 .header-card-dashboard {
     align-items: flex-end;
-    background: #01a0b821;
+    background: var(--bg-segundary);
     padding: 11px;
     border-radius: 15px;
-    color: #01a0b8;
+    color: var(--bg-blue-segundary);
 }
 
 .icon-card-dashboard svg path {
@@ -262,4 +265,15 @@ tr:hover .action-items {
 
 .list-hover:hover {
     background-color: var(--color-segundary);
+}
+
+.btn-outline-info {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-outline-info:hover {
+    color: #fff;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
 }

@@ -1,32 +1,22 @@
-<nav class="navbar navbar-light bg-light shadow-0 border-bottom">
+<nav class="navbar navbar-light shadow-0">
   <div class="container">
-    <a class="navbar-brand d-block p-2 d-md-none w-100" href="/">
-      <img
-        src="{{asset('img/Logo.png')}}"
-        height="40"
-        alt="Trueque"
-        loading="lazy"
-      />
+    <a class="navbar-brand m-0 d-block p-2 d-md-none w-100" href="/">
+      <img src="{{asset('img/Logo-2.png')}}" height="40" alt="Trueque" loading="lazy"/>
     </a>
 
-    <a class="navbar-brand d-none d-md-block" href="/">
-      <img
-        src="{{asset('img/Logo.png')}}"
-        height="40"
-        alt="Trueque"
-        loading="lazy"
-      />
+    <a class="navbar-brand m-0  d-none d-md-block" href="/">
+      <img src="{{asset('img/Logo-2.png')}}" height="40" alt="Trueque" loading="lazy"/>
     </a>
 
-    <form name="formulariobusqueda" action="{{route('busqueda')}}" method="GET" class="d-none d-md-none d-lg-block" style="width: 58%;">@csrf
+    <form name="formulariobusqueda" action="{{route('busqueda')}}" method="GET" class="d-none d-md-none d-lg-block" style="width: 60%;">@csrf
       @include('includes.addBuscador')
       <div class="form-row align-items-center">
         <div class="col-md-4 d-flex">
-          <input type="text" class="form-control input-municipio pl-5" placeholder="Municipio" name="municipio" id="myInput" @isset($_GET['municipio']) value="{{$_GET['municipio']}}" @endisset>
+          <input type="text" class="form-control input-municipio" placeholder="Municipio" name="municipio" id="myInput" @isset($_GET['municipio']) value="{{$_GET['municipio']}}" @endisset>
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); left: 10px; top: 8px; position: absolute;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" fill="#25405f"/><circle cx="12" cy="9" r="2.5" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
         </div>
         <div class="col-md-8 d-flex">
-          <input type="text" class="form-control input-search pl-5" placeholder="Buscar Productos" name="busqueda" required @isset($_GET['busqueda']) value="{{$_GET['busqueda']}}" @endisset>
+          <input type="text" class="form-control input-search" placeholder="Buscar Productos" name="busqueda" required @isset($_GET['busqueda']) value="{{$_GET['busqueda']}}" @endisset>
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); left: 10px; top: 8px; position: absolute;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
         </div>
       </div>
@@ -35,7 +25,7 @@
 
     @guest
       <div class="d-flex justify-content-end content-menu-logaut">
-        <a class="btn-iniciar-sesion mx-2 btn btn-rounded-light btn-rounded py-2" href="{{route('login')}}">
+        <a class="btn-iniciar-sesion mx-2 btn btn-rounded py-2" href="{{route('login')}}">
           <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11.5 14c4.142 0 7.5 1.567 7.5 3.5V20H4v-2.5c0-1.933 3.358-3.5 7.5-3.5zm6.5 3.5c0-1.38-2.91-2.5-6.5-2.5S5 16.12 5 17.5V19h13v-1.5zM11.5 5a3.5 3.5 0 1 1 0 7a3.5 3.5 0 0 1 0-7zm0 1a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
           Regístrate o inicia sesión
         </a>
@@ -70,16 +60,22 @@
         </div>
         
         <a class="btn-publicar mx-1" href="{{route('login')}}" rel="noopener noreferrer">
-          <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#00416b"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+          <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#00416b"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
           <span class="d-none d-md-block">Publicar</span>
         </a>
       </div>
     @else
       <div class="content-menu-login d-flex">
+        {{-- Btn publicar producto --}}
+        <a class="btn-publicar mx-1" href="{{route('selecionar-categorias')}}" rel="noopener noreferrer">
+          <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#00416b"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+          <span class="d-none d-md-block">Publicar</span>
+        </a>
+        
         {{-- Btn menu notificaciones --}}
         <div class="dropdown">
-          <a class="dropdown-toggle btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 btn-menu-notificaciones tooltips" href="#" role="button" id="dropdownMenuNotificaciones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12 4.5a.5.5 0 0 0-1 0v1.527A4.5 4.5 0 0 0 7 10.5v5.914L5.414 18h12.172L16 16.414V10.5a4.5 4.5 0 0 0-4-4.473V4.5zM11.5 3A1.5 1.5 0 0 1 13 4.5v.707c2.309.653 4 2.775 4 5.293V16l3 3H3l3-3v-5.5a5.502 5.502 0 0 1 4-5.293V4.5A1.5 1.5 0 0 1 11.5 3zm0 19a2.5 2.5 0 0 1-2.45-2h1.035a1.5 1.5 0 0 0 2.83 0h1.035a2.5 2.5 0 0 1-2.45 2z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+          <a class="dropdown-toggle btn-rounded mx-1 btn-menu-notificaciones tooltips" href="#" role="button" id="dropdownMenuNotificaciones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19.29 17.29L18 16v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-1.29 1.29c-.63.63-.19 1.71.7 1.71h13.17c.9 0 1.34-1.08.71-1.71zM16 17H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6zm-4 5c1.1 0 2-.9 2-2h-4a2 2 0 0 0 2 2z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
             <span class="tooltiptext">notificaciones</span>
           </a>
           
@@ -103,7 +99,7 @@
         </div>
         {{-- Btn menu buscar --}}
         <div class="dropdown d-block d-md-block d-lg-none">
-          <a class="my-auto btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar" href="#" role="button" id="dropdownMenuBuscar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="my-auto btn-rounded mx-1 tooltips btn-menu-buscar" href="#" role="button" id="dropdownMenuBuscar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M9.5 4a6.5 6.5 0 0 1 4.932 10.734l5.644 5.644l-.707.707l-5.645-5.645A6.5 6.5 0 1 1 9.5 4zm0 1a5.5 5.5 0 1 0 0 11a5.5 5.5 0 0 0 0-11z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
             <span class="tooltiptext">Buscar</span>
           </a>
@@ -130,8 +126,8 @@
           </div>
         </div>
         <div class="dropdown">
-          <a href="#" class="dropdown-toggle btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 btn-menu-user tooltips" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11.5 14c4.142 0 7.5 1.567 7.5 3.5V20H4v-2.5c0-1.933 3.358-3.5 7.5-3.5zm6.5 3.5c0-1.38-2.91-2.5-6.5-2.5S5 16.12 5 17.5V19h13v-1.5zM11.5 5a3.5 3.5 0 1 1 0 7a3.5 3.5 0 0 1 0-7zm0 1a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+          <a href="#" class="dropdown-toggle btn-rounded mx-1 btn-menu-user tooltips" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12 5.9a2.1 2.1 0 1 1 0 4.2a2.1 2.1 0 0 1 0-4.2m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4s4-1.79 4-4s-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v2c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-2c0-2.66-5.33-4-8-4z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
             <span class="tooltiptext">Usuario</span>
           </a>
         
@@ -178,11 +174,7 @@
             </ul>
           </div>
         </div>
-        {{-- Btn publicar producto --}}
-        <a class="btn-rounded btn-primary btn-primary-dark btn-border-dark mx-1" href="{{route('selecionar-categorias')}}" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 13v-1h6V6h1v6h6v1h-6v6h-1v-6H5z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-          <span class="d-none d-md-block">Publicar</span>
-        </a>
+
       </div>
     @endauth
   </div>

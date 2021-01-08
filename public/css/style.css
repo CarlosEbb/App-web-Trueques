@@ -5,6 +5,8 @@
     --color-white-dark: #c3c3c3;
     --color-dark: #000000;
     --color-primary: #25405f;
+    --bg-segundary: #90c9dd;
+    --bg-blue-segundary: #2376a6;
     --color-segundary: #f1f1f1;
     --btn-dark: #009fb7;
     --color-transparent: "transparent";
@@ -18,12 +20,23 @@ a {
 }
 
 a:hover {
-    color: #005764;
+    color: var(--bg-blue-segundary);
 }
 
 .title {
     font-size: 40px;
     color: var(--color-primary);
+}
+
+.title-home {
+    font-size: 60px;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.sub-title-home {
+    color: var(--color-primary);
+    font-weight: 400;
 }
 
 /* colores */
@@ -53,12 +66,9 @@ body::-webkit-scrollbar-thumb:active {
     background-color: #999999;
 }
 
-footer {
-    background-color: #f1f1f1;
-}
-
 .link-footer {
     color: #505050;
+    font-size: 13px;
 }
 
 .link-footer:hover {
@@ -76,13 +86,14 @@ button {
 }
 
 .btn-iniciar-sesion {
-    font-weight: 500;
+    font-weight: 700;
     font-size: 15px;
     color: var(--color-primary);
+    background-color: var(--bg-segundary);
 }
 
 .btn-iniciar-sesion:hover {
-    background-color: var(--color-white-dark);
+    background-color: var(--bg-blue-segundary);
     color: var(--color-primary);
 }
 
@@ -136,12 +147,11 @@ button {
 }
 
 .btn-primary-dark {
-    background-color: var(--btn-dark);
+    background-color: var(--color-primary);
 }
 
 .btn-primary-dark:hover {
-    background-color: #005764;
-    border-color: #006877;
+    background-color: #002364;
 }
 
 .btn-primary:focus {
@@ -152,7 +162,7 @@ button {
 
 .btn-categorias {
     font-weight: bold;
-    color: var(--color-dark);
+    color: var(--color-primary);
     text-decoration: none !important;
     display: flex;
     justify-content: center;
@@ -173,7 +183,7 @@ button {
 
 .btn-publicar {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 800;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -187,6 +197,7 @@ button {
     border-radius: 50px;
     border-color: var(--color-segundary);
     color: var(--color-primary);
+    padding-left: 30px;
 }
 
 .input-search:focus,
@@ -204,6 +215,8 @@ button {
 .input-search::placeholder {
     color: var(--color-primary);
     font-weight: 500;
+    font-size: 20px;
+    font-style: italic;
 }
 
 /* style campos form */
@@ -369,18 +382,18 @@ button {
 }
 
 .menu-user-list li {
-    color: var(--color-dark);
+    color: var(--color-primary);
     margin-bottom: 15px;
 }
 
 .menu-user-list li a {
-    color: var(--btn-dark);
+    color: var(--color-primary);
     font-weight: 600;
     font-size: 17px;
 }
 
 .menu-user-list li:hover > a {
-    color: #005764;
+    color: var(--bg-blue-segundary);
 }
 
 /* menu notificaciones */
@@ -522,7 +535,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-primary);
+    background-color: var(--bg-segundary);
     border-radius: 30px;
     box-shadow: 3px 3px 6px 0px #15151582;
 }
@@ -532,9 +545,11 @@ button {
     padding: 20px;
 }
 
-.card-body-banner-categorias h5 {
-    font-size: 30px;
-    color: #686868;
+.card-title-banner-categorias {
+    font-size: 25px;
+    color: var(--color-primary);
+    font-weight: 800;
+    margin-top: 6%;
 }
 
 .checkFavoritos {
@@ -556,6 +571,14 @@ button {
 
 .card-img-product-s {
     height: 225px;
+}
+
+#owl-carousel-productos-semana .owl-nav,
+#owl-carousel-categorias-populares .owl-nav {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
 }
 
 /* detalles de producto */
@@ -585,7 +608,7 @@ button {
 
 .name-product {
     font-size: 18px;
-    color: #005764;
+    color: var(--color-primary);
     font-weight: 700;
 }
 
