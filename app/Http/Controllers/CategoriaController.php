@@ -94,6 +94,13 @@ class CategoriaController extends Controller
             $url = Storage::disk('categorias')->put($foto->getFilename().".".$extension, File::get($foto));
             $request['foto'] = '/uploads/categorias/'.$foto->getFilename().".".$extension;
         }
+
+        if($request->icono != null){
+            $foto = $request->file("icono");
+            $extension = $foto->getClientOriginalExtension();
+            $url = Storage::disk('iconos')->put($foto->getFilename().".".$extension, File::get($foto));
+            $request['icon'] = '/uploads/iconos/'.$foto->getFilename().".".$extension;
+        }
         $categoria = Categoria::find($id);
         $categoria->fill($request->all())->save();
         Session::flash('mensaje','Actualizado correctamente');

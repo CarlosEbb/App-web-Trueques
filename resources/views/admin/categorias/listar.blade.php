@@ -29,10 +29,7 @@
                     <td class="text-table"><span>{{$categoria->nombre}}</span></td>
                     <td class="text-table"><span>{{$categoria->descripcion}}</span></td>
                     <td class="text-table">
-                    <a class="btn btn-default tooltips" href="{{route('subcategorias.show', $categoria->id)}}">
-                            <?php echo $categoria->icon ?>
-                            <span class="tooltiptext">Ver Sub-Categorias</span>
-                        </a>
+                        <img src="{{$categoria->icon}}" width="100px" alt="">
                     </td>
                     <td>
                         <img src="{{$categoria->foto}}" width="100px" alt="">
@@ -80,7 +77,7 @@
 
                                     <div class="form-group">
                                         <label for="" class="d-block" >Icono SVG</label>
-                                        <input type="text" name="icon" class="input" value="{{$categoria->icon}}" required>
+                                        <input type="file" name="icono" class="input">
                                     </div>
 
                                     <div class="form-group">
@@ -126,7 +123,7 @@
 
                         <div class="form-group">
                             <label for="" class="d-block" >Icono SVG</label>
-                            <input type="text" name="icon" class="input" value="" required>
+                            <input type="file" name="icono" class="input">
                         </div>
 
                         <div class="form-group">

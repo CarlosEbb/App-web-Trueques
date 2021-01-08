@@ -61,7 +61,7 @@
           <div class="item d-flex justify-content-center">
             <div class="card border-0 d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
               <div class="card-img-top icon-categorias mt-3">
-                <img src="{{asset('img/icons/vehiculos.svg')}}" alt="">
+                <img src="{{$categoria->icon}}" alt="">
               </div>
               <div class="card-body py-1">
                 <h6 class="card-title text-center">

@@ -68,6 +68,13 @@ return [
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
+        
+        'iconos' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/iconos',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
 
         'users' => [
             'driver' => 'local',
