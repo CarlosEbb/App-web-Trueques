@@ -188,16 +188,40 @@
       </a>
     
       <div class="dropdown-menu menu menu-categorias mt-2 px-1" aria-labelledby="dropdownMenuLink">
-        <ul class="list-group flex-row row">
-          @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
-            <li class="list-group-item border-0 border-bottom list-group-item-hover col-md-3 col-12">
-              <b><a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">{{$categoria->nombre}}</a></b>
-                @foreach($categoria->subCategoria as $subCategoria)
-                  <a class="d-block" style="color: #3d3d3d;" href="{{route('busqueda')}}?categoria={{$categoria->id}}&subCategoria={{$subCategoria->id}}">{{$subCategoria->nombre}}</a>
+        <div style="column-count: 4; width: 100%; justify-content: space-between;">
+          
+            @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
+            <div style="display: inline-block; width: 100%;">
+              <div class="mt-2">
+                <a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+                  <b>{{$categoria->nombre}}</b>
+                </a>
+              </div>
+              @foreach($categoria->subCategoria as $subCategoria)
+                <div>
+                  <a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+                    {{$subCategoria->nombre}}
+                  </a>
+                </div>
                 @endforeach
+              </div>
+            @endforeach
+          
+        </div>
+        {{-- <ul class="list-group flex-row row">
+          @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
+            <li class="list-group-item border-0 border-bottom list-group-item-hover col-md-3 col-12 h-auto">
+              <a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+                <b>{{$categoria->nombre}}</b>
+              </a>
+              @foreach($categoria->subCategoria as $subCategoria)
+                <a class="d-block" style="color: #3d3d3d;" href="{{route('busqueda')}}?categoria={{$categoria->id}}&subCategoria={{$subCategoria->id}}">
+                  {{$subCategoria->nombre}}
+                </a>
+              @endforeach
             </li>
           @endforeach
-        </ul>
+        </ul> --}}
       </div>
     </div>
   </li>
