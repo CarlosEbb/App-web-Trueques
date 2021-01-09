@@ -358,6 +358,17 @@ button {
     overflow-x: hidden;
 }
 
+.content-categorias {
+    column-count: 4;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.item-categorias {
+    display: inline-block;
+    width: 100%;
+}
+
 .list-group-item {
     cursor: pointer;
 }

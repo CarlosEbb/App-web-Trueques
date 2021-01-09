@@ -188,10 +188,9 @@
       </a>
     
       <div class="dropdown-menu menu menu-categorias mt-2 px-1" aria-labelledby="dropdownMenuLink">
-        <div style="column-count: 4; width: 100%; justify-content: space-between;">
-          
-            @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
-            <div style="display: inline-block; width: 100%;">
+        <div class="content-categorias">
+          @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
+            <div class="item-categorias">
               <div class="mt-2">
                 <a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
                   <b>{{$categoria->nombre}}</b>
@@ -203,10 +202,9 @@
                     {{$subCategoria->nombre}}
                   </a>
                 </div>
-                @endforeach
-              </div>
-            @endforeach
-          
+              @endforeach
+            </div>
+          @endforeach
         </div>
         {{-- <ul class="list-group flex-row row">
           @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
