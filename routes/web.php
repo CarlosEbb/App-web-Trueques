@@ -40,6 +40,7 @@ Route::resource('categorias', CategoriaController::class);
 Route::resource('subcategorias', SubCategoriaController::class);
 Route::resource('users', UserController::class);
 Route::resource('comentarios', ComentarioController::class);
+Route::resource('payment', PagoController::class);
 
 // productos usuarios 
 Route::get('publicar-productos', function () {
@@ -78,9 +79,7 @@ Route::get('selecionar-categorias', function () {
     return view('/users/selecionarCategoria');
 })->name('selecionar-categorias');
 
-Route::get('prueba', function () {
-    return view('/prueba');
-})->name('prueba');
+Route::get("prueba", "HomeController@prueba")->name('prueba');
 
 
 

@@ -15,6 +15,15 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'reference', 'state', 'value', 'user_id'
+        'referenceCode',
+        'reference_pol',
+        'transactionId',
+        'lapTransactionState',
+        'TX_VALUE',
+        'currency',
+        'buyerEmail',
+        'user_id',
+        'producto_id',
+        'days',
     ];
 }

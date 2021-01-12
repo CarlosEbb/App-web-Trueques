@@ -13,7 +13,24 @@
               <h5 class="card-text">Destacar producto por 5 dias</h5>
               <p class="name-product" style="font-size: 35px;">10.000 $</p>
               <p class="card-title">Pago por producto destacado</p>
-              <button type="button" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" data-toggle="modal" data-target="#exampleModal" >Destacar producto</button>
+              
+              <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                <input name="merchantId"    type="hidden"  value="508029"   >
+                <input name="accountId"     type="hidden"  value="512321" >
+                <input name="description"   type="hidden"  value="Test PAYU"  >
+                <input name="referenceCode" type="hidden"  value="TestPayU" >
+                <input name="amount"        type="hidden"  value="10000"   >
+                <input name="tax"           type="hidden"  value="3193"  >
+                <input name="taxReturnBase" type="hidden"  value="16806" >
+                <input name="currency"      type="hidden"  value="COP" >
+                <input name="signature"     type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
+                <input name="test"          type="hidden"  value="1" >
+                <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+                <input name="responseUrl"    type="hidden"  value="http://localhost:8000/payment/1?&user_id=1&producto_id=1&days=3" >
+                <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
+                <input name="productonro"    type="hidden"  value="2" >
+                <input name="Submit" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" type="submit"  value="Destacar producto" >
+              </form>
             </div>
           </div>
         </div>
@@ -23,7 +40,23 @@
               <h5 class="card-text">Destacar producto por 15 dias</h5>
               <p class="name-product" style="font-size: 35px;">20.000 $</p>
               <p class="card-title">Pago por producto destacado</p>
-              <button type="button" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" data-toggle="modal" data-target="#exampleModal" >Destacar producto</button>
+              <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                <input name="merchantId"    type="hidden"  value="508029"   >
+                <input name="accountId"     type="hidden"  value="512321" >
+                <input name="description"   type="hidden"  value="Test PAYU"  >
+                <input name="referenceCode" type="hidden"  value="TestPayU" >
+                <input name="amount"        type="hidden"  value="20000"   >
+                <input name="tax"           type="hidden"  value="3193"  >
+                <input name="taxReturnBase" type="hidden"  value="16806" >
+                <input name="currency"      type="hidden"  value="COP" >
+                <input name="signature"     type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
+                <input name="test"          type="hidden"  value="1" >
+                <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+                <input name="responseUrl"    type="hidden"  value="http://localhost:8000/payment/1?&user_id=1&producto_id=1&days=3" >
+                <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
+                <input name="productonro"    type="hidden"  value="2" >
+                <input name="Submit" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" type="submit"  value="Destacar producto" >
+              </form>
             </div>
           </div>
         </div>
@@ -33,13 +66,29 @@
               <h5 class="card-text">Destacar producto por 30 dias</h5>
               <p class="name-product" style="font-size: 35px;">30.000 $</p>
               <p class="card-title">Pago por producto destacado</p>
-              <button type="button" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" data-toggle="modal" data-target="#exampleModal" >Destacar producto</button>
+              <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                <input name="merchantId"    type="hidden"  value="508029"   >
+                <input name="accountId"     type="hidden"  value="512321" >
+                <input name="description"   type="hidden"  value="Test PAYU"  >
+                <input name="referenceCode" type="hidden"  value="TestPayU" >
+                <input name="amount"        type="hidden"  value="30000"   >
+                <input name="tax"           type="hidden"  value="3193"  >
+                <input name="taxReturnBase" type="hidden"  value="16806" >
+                <input name="currency"      type="hidden"  value="COP" >
+                <input name="signature"     type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
+                <input name="test"          type="hidden"  value="1" >
+                <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+                <input name="responseUrl"    type="hidden"  value="http://localhost:8000/payment/1?&user_id=1&producto_id=1&days=3" >
+                <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
+                <input name="productonro"    type="hidden"  value="2" >
+                <input name="Submit" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" type="submit"  value="Destacar producto" >
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+{{--
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -85,4 +134,30 @@
     </form>
   </div>
 </div>
+--}}
+
+<form name="payuform" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+  <input form="payuform" name="merchantId"    type="hidden"  value="508029"   >
+  <input form="payuform" name="accountId"     type="hidden"  value="512321" >
+  <input form="payuform" name="description"   type="hidden"  value="Test PAYU"  >
+  <input form="payuform" name="referenceCode" type="hidden"  value="TestPayU" >
+  <input form="payuform" name="amount"        type="hidden"  value="20000"   >
+  <input form="payuform" name="tax"           type="hidden"  value="3193"  >
+  <input form="payuform" name="taxReturnBase" type="hidden"  value="16806" >
+  <input form="payuform" name="currency"      type="hidden"  value="COP" >
+  <input form="payuform" name="signature"     type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
+  <input form="payuform" name="test"          type="hidden"  value="1" >
+  <input form="payuform" name="buyerEmail"    type="hidden"  value="test@test.com" >
+  <input form="payuform" name="responseUrl"    type="hidden"  value="http://localhost:8000/payment/1?&user_id=1&producto_id=1&days=3" >
+  <input form="payuform" name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
+  <input form="payuform" name="productonro"    type="hidden"  value="2" >
+  <input form="payuform" name="Submit" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" type="submit"  value="Destacar producto" >
+</form>
+@endsection
+
+
+@section('scriptJS')
+
+
+
 @endsection
