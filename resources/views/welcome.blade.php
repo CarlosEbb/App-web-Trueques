@@ -226,17 +226,17 @@
       margin:10,
       nav:true,
       autoplay:true,
-      autoplayTimeout:1000,
+      autoplayTimeout:6000,
       autoplayHoverPause:true,
       responsive:{
           0:{
-              items:1
+              items:2
           },
           600:{
               items:3
           },
           1000:{
-              items:6
+              items:8
           }
       }
     })
@@ -245,9 +245,6 @@
       loop:true,
       margin:10,
       nav:true,
-      autoplay:true,
-      autoplayTimeout:5000,
-      autoplayHoverPause:true,
       responsive:{
           0:{
               items:1
@@ -256,7 +253,7 @@
               items:2
           },
           1000:{
-              items:3
+              items:4
           }
       }
     })

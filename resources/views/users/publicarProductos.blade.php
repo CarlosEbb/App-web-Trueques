@@ -53,15 +53,18 @@
           <textarea class="textarea" placeholder="Descripción" name="descripcion" id="descripcion" cols="20" rows="5" value="{{old('descripcion')}}"></textarea>
           <br>
 
-          <label for="nombreProducto">Cambio Por:</label>
-          <input class="input" type="text" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}">
+          <label for="nombreProducto">Rango de Precio Estimado:</label>
+          {{-- <input class="input" type="text" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}"> --}}
+          <select name="precio" class="select">
+            <option value=""></option>
+        </select>
         </div>
       </div>
       <div class="col-12 mb-4">
         <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Confirma tu ubicación</h4>
 
-          <label for="ciudad">Ciudad</label>
+          <label for="ciudad">Departamento</label>
           <select name=departamento onchange="cambia_provincia()" id="ciudad" class="select">
               @foreach(\App\Models\Departamento::all() as $departamento)
                   <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
@@ -85,6 +88,10 @@
           </select>
         </div>
       </div>
+      <div class="col-12">
+        <h2 class="text-center text-uppercase">Cambio por</h2>
+        <p class="lead mb-0 mt-3 px-4 text-center" style="font-size: 12px;">Selecciona una (1), dos (2) o tres (3) opciones de productos o servicios que te gustaría recibir a cambio de lo que ofreces. De esta manera, los usuarios que tengan lo que estás buscando podrán contactarte para ofrecerte un trueque. Si no estás buscando algo en específico, pero te gustaría recibir propuestas, puedes seleccionar la categoría “Recibo Propuestas”.</p>
+      </div>
       <div class="col-12 mb-4" id="card-categoria">
         <div class="card card-border-radius p-4 p-md-5" id="add-card-categorias">
           <h4 class="mb-4 d-flex justify-content-between">
@@ -96,7 +103,7 @@
           </h4>
           <div class="row" id="select-categoria">
           @for($i = 1; $i <= 3; $i++)
-            <div class="col-12 col-md-6 mb-3 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
+            <div class="col-12 col-md-4 mb-3 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="categoria">Categorias</label>
               <select name=categoria{{$i}} class="select" onchange="cambia_categoria{{$i}}()" >
                 @foreach( \App\Models\Categoria::all() as $categoria)
@@ -104,18 +111,17 @@
                 @endforeach
               </select>
             </div>
-            <div class="col-12 col-md-6 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
+            <div class="col-12 col-md-4 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="descripcion">Sub categorias</label>
               <select name="subCategoria{{$i}}" class="select">
                   <option value="-">- 
               </select>
             </div>
+            <div class="col-12 col-md-4 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
+              <label for="descripcion">Producto especifico</label>
+              <input type="text" class="input" placeholder="moto">
+            </div>
           @endfor
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <p class="lead mb-0 mt-3" style="font-size: 12px;">Selecciona una (1), dos (2) o tres (3) opciones de productos o servicios que te gustaría recibir a cambio de lo que ofreces. De esta manera, los usuarios que tengan lo que estás buscando podrán contactarte para ofrecerte un trueque. Si no estás buscando algo en específico, pero te gustaría recibir propuestas, puedes seleccionar la categoría “Recibo Propuestas”.</p>
           </div>
         </div>
       </div>

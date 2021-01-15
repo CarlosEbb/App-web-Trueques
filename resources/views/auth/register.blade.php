@@ -33,10 +33,6 @@
                     </span>
                   @enderror
                 </div>
-                <div class="form-group w-100">
-                  <label for="fotoDocumento" class="d-block">Foto de documento</label>
-                  <input id="fotoDocumento" type="file" class="input" name="fotoDocumento" value="" required>
-                </div>
               </div>
               <div class="col-12 col-md-6">
                 <h5 class="mb-4">Ingrese la contraseña</h5>

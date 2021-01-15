@@ -156,10 +156,6 @@
                 <a class="ml-2" href="/anuncios">Anuncios</a>
               </li>
               <li>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M18.707 16.743L14.464 12.5l4.243-4.243l.707.707L15.88 12.5l3.535 3.535l-.707.708zm-14.414 0l-.707-.707L7.12 12.5L3.586 8.964l.707-.707L8.536 12.5l-4.243 4.243z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                <a class="ml-2" href="/cambios">Cambios</a>
-              </li>
-              <li>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path class="addFavoritoCorazon" d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                 <a class="ml-2" href="/favoritos">Favoritos</a>
               </li>
@@ -192,7 +188,7 @@
           @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
             <div class="item-categorias">
               <div class="mt-2">
-                <a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+                <a class="d-block title-subcategoria" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
                   <b>{{$categoria->nombre}}</b>
                 </a>
               </div>

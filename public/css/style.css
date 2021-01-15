@@ -124,6 +124,11 @@ button {
     border: none;
 }
 
+button:focus {
+    border: none !important;
+    outline: none !important;
+}
+
 .btn-iniciar-sesion {
     font-weight: 700;
     font-size: 15px;
@@ -353,7 +358,7 @@ button {
 
 .menu-categorias {
     min-width: 1130px;
-    height: 500px;
+    height: 670px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -374,6 +379,10 @@ button {
 }
 
 .list-group-item-hover:hover {
+    color: var(--color-primary);
+}
+
+.title-subcategoria b {
     color: var(--color-primary);
 }
 
@@ -828,6 +837,7 @@ ul.ui-autocomplete.ui-menu {
 .owl-next span {
     font-size: 3.5rem !important;
     color: var(--color-primary);
+    border: none;
 }
 
 .owl-prev {
@@ -840,7 +850,7 @@ ul.ui-autocomplete.ui-menu {
 
 .icon-categorias {
     padding: 5px;
-    width: 780px;
+    width: 600px;
     height: 90px;
     border-radius: 50px;
     display: flex;
