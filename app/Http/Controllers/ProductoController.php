@@ -8,6 +8,7 @@ use App\Models\Municipio;
 use App\Models\Departamento;
 use App\Models\Foto;
 use App\Models\User;
+use App\Models\ProductoUserClick;
 use Session;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -107,6 +108,13 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
+
+        if(!Auth::guest()){
+            if(ProductoUserClick::where('producto_id', $id)->where('user_id', Auth::user()->id)->count() == 0){
+                ProductoUserClick::create(['user_id' => Auth::user()->id, 'producto_id' => $id]);
+            }
+        }
+
         return view('users.mostrarProducto')->with(compact('producto'));
     }
 

@@ -62,6 +62,7 @@ class CreateProductos extends Migration
                 //status 1 = Publicada
                 //status 3 = Proceso de intercambio
                 //status 4 = intercambio Finalizado
+
             $table->timestamps();
         });
     }

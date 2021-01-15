@@ -57,7 +57,7 @@
         <h1 class="title-home">¿Qué estás buscando hoy?</h1> 
       </div>
       <div class="owl-carousel owl-theme" id="owl-carousel-categorias">
-        @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
+        @foreach( \App\Models\Categoria::where('status', 1)->orderBy('nombre', 'ASC')->get() as $categoria)
           <div class="item d-flex justify-content-center">
             <div class="card border-0 d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
               <div class="card-img-top icon-categorias mt-3">
@@ -74,20 +74,19 @@
       </div>
     </div>
     
-
     {{-- Productos populares de la semana --}}
     <section class="row">
       <div class="col-12 section-content">
         <h1 class="sub-title-home">Productos populares de la semana</h1> 
       </div>
       <div class="owl-carousel owl-theme" id="owl-carousel-productos-semana">
-        @foreach( \App\Models\Producto::paginate(4) as $destacado)
+        @foreach( \App\Models\ProductoUserClick::paginate(4) as $destacado)
           <div class="item d-flex justify-content-center">
-            @if($destacado->foto->first() != null)
+            @if($destacado->producto->foto->first() != null)
               <article class="col-12 px-3 px-sm-3 mb-4 py-1">
                 <div class="card card-product-s">
-                  <a href="{{route('productos.show', $destacado->id)}}">
-                    <img class="card-img-product-s" src="{{$destacado->foto->first()->ruta}}" height="150" width="150" alt="Card image cap">
+                  <a href="{{route('productos.show', $destacado->producto->id)}}">
+                    <img class="card-img-product-s" src="{{$destacado->producto->foto->first()->ruta}}" height="150" width="150" alt="Card image cap">
                   </a>
                 </div>
               </article>

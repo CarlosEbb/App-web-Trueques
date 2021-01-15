@@ -17,8 +17,8 @@
               <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
                 <input name="merchantId"    type="hidden"  value="508029"   >
                 <input name="accountId"     type="hidden"  value="512321" >
-                <input name="description"   type="hidden"  value="Test PAYU"  >
-                <input name="referenceCode" type="hidden"  value="TestPayU" >
+                <input name="description"   type="hidden"  value="Cambiemoslo, 10.000 Destacar producto por 5 dias"  >
+                <input name="referenceCode" type="hidden"  value="Cambiemoslo, 10.000 Destacar producto por 5 dias" >
                 <input name="amount"        type="hidden"  value="10000"   >
                 <input name="tax"           type="hidden"  value="3193"  >
                 <input name="taxReturnBase" type="hidden"  value="16806" >
@@ -43,8 +43,8 @@
               <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
                 <input name="merchantId"    type="hidden"  value="508029"   >
                 <input name="accountId"     type="hidden"  value="512321" >
-                <input name="description"   type="hidden"  value="Test PAYU"  >
-                <input name="referenceCode" type="hidden"  value="TestPayU" >
+                <input name="description"   type="hidden"  value="Cambiemoslo, 20.000 Destacar producto por 15 dias"  >
+                <input name="referenceCode" type="hidden"  value="Cambiemoslo, 20.000 Destacar producto por 15 dias" >
                 <input name="amount"        type="hidden"  value="20000"   >
                 <input name="tax"           type="hidden"  value="3193"  >
                 <input name="taxReturnBase" type="hidden"  value="16806" >
@@ -69,8 +69,8 @@
               <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
                 <input name="merchantId"    type="hidden"  value="508029"   >
                 <input name="accountId"     type="hidden"  value="512321" >
-                <input name="description"   type="hidden"  value="Test PAYU"  >
-                <input name="referenceCode" type="hidden"  value="TestPayU" >
+                <input name="description"   type="hidden"  value="Cambiemoslo, 30.000 Destacar producto por 30 dias"  >
+                <input name="referenceCode" type="hidden"  value="Cambiemoslo, 30.000 Destacar producto por 30 dias" >
                 <input name="amount"        type="hidden"  value="30000"   >
                 <input name="tax"           type="hidden"  value="3193"  >
                 <input name="taxReturnBase" type="hidden"  value="16806" >
@@ -154,7 +154,6 @@
   <input form="payuform" name="Submit" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" type="submit"  value="Destacar producto" >
 </form>
 @endsection
-
 
 @section('scriptJS')
 

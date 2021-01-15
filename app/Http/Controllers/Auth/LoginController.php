@@ -13,7 +13,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     protected $redirectToAdmin = '/home';
-    protected $redirectToUser = '/anuncios';
+    protected $redirectToUser = '/';
 
     public function __construct()
     {

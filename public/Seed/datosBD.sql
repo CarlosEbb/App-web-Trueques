@@ -18,25 +18,26 @@ INSERT INTO `tipo_anuncio` (`id`, `nombre`, `descripcion`, `created_at`, `update
 
 
 
-INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `icon`, `foto`, `color`, `created_at`, `updated_at`) VALUES
-(1, 'Vehículos', 'Vehículos', '/uploads/iconos/php575B.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:35:54', '2021-01-08 02:41:33'),
-(2, 'Propiedades', 'Propiedades', '/uploads/iconos/phpA9D1.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:36:07', '2021-01-08 02:43:00'),
-(3, 'Tecnología', 'Tecnología', '/uploads/iconos/php5B27.tmp.svg', '/uploads/categorias/phpE206.tmp.png', 'palevioletred', '2020-12-18 03:36:15', '2021-01-08 02:38:18'),
-(4, 'Hogar', 'Hogar', '/uploads/iconos/phpB156.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:36:23', '2021-01-08 02:39:45'),
-(5, 'Servicios', 'Servicios', '/uploads/iconos/php8581.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:36:30', '2021-01-08 02:41:45'),
-(6, 'Deportes', 'Deportes', '/uploads/iconos/php7761.tmp.svg', '/uploads/categorias/php1422.tmp.png', 'palevioletred', '2020-12-18 03:36:39', '2021-01-08 02:32:57'),
-(7, 'Electrodomésticos', 'Electrodomésticos', '/uploads/iconos/php2DD9.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:36:47', '2021-01-08 02:41:23'),
-(8, 'Moda - Belleza', 'Moda - Belleza', '/uploads/iconos/php7C1C.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:36:54', '2021-01-08 02:39:32'),
-(9, 'Consolas y videojuegos', 'Consolas y videojuegos', '/uploads/iconos/php8CC5.tmp.svg', '/uploads/categorias/php45C5.tmp.png', 'palevioletred', '2020-12-18 03:37:02', '2021-01-08 02:40:42'),
-(10, 'Mascotas', 'Mascotas', '/uploads/iconos/phpA726.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:37:15', '2021-01-08 02:38:37'),
-(11, 'Máquinas - Herramientas', 'Máquinas - Herramientas', '/uploads/iconos/php43.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:37:25', '2021-01-08 02:39:00'),
-(12, 'Juegos y bebés', 'Juegos y bebés', '/uploads/iconos/phpBDF7.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:37:33', '2021-01-08 02:42:00'),
-(13, 'Música, cine y arte', 'Música, cine y arte', '/uploads/iconos/php4DC7.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:37:40', '2021-01-08 02:40:25'),
-(14, 'Libros', 'Libros', '/uploads/iconos/phpD7C8.tmp.svg', '/uploads/categorias/php7F53.tmp.png', 'palevioletred', '2020-12-18 03:37:47', '2021-01-08 02:43:12'),
-(15, 'Salud y terapia', 'Salud y terapia', '/uploads/iconos/php8149.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:37:55', '2021-01-08 02:42:49'),
-(16, 'Útiles escolares', 'Útiles escolares', '/uploads/iconos/phpFBAE.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:38:02', '2021-01-08 02:40:05'),
-(17, 'Bonos y suscripciones', 'Bonos y suscripciones', '/uploads/iconos/phpF5F0.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:38:09', '2021-01-08 02:41:08'),
-(18, 'Instrumentos musicales', 'Instrumentos musicales', '/uploads/iconos/php3CB.tmp.svg', NULL, 'palevioletred', '2020-12-18 03:38:18', '2021-01-08 02:42:17');
+INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `icon`, `foto`, `color`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Vehículos', 'Vehículos', '/uploads/iconos/php575B.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:35:54', '2021-01-08 01:41:33'),
+(2, 'Propiedades', 'Propiedades', '/uploads/iconos/phpA9D1.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:36:07', '2021-01-08 01:43:00'),
+(3, 'Tecnología', 'Tecnología', '/uploads/iconos/php5B27.tmp.svg', '/uploads/categorias/phpE206.tmp.png', 'palevioletred', 1, '2020-12-18 02:36:15', '2021-01-08 01:38:18'),
+(4, 'Hogar', 'Hogar', '/uploads/iconos/phpB156.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:36:23', '2021-01-08 01:39:45'),
+(5, 'Servicios', 'Servicios', '/uploads/iconos/php8581.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:36:30', '2021-01-08 01:41:45'),
+(6, 'Deportes', 'Deportes', '/uploads/iconos/php7761.tmp.svg', '/uploads/categorias/php1422.tmp.png', 'palevioletred', 1, '2020-12-18 02:36:39', '2021-01-08 01:32:57'),
+(7, 'Electrodomésticos', 'Electrodomésticos', '/uploads/iconos/php2DD9.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:36:47', '2021-01-08 01:41:23'),
+(8, 'Moda - Belleza', 'Moda - Belleza', '/uploads/iconos/php7C1C.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:36:54', '2021-01-08 01:39:32'),
+(9, 'Consolas y videojuegos', 'Consolas y videojuegos', '/uploads/iconos/php8CC5.tmp.svg', '/uploads/categorias/php45C5.tmp.png', 'palevioletred', 1, '2020-12-18 02:37:02', '2021-01-08 01:40:42'),
+(10, 'Mascotas', 'Mascotas', '/uploads/iconos/phpA726.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:37:15', '2021-01-08 01:38:37'),
+(11, 'Máquinas - Herramientas', 'Máquinas - Herramientas', '/uploads/iconos/php43.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:37:25', '2021-01-08 01:39:00'),
+(12, 'Juegos y bebés', 'Juegos y bebés', '/uploads/iconos/phpBDF7.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:37:33', '2021-01-08 01:42:00'),
+(13, 'Música, cine y arte', 'Música, cine y arte', '/uploads/iconos/php4DC7.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:37:40', '2021-01-08 01:40:25'),
+(14, 'Libros', 'Libros', '/uploads/iconos/phpD7C8.tmp.svg', '/uploads/categorias/php7F53.tmp.png', 'palevioletred', 1, '2020-12-18 02:37:47', '2021-01-08 01:43:12'),
+(15, 'Salud y terapia', 'Salud y terapia', '/uploads/iconos/php8149.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:37:55', '2021-01-08 01:42:49'),
+(16, 'Útiles escolares', 'Útiles escolares', '/uploads/iconos/phpFBAE.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:38:02', '2021-01-08 01:40:05'),
+(17, 'Bonos y suscripciones', 'Bonos y suscripciones', '/uploads/iconos/phpF5F0.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:38:09', '2021-01-08 01:41:08'),
+(18, 'Instrumentos musicales', 'Instrumentos musicales', '/uploads/iconos/php3CB.tmp.svg', NULL, 'palevioletred', 1, '2020-12-18 02:38:18', '2021-01-08 01:42:17'),
+(19, 'Recibo Propuestas', 'Recibo Propuestas', NULL, NULL, 'palevioletred', 0, '2020-12-18 02:38:18', '2021-01-08 01:42:17');
 
 
 
@@ -112,7 +113,8 @@ INSERT INTO `sub_categorias` (`id`, `nombre`, `descripcion`, `categoria_id`, `cr
 (69, 'DVDs', 'DVDs', 13, '2020-12-17 23:48:54', '2020-12-17 23:48:54'),
 (70, 'Arte - Antigüedades', 'Arte - Antigüedades', 13, '2020-12-17 23:49:03', '2020-12-17 23:49:03'),
 (71, 'Manualidades', 'Manualidades', 13, '2020-12-17 23:49:09', '2020-12-17 23:49:09'),
-(72, 'Otros', 'Otros', 13, '2020-12-17 23:49:16', '2020-12-17 23:49:16');
+(72, 'Otros', 'Otros', 13, '2020-12-17 23:49:16', '2020-12-17 23:49:16'),
+(73, 'Recibo Propuestas', 'Recibo Propuestas', 19, '2020-12-17 23:49:16', '2020-12-17 23:49:16');
 
 
 INSERT INTO `condicion` (`id`, `nombre`, `created_at`, `updated_at`) VALUES (NULL, 'Nuevo', NULL, NULL), (NULL, 'Como nuevo', NULL, NULL), (NULL, 'Bueno', NULL, NULL), (NULL, 'Aceptable', NULL, NULL), (NULL, 'Lo ha dado todo', NULL, NULL);

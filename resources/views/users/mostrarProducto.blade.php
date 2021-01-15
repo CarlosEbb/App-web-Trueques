@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
- 
+@section('content')            
   <div class="container">
     <div class="row mt-5">
       <section class="col-12 col-md-8">
@@ -11,7 +10,7 @@
             <div class="content-img-product card-footer bg-transparent d-flex ">
               <?php           
                 $consulta = App\Models\Foto::where('producto_id', $producto->id)->get();
-              ?>
+                ?>
               @foreach($consulta->except(App\Models\Foto::where('producto_id', $producto->id)->first()->id) as $foto)
                 <img src="{{$foto->ruta}}" width="90" class="rounded-lg mx-1 mt-2 fotos-productos-src" alt="">
               @endforeach

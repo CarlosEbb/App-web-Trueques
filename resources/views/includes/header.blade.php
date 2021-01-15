@@ -185,7 +185,7 @@
     
       <div class="dropdown-menu menu menu-categorias mt-2 px-1" aria-labelledby="dropdownMenuLink">
         <div class="content-categorias">
-          @foreach( \App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoria)
+          @foreach( \App\Models\Categoria::where('status', true)->orderBy('nombre', 'ASC')->get() as $categoria)
             <div class="item-categorias">
               <div class="mt-2">
                 <a class="d-block title-subcategoria" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
