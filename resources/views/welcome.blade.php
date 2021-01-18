@@ -134,6 +134,29 @@
       <div class="col-12 section-content">
         <h1 class="sub-title-home">Categorías populares</h1> 
       </div>
+      <div class="row">
+        @foreach( \App\Models\Categoria::where('foto', '!=', null)->orderBy('created_at','DESC')->paginate(5) as $categoria)
+          {{-- <div class="col-8"> --}}
+            <article class="col-6">
+              <a class="text-center" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+                <div class="card-body card-body-banner-categorias">
+                  <div class="row">
+                    <div class="col-12 col-md-12">
+                        <img src="{{asset($categoria->foto)}}" width="200" height="300" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <h5 class="p-3 text-center card-title-banner-categorias">{{$categoria->nombre}}</h5>
+                </a>
+            </article>
+          {{-- </div> --}}
+        @endforeach
+      </div>
+    </section>
+    {{-- <section class="row">
+      <div class="col-12 section-content">
+        <h1 class="sub-title-home">Categorías populares</h1> 
+      </div>
       <div class="owl-carousel owl-theme" id="owl-carousel-categorias-populares">
         @foreach( \App\Models\Categoria::where('foto', '!=', null)->orderBy('created_at','DESC')->paginate(5) as $categoria)
           <div class="item d-flex justify-content-center">
@@ -152,7 +175,7 @@
           </div>
         @endforeach
       </div>
-    </section>
+    </section> --}}
     {{-- <section class="row">
       <div class="col-12 section-content">
         <h1 class="title">Categorías populares</h1> 
@@ -257,25 +280,25 @@
       }
     })
 
-    $('#owl-carousel-categorias-populares').owlCarousel({
-      loop:true,
-      margin:10,
-      nav:true,
-      autoplay:true,
-      autoplayTimeout:3000,
-      autoplayHoverPause:true,
-      responsive:{
-          0:{
-              items:1
-          },
-          600:{
-              items:2
-          },
-          1000:{
-              items:3
-          }
-      }
-    })
+    // $('#owl-carousel-categorias-populares').owlCarousel({
+    //   loop:true,
+    //   margin:10,
+    //   nav:true,
+    //   autoplay:true,
+    //   autoplayTimeout:3000,
+    //   autoplayHoverPause:true,
+    //   responsive:{
+    //       0:{
+    //           items:1
+    //       },
+    //       600:{
+    //           items:2
+    //       },
+    //       1000:{
+    //           items:3
+    //       }
+    //   }
+    // })
   </script>
 
 @endsection
