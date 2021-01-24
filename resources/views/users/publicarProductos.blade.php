@@ -56,7 +56,9 @@
           <label for="nombreProducto">Rango de Precio Estimado:</label>
           {{-- <input class="input" type="text" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}"> --}}
           <select name="precio" class="select">
-            <option value=""></option>
+            @foreach(\App\Models\Precio::all() as $precio)
+                <option value="{{$precio->id}}">De {{$precio->moneda->simbolo}}{{$precio->de}} hasta {{$precio->moneda->simbolo}}{{$precio->hasta}}</option>
+            @endforeach
         </select>
         </div>
       </div>
