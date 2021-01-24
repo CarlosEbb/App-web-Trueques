@@ -3,32 +3,58 @@
 @section('content')
   <div class="container px-0 px-md-5">
     <div class="row px-3 px-md-5">
-      <div class="col-12 text-center mt-5">
-        <h2 class="text-uppercase">seleccionar</h2>
-      </div>
-      <div class="col-12">
-        @foreach ( $errors->all() as $error)
-          <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            {{$error}}
-          </div>
-        @endforeach
+      
+    </div>
+  </div>
+  <div class="container px-0 px-md-5">
+    <div class="col-12 text-center mt-5">
+      <h2 class="text-uppercase">seleccionar</h2>
+    </div>
+    <div class="row px-3  px-md-5">
+        <div class="col-12">
+          @foreach ( $errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              {{$error}}
+            </div>
+          @endforeach
 
-        @if(Session::has('mensaje'))
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            {{Session::get('mensaje')}}
-          </div>
-          <div class="jumbotron border border-info card-border-radius bg-transparent p-5">
-            <h3 class="mb-4">Producto destacado</h3>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <p class="lead">
-              <a class="text-center btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips" href="/planes" role="button">Destacar producto</a>
-            </p>
-          </div>
-        @endif
+          @if(Session::has('mensaje'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              {{Session::get('mensaje')}}
+            </div>
+            <div class="jumbotron border border-info card-border-radius bg-transparent p-5">
+              <h3 class="mb-4">Producto destacado</h3>
+              <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+              <hr class="my-4">
+              <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+              <p class="lead">
+                <a class="text-center btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips" href="/planes" role="button">Destacar producto</a>
+              </p>
+            </div>
+          @endif
+        </div>
+      
+      <div class="col-12 mb-4">
+        <div class="card card-border-radius p-4 p-md-5">
+          <h4 class="mb-4">Detalles del anuncio</h4>
+
+          <label for="nombreProducto">Nombre del producto</label>
+          <input form="f1" class="input" type="text" placeholder="Nombre del producto" name="nombre" id="nombreProducto" value="{{old('nombreProducto')}}">
+
+          <label for="descripcion" class="mt-4">Descripción</label>
+          <textarea form="f1" class="textarea" placeholder="Descripción" name="descripcion" id="descripcion" cols="20" rows="5" value="{{old('descripcion')}}"></textarea>
+          <br>
+
+          <label for="nombreProducto">Rango de Precio Estimado:</label>
+          {{-- <input class="input" type="text" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}"> --}}
+          <select form="f1" name="precio" class="select">
+            @foreach(\App\Models\Precio::all() as $precio)
+                <option value="{{$precio->id}}">De {{$precio->moneda->simbolo}}{{$precio->de}} hasta {{$precio->moneda->simbolo}}{{$precio->hasta}}</option>
+            @endforeach
+        </select>
+        </div>
       </div>
       <div class="col-12 mb-4">
         <div class="card card-border-radius p-4 p-md-5">
@@ -38,30 +64,7 @@
         </div>
 
       </div>
-    </div>
-  </div>
-  <form name="f1" action="{{route('productos.store')}}" class="container px-0 px-md-5" method="post" enctype="multipart/form-data">@csrf
-    <div class="row px-3  px-md-5">
-      <div class="col-12 mb-4">
-        <div class="card card-border-radius p-4 p-md-5">
-          <h4 class="mb-4">Detalles del anuncio</h4>
-
-          <label for="nombreProducto">Nombre del producto</label>
-          <input class="input" type="text" placeholder="Nombre del producto" name="nombre" id="nombreProducto" value="{{old('nombreProducto')}}">
-
-          <label for="descripcion" class="mt-4">Descripción</label>
-          <textarea class="textarea" placeholder="Descripción" name="descripcion" id="descripcion" cols="20" rows="5" value="{{old('descripcion')}}"></textarea>
-          <br>
-
-          <label for="nombreProducto">Rango de Precio Estimado:</label>
-          {{-- <input class="input" type="text" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}"> --}}
-          <select name="precio" class="select">
-            @foreach(\App\Models\Precio::all() as $precio)
-                <option value="{{$precio->id}}">De {{$precio->moneda->simbolo}}{{$precio->de}} hasta {{$precio->moneda->simbolo}}{{$precio->hasta}}</option>
-            @endforeach
-        </select>
-        </div>
-      </div>
+    <form id="f1" name="f1" action="{{route('productos.store')}}" method="post" enctype="multipart/form-data"> @csrf
       <div class="col-12 mb-4">
         <div class="card card-border-radius p-4 p-md-5">
           <h4 class="mb-4">Confirma tu ubicación</h4>
@@ -129,14 +132,16 @@
       </div>
       <div class="col-12">
         <div id="archivos">
-            <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips">Publicar</button>
+            <button class="btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips" onclick="enviar_formulario();">Publicar</button>
         </div>
         
       </div>
     </div>
     <input type="text" name="categoria_id" value="{{$_GET['categoria_id']}}" hidden>
     <input type="text" name="sub_categoria_id" value="{{$_GET['sub_categoria_id']}}" hidden>
-  </form>
+    
+    </form>
+  </div>
 
 @endsection
 
@@ -335,5 +340,12 @@ var todasCategoriasID = [
   }
 @endfor
 
+
+function enviar_formulario(){
+  document.formPublicar.submit()
+}
+
 </script>
+
+
 @endsection
