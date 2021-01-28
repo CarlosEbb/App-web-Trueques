@@ -16,7 +16,7 @@
                     <span class="mb-3">{{$producto->descripcion}}</span>
                   </div>
                   <p class="mb-0" style="font-size: 12px">publicado en: {{$producto->departamento->nombre}}</p>
-                  <span class="badge badge-pill badge-warning">Destacado</span>
+                  @if($producto->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
                 </div>
                 <div class="card-footer card-footer-product px-3 pb-3">
                   <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$producto->id}}) @endauth">

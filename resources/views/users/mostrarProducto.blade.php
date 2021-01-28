@@ -11,7 +11,7 @@
               <?php           
                 $consulta = App\Models\Foto::where('producto_id', $producto->id)->get();
                 ?>
-              @foreach($consulta->except(App\Models\Foto::where('producto_id', $producto->id)->first()->id) as $foto)
+              @foreach(App\Models\Foto::where('producto_id', $producto->id) as $foto)
                 <img src="{{$foto->ruta}}" width="90" class="rounded-lg mx-1 mt-2 fotos-productos-src" alt="">
               @endforeach
             </div>
@@ -80,8 +80,8 @@
               </a>
             </h3>
             <p class="name-product">@if(is_numeric($producto->precio)) ${{number_format($producto->precio, 0, ",", ".")}} @else letra @endif</p>
-            
-            <span class="badge badge-pill badge-warning w-25">Destacado</span>
+
+            @if($producto->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
           </article>
           <article class="card card-border-radius p-3 col-12 mt-3">
             <h3 class="title-card-product">Descripción del vendedor</h3>
@@ -121,7 +121,7 @@
             <h1 class="title">Productos relacionados</h1> 
           </div>
           @foreach($producto->categoria->productos as $articulo)
-            @if($articulo->foto->first() != null)
+            @if(($articulo->foto->first() != null) and ($articulo->id != $producto->id))
           <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
             <div class="card card-product h-100">
             <img class="card-img-top card-img-product" src="{{$articulo->foto->first()->ruta}}" alt="Card image cap">
@@ -131,7 +131,7 @@
                   <span class="mb-3">{{$producto->descripcion}}</span>
                 </div>
                 <p class="mb-0" style="font-size: 12px">publicado en: {{$articulo->departamento->nombre}}</p>
-                <span class="badge badge-pill badge-warning">Destacado</span>
+                @if($producto->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
               </div>
               <div class="card-footer card-footer-product px-3 pb-3">
                 <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$articulo->id}}) @endauth">

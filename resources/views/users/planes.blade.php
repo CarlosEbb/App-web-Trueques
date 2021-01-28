@@ -14,23 +14,21 @@
               <p class="name-product" style="font-size: 35px;">10.000 $</p>
               <p class="card-title">Pago por producto destacado</p>
               
-              <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
-                <input name="merchantId"    type="hidden"  value="508029"   >
-                <input name="accountId"     type="hidden"  value="512321" >
-                <input name="description"   type="hidden"  value="Cambiemoslo, 10.000 Destacar producto por 5 dias"  >
-                <input name="referenceCode" type="hidden"  value="Cambiemoslo, 10.000 Destacar producto por 5 dias" >
-                <input name="amount"        type="hidden"  value="10000"   >
-                <input name="tax"           type="hidden"  value="3193"  >
-                <input name="taxReturnBase" type="hidden"  value="16806" >
-                <input name="currency"      type="hidden"  value="COP" >
-                <input name="signature"     type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
-                <input name="test"          type="hidden"  value="1" >
-                <input name="buyerEmail"    type="hidden"  value="test@test.com" >
-                <input name="responseUrl"    type="hidden"  value="http://localhost:8000/payment/1?&user_id=1&producto_id=1&days=3" >
-                <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
-                <input name="productonro"    type="hidden"  value="2" >
-                <input name="Submit" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" type="submit"  value="Destacar producto" >
-              </form>
+                <form method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">
+                  <input name="merchantId"    type="hidden"  value="910226"   >
+                  <input name="accountId"     type="hidden"  value="917001" >
+                  <input name="description"   type="hidden"  value="Destacar Producto, 5 dias"  >
+                  <input name="referenceCode" type="hidden"  value="{{$orden = \App\Order::all()->count()+1}}_DP5DAYS" >
+                  <input name="amount"        type="hidden"  value="10000"   >
+                  <input name="currency"      type="hidden"  value="COP" >
+                  <input name="signature"     type="hidden"  value="{{md5('EO9yDb7f82SFuDuRra1QdMHRW6~910226~'.$orden.'_DP5DAYS~10000~COP')}}">
+                  <input name="test"          type="hidden"  value="1" >
+                  <input name="buyerEmail"    type="hidden"  value="{{Auth::user()->email}}" >
+                  <input name="responseUrl"    type="hidden"  value="http://cambiemoslo.com/payment/1?&user_id={{Auth::user()->id}}&producto_id={{$_GET['p']}}&days=5" >
+                  <input name="Submit"        type="submit"  value="Destacar" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto">
+                </form>
+
+                
             </div>
           </div>
         </div>
@@ -40,23 +38,19 @@
               <h5 class="card-text">Destacar producto por 15 dias</h5>
               <p class="name-product" style="font-size: 35px;">20.000 $</p>
               <p class="card-title">Pago por producto destacado</p>
-              <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
-                <input name="merchantId"    type="hidden"  value="508029"   >
-                <input name="accountId"     type="hidden"  value="512321" >
-                <input name="description"   type="hidden"  value="Cambiemoslo, 20.000 Destacar producto por 15 dias"  >
-                <input name="referenceCode" type="hidden"  value="Cambiemoslo, 20.000 Destacar producto por 15 dias" >
-                <input name="amount"        type="hidden"  value="20000"   >
-                <input name="tax"           type="hidden"  value="3193"  >
-                <input name="taxReturnBase" type="hidden"  value="16806" >
-                <input name="currency"      type="hidden"  value="COP" >
-                <input name="signature"     type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
-                <input name="test"          type="hidden"  value="1" >
-                <input name="buyerEmail"    type="hidden"  value="test@test.com" >
-                <input name="responseUrl"    type="hidden"  value="http://localhost:8000/payment/1?&user_id=1&producto_id=1&days=3" >
-                <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
-                <input name="productonro"    type="hidden"  value="2" >
-                <input name="Submit" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" type="submit"  value="Destacar producto" >
-              </form>
+              <form method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">
+                  <input name="merchantId"    type="hidden"  value="910226"   >
+                  <input name="accountId"     type="hidden"  value="917001" >
+                  <input name="description"   type="hidden"  value="Destacar Producto, 15 dias"  >
+                  <input name="referenceCode" type="hidden"  value="{{$orden = \App\Order::all()->count()+1}}_DP15DAYS" >
+                  <input name="amount"        type="hidden"  value="20000"   >
+                  <input name="currency"      type="hidden"  value="COP" >
+                  <input name="signature"     type="hidden"  value="{{md5('EO9yDb7f82SFuDuRra1QdMHRW6~910226~'.$orden.'_DP15DAYS~20000~COP')}}">
+                  <input name="test"          type="hidden"  value="1" >
+                  <input name="buyerEmail"    type="hidden"  value="{{Auth::user()->email}}" >
+                  <input name="responseUrl"    type="hidden"  value="http://cambiemoslo.com/payment/1?&user_id={{Auth::user()->id}}&producto_id={{$_GET['p']}}&days=15" >
+                  <input name="Submit"        type="submit"  value="Destacar" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto">
+                </form>
             </div>
           </div>
         </div>
@@ -66,23 +60,19 @@
               <h5 class="card-text">Destacar producto por 30 dias</h5>
               <p class="name-product" style="font-size: 35px;">30.000 $</p>
               <p class="card-title">Pago por producto destacado</p>
-              <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
-                <input name="merchantId"    type="hidden"  value="508029"   >
-                <input name="accountId"     type="hidden"  value="512321" >
-                <input name="description"   type="hidden"  value="Cambiemoslo, 30.000 Destacar producto por 30 dias"  >
-                <input name="referenceCode" type="hidden"  value="Cambiemoslo, 30.000 Destacar producto por 30 dias" >
-                <input name="amount"        type="hidden"  value="30000"   >
-                <input name="tax"           type="hidden"  value="3193"  >
-                <input name="taxReturnBase" type="hidden"  value="16806" >
-                <input name="currency"      type="hidden"  value="COP" >
-                <input name="signature"     type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
-                <input name="test"          type="hidden"  value="1" >
-                <input name="buyerEmail"    type="hidden"  value="test@test.com" >
-                <input name="responseUrl"    type="hidden"  value="http://localhost:8000/payment/1?&user_id=1&producto_id=1&days=3" >
-                <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
-                <input name="productonro"    type="hidden"  value="2" >
-                <input name="Submit" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" type="submit"  value="Destacar producto" >
-              </form>
+              <form method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">
+                  <input name="merchantId"    type="hidden"  value="910226"   >
+                  <input name="accountId"     type="hidden"  value="917001" >
+                  <input name="description"   type="hidden"  value="Destacar Producto, 30 dias"  >
+                  <input name="referenceCode" type="hidden"  value="{{$orden = \App\Order::all()->count()+1}}_DP30DAYS" >
+                  <input name="amount"        type="hidden"  value="30000"   >
+                  <input name="currency"      type="hidden"  value="COP" >
+                  <input name="signature"     type="hidden"  value="{{md5('EO9yDb7f82SFuDuRra1QdMHRW6~910226~'.$orden.'_DP30DAYS~30000~COP')}}">
+                  <input name="test"          type="hidden"  value="1" >
+                  <input name="buyerEmail"    type="hidden"  value="{{Auth::user()->email}}" >
+                  <input name="responseUrl"    type="hidden"  value="http://cambiemoslo.com/payment/1?&user_id={{Auth::user()->id}}&producto_id={{$_GET['p']}}&days=5" >
+                  <input name="Submit"        type="submit"  value="Destacar" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto">
+                </form>
             </div>
           </div>
         </div>
@@ -136,23 +126,6 @@
 </div>
 --}}
 
-<form name="payuform" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
-  <input form="payuform" name="merchantId"    type="hidden"  value="508029"   >
-  <input form="payuform" name="accountId"     type="hidden"  value="512321" >
-  <input form="payuform" name="description"   type="hidden"  value="Test PAYU"  >
-  <input form="payuform" name="referenceCode" type="hidden"  value="TestPayU" >
-  <input form="payuform" name="amount"        type="hidden"  value="20000"   >
-  <input form="payuform" name="tax"           type="hidden"  value="3193"  >
-  <input form="payuform" name="taxReturnBase" type="hidden"  value="16806" >
-  <input form="payuform" name="currency"      type="hidden"  value="COP" >
-  <input form="payuform" name="signature"     type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
-  <input form="payuform" name="test"          type="hidden"  value="1" >
-  <input form="payuform" name="buyerEmail"    type="hidden"  value="test@test.com" >
-  <input form="payuform" name="responseUrl"    type="hidden"  value="http://localhost:8000/payment/1?&user_id=1&producto_id=1&days=3" >
-  <input form="payuform" name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
-  <input form="payuform" name="productonro"    type="hidden"  value="2" >
-  <input form="payuform" name="Submit" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto" type="submit"  value="Destacar producto" >
-</form>
 @endsection
 
 @section('scriptJS')

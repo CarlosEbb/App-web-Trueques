@@ -45,7 +45,7 @@
 						}else{
 						corazon.attr("fill", "red");
 						}
-						window.location.href = "/favoritos";
+						//window.location.href = "/favoritos";
 					},
 					statusCode: {
 					404: function() {

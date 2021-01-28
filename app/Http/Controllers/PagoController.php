@@ -55,10 +55,7 @@ class PagoController extends Controller
             Session::flash('mensaje','Registrado correctamente');
         }
         
-        
-        
-        dd('listo');
-        //return back();
+        return redirect('anuncios');
     }
 
     /**

@@ -53,9 +53,14 @@
                     <h5 class="card-title mb-1">{{$producto->nombre}}</h5>
                     <h6 class="card-title mb-3"><small class="text-muted">Precio</small> {{$producto->precio}} 
                     @if($producto->status == true)
-                      <span class="badge badge-pill badge-success">publicado</span></h6>
+                      <span class="badge badge-pill badge-success">publicado</span>
                     @else
-                      <span class="badge badge-pill badge-danger">No publicado</span></h6>
+                      <span class="badge badge-pill badge-danger">No publicado</span>
+                    @endif
+                    
+                    
+                    @if(\App\Order::where('producto_id', $producto->id)->count())
+                        <span class="badge badge-pill badge-warning">destacado</span>
                     @endif
 
                     <p class="card-text">{{$producto->descripcion}}</p>
@@ -70,8 +75,9 @@
                     {!! Form::close() !!}
                     
                     <a class="btn btn-outline-info mx-2 mt-2 rounded-pill" data-toggle="modal" data-target="#editar_{{$producto->id}}">Editar</a>
-                    <a href="/planes" class="btn btn-outline-info mx-2 mt-2 rounded-pill">Destacar producto</a>
-
+                    @if(!\App\Order::where('producto_id', $producto->id)->count())
+                      <a href="/planes?p={{$producto->id}}" class="btn btn-outline-info mx-2 mt-2 rounded-pill">Destacar producto</a>
+                    @endif
                     <!-- Modal Editar-->
                     <div class="modal fade" id="editar_{{$producto->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel_editar_{{$producto->id}}" aria-hidden="true">
                         <div class="modal-dialog">

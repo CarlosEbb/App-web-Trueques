@@ -2,7 +2,7 @@
 INSERT INTO `departamentos` (`id`, `nombre`, `codigo`) VALUES
 (1, 'Antioquia', 5),
 (2, 'Atlantico', 8),
-(3, 'D. C. Santa Fe de Bogotá', 11),
+(3, 'Bogotá', 11),
 (4, 'Bolivar', 13),
 (5, 'Boyaca', 15),
 (6, 'Caldas', 17),
