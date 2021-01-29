@@ -9,18 +9,43 @@
                     <h2 class="title">Chat</h2>
                 </div>
                 <div class="col-md-4">
-                    <div class="card card-border-radius content-chat" >
-                        <a href="">
-                            <div class="card-body d-flex align-items-center border-bottom p-3">
-                                <img src="{{asset('img/avatar.png')}}" class="rounded-circle"  width="50" alt="">
-                                <div class="content-info ml-3 ">
-                                    <p class="mb-0"><b>Pedro perez</b></p>
-                                    <p class="small mb-0">Lorem ipsum dolor sit amet.</p>
+
+                    @forelse(\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->orwhere('user_comprador_id', Auth::user()->id)->get()->groupBy('chat-event') as $chats)
+                        <div class="card card-border-radius content-chat" >
+                            <a href="{{route('chat')}}?p={{$chats->first()->producto_id}}&v={{$chats->first()->user_id}}&c={{$chats->first()->user_comprador_id}}">
+                                <div class="card-body d-flex align-items-center border-bottom p-3">
+                                    <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
+                                    <div class="content-info ml-3 ">
+                                            
+                                                @if(Auth::user()->id == $chats->first()->user_comprador_id)
+                                                    <p class="mb-0"><b>{{$chats->first()->user->name}}</b> - {{$chats->first()->producto->nombre}}</p>
+                                                    <p class="small mb-0">{{$chats->last()->created_at}}</p>
+                                                @endif
+                                                    
+                                                @if(Auth::user()->id == $chats->first()->user_id)
+                                                    <p class="mb-0"><b>{{$chats->first()->comprador->name}}</b> - {{$chats->first()->producto->nombre}}</p>
+                                                    <p class="small mb-0">{{$chats->last()->created_at}}</p>   
+                                                @endif
+                                                    
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                       
-                    </div>
+                            </a>
+                        
+                        </div>
+                        @empty
+                        <div class="card card-border-radius content-chat" >
+                            <a>
+                                <div class="card-body d-flex align-items-center border-bottom p-3">
+                                    <div class="content-info ml-3 ">
+                                        <p class="mb-0">No hay nada para mostrar.</p>
+                                        <p class="small mb-0"></p>                
+                                    </div>
+                                </div>
+                            </a>
+                        
+                        </div>
+                        @endforelse
+                    
                 </div>
                 <div class="col-md-8">
                     <div class="card card-border-radius">

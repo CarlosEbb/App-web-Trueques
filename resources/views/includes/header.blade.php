@@ -76,16 +76,32 @@
         <div class="dropdown">
           <a class="dropdown-toggle btn-rounded mx-1 btn-menu-notificaciones tooltips" href="#" role="button" id="dropdownMenuNotificaciones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19.29 17.29L18 16v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-1.29 1.29c-.63.63-.19 1.71.7 1.71h13.17c.9 0 1.34-1.08.71-1.71zM16 17H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6zm-4 5c1.1 0 2-.9 2-2h-4a2 2 0 0 0 2 2z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+
+              <?php
+                $count = 0;
+              ?>
+              @foreach(\App\Chat::orderBy("created_at", "desc")->where('to_id', Auth::user()->id)->where('notificacion', 0)->get()->groupBy('chat-event') as $chats)
+              
+                <?php
+                  if($chats->where('to_id', Auth::user()->id)->last() != null)
+                  $count = $count + 1;
+                ?>
+              @endforeach
+
+
+            @if($count >= 1)
             <span class="badge badge-pill badge-danger badge-notificaciones">
-              {{\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->get()->groupBy('chat-event')->count()}}
+              
+              {{$count}}
             </span>
+            @endif
             <span class="tooltiptext">notificaciones</span>
           </a> 
           
           <div class="dropdown-menu menu menu-navbar" aria-labelledby="dropdownMenuNotificaciones">
             <ul class="menu-notificaciones-list">
               <p class="menu-notificaciones-title">Notificaciones</p>
-                @forelse(\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->get()->groupBy('chat-event') as $notificaciones)
+                @forelse(\App\Chat::orderBy("created_at", "desc")->where('to_id', Auth::user()->id)->get()->groupBy('chat-event') as $notificaciones)
                 <li>
                   <div class="menu-notificaciones-icon mx-2">
                     <svg class="d-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 4h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3.5l-3 3l-3-3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm0 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3.914l2.586 2.586L14.086 18H18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>

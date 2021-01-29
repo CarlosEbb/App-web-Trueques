@@ -153,13 +153,22 @@ class ChatForm extends Component
             'mensaje' => 'required',
         ]);
 
+        $producto = $this->producto;
+        $vendedor = $this->usuario;
+        $comprador = $this->comprador;
+
+        if(Auth::user()->id == $vendedor)
+            $to_id = $comprador;
+        if(Auth::user()->id == $comprador)
+            $to_id = $vendedor;
+
         // Guardamos el mensaje en la BBDD
         \App\Chat::create([
             "user_id" => $this->usuario,
             "user_comprador_id" => $this->comprador,
             "producto_id" => $this->producto,
             "mensaje" => $this->mensaje,
-            "to_id" => Auth::user()->id,
+            "to_id" => $to_id,
             "event" => "chat-event-".$this->producto."-".$this->usuario."-".$this->comprador,
         ]);
         
@@ -183,6 +192,12 @@ class ChatForm extends Component
         $producto = $this->producto;
         $vendedor = $this->usuario;
         $comprador = $this->comprador;
+
+        //enviar correo
+    
+        foreach(\App\Chat::where('notificacion', false)->where('event', 'chat-event-'.$producto.'-'.$vendedor.'-'.$comprador)->where('to_id', Auth::user()->id)->get() as $act){
+            $act->fill(['notificacion' => true])->save();
+        }
 
         return view('livewire.chat-form', compact('producto','vendedor', 'comprador'));
     }

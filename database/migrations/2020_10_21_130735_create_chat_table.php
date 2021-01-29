@@ -29,8 +29,11 @@ class CreateChatTable extends Migration
 
             $table->text("mensaje");
 
-
+            
+            
             $table->string("event");
+            
+            $table->integer("notificacion")->default(false);
 
             $table->timestamps();
         });
