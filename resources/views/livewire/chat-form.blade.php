@@ -33,41 +33,7 @@
             </div>
         </div>
     </div>
-    <script>
-                 
-        // Esto lo recibimos en JS cuando lo emite el componente
-        // El evento "enviadoOK"
-        $( document ).ready(function() {
-            window.livewire.on('enviadoOK', function () {
-                $("#avisoSuccess").fadeIn("slow");                
-                setTimeout(function(){ $("#avisoSuccess").fadeOut("slow"); }, 3000);                                
-            });
-        });
-        
-    </script>
 
-<script>
-        
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-  
-        var pusher = new Pusher('{{env('PUSHER_APP_KEY')}}', {
-            cluster: '{{env('PUSHER_APP_CLUSTER')}}',
-            forceTLS: true
-        });
-        
-        var channel = pusher.subscribe('chat-channel');
-        channel.bind('chat-event-{{$producto}}-{{$vendedor}}-{{$comprador}}', function(data) {        
-            window.livewire.emit('mensajeRecibido', data);
-        });
-        
-        setTimeout(function(){ window.livewire.emit('solicitaUsuario'); }, 100);
-        setTimeout(function(){ window.livewire.emit('solicitaProducto'); }, 100);
-        setTimeout(function(){ window.livewire.emit('solicitaComprador'); }, 100);
-        setTimeout(function(){ window.livewire.emit('solicitaUsuarioNombre'); }, 100);
-        setTimeout(function(){ window.livewire.emit('solicitaProductoNombre'); }, 100);
-        setTimeout(function(){ window.livewire.emit('solicitaCompradorNombre'); }, 100);
-        setTimeout(function(){ window.livewire.emit('solicitarMensajes'); }, 100);
-    </script>
 
 </div>
+
