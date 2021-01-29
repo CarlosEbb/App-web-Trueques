@@ -499,9 +499,9 @@ button:focus {
 
 .menu-notificacion-mensaje a {
     color: var(--color-primary);
-    font-weight: 600;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 13px;
+    line-height: px;
 }
 
 .menu-notificacion-mensaje:hover > a {
@@ -901,4 +901,36 @@ ul.ui-autocomplete.ui-menu {
     background-color: #3bb2c6;
     padding: 25px;
     border-radius: 50px;
+}
+
+.badge-notificaciones {
+    font-size: 10px;
+    position: absolute;
+    top: 10px;
+    left: 25px;
+}
+
+/* chat */
+.content-chat {
+    overflow-y: scroll;
+    height: 93.5%;
+}
+
+.content-chat::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+.content-chat::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.content-chat::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* Cambiamos el fondo cuando esté en active */
+.content-chat::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
 }
