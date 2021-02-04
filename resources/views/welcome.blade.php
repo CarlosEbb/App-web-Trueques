@@ -57,7 +57,7 @@
         <h1 class="title-home">¿Qué estás buscando hoy?</h1> 
       </div>
       <div class="owl-carousel owl-theme" id="owl-carousel-categorias">
-        @foreach( \App\Models\Categoria::where('status', 1)->orderBy('nombre', 'ASC')->get() as $categoria)
+        @foreach( \App\Models\Categoria::where('status', 1)->orderBy('orden', 'ASC')->get() as $categoria)
           <div class="item d-flex justify-content-center">
             <div class="card border-0 d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
               <div class="card-img-top icon-categorias mt-3">

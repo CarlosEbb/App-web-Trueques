@@ -79,7 +79,8 @@
                 <span class="tooltiptext">favorito</span>
               </a>
             </h3>
-            <p class="name-product">@if(is_numeric($producto->precio)) ${{number_format($producto->precio, 0, ",", ".")}} @else letra @endif</p>
+            
+            <p class="name-product">De ${{number_format($producto->rango->de, 0, ",", ".")}} hasta ${{number_format($producto->rango->hasta, 0, ",", ".")}}</p>
 
             @if($producto->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
           </article>

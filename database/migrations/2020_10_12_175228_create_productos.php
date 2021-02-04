@@ -34,7 +34,9 @@ class CreateProductos extends Migration
             $table->integer('municipio_id')->nullable();
             $table->integer('departamento_id')->nullable();
 
-            $table->string('precio');
+            //$table->string('precio');
+            $table->integer('precio')->unsigned()->nullable();
+            $table->foreign('precio')->references('id')->on('precios')->onDelete('cascade')->onUpdate('cascade');
             
             $table->integer('condicion_id')->unsigned()->nullable();
             $table->foreign('condicion_id')->references('id')->on('condicion')->onDelete('cascade')->onUpdate('cascade');

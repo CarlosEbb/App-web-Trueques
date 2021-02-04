@@ -66,6 +66,10 @@ class Producto extends Model
         return $this->belongsTo(TipoAnuncio::class, 'tipo_id');
     }
 
+    public function rango()
+    {
+        return $this->belongsTo(Precio::class, 'precio');
+    }
 //scope
     public function scopeNombre($query, $nombre) {
     	if ($nombre) {

@@ -51,7 +51,7 @@
                 <div class="col-md-10">
                   <div class="card-body">
                     <h5 class="card-title mb-1">{{$producto->nombre}}</h5>
-                    <h6 class="card-title mb-3"><small class="text-muted">Precio</small> {{$producto->precio}} 
+                    <h6 class="card-title mb-3"><small class="text-muted">Precio</small> De ${{number_format($producto->rango->de, 0, ",", ".")}} hasta ${{number_format($producto->rango->hasta, 0, ",", ".")}}
                     @if($producto->status == true)
                       <span class="badge badge-pill badge-success">publicado</span>
                     @else
