@@ -78,7 +78,7 @@
 
           <label for="municipio" class="mt-4">Municipio</label>
           <select name=municipio id="municipio" class="select">
-              <option disabled>-</option>
+              <option>-</option>
           </select>
         </div>
       </div>
@@ -110,21 +110,24 @@
           @for($i = 1; $i <= 3; $i++)
             <div class="col-12 col-md-4 mb-3 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="categoria">Categorias</label>
-              <select name=categoria{{$i}} class="select" onchange="cambia_categoria{{$i}}()" >
-                @foreach( \App\Models\Categoria::all() as $categoria)
+              <select id="selectCategoria{{$i}}" name=categoria{{$i}} class="select" onchange="cambia_categoria{{$i}}()" >
+                @foreach( \App\Models\Categoria::where('status', 0)->orderBy('nombre', 'ASC')->get() as $categoria)
+                  <option value="{{$categoria->id}}" id="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                @endforeach
+                @foreach( \App\Models\Categoria::where('status', 1)->orderBy('nombre', 'ASC')->get() as $categoria)
                   <option value="{{$categoria->id}}" id="{{$categoria->id}}">{{$categoria->nombre}}</option>
                 @endforeach
               </select>
             </div>
             <div class="col-12 col-md-4 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="descripcion">Sub categorias</label>
-              <select name="subCategoria{{$i}}" class="select">
+              <select id="selectSubCategoria{{$i}}" name="subCategoria{{$i}}" class="select">
                   <option value="-">- 
               </select>
             </div>
             <div class="col-12 col-md-4 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="descripcion">Producto especifico</label>
-              <input type="text" class="input" placeholder="moto">
+              <input id="inputProductoEspecifico{{$i}}" type="text" class="input input-limite-25" placeholder="Raqueta de Tenis Masculinas">
             </div>
           @endfor
           </div>
@@ -278,13 +281,12 @@ function cambia_provincia(){
 
 
 
-@foreach(\App\Models\Categoria::all() as $categoriaT)
+@foreach(\App\Models\Categoria::orderBy('nombre', 'ASC')->get() as $categoriaT)
     var categorias_{{$categoriaT->id}}=new Array(
       @foreach($categoriaT->subCategoria as $subCategoria)
       "{{$subCategoria->nombre}}",
       @endforeach
       )   
-      
 @endforeach
 
 
@@ -300,9 +302,13 @@ var todasCategoriasID = [
     [],
     @foreach(\App\Models\Categoria::all() as $categoriaID)
       new Array(
+        @if($categoriaID->subCategoria->count() != 1)
         @foreach($categoriaID->subCategoria as $subCategoriaID)
             {{$subCategoriaID->id}},
         @endforeach
+        @else
+          "{{$subCategoriaID->id}}",
+        @endif
       ),
     @endforeach
     
@@ -310,6 +316,21 @@ var todasCategoriasID = [
 
 @for($j = 1; $j <= 3; $j++)
   function cambia_categoria{{$j}}(){ 
+
+      
+    if($("#selectCategoria{{$j}}").val() == 19){
+      $("#inputProductoEspecifico{{$j}}").val('Recibo Propuestas');
+      $("#inputProductoEspecifico{{$j}}").prop( "disabled", true );
+      
+    }else{
+      $("#inputProductoEspecifico{{$j}}").val('')
+      $("#inputProductoEspecifico{{$j}}").prop( "disabled", false );
+
+    }
+
+    console.log(todasCategoriasID);
+
+console.log(todasCategoriasID[73]);
       //tomo el valor del select del departamento elegido 
       var categoria 
       categoria = document.f1.categoria{{$j}}[document.f1.categoria{{$j}}.selectedIndex].value 
@@ -322,13 +343,16 @@ var todasCategoriasID = [
           //calculo el numero de provincias 
           num_subCategorias = mis_subCategorias.length 
           //marco el número de provincias en el select 
-          document.f1.subCategoria{{$j}}.length = num_subCategorias 
+          document.f1.subCategoria{{$j}}.length = num_subCategorias
           //para cada provincia del array, la introduzco en el select 
+        
           for(i=0;i<num_subCategorias;i++){ 
             document.f1.subCategoria{{$j}}.options[i].value=mis_categoriasID[i] 
             document.f1.subCategoria{{$j}}.options[i].text=mis_subCategorias[i] 
           }	
       }else{ 
+        console.log('nmooooo'); 
+
           //si no había provincia seleccionada, elimino las provincias del select 
           document.f1.subCategoria{{$j}}.length = 1 
           //coloco un guión en la única opción que he dejado 
@@ -336,7 +360,8 @@ var todasCategoriasID = [
           document.f1.subCategoria{{$j}}.options[0].text = "-" 
       } 
       //marco como seleccionada la opción primera de provincia 
-      document.f1.subCategoria{{$j}}.options[0].selected = true 
+      document.f1.subCategoria{{$j}}.options[0].selected = true ;
+      ordenarSelect('selectSubCategoria1');
   }
 @endfor
 
@@ -344,6 +369,33 @@ var todasCategoriasID = [
 function enviar_formulario(){
   document.formPublicar.submit()
 }
+
+$("#selectCategoria1 option[value="+ 6 +"]").attr("selected",true);
+$("#selectCategoria2 option[value="+ 6 +"]").attr("selected",true);
+$("#selectCategoria3 option[value="+ 6 +"]").attr("selected",true);
+cambia_categoria1();
+cambia_categoria2();
+cambia_categoria3();
+cambia_provincia();
+$("#selectSubCategoria1 option[value="+ 36 +"]").attr("selected",true);
+$("#selectSubCategoria2 option[value="+ 36 +"]").attr("selected",true);
+$("#selectSubCategoria3 option[value="+ 36 +"]").attr("selected",true);
+
+
+
+$('.input-limite-25').on('input', function () { 
+  if (this.value.length > 25) 
+     this.value = this.value.slice(0,25); 
+});
+
+function ordenarSelect(id_componente)
+    {
+      var selectToSort = jQuery('#' + id_componente);
+      var optionActual = selectToSort.val();
+      selectToSort.html(selectToSort.children('option').sort(function (a, b) {
+        return a.text === b.text ? 0 : a.text < b.text ? -1 : 1;
+      })).val(optionActual);
+    }
 
 </script>
 

@@ -211,13 +211,15 @@
                   <b>{{$categoria->nombre}}</b>
                 </a>
               </div>
-              @foreach($categoria->subCategoria as $subCategoria)
-                <div>
-                  <a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
-                    {{$subCategoria->nombre}}
-                  </a>
-                </div>
-              @endforeach
+              @if($categoria->subCategoria->count() > 1)
+                @foreach($categoria->subCategoria as $subCategoria)
+                  <div>
+                    <a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+                      {{$subCategoria->nombre}}
+                    </a>
+                  </div>
+                @endforeach
+              @endif
             </div>
           @endforeach
         </div>

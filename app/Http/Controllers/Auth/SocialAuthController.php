@@ -14,7 +14,7 @@ class SocialAuthController extends Controller
 {
 
     protected $redirectToAdmin = '/home';
-    protected $redirectToUser = '/anuncios';
+    protected $redirectToUser = '/';
     
     // Metodo encargado de la redireccion a Facebook
     public function redirectToProvider($provider)
