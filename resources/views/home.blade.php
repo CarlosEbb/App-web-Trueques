@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            {{-- <div class="col-12 col-md-6">
                 <div class="card card-border-radius">
                     <div class="card-body">
                         <div class="header-card-dashboard d-flex mb-4" style="align-items: flex-end;">
@@ -33,12 +33,6 @@
                                 <span class="card-text lead">{{\App\Models\Producto::where('status', 4)->count()}}</span>
                             </h5>
                         </div>
-                        {{-- <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                            <div class="media-body p-2">
-                                <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
-                                <span class="mt-3 text-secondary">cliente</span> 
-                            </div>
-                        </a>
                         <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
                             <div class="media-body p-2">
                                 <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
@@ -51,11 +45,17 @@
                                 <span class="mt-3 text-secondary">cliente</span> 
                             </div>
                         </a>
-                        <p class="text-right mt-3"><a href="#" class="">Ver todos</a></p> --}}
+                        <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
+                            <div class="media-body p-2">
+                                <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
+                                <span class="mt-3 text-secondary">cliente</span> 
+                            </div>
+                        </a>
+                        <p class="text-right mt-3"><a href="#" class="">Ver todos</a></p>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 mt-5">
+            </div> --}}
+            <div class="col-12 col-md-6">
                 <div class="card card-border-radius">
                     <div class="card-body">
                         <div class="header-card-dashboard d-flex mb-4" style="align-items: flex-end;">
