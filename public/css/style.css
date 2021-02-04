@@ -234,6 +234,13 @@ button:focus {
     align-items: center;
 }
 
+.btn-favorito {
+    position: absolute !important;
+    display: flex;
+    right: 5px;
+    top: 10px;
+}
+
 /* style input navbar */
 .input-search,
 .select-city,
@@ -643,7 +650,7 @@ button:focus {
 #owl-carousel-productos-semana .owl-nav,
 #owl-carousel-categorias-populares .owl-nav {
     position: absolute;
-    top: 200px;
+    top: 130px;
     left: 0;
     right: 0;
     display: block;
@@ -846,11 +853,11 @@ ul.ui-autocomplete.ui-menu {
 }
 
 .owl-prev {
-    left: 0;
+    left: -10px;
 }
 
 .owl-next {
-    right: 0;
+    right: -10px;
 }
 
 .icon-categorias {
