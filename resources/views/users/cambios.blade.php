@@ -12,7 +12,7 @@
             <img class="mr-3" src="@if($producto->foto->first() != null) {{$producto->foto->first()->ruta}} @endif" width="64" height="64" style="border-radius: 15px;" alt="">
             <div class="media-body">
               <h5 class="mt-0 mb-1 d-inline-block" style="width: 95%;">
-              {{$producto->nombre}}
+                {{$producto->nombre}}
                 <span class="badge badge-pill badge-success">finalizado</span>
               </h5>
               <a class="btn-rounded btn-rounded-delete btn-rounded-delete-hover tooltips d-inline-block" href="#">

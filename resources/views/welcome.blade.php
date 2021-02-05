@@ -208,17 +208,17 @@
       <div class="row">
         @foreach( \App\Models\Categoria::where('foto', '!=', null)->orderBy('created_at','DESC')->paginate(5) as $categoria)
           {{-- <div class="col-8"> --}}
-            <article class="col-6">
+            <article class="col-6 w-100">
               <a class="text-center" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
                 <div class="card-body card-body-banner-categorias">
                   <div class="row">
-                    <div class="col-12 col-md-12">
-                        <img src="{{asset($categoria->foto)}}" width="200" height="300" alt="">
+                      <div class="col-12 col-md-12">
+                        <img src="{{asset($categoria->foto)}}" width="800" alt="">
                       </div>
                     </div>
-                  </div>
-                  <h5 class="p-3 text-center card-title-banner-categorias">{{$categoria->nombre}}</h5>
-                </a>
+                </div>
+                <h5 class="p-3 text-center card-title-banner-categorias">{{$categoria->nombre}}</h5>
+              </a>
             </article>
           {{-- </div> --}}
         @endforeach
