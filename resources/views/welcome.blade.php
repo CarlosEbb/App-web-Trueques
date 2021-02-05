@@ -206,7 +206,7 @@
         <h1 class="sub-title-home">Categorías populares</h1> 
       </div>
       <div class="row">
-        @foreach( \App\Models\Categoria::where('foto', '!=', null)->orderBy('created_at','DESC')->paginate(5) as $categoria)
+        @foreach( \App\Models\Categoria::where('foto', '!=', null)->orderBy('orden_populares', 'ASC')->paginate(5) as $categoria)
           {{-- <div class="col-8"> --}}
             <article class="col-6 w-100">
               <a class="text-center" href="{{route('busqueda')}}?categoria={{$categoria->id}}">

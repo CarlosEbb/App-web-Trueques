@@ -22,6 +22,7 @@ class CreateCategorias extends Migration
             $table->string('foto')->nullable();
             $table->string('color')->default('palevioletred');
             $table->integer('orden')->nullable();
+            $table->integer('orden_populares')->nullable();
             $table->integer('status')->default(true);
             
             $table->timestamps();
