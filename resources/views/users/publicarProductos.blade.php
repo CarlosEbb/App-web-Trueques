@@ -127,7 +127,8 @@
             </div>
             <div class="col-12 col-md-4 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="descripcion">Producto especifico</label>
-              <input id="inputProductoEspecifico{{$i}}" type="text" class="input input-limite-25" placeholder="Raqueta de Tenis Masculinas">
+              <input id="inputProductoEspecifico{{$i}}" type="text" class="input input-limite-25" placeholder="Raqueta de Tenis Masculina">
+              <p class="leed text-right" style="font-size: 10px; color:#808080; text-align: right;">Max. 25 caracteres.</p>
             </div>
           @endfor
           </div>
