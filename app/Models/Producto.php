@@ -29,6 +29,9 @@ class Producto extends Model
         'subCategoria1',
         'subCategoria2',
         'subCategoria3',
+        'produc_especifico1',
+        'produc_especifico2',
+        'produc_especifico3',
     ];
 
     public function foto()

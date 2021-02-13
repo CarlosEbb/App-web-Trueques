@@ -7,6 +7,7 @@ use App\Events\NuevoMensaje;
 use Auth;
 use App\Models\Producto;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class ChatForm extends Component
 {
@@ -172,6 +173,14 @@ class ChatForm extends Component
             "event" => "chat-event-".$this->producto."-".$this->usuario."-".$this->comprador,
         ]);
         
+        $data=array('de'=> Auth::user(), 'to'=> \App\Models\User::find($to_id));
+
+        Mail::send('correos.avisoMensaje',$data,function($mensaje) use ($data){
+            $mensaje->from(env('MAIL_USERNAME'),'Notificación Cambiemoslo');
+            $mensaje->to($data['to']->email)->subject('Notificación Cambiemoslo');
+        });
+
+
         // Generamos el evento para Pusher
         // Enviamos en la "push" el usuario y mensaje (aunque en este ejemplo no lo utilizamos)
         // pero nos vale para comprobar en PusherDebug (y por consola) lo que llega...
@@ -200,5 +209,16 @@ class ChatForm extends Component
         }
 
         return view('livewire.chat-form', compact('producto','vendedor', 'comprador'));
+    }
+
+    public function correoAviso($de, $to)
+    {
+        $data=array('de'=> \App\Models\User::find($de), 'to'=> \App\Models\User::find($to));
+
+        Mail::send('correos.avisoMensaje',$data,function($mensaje) use ($data){
+            $mensaje->from(env('MAIL_USERNAME'),'Notificación Cambiemoslo');
+            $mensaje->to($data['to']->email)->subject('Notificación Cambiemoslo');
+        });
+
     }
 }

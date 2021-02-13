@@ -46,19 +46,23 @@ class CreateProductos extends Migration
 
             $table->integer('subCategoria1')->unsigned()->nullable();
             $table->foreign('subCategoria1')->references('id')->on('sub_categorias')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('produc_especifico1')->nullable();
 
             $table->integer('categoria2')->unsigned()->nullable();
             $table->foreign('categoria2')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');
 
             $table->integer('subCategoria2')->unsigned()->nullable();
             $table->foreign('subCategoria2')->references('id')->on('sub_categorias')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('produc_especifico2')->nullable();
 
             $table->integer('categoria3')->unsigned()->nullable();
             $table->foreign('categoria3')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');
 
             $table->integer('subCategoria3')->unsigned()->nullable();
             $table->foreign('subCategoria3')->references('id')->on('sub_categorias')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('produc_especifico3')->nullable();
 
+            
             $table->integer('status')->default(true);
                 //status 0 = Pausada
                 //status 1 = Publicada

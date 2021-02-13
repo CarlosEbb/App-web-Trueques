@@ -79,7 +79,7 @@
 		<script>
 			var availableTags = [
 				@foreach(\App\Models\Municipio::all() as $keywords)
-				"{{$keywords->nombre}}",
+				"{{ucwords(strtolower($keywords->nombre))}}",
 				@endforeach
 			];
 		</script>

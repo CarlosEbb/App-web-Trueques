@@ -41,7 +41,7 @@
           <h4 class="mb-4">Detalles del anuncio</h4>
 
           <label for="nombreProducto">Nombre del producto</label>
-          <input form="f1" class="input" type="text" placeholder="Nombre del producto" name="nombre" id="nombreProducto" value="{{old('nombreProducto')}}">
+          <input form="f1" class="input PrimerMayus" type="text" placeholder="Nombre del producto" name="nombre" id="nombreProducto" value="{{old('nombreProducto')}}">
 
           <label for="descripcion" class="mt-4">Descripción</label>
           <textarea form="f1" class="textarea" placeholder="Descripción" name="descripcion" id="descripcion" cols="20" rows="5" value="{{old('descripcion')}}"></textarea>
@@ -51,7 +51,7 @@
           {{-- <input class="input" type="text" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}"> --}}
           <select form="f1" name="precio" class="select">
             @foreach(\App\Models\Precio::all() as $precio)
-                <option value="{{$precio->id}}">De {{$precio->moneda->simbolo}}{{$precio->de}} hasta {{$precio->moneda->simbolo}}{{$precio->hasta}}</option>
+                <option value="{{$precio->id}}">De {{$precio->moneda->simbolo}}{{number_format($precio->de, 0, ",", ".")}} hasta {{$precio->moneda->simbolo}}{{number_format($precio->hasta, 0, ",", ".")}}</option>
             @endforeach
         </select>
         </div>
@@ -223,7 +223,7 @@
 
     var provincias_{{$departamento->id}}=new Array(
       @foreach($departamento->municipio as $municipio)
-      "{{$municipio->nombre}}",
+      "{{ucwords(strtolower($municipio->nombre))}}",
       @endforeach
       )   
 @endforeach
@@ -398,6 +398,13 @@ function ordenarSelect(id_componente)
       })).val(optionActual);
     }
 
+
+
+$('.PrimerMayus').on('keyup', function() {
+
+   
+   $(this).val($(this).val().charAt(0).toUpperCase() + $(this).val().slice(1))
+});
 </script>
 
 

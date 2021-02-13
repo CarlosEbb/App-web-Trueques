@@ -49,7 +49,7 @@
                   <select class="form-control select-city">
                     <option selected disabled >Ciudad</option>
                       @foreach( \App\Models\Departamento::all() as $ciudad)
-                      <option value="{{$ciudad->id}}">{{$ciudad->departamento}}</option>
+                      <option value="{{$ciudad->id}}">{{ucwords(strtolower($ciudad->departamento))}}</option>
                       @endforeach
                   </select>
                 </div>
