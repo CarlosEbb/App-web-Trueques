@@ -80,7 +80,7 @@
         <h1 class="sub-title-home">Productos populares de la semana</h1> 
       </div>
       <div class="owl-carousel owl-theme py-2" id="owl-carousel-productos-semana">
-        @foreach( \App\Models\Producto::paginate(4) as $destacado)
+        @foreach( \App\Models\Producto::orderByRaw('RAND()')->take(10)->get(); as $destacado)
           @if($destacado->foto->first() != null)
             <article class="col-12 p-3">
               <div class="card card-product">
