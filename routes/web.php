@@ -32,6 +32,8 @@ Route::get('home', 'HomeController@index');
 
 Route::post('/subir', 'HomeController@upload');
 
+Route::post('/adjuntar', 'HomeController@adjuntar');
+
 
 
 Route::resource('productos', ProductoController::class);

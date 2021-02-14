@@ -67,6 +67,30 @@ class HomeController extends Controller
         return back();
     }
 
+    public function adjuntar(Request $request)
+    {
+        $foto = $request->file("file");
+        $extension = $foto->getClientOriginalExtension();
+        $url = Storage::disk('adjuntar')->put($foto->getFilename().".".$extension, File::get($foto));
+        $request['foto'] = '/uploads/adjuntar/'.$foto->getFilename().".".$extension;
+
+        if(Auth::user()->id == $request->vendedor)
+            $to_id = $request->comprador;
+        if(Auth::user()->id == $request->comprador)
+            $to_id = $request->vendedor;
+        
+        \App\Chat::create([
+            "user_id" => $request->vendedor,
+            "user_comprador_id" => $request->comprador,
+            "producto_id" => $request->producto,
+            "mensaje" => env('APP_URL').$request['foto'],
+            "to_id" => $to_id,
+            "event" => "adjuntar-documento",
+        ]);
+
+        return back();
+    }
+
     public function prueba()
     {
         return view("prueba");

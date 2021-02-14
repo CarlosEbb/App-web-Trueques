@@ -173,7 +173,7 @@ class ChatForm extends Component
             "event" => "chat-event-".$this->producto."-".$this->usuario."-".$this->comprador,
         ]);
         
-        $data=array('de'=> Auth::user(), 'to'=> \App\Models\User::find($to_id));
+        $data=array('de'=> Auth::user(), 'to'=> \App\Models\User::find($to_id), 'producto' => \App\Models\Producto::find($this->producto), 'mensaje' => $this->mensaje);
 
         Mail::send('correos.avisoMensaje',$data,function($mensaje) use ($data){
             $mensaje->from(env('MAIL_USERNAME'),'Notificación Cambiemoslo');

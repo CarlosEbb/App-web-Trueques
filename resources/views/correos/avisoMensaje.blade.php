@@ -69,18 +69,18 @@
 	<tr class="contenido">
 		<td>
 			<h6 class="title">Tienes un mensaje nuevo</h6>
-			<p class="hola">Hola, Pedro</p>
+			<p class="hola">Hola, {{$de->name}}</p>
 			<p>
 				<b>Tienes un mensaje de:</b> <br />
-				Juan perez Pedrito
+				{{$to->name}}
 			</p>
 			<p>
 				<b>Producto:</b> <br />
-				Camara de seguridad
+				{{$producto->nombre}}
 			</p>
 
 			<p class="mensaje">
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non eum deleniti eligendi nulla quaerat corporis omnis aspernatur voluptatum optio ex!
+				{{$mensaje}}
 			</p>
 		</td>
 	</tr>

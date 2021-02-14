@@ -101,5 +101,22 @@
         window.livewire.emit('mensajeRecibido', data);
     });
     
+    
+    $(document).ready(function(e){
+        $('#vendedor').val('{{$_GET["v"]}}');
+        $('#comprador').val('{{$_GET["c"]}}');
+        $('#producto').val('{{$_GET["p"]}}');
+    });
+
+
+$('#file').on('change', function() {
+    $('#buttonAdjuntar').trigger('click');
+
+});
+
+function clickFileInput(){
+    $('#file').trigger('click');
+}
+
 </script>
 @endsection

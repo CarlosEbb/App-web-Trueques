@@ -90,6 +90,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'adjuntar' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/adjuntar',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+
         'perfil' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/perfil',
