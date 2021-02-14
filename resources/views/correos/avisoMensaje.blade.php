@@ -64,7 +64,7 @@
 
 <table class="tftable" border="1">
 	<tr>
-		<th><img src="{{asset('img/Logo.png')}}" alt="" width="150" height="80" /></th>
+		<th><img src="http://cambiemoslo.com/img/Logo.png" alt="Logo cambiemoslo" width="150" height="80" /></th>
 	</tr>
 	<tr class="contenido">
 		<td>
