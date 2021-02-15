@@ -1,90 +1,26 @@
-<style type="text/css">
-	.tftable {
-		font-size: 12px;
-		color: #333333;
-		width: 50%;
-		border-width: 2px;
-		border-color: #e2e2e2;
-		border-collapse: collapse;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-	.tftable th {
-		background-color: #ffffff;
-		border-width: 2px;
-		padding: 8px;
-		border-style: solid;
-		border-color: #e2e2e2;
-		text-align: center;
-	}
-	.tftable tr {
-		background-color: #ffffff;
-	}
-	.tftable tr {
-		background-color: #ffffff;
-	}
-	.tftable td {
-		border-width: 2px;
-		padding: 8px;
-		border-style: solid;
-		border-color: #e2e2e2;
-		text-align: center;
-		border-radius: 20px;
-	}
-	.contenido {
-		height: 250px;
-		font-size: 15px;
-		color: #555555;
-	}
-
-	.contenido td .title {
-		font-size: 25px;
-		font-weight: 800;
-		color: #25405f;
-	}
-	.hola {
-		color: #25405f;
-		font-size: 19px;
-		font-weight: 600;
-		text-align: center;
-	}
-	.mensaje {
-		margin: 5% auto;
-		font-size: 16px;
-		text-align: left;
-		padding: 20px;
-		border: 1px solid #b8b8b8;
-		width: 40%;
-		border-radius: 10px;
-	}
-	.footer {
-		font-size: 15px;
-		color: #2376a6;
-	}
-</style>
-
-<table class="tftable" border="1">
-	<tr>
-		<th><img src="http://cambiemoslo.com/img/Logo.png" alt="Logo cambiemoslo" width="150" height="80" /></th>
+<table style="font-size: 12px; color: #333333; margin:auto; width: 80%; border-width: 2px; border-collapse: collapse; border: 1px solid #b8b8b8; font-family: Arial, Helvetica, sans-serif;">
+	<tr style="background-color: #fdfdfd;">
+		<th style="padding:10px;"><img src="http://cambiemoslo.com/img/Logo.png" alt="Logo cambiemoslo" width="150" height="80" /></th>
 	</tr>
-	<tr class="contenido">
+	<tr class="contenido" style="border: 1px solid #b8b8b8;">
 		<td>
-			<h6 class="title">Tienes un mensaje nuevo</h6>
-			<p class="hola">Hola, {{$de->name}}</p>
-			<p>
+			<h6 class="title" style="font-size: 25px; font-weight: 800; color: #25405f; text-align: center;">Tienes un mensaje nuevo</h6>
+			<p style="color: #25405f; font-size: 19px; font-weight: 600; text-align: center;">Hola, {{$de->name}}</p>
+			<p style="text-align: center; font-size:15px;">
 				<b>Tienes un mensaje de:</b> <br />
 				{{$to->name}}
 			</p>
-			<p>
+			<p style="text-align: center; font-size:15px;">
 				<b>Producto:</b> <br />
 				{{$producto->nombre}}
 			</p>
 
-			<p class="mensaje">
+			<p style="margin: 5% auto; font-size: 16px; text-align: left; padding: 20px; border: 1px solid #b8b8b8; width: 80%; border-radius: 10px;">
 				{{$mensaje}}
 			</p>
 		</td>
 	</tr>
-	<tr class="footer">
-		<td>El equipo de cambiemoslo</td>
+	<tr style="	font-size: 15px; color: #2376a6;">
+		<td style="text-align: center;background-color: #fdfdfd; padding:10px;">El equipo de cambiemoslo</td>
 	</tr>
 </table>
