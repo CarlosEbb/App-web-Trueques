@@ -43,6 +43,7 @@ Route::resource('subcategorias', SubCategoriaController::class);
 Route::resource('users', UserController::class);
 Route::resource('comentarios', ComentarioController::class);
 Route::resource('payment', PagoController::class);
+Route::resource('ventas', VentasController::class);
 
 // productos usuarios 
 Route::get('publicar-productos', function () {

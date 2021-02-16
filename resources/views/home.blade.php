@@ -51,7 +51,7 @@
                                 <span class="mt-3 text-secondary">cliente</span> 
                             </div>
                         </a>
-                        <p class="text-right mt-3"><a href="#" class="">Ver todos</a></p>
+                        <p class="text-right mt-3"><a href="/users" class="">Ver todos</a></p>
                     </div>
                 </div>
             </div> --}}
@@ -82,7 +82,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <p class="text-right mt-3"><a href="http://localhost:8000/users" class="">Ver todos</a></p>
+                        <p class="text-right mt-3"><a href="/users" class="">Ver todos</a></p>
                     </div>
                 </div>
             </div>
