@@ -16,7 +16,8 @@ class ComentarioController extends Controller
      */
     public function index()
     {
-        //
+        $comentarios = Comentario::orderBy('created_at', 'DESC')->get();
+        return view('admin.user.listarIntercambios')->with(compact('comentarios'));
     }
 
     /**

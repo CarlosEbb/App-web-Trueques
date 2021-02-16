@@ -128,11 +128,11 @@
                                             Categoria 1: {{\App\Models\Categoria::find($producto->categoria1)->nombre}} <br>
                                             Sub Categoria 1: {{\App\Models\SubCategoria::find($producto->subCategoria1)->nombre}}  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 1])}}">icono</a><br>
                                             <input type="text" value="{{$producto->produc_especifico1}}" name="produc_especifico1"><br>
-                                            Categoria 2: {{\App\Models\Categoria::find($producto->categoria2)->nombre}} <br>
-                                            Sub Categoria 2: {{\App\Models\SubCategoria::find($producto->subCategoria2)->nombre}}  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 2])}}">icono</a><br>
+                                            Categoria 2: @if($producto->categoria2 != null) {{\App\Models\Categoria::find($producto->categoria2)->nombre}} @endif<br>
+                                            Sub Categoria 2: @if($producto->subCategoria2) {{\App\Models\SubCategoria::find($producto->subCategoria2)->nombre}} @endif  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 2])}}">icono</a><br>
                                             <input type="text" value="{{$producto->produc_especifico2}}" name="produc_especifico2"><br>
-                                            Categoria 3: {{\App\Models\Categoria::find($producto->categoria3)->nombre}} <br>
-                                            Sub Categoria 3: {{\App\Models\SubCategoria::find($producto->subCategoria3)->nombre}}  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 3])}}">icono</a><br>
+                                            Categoria 3: @if($producto->categoria3 != null) {{\App\Models\Categoria::find($producto->categoria3)->nombre}} @endif <br>
+                                            Sub Categoria 3: @if($producto->subCategoria3) {{\App\Models\SubCategoria::find($producto->subCategoria3)->nombre}} @endif  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 3])}}">icono</a><br>
                                             <input type="text" value="{{$producto->produc_especifico3}}" name="produc_especifico3"><br>
 
                                             

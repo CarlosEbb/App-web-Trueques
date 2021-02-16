@@ -9,6 +9,7 @@ use App\Models\Departamento;
 use App\Models\Foto;
 use App\Models\User;
 use App\Models\ProductoUserClick;
+use App\Models\Comentario;
 use Session;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -109,13 +110,24 @@ class ProductoController extends Controller
     {
         $producto = Producto::find($id);
 
+        $suma = 0;
+        $cantidadDeElementos = Comentario::where('producto_id',$id)->count();
+        if($cantidadDeElementos != 0){
+            foreach(Comentario::where('producto_id',$id)->get() as $numero){
+                $suma += $numero->estrellas;
+            }
+            $promedio = intval($suma / $cantidadDeElementos);
+        }else{
+            $promedio = 0;
+        }
+        
         if(!Auth::guest()){
             if(ProductoUserClick::where('producto_id', $id)->where('user_id', Auth::user()->id)->count() == 0){
                 ProductoUserClick::create(['user_id' => Auth::user()->id, 'producto_id' => $id]);
             }
         }
 
-        return view('users.mostrarProducto')->with(compact('producto'));
+        return view('users.mostrarProducto')->with(compact('producto', 'promedio'));
     }
 
     
