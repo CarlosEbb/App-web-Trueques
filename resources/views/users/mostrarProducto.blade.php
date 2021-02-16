@@ -100,7 +100,7 @@
           <article class="card card-border-radius p-3 col-12 mt-3">
             <h3 class="title-card-product">Descripción del vendedor</h3>
             <div class="content-info-user d-flex mt-3">
-              <img @if(Auth::user()->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(Auth::user()->foto)}}"  @endif width="50" height="60" class="rounded-circle mr-3" alt="">
+              <img @if($producto->user->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset($producto->user->foto)}}"  @endif width="50" height="60" class="rounded-circle mr-3" alt="">
               <div class="info-user">
                 <p class="mb-0 font-weight-bold">{{$producto->user->name}}</p>
                 <span class="footer-product">Miembro desde {{$producto->user->created_at->format('d-m-Y')}}</span>
