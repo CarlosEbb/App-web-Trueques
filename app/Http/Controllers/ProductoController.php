@@ -207,4 +207,42 @@ class ProductoController extends Controller
         
         return view('users.mostrarProductoCategoria')->with(compact('productos'));
     }
+
+    public function editarIntereses($id,$nroInteres)
+    {
+        $producto = Producto::find($id);
+        
+        if($producto->user_id == Auth::user()->id){
+            
+            return view('users.editarSeleccionarCategoria')->with(compact('producto','nroInteres'));
+        }else{
+            return back();
+        }
+
+    }
+
+    public function editarProductos(Request $request)
+    {
+
+        $producto = Producto::find($request->producto);
+        if($producto->user_id == Auth::user()->id){
+            
+            $producto->fill($request->all())->save();
+            Session::flash('mensaje','Actualizado correctamente');
+            return redirect('anuncios');
+        }else{
+            return back();
+        }
+
+    }
+
+    public function intercambios()
+    {
+        
+        $chat = \App\Chat::where('user_comprador_id', Auth::user()->id)->get();
+        
+        return view('users.intercambio')->with(compact('chat'));
+    }
+
+    
 }

@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-md-10">
                   <div class="card-body">
-                    <h5 class="card-title mb-1">{{$producto->nombre}}</h5>
+                    <a href="{{route('productos.show', $producto->id)}}"><h5 class="card-title mb-1">{{$producto->nombre}}</h5></a>
                     <h6 class="card-title mb-3"><small class="text-muted">Precio</small> De ${{number_format($producto->rango->de, 0, ",", ".")}} hasta ${{number_format($producto->rango->hasta, 0, ",", ".")}}
                     @if($producto->status == true)
                       <span class="badge badge-pill badge-success">publicado</span>
@@ -124,6 +124,18 @@
                                                       <option value="0"  @if($producto->status == false) selected @endif>Pausado</</option>
                                                   </select>
                                             </div>
+                                            <h4>Cambio Por</h4>
+                                            Categoria 1: {{\App\Models\Categoria::find($producto->categoria1)->nombre}} <br>
+                                            Sub Categoria 1: {{\App\Models\SubCategoria::find($producto->subCategoria1)->nombre}}  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 1])}}">icono</a><br>
+                                            <input type="text" value="{{$producto->produc_especifico1}}" name="produc_especifico1"><br>
+                                            Categoria 2: {{\App\Models\Categoria::find($producto->categoria2)->nombre}} <br>
+                                            Sub Categoria 2: {{\App\Models\SubCategoria::find($producto->subCategoria2)->nombre}}  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 2])}}">icono</a><br>
+                                            <input type="text" value="{{$producto->produc_especifico2}}" name="produc_especifico2"><br>
+                                            Categoria 3: {{\App\Models\Categoria::find($producto->categoria3)->nombre}} <br>
+                                            Sub Categoria 3: {{\App\Models\SubCategoria::find($producto->subCategoria3)->nombre}}  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 3])}}">icono</a><br>
+                                            <input type="text" value="{{$producto->produc_especifico3}}" name="produc_especifico3"><br>
+
+                                            
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -23,6 +23,8 @@ class CreateComentarios extends Migration
             $table->integer('producto_id')->unsigned();
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
 
+            $table->integer("estrellas")->default(0);
+            
             $table->timestamps();
         });
     }

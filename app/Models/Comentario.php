@@ -15,6 +15,7 @@ class Comentario extends Model
         'contenido',
         'producto_id',
         'user_id',
+        'estrellas',
     ];
 
     public function user()

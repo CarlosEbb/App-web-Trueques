@@ -51,7 +51,7 @@
           {{-- <input class="input" type="text" placeholder="precio del producto" name="precio" id="nombreProducto" value="{{old('precio')}}"> --}}
           <select form="f1" name="precio" class="select">
             @foreach(\App\Models\Precio::all() as $precio)
-                <option value="{{$precio->id}}">De {{$precio->moneda->simbolo}}{{number_format($precio->de, 0, ",", ".")}} hasta {{$precio->moneda->simbolo}}{{number_format($precio->hasta, 0, ",", ".")}}</option>
+                <option value="{{$precio->id}}"> @if($precio->hasta == -1) Mas de {{$precio->moneda->simbolo}}{{number_format($precio->de, 0, ",", ".")}} @else De {{$precio->moneda->simbolo}}{{number_format($precio->de, 0, ",", ".")}} hasta {{$precio->moneda->simbolo}}{{number_format($precio->hasta, 0, ",", ".")}} @endif</option>
             @endforeach
         </select>
         </div>

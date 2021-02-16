@@ -101,3 +101,9 @@ Route::get("listarProductosPorUsuario/{id}", "ProductoController@listarProductos
 
 
 Route::post("subirFoto", "HomeController@subirFoto")->name('subirFoto');
+
+Route::get("editarIntereses/{id}/{nroInteres}", "ProductoController@editarIntereses")->name('editarIntereses');
+
+Route::get("editarProductos", "ProductoController@editarProductos")->name('editarProductos');
+
+Route::get("intercambios", "ProductoController@intercambios")->name('intercambios');

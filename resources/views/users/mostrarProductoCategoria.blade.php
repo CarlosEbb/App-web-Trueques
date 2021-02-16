@@ -29,7 +29,7 @@
                     Cambio por @if($producto->produc_especifico1 != null) {{$producto->produc_especifico1}} @endif @if($producto->produc_especifico2 != null) - {{$producto->produc_especifico2}} @endif @if($producto->produc_especifico3 != null) - {{$producto->produc_especifico3}} @endif
                     
                   </p>
-                  @if($producto->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
+                 
                 </div>
               </div>
             </article>

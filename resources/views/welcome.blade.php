@@ -93,18 +93,18 @@
                 </a>
                 <div class="card-body">
                   <a href="{{route('productos.show', $destacado->id)}}">
-                    <h5 class="card-title mb-2 card-title-product text-truncate">{{$destacado->nombre}}</h5>
+                    <h5 class="card-title mb-2 card-title-product text-truncate">{{ucfirst($destacado->nombre)}}</h5>
                   </a>
+                  <p class="mb-0 text-truncate d-flex aling-items-center mt-2" style="font-size: 14px">
+                    {{--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M16.71 5.29L19 3h-8v8l2.3-2.3c1.97 1.46 3.25 3.78 3.25 6.42c0 1.31-.32 2.54-.88 3.63c2.33-1.52 3.88-4.14 3.88-7.13c0-2.52-1.11-4.77-2.84-6.33z" fill="#25405f"/><path d="M7.46 8.88c0-1.31.32-2.54.88-3.63a8.479 8.479 0 0 0-3.88 7.13c0 2.52 1.1 4.77 2.84 6.33L5 21h8v-8l-2.3 2.3c-1.96-1.46-3.24-3.78-3.24-6.42z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>--}}
+                    Cambio por: <br>@if($destacado->produc_especifico1 != null) -{{ucfirst($destacado->produc_especifico1)}} @else <br> @endif @if($destacado->produc_especifico2 != null) <br> -{{ucfirst($destacado->produc_especifico2)}} @else <br> @endif @if($destacado->produc_especifico3 != null) <br> -{{ucfirst($destacado->produc_especifico3)}} @else <br> @endif
+                    
+                  </p>
                   <p class="mb-0 text-truncate d-flex aling-items-center mt-4" style="font-size: 14px">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" fill="#25405f"/><circle cx="12" cy="9" r="2.5" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg> 
                     {{ucwords(strtolower($destacado->municipio->nombre))}}
                   </p>
-                  <p class="mb-0 text-truncate d-flex aling-items-center mt-2" style="font-size: 14px">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M16.71 5.29L19 3h-8v8l2.3-2.3c1.97 1.46 3.25 3.78 3.25 6.42c0 1.31-.32 2.54-.88 3.63c2.33-1.52 3.88-4.14 3.88-7.13c0-2.52-1.11-4.77-2.84-6.33z" fill="#25405f"/><path d="M7.46 8.88c0-1.31.32-2.54.88-3.63a8.479 8.479 0 0 0-3.88 7.13c0 2.52 1.1 4.77 2.84 6.33L5 21h8v-8l-2.3 2.3c-1.96-1.46-3.24-3.78-3.24-6.42z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                    Cambio por @if($destacado->produc_especifico1 != null) {{$destacado->produc_especifico1}} @endif @if($destacado->produc_especifico2 != null) - {{$destacado->produc_especifico2}} @endif @if($destacado->produc_especifico3 != null) - {{$destacado->produc_especifico3}} @endif
-                    
-                  </p>
-                  @if($destacado->created_at->format('d-m-Y') == date('d-m-Y')) <span class="badge badge-pill badge-danger">Reciente</span>@endif
+                  
                 </div>
               </div>
             </article>

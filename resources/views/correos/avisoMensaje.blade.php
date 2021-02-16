@@ -5,7 +5,7 @@
 	<tr class="contenido" style="border: 1px solid #b8b8b8;">
 		<td>
 			<h6 class="title" style="font-size: 25px; font-weight: 800; color: #25405f; text-align: center;">Tienes un mensaje nuevo</h6>
-			<p style="color: #25405f; font-size: 19px; font-weight: 600; text-align: center;">Hola, {{$de->name}}</p>
+			
 			<p style="text-align: center; font-size:15px;">
 				<b>Tienes un mensaje de:</b> <br />
 				{{$to->name}}
