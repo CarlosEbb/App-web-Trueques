@@ -71,8 +71,15 @@
     // El evento "enviadoOK"
     $( document ).ready(function() {
         window.livewire.on('enviadoOK', function () {
-            $("#avisoSuccess").fadeIn("slow");                
-            setTimeout(function(){ $("#avisoSuccess").fadeOut("slow"); }, 3000);                                
+            $("#avisoSuccess").fadeIn("slow");       
+                    
+            setTimeout(
+                function(){ 
+                    $("#avisoSuccess").fadeOut("slow");
+                    const $contentChat = document.getElementById('content-chat')
+                    $contentChat.scrollTop = $contentChat.scrollHeight;
+                }
+            , 1000);                                
         });
     });
     

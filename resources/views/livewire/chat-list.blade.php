@@ -10,7 +10,7 @@
             <small class="text-muted">Comprador:  {{$compradorNombre}}</small> <br>
         @enderror
     </div>
-    <div class="card-body" style="height: 380px; overflow-y: auto;">
+    <div class="card-body" style="height: 380px; overflow-y: auto;" id="content-chat">
         @foreach($mensajes as $mensaje)       
         
             <div>
@@ -43,10 +43,10 @@
                 @endif
             </div>        
         @endforeach 
-        
     </div>   
-    
-    
-    
-
 </div>
+
+{{-- <script>
+    const $contentChat = document.getElementById('content-chat')
+    $contentChat.scrollTop = $contentChat.scrollHeight;
+</script> --}}
