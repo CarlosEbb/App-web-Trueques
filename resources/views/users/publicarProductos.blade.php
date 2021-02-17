@@ -57,12 +57,12 @@
         </div>
       </div>
       <div class="col-12 mb-4">
-        <div class="card card-border-radius p-4 p-md-5">
+        <div class="card card-border-radius p-4 p-md-5 bg-transparent">
           <h4 class="mb-4">Adjuntar fotos del producto</h4>
-          <button class="dz-button" type="button">
+          <button class="dz-button bg-transparent" type="button">
           <form action="subir" class="dropzone" id="my-awesome-dropzone" method="get" enctype="multipart/form-data">@csrf</form>
+          <p class="leed text-right" style="font-size: 13px; color:#808080; text-align: right;">la primera foto seleccionada sera la foto de portada del producto</p>
         </div>
-
       </div>
     <form id="f1" name="f1" action="{{route('productos.store')}}" method="post" enctype="multipart/form-data"> @csrf
       <div class="col-12 mb-4">

@@ -79,8 +79,8 @@
                       <a href="/planes?p={{$producto->id}}" class="btn btn-outline-info mx-2 mt-2 rounded-pill">Destacar producto</a>
                     @endif
                     <!-- Modal Editar-->
-                    <div class="modal fade" id="editar_{{$producto->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel_editar_{{$producto->id}}" aria-hidden="true">
-                        <div class="modal-dialog">
+                    <div class="modal fade " id="editar_{{$producto->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel_editar_{{$producto->id}}" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title text-lato" id="ModalLabel_editar_{{$producto->id}}">Actualizar Producto</h5>
@@ -89,60 +89,88 @@
                                     </button>
                                 </div>
                                 {!! Form::model($producto, ['route' => ['productos.update', $producto->id], 'method' => 'PUT', 'files' => true]) !!}
-                                    <div>
-                                      <div class="modal-body">
-                                            <div class="form-group">
-                                                <label for="">Nombre</label>
-                                                <input class="form-control" type="text" name="nombre" value="{{$producto->nombre}}" required>
-                                            </div>
+                                  <div class="modal-body">
+                                    <div class="form-row">
+                                      <div class="col-12">
+                                        <label for="">Nombre</label>
+                                        <input class="input" type="text" name="nombre" value="{{$producto->nombre}}" required>
+                                      </div>
 
-                                            <div class="form-group">
-                                                <label for="">Descripción</label>
-                                                <textarea class="form-control" name="descripcion" cols="30" rows="10" required>{{$producto->descripcion}}</textarea>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for="">Categoría</label>
-                                                  <select name="categoria_id" class="select">
-                                                    @foreach( \App\Models\Categoria::all() as $categoria)
-                                                      <option value="{{$categoria->id}}" @if($producto->categoria_id == $categoria->id) selected @endif>{{$categoria->nombre}}</option>
-                                                    @endforeach
-                                                  </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">Rango de precio</label>
-                                                  <select name="precio_id" class="select" id="precio">
-                                                    @foreach( \App\Models\Precio::all() as $precio)
-                                                      <option value="{{$precio->id}}"  @if($producto->precio_id == $precio->id) selected @endif>De {{number_format($precio->de, 2, ",", ".")}} a {{number_format($precio->hasta, 2, ",", ".")}} {{$precio->moneda->nombre}}</</option>
-                                                    @endforeach
-                                                  </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">Estatus</label>
-                                                  <select name="status" class="select" id="precio">
-                                                      <option value="1"  @if($producto->status == true) selected @endif>Publicado</</option>
-                                                      <option value="0"  @if($producto->status == false) selected @endif>Pausado</</option>
-                                                  </select>
-                                            </div>
-                                            <h4>Cambio Por</h4>
-                                            Categoria 1: {{\App\Models\Categoria::find($producto->categoria1)->nombre}} <br>
-                                            Sub Categoria 1: {{\App\Models\SubCategoria::find($producto->subCategoria1)->nombre}}  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 1])}}">icono</a><br>
-                                            <input type="text" value="{{$producto->produc_especifico1}}" name="produc_especifico1"><br>
-                                            Categoria 2: @if($producto->categoria2 != null) {{\App\Models\Categoria::find($producto->categoria2)->nombre}} @endif<br>
-                                            Sub Categoria 2: @if($producto->subCategoria2) {{\App\Models\SubCategoria::find($producto->subCategoria2)->nombre}} @endif  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 2])}}">icono</a><br>
-                                            <input type="text" value="{{$producto->produc_especifico2}}" name="produc_especifico2"><br>
-                                            Categoria 3: @if($producto->categoria3 != null) {{\App\Models\Categoria::find($producto->categoria3)->nombre}} @endif <br>
-                                            Sub Categoria 3: @if($producto->subCategoria3) {{\App\Models\SubCategoria::find($producto->subCategoria3)->nombre}} @endif  <a href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 3])}}">icono</a><br>
-                                            <input type="text" value="{{$producto->produc_especifico3}}" name="produc_especifico3"><br>
+                                      <div class="col-12 my-3">
+                                        <label for="">Descripción</label>
+                                        <textarea class="input" name="descripcion" cols="30" rows="10" required>{{$producto->descripcion}}</textarea>
+                                      </div>
 
-                                            
+                                      <div class="col-12 col-md-4 my-3">
+                                        <label for="">Categoría</label>
+                                        <select name="categoria_id" class="select">
+                                          @foreach( \App\Models\Categoria::all() as $categoria)
+                                            <option value="{{$categoria->id}}" @if($producto->categoria_id == $categoria->id) selected @endif>{{$categoria->nombre}}</option>
+                                          @endforeach
+                                        </select>
+                                      </div>
+
+                                      <div class="col-12 col-md-4 my-3">
+                                        <label for="">Rango de precio</label>
+                                        <select name="precio_id" class="select" id="precio">
+                                          @foreach( \App\Models\Precio::all() as $precio)
+                                            <option value="{{$precio->id}}"  @if($producto->precio_id == $precio->id) selected @endif>De {{number_format($precio->de, 2, ",", ".")}} a {{number_format($precio->hasta, 2, ",", ".")}} {{$precio->moneda->nombre}}</</option>
+                                          @endforeach
+                                        </select>
+                                      </div>
+
+                                      <div class="col-12 col-md-4 my-3">
+                                        <label for="">Estatus</label>
+                                        <select name="status" class="select" id="precio">
+                                          <option value="1"  @if($producto->status == true) selected @endif>Publicado</</option>
+                                          <option value="0"  @if($producto->status == false) selected @endif>Pausado</</option>
+                                        </select>
+                                      </div>
+
+
+                                      <div class="col-12">
+                                        <h4 class="text-center my-4">Cambio Por</h4>
+                                      </div>
+
+                                      <div class="col-12 col-md-4">
+                                        <label for="" class="mb-0"><b>Categoria 1:</b> {{\App\Models\Categoria::find($producto->categoria1)->nombre}}</label>
+                                        <div class="d-flex justify-content-between mb-2">
+                                          <label for="" class="small"><b style="color: #737373; font-weight: 300;">Sub Categoria 1:</b> {{\App\Models\SubCategoria::find($producto->subCategoria1)->nombre}}</label>  
+                                          <a class="btn btn-rounded btn-primary btn-primary-dark border-0 p-0 px-1 btn-outline" class="small" href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 1])}}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.2em" height="1.2em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                                          </a>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <input class="btn btn-warning" type="submit" value="Actualizar">
+                                        <input type="text" class="input" value="{{$producto->produc_especifico1}}" name="produc_especifico1">
+                                      </div>
+
+                                      <div class="col-12 col-md-4">
+                                        <label for="" class="mb-0 d-block"><b>Categoria 2:</b> @if($producto->categoria2 != null) {{\App\Models\Categoria::find($producto->categoria2)->nombre}} @endif</label>
+                                        <div class="d-flex justify-content-between mb-2">
+                                          <label for="" class="small"><b style="color: #737373; font-weight: 300;">Sub Categoria 2:</b> @if($producto->subCategoria2) {{\App\Models\SubCategoria::find($producto->subCategoria2)->nombre}} @endif </label>
+                                          <a class="btn btn-rounded btn-primary btn-primary-dark border-0  p-0 px-1 btn-outline" class="small" href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 2])}}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.2em" height="1.2em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                                          </a>
                                         </div>
+                                        <input type="text" class="input" value="{{$producto->produc_especifico2}}" name="produc_especifico2">
+                                      </div>
+
+                                      <div class="col-12 col-md-4">
+                                        <label for="" class="mb-0 d-block"><b>Categoria 3:</b> @if($producto->categoria3 != null) {{\App\Models\Categoria::find($producto->categoria3)->nombre}} @endif</label>
+                                        <div class="d-flex justify-content-between mb-2">
+                                          <label for="" class="small"><b style="color: #737373; font-weight: 300;">Sub Categoria 3:</b> @if($producto->subCategoria3) {{\App\Models\SubCategoria::find($producto->subCategoria3)->nombre}} @endif  </label>
+                                          <a class="btn btn-rounded btn-primary btn-primary-dark border-0 p-0 px-1 btn-outline" href="{{route('editarIntereses', ['id' => $producto->id, 'nroInteres' => 3])}}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.2em" height="1.2em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                                          </a>
+                                        </div>
+                                        <input type="text" class="input" value="{{$producto->produc_especifico3}}" name="produc_especifico3">
+                                      </div>
 
                                     </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <input class="btn btn-primary btn-primary-dark btn-rounded border-0" type="submit" value="Actualizar">
+                                  </div>
                                 {!! Form::close() !!}
                             </div>
                         </div>
