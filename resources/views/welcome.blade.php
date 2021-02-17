@@ -210,7 +210,7 @@
       <div class="col-12 section-content">
         <h1 class="sub-title-home">Categorías populares</h1> 
       </div>
-      <div class="row">
+      <div class="row w-100">
         @foreach( \App\Models\Categoria::where('foto', '!=', null)->orderBy('orden_populares', 'ASC')->paginate(5) as $categoria)
           {{-- <div class="col-8"> --}}
             <article class="col-6 w-100">
