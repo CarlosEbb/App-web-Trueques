@@ -6,7 +6,9 @@
       <section class="col-12 col-md-8">
         <div class="row px-1">
           <article class="card card-border-radius col-12 p-0">
-            <img src="{{App\Models\Foto::where('producto_id', $producto->id)->first()->ruta}}" class="card-img-top card-img-rounded-top" id="foto-producto-src" width="250" height="512" alt="">
+            <div class="content-img" style="height: 500px;">
+              <img src="{{App\Models\Foto::where('producto_id', $producto->id)->first()->ruta}}" class="card-img-rounded-top w-100 h-100" style="object-fit: contain;"  id="foto-producto-src" alt="">
+            </div>
             <div class="content-img-product card-footer bg-transparent d-flex ">
               <?php           
                 $consulta = App\Models\Foto::where('producto_id', $producto->id)->get();
