@@ -48,7 +48,7 @@ class ResetPassword extends RestPass
                     ->action('Reset Password', url(config('app.url').route('password.reset', [$this->token, $notifiable->email], false)))
                     ->line('Si no realizaste esta solicitud, no se requiere realizar ninguna otra acción.')
                     ->salutation('Saludos, '. config('app.name'))
-                    ->from(env('MAIL_USERNAME'), 'Truequegram');
+                    ->from(env('MAIL_USERNAME'), 'Cambiemoslo');
     }
 
     /**
