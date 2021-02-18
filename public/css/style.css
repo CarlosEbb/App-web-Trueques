@@ -614,9 +614,7 @@ button:focus {
 }
 
 .card-body-banner-categorias img {
-    width: 170px;
-    height: 250px;
-    /* padding: 20px; */
+    width: 300px;
 }
 
 .card-title-banner-categorias {
