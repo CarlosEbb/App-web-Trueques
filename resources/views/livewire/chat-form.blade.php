@@ -6,7 +6,7 @@
     <div class="row">   
         <div class="col-12">
             <div class="row form-inline">
-                <div class="col-10 col-md-10">
+                <div class="col-8 col-md-10">
                     <div class="form-group mb-0">
                         <label for="mensaje" class="mb-2"><strong>Escribe tu mensaje</strong> <span></span></label>
                         <input type="text" wire:model="mensaje" wire:keydown.enter="enviarMensaje" class="input" id="mensaje">
@@ -20,7 +20,7 @@
                         
                     </div>
                 </div>
-                <div class="col-md-2 d-flex align-items-center justify-content-center">
+                <div class="col-4 col-md-2 d-flex align-items-center justify-content-center">
                     <button 
                         class="btn-rounded btn-primary btn-primary-dark mr-2" 
                         wire:click="enviarMensaje"

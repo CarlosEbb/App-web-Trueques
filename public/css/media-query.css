@@ -54,6 +54,17 @@
     #sidebar {
         margin-left: -280px;
     }
+
+    #owl-carousel-productos-semana .owl-nav,
+    #owl-carousel-categorias .owl-nav {
+        display: none !important;
+    }
+
+    .content-categorias {
+        column-count: 1 !important;
+        overflow-y: scroll !important;
+        padding: 5px;
+    }
 }
 
 @media (max-width: 992px) {

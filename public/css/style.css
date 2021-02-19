@@ -917,7 +917,7 @@ ul.ui-autocomplete.ui-menu {
 
 /* chat */
 .content-chat {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 93.5%;
 }
 

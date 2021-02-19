@@ -208,14 +208,14 @@
     </section> --}}
 
     {{-- Categorías Populares --}}
-    <section class="row">
+    <section class="row ">
       <div class="col-12 section-content">
         <h1 class="sub-title-home">Categorías populares</h1> 
       </div>
-      <div class="row w-100">
+      <div class="row w-100 m-auto">
         @foreach( \App\Models\Categoria::where('foto', '!=', null)->orderBy('orden_populares', 'ASC')->paginate(5) as $categoria)
           {{-- <div class="col-8"> --}}
-            <article class="col-6 w-100">
+            <article class="col-12 col-md-6 w-100">
               <a class="text-center" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
                 <div class="card-body card-body-banner-categorias">
                   <img src="{{asset($categoria->foto)}}" width="800" alt="">

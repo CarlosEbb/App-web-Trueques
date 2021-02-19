@@ -1,10 +1,10 @@
 <footer class="mt-5">
   <div class="container py-3">
     <div class="row m-0">
-      <div class="col-md-3 d-flex justify-content-center align-items-start">
+      <div class="col-12 col-md-12 col-lg-3 d-flex justify-content-center align-items-start">
         <img src="{{asset('img/Logo.png')}}" alt="Logo" width="190" height="100">
       </div>
-      <div class="col-md-2">
+      <div class="col-12 col-md-4 col-lg-2">
         <ul class="list-group ">
           <li class="list-group-item border-0 py-1 px-1  bg-transparent font-weight-bold">
             Cambiemoslo
@@ -28,7 +28,7 @@
           @endforeach --}}
         </ul>        
       </div>
-      <div class="col-md-2">
+      <div class="col-12 col-md-4 col-lg-2">
         <ul class="list-group ">
           <li class="list-group-item border-0 py-1 px-1  bg-transparent font-weight-bold">
             Soporte
@@ -50,7 +50,7 @@
           @endforeach --}}
         </ul>   
       </div>
-      <div class="col-md-2">
+      <div class="col-12 col-md-4 col-lg-2">
         <ul class="list-group ">
           <li class="list-group-item border-0 py-1 px-1  bg-transparent font-weight-bold">Legal</li>
           <li class="list-group-item border-0 p-0 ml-3 bg-transparent">
@@ -67,7 +67,7 @@
           @endforeach --}}
         </ul>   
       </div>
-      <div class="col-md-3 d-flex align-items-center">
+      <div class="col-12 col-md-12 col-lg-3 d-flex align-items-center">
         <ul class="list-group d-flex justify-content-center flex-row">
           <li class="list-group-item border-0 py-2 bg-transparent">
             <a href="#" class="link-footer" target="_blank" rel="noopener noreferrer">
