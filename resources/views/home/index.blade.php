@@ -95,7 +95,10 @@
 <script>
     
     // Enable pusher logging - don't include this in production
-    setTimeout(function(){ window.livewire.emit('solicitaUsuario'); }, 100);
+    setTimeout(function(){ window.livewire.emit('solicitaUsuario'); 
+         const $contentChat = document.getElementById('content-chat')
+        $contentChat.scrollTop = $contentChat.scrollHeight;
+    }, 100);
     setTimeout(function(){ window.livewire.emit('solicitaProducto'); }, 100);
     setTimeout(function(){ window.livewire.emit('solicitaComprador'); }, 100);
     setTimeout(function(){ window.livewire.emit('solicitaUsuarioNombre'); }, 100);
@@ -134,5 +137,7 @@ function clickFileInput(){
     $('#file').trigger('click');
 }
 
+const $contentChat = document.getElementById('content-chat')
+$contentChat.scrollTop = $contentChat.scrollHeight;
 </script>
 @endsection

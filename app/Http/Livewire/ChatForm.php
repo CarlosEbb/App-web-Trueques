@@ -173,18 +173,14 @@ class ChatForm extends Component
             "event" => "chat-event-".$this->producto."-".$this->usuario."-".$this->comprador,
         ]);
         
-        $data=array('de'=> Auth::user(), 'to'=> \App\Models\User::find($to_id), 'producto' => \App\Models\Producto::find($this->producto), 'mensaje' => $this->mensaje);
-
-        Mail::send('correos.avisoMensaje',$data,function($mensaje) use ($data){
-            $mensaje->from(env('MAIL_USERNAME'),'Notificación Cambiemoslo');
-            $mensaje->to($data['to']->email)->subject('Notificación Cambiemoslo');
-        });
-
+      
 
         // Generamos el evento para Pusher
         // Enviamos en la "push" el usuario y mensaje (aunque en este ejemplo no lo utilizamos)
         // pero nos vale para comprobar en PusherDebug (y por consola) lo que llega...
         event(new \App\Events\NuevoMensaje($this->usuario, $this->mensaje, $this->producto, $this->comprador));
+      
+        
         
         // Este evento es para que lo reciba el componente
         // por Javascript y muestre el ALERT BOOSTRAP de "enviado"
@@ -193,7 +189,13 @@ class ChatForm extends Component
         // Creamos un nuevo texto aleatorio (para el próximo mensaje)
         //$this->faker = \Faker\Factory::create();       
         $this->mensaje = '';
-    
+        
+        $data=array('de'=> Auth::user(), 'to'=> \App\Models\User::find($to_id), 'producto' => \App\Models\Producto::find($this->producto), 'mensaje' => $this->mensaje);
+
+        Mail::send('correos.avisoMensaje',$data,function($mensaje) use ($data){
+            $mensaje->from(env('MAIL_USERNAME'),'Notificación Cambiemoslo');
+            $mensaje->to($data['to']->email)->subject('Notificación Cambiemoslo');
+        });
     }    
 
     public function render()
