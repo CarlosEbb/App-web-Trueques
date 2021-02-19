@@ -105,7 +105,7 @@ class ProductoController extends Controller
         $users = User::find($id);
         return view('admin.user.listarProductosPorUsuario')->with(compact('users'));
     }
-
+    
     public function show($id)
     {
         $producto = Producto::find($id);
@@ -256,5 +256,12 @@ class ProductoController extends Controller
         return view('users.intercambio')->with(compact('chat'));
     }
 
-    
+    public function publicaciones($id)
+    {
+        
+        $user = User::find($id);
+        $productos = $user->productos;
+
+        return view('users.anunciosUser')->with(compact('user','productos'));
+    }
 }

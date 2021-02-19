@@ -12,18 +12,18 @@
 
                     @forelse(\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->orwhere('user_comprador_id', Auth::user()->id)->get()->groupBy('chat-event') as $chats)
                         <div class="card card-border-radius content-chat" >
-                            <a href="{{route('chat')}}?p={{$chats->first()->producto_id}}&v={{$chats->first()->user_id}}&c={{$chats->first()->user_comprador_id}}">
+                            <a href="{{route('publicaciones', $chats->first()->user_id)}}">
                                 <div class="card-body d-flex align-items-center border-bottom p-3">
                                     <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
                                     <div class="content-info ml-3 ">
                                             
                                                 @if(Auth::user()->id == $chats->first()->user_comprador_id)
-                                                    <p class="mb-0"><b>{{$chats->first()->user->name}}</b> - {{$chats->first()->producto->nombre}}</p>
+                                                    <p class="mb-0"><b>{{$chats->first()->user->name}}</b> - {{\App\Models\Producto::find($_GET["p"])->nombre}}</p>
                                                     <p class="small mb-0">{{$chats->last()->created_at}}</p>
                                                 @endif
                                                     
                                                 @if(Auth::user()->id == $chats->first()->user_id)
-                                                    <p class="mb-0"><b>{{$chats->first()->comprador->name}}</b> - {{$chats->first()->producto->nombre}}</p>
+                                                    <p class="mb-0"><b>{{$chats->first()->comprador->name}}</b> - {{\App\Models\Producto::find($_GET["p"])->nombre}}</p>
                                                     <p class="small mb-0">{{$chats->last()->created_at}}</p>   
                                                 @endif
                                                     
@@ -106,6 +106,8 @@
     var channel = pusher.subscribe('chat-channel');
     channel.bind('chat-event-{{$_GET['p']}}-{{$_GET['v']}}-{{$_GET['c']}}', function(data) {        
         window.livewire.emit('mensajeRecibido', data);
+        const $contentChat = document.getElementById('content-chat')
+        $contentChat.scrollTop = $contentChat.scrollHeight;
     });
     
     

@@ -107,3 +107,5 @@ Route::get("editarIntereses/{id}/{nroInteres}", "ProductoController@editarIntere
 Route::get("editarProductos", "ProductoController@editarProductos")->name('editarProductos');
 
 Route::get("intercambios", "ProductoController@intercambios")->name('intercambios');
+
+Route::get("publicaciones/{id}", "ProductoController@publicaciones")->name('publicaciones');

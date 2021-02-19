@@ -8,7 +8,7 @@
 			
 			<p style="text-align: center; font-size:15px;">
 				<b>Tienes un mensaje de:</b> <br />
-				{{$to->name}}
+				{{$de->name}}
 			</p>
 			<p style="text-align: center; font-size:15px;">
 				<b>Producto:</b> <br />
