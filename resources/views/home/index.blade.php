@@ -10,28 +10,27 @@
                 </div>
                 <div class="col-md-4">
 
-                    @forelse(\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->orwhere('user_comprador_id', Auth::user()->id)->get()->groupBy('chat-event') as $chats)
                         <div class="card card-border-radius content-chat" >
                             <?php
-                                if(Auth::user()->id == $chats->first()->user_id){
-                                    $toChat = $chats->first()->user_comprador_id;
+                                if(Auth::user()->id == $_GET['v']){
+                                    $toChat = $_GET['c'];
                                 }else{
-                                    $toChat = $chats->first()->user_id;
+                                    $toChat = $_GET['v'];
                                 }
                             ?>
                             <a href="{{route('publicaciones', $toChat)}}">
                                 <div class="card-body d-flex align-items-center border-bottom p-3">
-                                    <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
+                                    <img @if(\App\Models\User::find($_GET['c'])->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($_GET['c'])->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
                                     <div class="content-info ml-3 ">
                                             
-                                                @if(Auth::user()->id == $chats->first()->user_comprador_id)
-                                                    <p class="mb-0"><b>{{$chats->first()->user->name}}</b> - {{\App\Models\Producto::find($_GET["p"])->nombre}}</p>
-                                                    <p class="small mb-0">{{$chats->last()->created_at}}</p>
+                                                @if(Auth::user()->id == $_GET['c'])
+                                                    <p class="mb-0"><b>{{\App\Models\User::find($_GET['v'])->name}}</b> - {{\App\Models\Producto::find($_GET["p"])->nombre}}</p>
+                                                   
                                                 @endif
                                                     
-                                                @if(Auth::user()->id == $chats->first()->user_id)
-                                                    <p class="mb-0"><b>{{$chats->first()->comprador->name}}</b> - {{\App\Models\Producto::find($_GET["p"])->nombre}}</p>
-                                                    <p class="small mb-0">{{$chats->last()->created_at}}</p>   
+                                                @if(Auth::user()->id == $_GET['v'])
+                                                    <p class="mb-0"><b>{{\App\Models\User::find($_GET['c'])->name}}</b> - {{\App\Models\Producto::find($_GET["p"])->nombre}}</p>
+                                                      
                                                 @endif
                                                     
                                     </div>
@@ -39,19 +38,8 @@
                             </a>
                         
                         </div>
-                        @empty
-                        <div class="card card-border-radius content-chat" >
-                            <a>
-                                <div class="card-body d-flex align-items-center border-bottom p-3">
-                                    <div class="content-info ml-3 ">
-                                        <p class="mb-0">No hay nada para mostrar.</p>
-                                        <p class="small mb-0"></p>                
-                                    </div>
-                                </div>
-                            </a>
-                        
-                        </div>
-                        @endforelse
+                      
+                       
                     
                 </div>
                 <div class="col-md-8">

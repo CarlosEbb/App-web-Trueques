@@ -18,11 +18,11 @@
                   <input name="merchantId"    type="hidden"  value="910226"   >
                   <input name="accountId"     type="hidden"  value="917001" >
                   <input name="description"   type="hidden"  value="Destacar Producto, 5 dias"  >
-                  <input name="referenceCode" type="hidden"  value="{{$orden = \App\Order::all()->count()+1}}_DP5DAYS" >
+                  <input name="referenceCode" type="hidden"  value="{{$orden = \App\Order::all()->count()+1}}_DP5DAYSP" >
                   <input name="amount"        type="hidden"  value="10000"   >
                   <input name="currency"      type="hidden"  value="COP" >
-                  <input name="signature"     type="hidden"  value="{{md5('EO9yDb7f82SFuDuRra1QdMHRW6~910226~'.$orden.'_DP5DAYS~10000~COP')}}">
-                  <input name="test"          type="hidden"  value="1" >
+                  <input name="signature"     type="hidden"  value="{{md5('EO9yDb7f82SFuDuRra1QdMHRW6~910226~'.$orden.'_DP5DAYSP~10000~COP')}}">
+                  <input name="test"          type="hidden"  value="0" >
                   <input name="buyerEmail"    type="hidden"  value="{{Auth::user()->email}}" >
                   <input name="responseUrl"    type="hidden"  value="http://cambiemoslo.com/payment/1?&user_id={{Auth::user()->id}}&producto_id={{$_GET['p']}}&days=5" >
                   <input name="Submit"        type="submit"  value="Destacar" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto">
@@ -42,11 +42,11 @@
                   <input name="merchantId"    type="hidden"  value="910226"   >
                   <input name="accountId"     type="hidden"  value="917001" >
                   <input name="description"   type="hidden"  value="Destacar Producto, 15 dias"  >
-                  <input name="referenceCode" type="hidden"  value="{{$orden = \App\Order::all()->count()+1}}_DP15DAYS" >
+                  <input name="referenceCode" type="hidden"  value="{{$orden = \App\Order::all()->count()+1}}_DP15DAYSP" >
                   <input name="amount"        type="hidden"  value="20000"   >
                   <input name="currency"      type="hidden"  value="COP" >
-                  <input name="signature"     type="hidden"  value="{{md5('EO9yDb7f82SFuDuRra1QdMHRW6~910226~'.$orden.'_DP15DAYS~20000~COP')}}">
-                  <input name="test"          type="hidden"  value="1" >
+                  <input name="signature"     type="hidden"  value="{{md5('EO9yDb7f82SFuDuRra1QdMHRW6~910226~'.$orden.'_DP15DAYSP~20000~COP')}}">
+                  <input name="test"          type="hidden"  value="0" >
                   <input name="buyerEmail"    type="hidden"  value="{{Auth::user()->email}}" >
                   <input name="responseUrl"    type="hidden"  value="http://cambiemoslo.com/payment/1?&user_id={{Auth::user()->id}}&producto_id={{$_GET['p']}}&days=15" >
                   <input name="Submit"        type="submit"  value="Destacar" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto">
@@ -64,11 +64,11 @@
                   <input name="merchantId"    type="hidden"  value="910226"   >
                   <input name="accountId"     type="hidden"  value="917001" >
                   <input name="description"   type="hidden"  value="Destacar Producto, 30 dias"  >
-                  <input name="referenceCode" type="hidden"  value="{{$orden = \App\Order::all()->count()+1}}_DP30DAYS" >
+                  <input name="referenceCode" type="hidden"  value="{{$orden = \App\Order::all()->count()+1}}_DP30DAYSP" >
                   <input name="amount"        type="hidden"  value="30000"   >
                   <input name="currency"      type="hidden"  value="COP" >
-                  <input name="signature"     type="hidden"  value="{{md5('EO9yDb7f82SFuDuRra1QdMHRW6~910226~'.$orden.'_DP30DAYS~30000~COP')}}">
-                  <input name="test"          type="hidden"  value="1" >
+                  <input name="signature"     type="hidden"  value="{{md5('EO9yDb7f82SFuDuRra1QdMHRW6~910226~'.$orden.'_DP30DAYSP~30000~COP')}}">
+                  <input name="test"          type="hidden"  value="0" >
                   <input name="buyerEmail"    type="hidden"  value="{{Auth::user()->email}}" >
                   <input name="responseUrl"    type="hidden"  value="http://cambiemoslo.com/payment/1?&user_id={{Auth::user()->id}}&producto_id={{$_GET['p']}}&days=5" >
                   <input name="Submit"        type="submit"  value="Destacar" class="btn-rounded btn-primary btn-primary-dark w-75 mx-auto">
