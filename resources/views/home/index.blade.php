@@ -12,7 +12,14 @@
 
                     @forelse(\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->orwhere('user_comprador_id', Auth::user()->id)->get()->groupBy('chat-event') as $chats)
                         <div class="card card-border-radius content-chat" >
-                            <a href="{{route('publicaciones', $chats->first()->user_id)}}">
+                            <?php
+                                if(Auth::user()->id == $chats->first()->user_id){
+                                    $toChat = $chats->first()->user_comprador_id;
+                                }else{
+                                    $toChat = $chats->first()->user_id;
+                                }
+                            ?>
+                            <a href="{{route('publicaciones', $toChat)}}">
                                 <div class="card-body d-flex align-items-center border-bottom p-3">
                                     <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
                                     <div class="content-info ml-3 ">
