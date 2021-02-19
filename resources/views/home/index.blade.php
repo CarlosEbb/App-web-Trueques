@@ -11,36 +11,49 @@
                 <div class="col-md-4">
 
                         <div class="card card-border-radius content-chat" >
+                    @forelse(\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->orwhere('user_comprador_id', Auth::user()->id)->get()->groupBy('event', 'producto_id') as $chats)
                             <?php
-                                if(Auth::user()->id == $_GET['v']){
-                                    $toChat = $_GET['c'];
+                                if(Auth::user()->id == $chats->first()->user_id){
+                                    $toChat = $chats->first()->user_comprador_id;
                                 }else{
-                                    $toChat = $_GET['v'];
+                                    $toChat = $chats->first()->user_id;
                                 }
                             ?>
-                            <a href="{{route('publicaciones', $toChat)}}">
+                            <a href="{{route('chat')}}?p={{$chats->first()->producto_id}}&v={{$chats->first()->user_id}}&c={{$chats->first()->user_comprador_id}}" @if($chats->first()->event == 'chat-event-'.$_GET["p"].'-'.$_GET["v"].'-'.$_GET["c"]) style="background: #c3c3c3" @endif>
                                 <div class="card-body d-flex align-items-center border-bottom p-3">
-                                    <img @if(\App\Models\User::find($_GET['c'])->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($_GET['c'])->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
+                                    <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
                                     <div class="content-info ml-3 ">
                                             
-                                                @if(Auth::user()->id == $_GET['c'])
-                                                    <p class="mb-0"><b>{{\App\Models\User::find($_GET['v'])->name}}</b> - {{\App\Models\Producto::find($_GET["p"])->nombre}}</p>
-                                                   
+                                                @if(Auth::user()->id == $chats->first()->user_comprador_id)
+                                                    <p class="mb-0"><b>{{$chats->first()->user->name}}</b> - {{\App\Models\Producto::find($chats->first()->producto_id)->nombre}}</p>
+                                                    <p class="small mb-0">{{$chats->last()->created_at}}</p>
                                                 @endif
                                                     
-                                                @if(Auth::user()->id == $_GET['v'])
-                                                    <p class="mb-0"><b>{{\App\Models\User::find($_GET['c'])->name}}</b> - {{\App\Models\Producto::find($_GET["p"])->nombre}}</p>
-                                                      
+                                                @if(Auth::user()->id == $chats->first()->user_id)
+                                               
+                                                    <p class="mb-0"><b>{{$chats->first()->comprador->name}}</b> - {{\App\Models\Producto::find($chats->first()->producto_id)->nombre}}</p>
+                                                    <p class="small mb-0">{{$chats->last()->created_at}}</p>   
                                                 @endif
                                                     
                                     </div>
                                 </div>
                             </a>
                         
+                        
+                        @empty
+                        <div class="card card-border-radius content-chat" >
+                            <a>
+                                <div class="card-body d-flex align-items-center border-bottom p-3">
+                                    <div class="content-info ml-3 ">
+                                        <p class="mb-0">No hay nada para mostrar.</p>
+                                        <p class="small mb-0"></p>                
+                                    </div>
+                                </div>
+                            </a>
+                        
                         </div>
-                      
-                       
-                    
+                        @endforelse
+                        </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card card-border-radius">
