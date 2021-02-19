@@ -103,10 +103,6 @@
               <p class="menu-notificaciones-title">Notificaciones</p>
                 @forelse(\App\Chat::orderBy("created_at", "desc")->where('to_id', Auth::user()->id)->get()->groupBy('chat-event') as $notificaciones)
                
-                <li>
-                  <div class="menu-notificaciones-icon mx-2">
-                    <svg class="d-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 4h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3.5l-3 3l-3-3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm0 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3.914l2.586 2.586L14.086 18H18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                  </div>
                   <?php
                       if(Auth::user()->id == $notificaciones[0]->user_comprador_id){
                         $toC = \App\Models\User::find($notificaciones[0]->user_id);
@@ -115,9 +111,13 @@
                       }
                       
                   ?>
-                  <div class="menu-notificacion-mensaje">
-                    <a href="{{route('chat')}}?p={{$notificaciones[0]->producto_id}}&v={{$notificaciones[0]->user_id}}&c={{$notificaciones[0]->user_comprador_id}}">{{$toC->name}} pregunta en: {{$notificaciones[0]->producto->nombre}}</a>
-                  </div>
+                <li>
+                  <a class="menu-notificacion-mensaje d-flex align-items-center" href="{{route('chat')}}?p={{$notificaciones[0]->producto_id}}&v={{$notificaciones[0]->user_id}}&c={{$notificaciones[0]->user_comprador_id}}">
+                    <div class="menu-notificaciones-icon mx-2">
+                      <svg class="d-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.7em" height="1.7em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 4h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3.5l-3 3l-3-3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm0 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3.914l2.586 2.586L14.086 18H18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                    </div>
+                    <p>{{$notificaciones[0]->comprador->name}} pregunta en: {{$notificaciones[0]->producto->nombre}}</p>
+                  </a>
                 </li>
                 @empty
                   No hay nada para mostrar
