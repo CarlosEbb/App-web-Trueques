@@ -36,17 +36,19 @@
         
           <div class="dropdown-menu dropdown-menu-right menu menu-navbar menu-buscar" aria-labelledby="dropdownMenuBuscar">
             <p class="menu-notificaciones-title">Buscar producto</p>
-            <form action="" class="flex-fill">
+            <form action="{{route('busqueda')}}" method="GET" class="flex-fill">
               @include('includes.addBuscador')
               <div class="form-row align-items-center">
                 <div class="col-md-12 ">
-                  <input type="text" class="form-control input-search" placeholder="Buscar productos">
+                  <input type="text" name="busqueda" required class="form-control input-search" placeholder="Buscar productos">
                 </div>
                 <div class="col-md-12 mt-3">
-                  <select class="form-control select-city">
+                  <select class="form-control select-city"  name="municipio">
                     <option selected disabled >Ciudad</option>
-                      @foreach( \App\Models\Departamento::all() as $ciudad)
-                      <option value="{{$ciudad->id}}">{{ucwords(strtolower($ciudad->departamento))}}</option>
+                      @foreach( \App\Models\Municipio::all() as $ciudad)
+                        @if($ciudad->nombre != '')
+                          <option value="{{$ciudad->nombre}}">{{ucwords(strtolower($ciudad->nombre))}}</option>
+                        @endif
                       @endforeach
                   </select>
                 </div>
