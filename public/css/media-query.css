@@ -55,9 +55,16 @@
         margin-left: -280px;
     }
 
-    #owl-carousel-productos-semana .owl-nav,
+    /* #owl-carousel-productos-semana .owl-nav,
     #owl-carousel-categorias .owl-nav {
         display: none !important;
+    } */
+
+    .owl-next {
+        right: -0px !important;
+    }
+    .owl-prev {
+        left: -0px !important;
     }
 
     .content-categorias {
