@@ -56,7 +56,7 @@
         <p style="font-size: 20px">Tu tienes lo que quiero, yo tengo lo que quieres.</p>
         <h1 class="title-home">¿Qué estás buscando hoy?</h1> 
       </div>
-      <div class="col-12 d-flex justify-content-center  d-block d-md-block d-lg-block">
+      <div class="col-12 d-flex justify-content-center  d-block d-md-block d-lg-none">
         <form name="formulariobusqueda" action="{{route('busqueda')}}" method="GET">@csrf
           @include('includes.addBuscador')
           <div class="form-row">
