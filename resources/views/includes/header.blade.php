@@ -39,9 +39,9 @@
             <form action="{{route('busqueda')}}" method="GET" class="flex-fill">
               @include('includes.addBuscador')
               <div class="form-row align-items-center">
-                <div class="col-md-12 ">
+                {{-- <div class="col-md-12 ">
                   <input type="text" name="busqueda" required class="form-control input-search" placeholder="Buscar productos">
-                </div>
+                </div> --}}
                 <div class="col-md-12 mt-3">
                   <select class="form-control select-city"  name="municipio">
                     <option selected disabled >Ciudad</option>
