@@ -55,11 +55,6 @@
         margin-left: -280px;
     }
 
-    /* #owl-carousel-productos-semana .owl-nav,
-    #owl-carousel-categorias .owl-nav {
-        display: none !important;
-    } */
-
     .owl-next {
         right: -0px !important;
     }
@@ -71,6 +66,22 @@
         column-count: 1 !important;
         overflow-y: scroll !important;
         padding: 5px;
+    }
+
+    .title-home {
+        font-size: 26px !important;
+    }
+
+    .text-cart-categoria {
+        font-size: 12px !important;
+    }
+
+    .owl-carousel .owl-item img {
+        width: 70% !important;
+    }
+
+    .card-body-banner-categorias img {
+        width: 200px !important;
     }
 }
 

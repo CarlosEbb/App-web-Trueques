@@ -817,7 +817,7 @@ ul.ui-autocomplete.ui-menu {
 .text-cart-categoria {
     color: var(--color-dark);
     font-family: "RobotoCondensed-Bold";
-    font-size: 25px;
+    font-size: 15px;
 }
 
 .item-categorias:hover svg path {

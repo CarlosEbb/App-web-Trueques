@@ -208,7 +208,7 @@
     </section> --}}
 
     {{-- Categorías Populares --}}
-    <section class="row px-4 px-md-0">
+    <section class="row px-5 px-md-0">
       <div class="col-12 section-content">
         <h1 class="sub-title-home">Categorías populares</h1> 
       </div>
@@ -326,7 +326,7 @@
       autoplayHoverPause:true,
       responsive:{
           0:{
-              items:3,
+              items:4,
               center: true,
           },
           600:{
