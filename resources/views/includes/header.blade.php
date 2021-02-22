@@ -45,7 +45,7 @@
                 <div class="col-md-12 mt-3">
                   <select class="form-control select-city"  name="municipio">
                     <option selected disabled >Ciudad</option>
-                      @foreach( \App\Models\Municipio::all() as $ciudad)
+                      @foreach( \App\Models\Municipio::orderBy("nombre", "ASC")->get() as $ciudad)
                         @if($ciudad->nombre != '')
                           <option value="{{$ciudad->nombre}}">{{ucwords(strtolower($ciudad->nombre))}}</option>
                         @endif
