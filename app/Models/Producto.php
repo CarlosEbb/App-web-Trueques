@@ -85,4 +85,9 @@ class Producto extends Model
     		return $query->where('descripcion','like',"%$descripcion%");
     	}
     }
+
+    public function order()
+    {
+        return $this->HasMany(\App\Order::class, 'producto_id');
+    }
 }

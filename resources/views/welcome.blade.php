@@ -135,8 +135,11 @@
         <h1 class="sub-title-home">Productos populares de la semana</h1> 
       </div>
       <div class="owl-carousel owl-theme py-2" id="owl-carousel-productos-semana">
-        @foreach( \App\Models\Producto::orderByRaw('RAND()')->take(10)->get(); as $destacado)
-          @if($destacado->foto->first() != null)
+
+        @foreach( \App\Models\Producto::orderByRaw('RAND()')->take(10)->get() as $destacado)
+          @if(($destacado->order->count() == null) and ($destacado->foto->first() != null))
+       
+     
             <article class="col-12 p-3">
               <div class="card card-product">
                 <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar btn-favorito" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$destacado->id}}) @endauth">
