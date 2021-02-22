@@ -939,3 +939,7 @@ ul.ui-autocomplete.ui-menu {
 .content-chat::-webkit-scrollbar-thumb:active {
     background-color: #999999;
 }
+
+.content-img {
+    height: 500px;
+}

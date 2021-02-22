@@ -69,7 +69,7 @@
     }
 
     .title-home {
-        font-size: 26px !important;
+        font-size: 25px !important;
     }
 
     .text-cart-categoria {
@@ -82,6 +82,14 @@
 
     .card-body-banner-categorias img {
         width: 200px !important;
+    }
+
+    h1 {
+        font-size: 21px !important;
+    }
+
+    .content-img {
+        height: 300px !important;
     }
 }
 
