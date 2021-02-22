@@ -26,4 +26,9 @@ class Order extends Model
         'producto_id',
         'days',
     ];
+
+    public function producto()
+    {
+        return $this->belongsTo(\App\Models\Producto::class, 'producto_id');
+    }
 }
