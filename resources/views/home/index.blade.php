@@ -10,40 +10,42 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card card-border-radius content-chat" >
-                    @forelse(\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->orwhere('user_comprador_id', Auth::user()->id)->get()->groupBy('event', 'producto_id') as $chats)
-                        <?php
-                            if(Auth::user()->id == $chats->first()->user_id){
-                                $toChat = $chats->first()->user_comprador_id;
-                            }else{
-                                $toChat = $chats->first()->user_id;
-                            }
-                        ?>
-                        <a href="{{route('chat')}}?p={{$chats->first()->producto_id}}&v={{$chats->first()->user_id}}&c={{$chats->first()->user_comprador_id}}" >
-                            <div class="card-body d-flex align-items-center border-bottom p-3 w-100 card-chat"  @if($chats->first()->event == 'chat-event-'.$_GET["p"].'-'.$_GET["v"].'-'.$_GET["c"]) style="background: #f1f1f1;" @endif>
-                                <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
+                    <ul class="p-0">
+                        @forelse(\App\Chat::orderBy("created_at", "desc")->where('user_id', Auth::user()->id)->orwhere('user_comprador_id', Auth::user()->id)->get()->groupBy('event', 'producto_id') as $chats)
+                            <?php
+                                if(Auth::user()->id == $chats->first()->user_id){
+                                    $toChat = $chats->first()->user_comprador_id;
+                                }else{
+                                    $toChat = $chats->first()->user_id;
+                                }
+                            ?>
+                            <a href="{{route('chat')}}?p={{$chats->first()->producto_id}}&v={{$chats->first()->user_id}}&c={{$chats->first()->user_comprador_id}}" >
+                                <li class="d-flex align-items-center border-bottom p-3 w-100"  @if($chats->first()->event == 'chat-event-'.$_GET["p"].'-'.$_GET["v"].'-'.$_GET["c"]) style="background: #f1f1f1;" @endif>
+                                    <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
+                                    <div class="content-info ml-3 ">
+                                        @if(Auth::user()->id == $chats->first()->user_comprador_id)
+                                            <p class="mb-0"><b>{{$chats->first()->user->name}}</b> - {{\App\Models\Producto::find($chats->first()->producto_id)->nombre}}</p>
+                                            <p class="small mb-0">{{$chats->last()->created_at}}</p>
+                                            <p class="mb-0"><a href="{{route('publicaciones', $chats->first()->user_id)}}" style="font-size: 12px;">Ver productos</a></p>
+                                        @endif
+                                        
+                                        @if(Auth::user()->id == $chats->first()->user_id)
+                                            <p class="mb-0"><b>{{$chats->first()->comprador->name}}</b> - {{\App\Models\Producto::find($chats->first()->producto_id)->nombre}}</p>
+                                            <p class="small mb-0">{{$chats->last()->created_at}}</p>   
+                                            <p class="mb-0"><a href="#" style="font-size: 12px;">Ver productos</a></p>
+                                        @endif
+                                    </div>
+                                </li>
+                            </a>
+                        @empty
+                            <div class="card card-border-radius content-chat" >
                                 <div class="content-info ml-3 ">
-                                    @if(Auth::user()->id == $chats->first()->user_comprador_id)
-                                        <p class="mb-0"><b>{{$chats->first()->user->name}}</b> - {{\App\Models\Producto::find($chats->first()->producto_id)->nombre}}</p>
-                                        <p class="small mb-0">{{$chats->last()->created_at}}</p>
-                                        <p class="mb-0"><a href="{{route('publicaciones', $chats->first()->user_id)}}" style="font-size: 12px;">Ver productos</a></p>
-                                    @endif
-                                    
-                                    @if(Auth::user()->id == $chats->first()->user_id)
-                                        <p class="mb-0"><b>{{$chats->first()->comprador->name}}</b> - {{\App\Models\Producto::find($chats->first()->producto_id)->nombre}}</p>
-                                        <p class="small mb-0">{{$chats->last()->created_at}}</p>   
-                                        <p class="mb-0"><a href="#" style="font-size: 12px;">Ver productos</a></p>
-                                    @endif
+                                    <p class="mb-0">No hay nada para mostrar.</p>
+                                    <p class="small mb-0"></p>                
                                 </div>
                             </div>
-                        </a>
-                    @empty
-                        <div class="card card-border-radius content-chat" >
-                            <div class="content-info ml-3 ">
-                                <p class="mb-0">No hay nada para mostrar.</p>
-                                <p class="small mb-0"></p>                
-                            </div>
-                        </div>
-                    @endforelse
+                        @endforelse
+                    </ul>
                 </div>
             </div>
                 <div class="col-md-8">
