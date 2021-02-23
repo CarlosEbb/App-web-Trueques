@@ -35,7 +35,7 @@
           </a>
         
           <div class="dropdown-menu dropdown-menu-right menu menu-navbar menu-buscar" aria-labelledby="dropdownMenuBuscar">
-            <p class="menu-notificaciones-title">Buscar producto</p>
+            <p class="menu-notificaciones-title">Buscar por ubicación</p>
             <form action="{{route('busqueda')}}" method="GET" class="flex-fill">
               @include('includes.addBuscador')
               <div class="form-row align-items-center">
@@ -44,7 +44,7 @@
                 </div> --}}
                 <div class="col-md-12 mt-3">
                   <select class="form-control select-city"  name="municipio">
-                    <option selected disabled >Ciudad</option>
+                    <option selected disabled >Municipio</option>
                       @foreach( \App\Models\Municipio::orderBy("nombre", "ASC")->get() as $ciudad)
                         @if($ciudad->nombre != '')
                           <option value="{{$ciudad->nombre}}">{{ucwords(strtolower($ciudad->nombre))}}</option>
@@ -107,12 +107,9 @@
 
 
             @if($count >= 1)
-            <span class="badge badge-pill badge-danger badge-notificaciones">
-              
-              {{$count}}
-            </span>
+            <span class="badge badge-pill badge-danger badge-notificaciones">{{$count}}</span>
             @endif
-            <span class="tooltiptext">notificaciones</span>
+            <span class="tooltiptext">Notificaciones</span>
           </a> 
           
           <div class="dropdown-menu dropdown-menu-right menu menu-navbar" aria-labelledby="dropdownMenuNotificaciones">
@@ -148,7 +145,7 @@
           </a>
         
           <div class="dropdown-menu dropdown-menu-right menu menu-navbar menu-buscar" aria-labelledby="dropdownMenuBuscar">
-            <p class="menu-notificaciones-title">Buscar producto</p>
+            <p class="menu-notificaciones-title">Buscar por ubicación</p>
             <form action="{{route('busqueda')}}" method="GET" class="flex-fill">
               @include('includes.addBuscador')
               <div class="form-row align-items-center">
@@ -157,7 +154,7 @@
                 </div> --}}
                 <div class="col-md-12 mt-3">
                   <select class="form-control select-city"  name="municipio">
-                    <option selected disabled >Ciudad</option>
+                    <option selected disabled >Municipio</option>
                       @foreach( \App\Models\Municipio::orderBy("nombre", "ASC")->get() as $ciudad)
                         @if($ciudad->nombre != '')
                           <option value="{{$ciudad->nombre}}">{{ucwords(strtolower($ciudad->nombre))}}</option>

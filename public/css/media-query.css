@@ -91,6 +91,14 @@
     .content-img {
         height: 300px !important;
     }
+
+    .card-title-banner-categorias {
+        font-size: 18px !important;
+    }
+
+    .text-slogan {
+        font-size: 18px !important;
+    }
 }
 
 @media (max-width: 992px) {

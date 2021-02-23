@@ -947,3 +947,7 @@ ul.ui-autocomplete.ui-menu {
 .card-chat {
     position: absolute;
 }
+
+.text-slogan {
+    font-size: 20px;
+}
