@@ -19,7 +19,7 @@
                             }
                         ?>
                         <a href="{{route('chat')}}?p={{$chats->first()->producto_id}}&v={{$chats->first()->user_id}}&c={{$chats->first()->user_comprador_id}}" >
-                            <div class="card-body d-flex align-items-center border-bottom p-3 w-100"  @if($chats->first()->event == 'chat-event-'.$_GET["p"].'-'.$_GET["v"].'-'.$_GET["c"]) style="background: #f1f1f1; position: absolute;" @endif>
+                            <div class="card-body d-flex align-items-center border-bottom p-3 w-100 card-chat"  @if($chats->first()->event == 'chat-event-'.$_GET["p"].'-'.$_GET["v"].'-'.$_GET["c"]) style="background: #f1f1f1;" @endif>
                                 <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
                                 <div class="content-info ml-3 ">
                                     @if(Auth::user()->id == $chats->first()->user_comprador_id)

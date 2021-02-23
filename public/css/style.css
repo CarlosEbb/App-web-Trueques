@@ -943,3 +943,7 @@ ul.ui-autocomplete.ui-menu {
 .content-img {
     height: 500px;
 }
+
+.card-chat {
+    position: absolute;
+}
