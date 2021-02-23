@@ -25,7 +25,7 @@
                 <h6 class="mt-0 mb-0">De ${{number_format($favorito->producto->rango->de, 0, ",", ".")}} hasta ${{number_format($favorito->producto->rango->hasta, 0, ",", ".")}}</h6>
                 <p class="text-muted mb-0">
                   <small>Publicado por:
-                    <a href="#" target="_blank" rel="noopener noreferrer">{{$favorito->producto->user->name}}</a></small>
+                    <a href="{{route('publicaciones', $favorito->producto->user_id)}}" target="_blank" rel="noopener noreferrer">{{$favorito->producto->user->name}}</a></small>
                 </p>
               </div>
             </li>

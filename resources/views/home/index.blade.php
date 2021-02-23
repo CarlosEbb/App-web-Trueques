@@ -21,18 +21,22 @@
                             ?>
                             <a href="{{route('chat')}}?p={{$chats->first()->producto_id}}&v={{$chats->first()->user_id}}&c={{$chats->first()->user_comprador_id}}" >
                                 <li class="d-flex align-items-center border-bottom p-3 w-100"  @if($chats->first()->event == 'chat-event-'.$_GET["p"].'-'.$_GET["v"].'-'.$_GET["c"]) style="background: #f1f1f1;" @endif>
-                                    <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
-                                    <div class="content-info ml-3 ">
+                                
+                                    
                                         @if(Auth::user()->id == $chats->first()->user_comprador_id)
+                                        <img @if(\App\Models\User::find($chats->first()->user_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
+                                    <div class="content-info ml-3 ">
                                             <p class="mb-0"><b>{{$chats->first()->user->name}}</b> - {{\App\Models\Producto::find($chats->first()->producto_id)->nombre}}</p>
                                             <p class="small mb-0">{{$chats->last()->created_at}}</p>
                                             <p class="mb-0"><a href="{{route('publicaciones', $chats->first()->user_id)}}" style="font-size: 12px;">Ver productos</a></p>
                                         @endif
                                         
                                         @if(Auth::user()->id == $chats->first()->user_id)
+                                        <img @if(\App\Models\User::find($chats->first()->user_comprador_id)->foto == null) src="{{asset('img/avatar.png')}}" @else src="{{asset(\App\Models\User::find($chats->first()->user_comprador_id)->foto)}}"  @endif class="rounded-circle"  width="50" alt="">
+                                    <div class="content-info ml-3 ">
                                             <p class="mb-0"><b>{{$chats->first()->comprador->name}}</b> - {{\App\Models\Producto::find($chats->first()->producto_id)->nombre}}</p>
                                             <p class="small mb-0">{{$chats->last()->created_at}}</p>   
-                                            <p class="mb-0"><a href="#" style="font-size: 12px;">Ver productos</a></p>
+                                            <p class="mb-0"><a href="{{route('publicaciones', $chats->first()->user_comprador_id)}}" style="font-size: 12px;">Ver productos</a></p>
                                         @endif
                                     </div>
                                 </li>
