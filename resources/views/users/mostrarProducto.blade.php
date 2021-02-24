@@ -15,7 +15,7 @@
                 ?>
                 
               @foreach($consulta as $foto)
-                <img src="{{$foto->ruta}}" width="90" class="rounded-lg mx-1 mt-2 fotos-productos-src" alt="">
+                <img src="{{$foto->ruta}}" width="90" class="rounded-lg mx-1 mt-2 fotos-productos-src" style="max-height: 180px;" alt="">
               @endforeach
             </div>
           </article>
