@@ -18,9 +18,9 @@
             <tr>
                 <th class="border-top-0 text-title-table">Nombre</th>
                 <th class="border-top-0 text-title-table">Descripcion</th>
+                <th class="border-top-0 text-title-table">Nro. Productos</th>
                 <th class="border-top-0 text-title-table">Icono</th>
                 <th class="border-top-0 text-title-table">Imagen</th>
-                <th class="border-top-0 text-title-table"></th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +28,7 @@
                 <tr class="py-0">
                     <td class="text-table"><span>{{$categoria->nombre}}</span></td>
                     <td class="text-table"><span>{{$categoria->descripcion}}</span></td>
+                    <td class="text-table"><span>@if($categoria->productos->count() == 0) N/A @else <a href="/productosPorCategoriaAdmin/{{$categoria->id}}">{{$categoria->productos->count()}}</a> @endif</span></td>
                     <td class="text-table">
                         <img src="{{$categoria->icon}}" width="100px" alt="">
                     </td>

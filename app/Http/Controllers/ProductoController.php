@@ -8,6 +8,7 @@ use App\Models\Municipio;
 use App\Models\Departamento;
 use App\Models\Foto;
 use App\Models\User;
+use App\Models\Categoria;
 use App\Models\ProductoUserClick;
 use App\Models\Comentario;
 use Session;
@@ -235,7 +236,6 @@ class ProductoController extends Controller
 
     public function editarProductos(Request $request)
     {
-
         $producto = Producto::find($request->producto);
         if($producto->user_id == Auth::user()->id){
             
@@ -264,4 +264,11 @@ class ProductoController extends Controller
 
         return view('users.anunciosUser')->with(compact('user','productos'));
     }
+
+    public function productosPorCategoriaAdmin($id)
+    {   $user = User::all();
+        $categorias = Categoria::find($id);
+
+        return view('admin.productos')->with(compact('user','categorias'));
+    }    
 }
