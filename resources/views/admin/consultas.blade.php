@@ -19,8 +19,8 @@
                 <div class="form-group col-12">                
                     <label for="">Tipo</label>
                     <select name="filtro" class="select">
-                        <option value="1" @if($option == 1) selected @endif>Usuarios Nuevos</option>
-                        <option value="2" @if($option == 2) selected @endif>Productos Nuevos</option>
+                        <option value="1" @if($option == 1) selected @endif>Usuarios</option>
+                        <option value="2" @if($option == 2) selected @endif>Productos</option>
                         <option value="3" @if($option == 3) selected @endif>Inicio de Chat</option>
                         <option value="4" @if($option == 4) selected @endif>Publicaciones dada de baja</option>
                         <option value="5" @if($option == 5) selected @endif>Ventas</option>
