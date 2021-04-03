@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -234,6 +235,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

@@ -111,3 +111,9 @@ Route::get("intercambios", "ProductoController@intercambios")->name('intercambio
 Route::get("publicaciones/{id}", "ProductoController@publicaciones")->name('publicaciones');
 
 Route::get("productosPorCategoriaAdmin/{id}", "ProductoController@productosPorCategoriaAdmin")->name('productosPorCategoriaAdmin');
+
+Route::get("consultas", 'HomeController@consultas')->name('consultas');
+
+Route::post("exportarData", 'HomeController@exportarData')->name('exportarData');
+
+

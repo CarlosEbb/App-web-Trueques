@@ -31,4 +31,9 @@ class Order extends Model
     {
         return $this->belongsTo(\App\Models\Producto::class, 'producto_id');
     }
+    
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'user_id');
+    }
 }

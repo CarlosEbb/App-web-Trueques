@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\ProductoFavorito;
+use App\Models\User;
 use App\Chat;
 use Session;
 use Auth;
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\File;
 use Alexo\LaravelPayU\LaravelPayU;
 use App\Order;
 
+use Excel;
+use App\Exports\UsersExport;
+use App\Exports\ProductosExport;
+use App\Exports\ChatsExport;
+use App\Exports\DeBajaExport;
+use App\Exports\VentasExport;
 
 class HomeController extends Controller
 {
@@ -166,4 +173,119 @@ class HomeController extends Controller
 
         return view("prueba");
     }
+
+    //Filtro
+
+    public function consultas()
+    {
+        $option = null;
+        $ini = null;
+        $fin = null;
+        
+        return view('admin.consultas')->with(compact('option','ini','fin'));
+    }
+
+    public function exportarData(Request $request)
+    {
+        if($request->accion == 'Consultar'){
+            $option = $request->filtro;
+            $ini = $request->fecha_inicio;
+            $fin = $request->fecha_fin;
+
+            if($request->filtro == 1){
+                $users = User::all();
+
+                if(($request->fecha_inicio != null)){
+                    $users = $users->where('created_at', '>=', $request->fecha_inicio);
+                }
+
+                if(($request->fecha_fin != null)){
+                    $users = $users->where('created_at', '<=', $request->fecha_fin);
+                }
+
+                return view('admin.consultas')->with(compact('option','ini','fin','users'));
+            }
+    
+            if($request->filtro == 2){
+                $productos = Producto::all();  
+                 
+                if(($request->fecha_inicio != null)){
+                    $productos = $productos->where('created_at', '>=', $request->fecha_inicio);
+                }
+
+                if(($request->fecha_fin != null)){
+                    $productos = $productos->where('created_at', '<=', $request->fecha_fin);
+                }
+
+                return view('admin.consultas')->with(compact('option','ini','fin','productos'));
+            }
+    
+            if($request->filtro == 3){
+                $chats = Chat::all();    
+
+                if(($request->fecha_inicio != null)){
+                    $chats = $chats->where('created_at', '>=', $request->fecha_inicio);
+                }
+
+                if(($request->fecha_fin != null)){
+                    $chats = $chats->where('created_at', '<=', $request->fecha_fin);
+                }
+                
+                $chats = $chats->groupBy('user_id', 'user_comprador_id');
+
+                return view('admin.consultas')->with(compact('option','ini','fin','chats'));
+            }
+    
+            if($request->filtro == 4){
+                $productos = Producto::all()->where('status', 0);    
+
+                if(($request->fecha_inicio != null)){
+                    $productos = $productos->where('created_at', '>=', $request->fecha_inicio);
+                }
+
+                if(($request->fecha_fin != null)){
+                    $productos = $productos->where('created_at', '<=', $request->fecha_fin);
+                }
+                
+                $productos = $productos->where('status', 0);    
+
+                return view('admin.consultas')->with(compact('option','ini','fin','productos'));
+            }
+    
+            if($request->filtro == 5){
+                $ventas = Order::all();    
+                if(($request->fecha_inicio != null)){
+                    $ventas = Order::all()->where('created_at', '>=', $request->fecha_inicio);
+                }
+
+                if(($request->fecha_fin != null)){
+                    $ventas = Order::all()->where('created_at', '<=', $request->fecha_fin);
+                }
+                
+                return view('admin.consultas')->with(compact('option','ini','fin','ventas'));
+            }
+
+        }elseif($request->accion == 'Exportar'){
+            if($request->filtro == 1){
+                return Excel::download(new UsersExport($request->fecha_inicio, $request->fecha_fin), 'Usuarios.xlsx');
+            }
+    
+            if($request->filtro == 2){
+                return Excel::download(new ProductosExport($request->fecha_inicio, $request->fecha_fin), 'Productos.xlsx');
+            }
+    
+            if($request->filtro == 3){
+                return Excel::download(new ChatsExport($request->fecha_inicio, $request->fecha_fin), 'Chats.xlsx');
+            }
+    
+            if($request->filtro == 4){
+                return Excel::download(new DeBajaExport($request->fecha_inicio, $request->fecha_fin), 'Publicaciones dadas de baja.xlsx');
+            }
+    
+            if($request->filtro == 5){
+                return Excel::download(new VentasExport($request->fecha_inicio, $request->fecha_fin), 'Ventas.xlsx');
+            }
+        }
+    }
+    
 }

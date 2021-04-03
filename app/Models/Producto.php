@@ -73,6 +73,11 @@ class Producto extends Model
     {
         return $this->belongsTo(Precio::class, 'precio');
     }
+
+    public function comentario()
+    {
+        return $this->belongsTo(Comentario::class, 'producto_id');
+    }
 //scope
     public function scopeNombre($query, $nombre) {
     	if ($nombre) {
