@@ -87,7 +87,8 @@
       </div>
       <div class="owl-carousel owl-theme py-2" id="owl-carousel-productos-semana">
 
-        @foreach( \App\Models\Producto::orderByRaw('RAND()')->take(10)->get() as $destacado)
+  
+        @foreach( \App\Models\Producto::where('created_at', '>=' , date("Y-m-d",strtotime(date("d-m-Y")."- 2 month")))->orderByRaw('RAND()')->take(10)->get() as $destacado)
           @if(($destacado->order->count() == null) and ($destacado->foto->first() != null))
        
      

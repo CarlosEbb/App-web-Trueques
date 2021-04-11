@@ -116,4 +116,6 @@ Route::get("consultas", 'HomeController@consultas')->name('consultas');
 
 Route::post("exportarData", 'HomeController@exportarData')->name('exportarData');
 
+Route::post("DestacarProducto", 'ProductoController@DestacarProducto')->name('DestacarProducto');
+
 

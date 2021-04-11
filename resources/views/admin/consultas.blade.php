@@ -9,7 +9,13 @@
         </div>
     </div>
 
-
+    @if(Session::has('mensaje'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{Session::get('mensaje')}}
+        </div>
+    @endif
+    
     <div class="panel-body mt-3">
 
     <div class="col-12 mb-4">

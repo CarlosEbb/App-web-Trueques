@@ -3,6 +3,15 @@
 	<head>
 		@include('includes.head')
 		<meta name="csrf-token" content="{{ csrf_token() }}">
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-R7L94BZ12Q"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-R7L94BZ12Q');
+		</script>
 	</head>
 	<body>
 		<header>
@@ -112,6 +121,8 @@
 			});
 			
 		</script>
+
+		
 		@yield('scriptJS')
 	</body>
 </html>

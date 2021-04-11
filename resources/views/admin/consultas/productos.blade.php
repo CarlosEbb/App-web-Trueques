@@ -2,6 +2,7 @@
     <table id="myTable"  class="table table-hover display table-responsive">
         <thead>
             <tr>
+                <th class="border-top-0 text-title-table"><b>DESTACAR</b></th>
                 <th class="border-top-0 text-title-table"><b>CORREO DEL USUARIO</b></th>
                 <th class="border-top-0 text-title-table"><b>FECHA DE PUBLICACION</b></th>
                 <th class="border-top-0 text-title-table"><b>CATEGORIA</b></th>
@@ -25,6 +26,11 @@
             @foreach($productos as $producto)
                 <tr class="py-0">
                     <tr>
+                        <td class="text-table"><a class="btn btn-default tooltips action-items" data-toggle="modal" data-target="#editar_{{$producto->id}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                                <span class="tooltiptext">Editar</span>
+                            </a>
+                        </td>
                         <td class="text-table">{{$producto->user->name}}</td>
                         <td class="text-table">{{$producto->created_at->format('d/m/Y')}}</td>
                         <td class="text-table">{{$producto->categoria->nombre}}</td>
@@ -44,6 +50,49 @@
                         <td class="text-table">@if($producto->produc_especifico3 != null) {{$producto->produc_especifico3}} @endif</td>
                     </tr>
                 </tr>
+
+
+                 <!-- Modal Editar-->
+                 <div class="modal fade" id="editar_{{$producto->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel_editar_{{$producto->id}}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title d-block" id="ModalLabel_editar_{{$producto->id}}">
+                                        Destacar Producto 
+                                        <p class="d-block mb-0 mt-2">
+                                            <b>{{$producto->nombre}}</b> . {{$producto->user->name}}
+                                        </p>
+                                    </h5>
+                                    
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                {!! Form::model($producto, ['route' => ['DestacarProducto', $producto->id], 'method' => 'POST', 'files' => true]) !!}
+                                    <div class="modal-body">
+                                            <div class="form-group">
+                                              
+                                                5 Dias <input type="radio" name="days" value="5" required><br>
+                                                15 Dias<input type="radio" name="days" value="15" required><br>
+                                                30 Dias<input type="radio" name="days" value="30" required><br>
+                                            </div>
+
+                                            <input class="input" type="text" name="producto_id" value="{{$producto->id}}" required hidden>
+                                            <input class="input" type="text" name="user_id" value="{{$producto->user->id}}" required hidden>
+                                            
+
+
+              
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-rounded btn-close border-0 bg-light" data-dismiss="modal">Cancelar</button>
+                                            <input class="btn-rounded btn-primary btn-primary-dark border-0" type="submit" value="Actualizar">
+                                        </div>
+                                    </div>
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+                    </div>
             @endforeach
         </tbody>
     </table>  	

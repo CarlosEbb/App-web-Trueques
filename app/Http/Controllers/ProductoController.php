@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Categoria;
 use App\Models\ProductoUserClick;
 use App\Models\Comentario;
+use App\Order;
 use Session;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -270,5 +271,12 @@ class ProductoController extends Controller
         $categorias = Categoria::find($id);
 
         return view('admin.productos')->with(compact('user','categorias'));
-    }    
+    } 
+    
+    public function DestacarProducto(Request $request)
+    {
+        $producto = Order::create($request->all());
+        Session::flash('mensaje','Producto destacado correctamente');
+        return redirect()->route('consultas');
+    } 
 }
