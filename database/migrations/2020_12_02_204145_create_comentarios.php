@@ -24,7 +24,7 @@ class CreateComentarios extends Migration
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
 
             $table->integer("estrellas")->default(0);
-            
+            $table->integer('vendedor_id')->nullable();
             $table->timestamps();
         });
     }

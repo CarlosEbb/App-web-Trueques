@@ -56,15 +56,15 @@
                 
                     <div class="info-user">
                         <p class="clasificacion">
-                          <input id="radio1" type="radio" name="estrellas" value="5" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first()->estrellas == 5) checked @endif @endif>
+                          <input id="radio1" type="radio" name="estrellas" value="5" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if($promedio == 5) checked @endif @endif>
                           <label for="radio1">5★</label>
-                          <input id="radio2" type="radio" name="estrellas" value="4" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first()->estrellas == 4) checked @endif @endif>
+                          <input id="radio2" type="radio" name="estrellas" value="4" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if($promedio == 4) checked @endif @endif>
                           <label for="radio2">4★</label>
-                          <input id="radio3" type="radio" name="estrellas" value="3" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first()->estrellas == 3) checked @endif @endif>
+                          <input id="radio3" type="radio" name="estrellas" value="3" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if($promedio == 3) checked @endif @endif>
                           <label for="radio3">3★</label>
-                          <input id="radio4" type="radio" name="estrellas" value="2" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first()->estrellas == 2) checked @endif @endif>
+                          <input id="radio4" type="radio" name="estrellas" value="2" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if($promedio == 2) checked @endif @endif>
                           <label for="radio4">2★</label>
-                          <input id="radio5" type="radio" name="estrellas" value="1" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first()->estrellas == 1) checked @endif @endif>
+                          <input id="radio5" type="radio" name="estrellas" value="1" @if(\App\Models\Comentario::where('producto_id', $producto->id)->where('user_id', Auth::user()->id)->first() != null) @if($promedio == 1) checked @endif @endif>
                           <label for="radio5">1★</label>
                         </p>
                     </div>
@@ -158,7 +158,7 @@
               </div>
             </div>
             <a @Auth href="{{route('chat')}}?p={{$producto->id}}&v={{$producto->user_id}}&c={{Auth::user()->id}}" @else href="{{route('login')}}" @endauth class=" mt-3 btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips"> <center>Chat</center></a>
-            <a href="" class="d-block text-center my-2" data-toggle="modal" data-target=".bd-example-modal-lg">Ver comentarios del vendedor</a>
+            <a href="" class="d-block text-center my-2" data-toggle="modal" data-target=".bd-example-modal-lg">Ver comentarios o calificar vendedor</a>
           </article>
           <article class="card card-border-radius p-3 col-12 mt-3">
             <h3 class="title-card-product">Publicado en</h3>

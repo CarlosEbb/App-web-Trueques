@@ -14,9 +14,9 @@
         @foreach($users as $user)
             <?php
                  $suma = 0;
-                 $cantidadDeElementos = \App\Models\Comentario::where('user_id',$user->id)->count();
+                 $cantidadDeElementos = \App\Models\Comentario::where('vendedor_id',$user->id)->count();
                  if($cantidadDeElementos != 0){
-                     foreach(\App\Models\Comentario::where('user_id',$user->id)->get() as $numero){
+                     foreach(\App\Models\Comentario::where('vendedor_id',$user->id)->get() as $numero){
                          $suma += $numero->estrellas;
                      }
                      $promedio = intval($suma / $cantidadDeElementos);

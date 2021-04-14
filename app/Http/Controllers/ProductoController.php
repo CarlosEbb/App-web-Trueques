@@ -111,18 +111,18 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
-
+        
         $suma = 0;
-        $cantidadDeElementos = Comentario::where('producto_id',$id)->count();
+        $cantidadDeElementos = \App\Models\Comentario::where('vendedor_id',$producto->user->id)->count();
+        
         if($cantidadDeElementos != 0){
-            foreach(Comentario::where('producto_id',$id)->get() as $numero){
+            foreach(\App\Models\Comentario::where('vendedor_id',$producto->user->id)->get() as $numero){
                 $suma += $numero->estrellas;
             }
             $promedio = intval($suma / $cantidadDeElementos);
         }else{
             $promedio = 0;
         }
-        
         if(!Auth::guest()){
             if(ProductoUserClick::where('producto_id', $id)->where('user_id', Auth::user()->id)->count() == 0){
                 ProductoUserClick::create(['user_id' => Auth::user()->id, 'producto_id' => $id]);
@@ -167,7 +167,9 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $productos = Producto::find($id)->delete();
+        $producto = Producto::find($id);
+        $request['status'] = 0;
+        $producto->fill(['status' => $request['status']])->save();
         Session::flash('mensaje','Eliminado correctamente');
         return back();
     }

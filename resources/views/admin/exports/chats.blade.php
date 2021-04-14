@@ -16,8 +16,8 @@
             ?>
             <tr>
                 <td align="center" style="border: 20px solid black;">{{$chat->created_at->format('d/m/Y')}}</td>
-                <td align="center" style="border: 20px solid black;">{{$chat->user->name}}</td>
-                <td align="center" style="border: 20px solid black;">{{$chat->user->name}}</td>
+                <td align="center" style="border: 20px solid black;">{{$chat->user->email}}</td>
+                <td align="center" style="border: 20px solid black;">{{$chat->comprador->email}}</td>
             </tr>
         @endforeach
         </tbody>

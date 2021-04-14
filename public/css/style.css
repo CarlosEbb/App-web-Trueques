@@ -951,3 +951,7 @@ ul.ui-autocomplete.ui-menu {
 .text-slogan {
     font-size: 20px;
 }
+
+.grecaptcha-badge{
+    visibility: collapse !important;  
+}

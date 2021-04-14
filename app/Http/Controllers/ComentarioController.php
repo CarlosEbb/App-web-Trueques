@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Comentario;
 use Session;
 use Auth;
+use App\Models\Producto;
 
 class ComentarioController extends Controller
 {
@@ -39,6 +40,9 @@ class ComentarioController extends Controller
     public function store(Request $request)
     {
         $request['user_id'] = Auth::user()->id;
+        $request['vendedor_id'] = Producto::find($request->producto_id)->user->id;
+
+        
         $comentario = Comentario::create($request->all());
 
         Session::flash('mensaje','Registrado correctamente');

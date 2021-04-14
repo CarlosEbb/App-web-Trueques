@@ -29,16 +29,16 @@
             <div class="col-9 col-md-12 col-lg-7">
               <div class="">
                 <p class="d-inline-block">Filtrar por: </p>
-                <button type="button" class="btn btn-outline-info mx-2 mt-2 rounded-pill btn-sm " onclick="todos();">Ver todos ({{Auth::user()->productos->count()}})</button>
+                <button type="button" class="btn btn-outline-info mx-2 mt-2 rounded-pill btn-sm " onclick="todos();">Ver todos ({{Auth::user()->productos->where('status', 1)->count()}})</button>
                 <button type="button" class="btn btn-outline-info mx-2 mt-2 rounded-pill btn-sm " onclick="todosActivos('activo');">Anuncios activos ({{Auth::user()->productos->where('status', 1)->count()}})</button>
-                <button type="button" class="btn btn-outline-info mx-2 mt-2 rounded-pill btn-sm " onclick="todosActivos('deshabilitado');">Anuncios inactivos ({{Auth::user()->productos->where('status', 0)->count()}})</button>
+                <button type="button" class="btn btn-outline-info mx-2 mt-2 rounded-pill btn-sm " onclick="todosActivos('deshabilitado');">Anuncios inactivos ({{Auth::user()->productos->where('status', 3)->count()}})</button>
                 {{-- button type="button" class="btn btn-outline-info mx-2 mt-2 rounded-pill btn-sm ">Anuncios pendientes (0)</button> --}}
               </div>
             </div>
           </div>
         </div> 
 
-        @forelse(Auth::user()->productos as $producto)
+        @forelse(Auth::user()->productos->where('status',1) as $producto)
         
           <div class="col-12 mb-3 item">
           <label hidden class="nombres">{{$producto->nombre}}</label>
@@ -52,7 +52,7 @@
                   <div class="card-body">
                     <a href="{{route('productos.show', $producto->id)}}"><h5 class="card-title mb-1">{{$producto->nombre}}</h5></a>
                     <h6 class="card-title mb-3"><small class="text-muted">Precio</small> De ${{number_format($producto->rango->de, 0, ",", ".")}} hasta ${{number_format($producto->rango->hasta, 0, ",", ".")}}
-                    @if($producto->status == true)
+                    @if($producto->status == 1)
                       <span class="badge badge-pill badge-success">publicado</span>
                     @else
                       <span class="badge badge-pill badge-danger">No publicado</span>
@@ -71,7 +71,7 @@
                   <div class="card-footer py-0 bg-transparent d-flex justify-content-end">
                     
                     {!! Form::open(['route' => ['productos.destroy', $producto->id], 'method' => 'DELETE']) !!}
-                        <button type="button" class="btn btn-outline-danger mx-2 mt-2 rounded-pill">Eliminar</button>
+                        <input class="btn btn-outline-danger mx-2 mt-2 rounded-pill" type="submit" value="Eliminar">
                     {!! Form::close() !!}
                     
                     <a class="btn btn-outline-info mx-2 mt-2 rounded-pill" data-toggle="modal" data-target="#editar_{{$producto->id}}">Editar</a>

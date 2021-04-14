@@ -187,11 +187,13 @@ class HomeController extends Controller
 
     public function exportarData(Request $request)
     {
+        
         if($request->accion == 'Consultar'){
             $option = $request->filtro;
             $ini = $request->fecha_inicio;
-            $fin = $request->fecha_fin;
-
+            $fin = date("Y-m-d",strtotime($request->fecha_fin."+ 2 days"));
+            $request->fecha_fin = date("Y-m-d",strtotime($request->fecha_fin."+ 2 days"));
+            
             if($request->filtro == 1){
                 $users = User::all();
 
