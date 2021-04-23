@@ -4,7 +4,8 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-12 col-lg-9 p-0 p-md-1">
-        <form method="POST" action="{{ route('users.store') }}">@csrf
+        <form method="POST" action="{{ route('registrar') }}">@csrf
+       
           <div class="card p-4 card-border-radius border-0 card-login-register">
             <div class="card-header bg-transparent border-0 mx-auto mt-1 mt-md-3">
               <a href="/"><img src="{{asset('img/Logo.png')}}" width="180" class="" alt="Trueque"></a>
@@ -45,11 +46,19 @@
                       <strong>{{ $message }}</strong>
                     </span>
                   @enderror
+                  
                 </div>
-    
+                
                 <div class="form-group">
                   <label for="password-confirm" class="d-block">{{ __('Confirmar contraseña') }}</label>
                   <input placeholder="**********" id="password-confirm" type="password" class="input" name="password_confirmation" required autocomplete="new-password">
+                  <br><br>
+                {!! htmlFormSnippet() !!}
+                @error('g-recaptcha-response')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
                 </div>
               </div>
             </div>

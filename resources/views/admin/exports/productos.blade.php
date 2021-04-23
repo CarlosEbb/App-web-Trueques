@@ -26,7 +26,7 @@
         
         @foreach($productos as $producto)
             <tr>
-                <td align="center" style="border: 20px solid black;">{{$producto->user->name}}</td>
+                <td align="center" style="border: 20px solid black;">{{$producto->user->email}}</td>
                 <td align="center" style="border: 20px solid black;">{{$producto->created_at->format('d/m/Y')}}</td>
                 <td align="center" style="border: 20px solid black;">{{$producto->categoria->nombre}}</td>
                 <td align="center" style="border: 20px solid black;">{{$producto->subcategoria->nombre}}</td>

@@ -111,6 +111,8 @@
             <div class="col-12 col-md-4 mb-3 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="categoria">Categorias</label>
               <select id="selectCategoria{{$i}}" name=categoria{{$i}} class="select" onchange="cambia_categoria{{$i}}()" >
+
+                <option value="" disabled selected>seleccione</option>
                 @foreach( \App\Models\Categoria::where('status', 0)->orderBy('nombre', 'ASC')->get() as $categoria)
                   <option value="{{$categoria->id}}" id="{{$categoria->id}}">{{$categoria->nombre}}</option>
                 @endforeach
@@ -370,7 +372,7 @@ console.log(todasCategoriasID[73]);
 function enviar_formulario(){
   document.formPublicar.submit()
 }
-
+/* 
 $("#selectCategoria1 option[value="+ 6 +"]").attr("selected",true);
 $("#selectCategoria2 option[value="+ 6 +"]").attr("selected",true);
 $("#selectCategoria3 option[value="+ 6 +"]").attr("selected",true);
@@ -381,7 +383,7 @@ cambia_provincia();
 $("#selectSubCategoria1 option[value="+ 36 +"]").attr("selected",true);
 $("#selectSubCategoria2 option[value="+ 36 +"]").attr("selected",true);
 $("#selectSubCategoria3 option[value="+ 36 +"]").attr("selected",true);
-
+*/
 
 
 $('.input-limite-25').on('input', function () { 

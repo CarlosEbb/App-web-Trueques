@@ -23,11 +23,11 @@ class DeBajaExport implements FromView
         $productos = Producto::all()->where('status', 0);    
 
         if(($this->fecha_inicio != null)){
-            $productos = $productos->where('created_at', '>=', $this->fecha_inicio);
+            $productos = $productos->where('updated_at', '>=', $this->fecha_inicio);
         }
 
         if(($this->fecha_fin != null)){
-            $productos = $productos->where('created_at', '<=', $this->fecha_fin);
+            $productos = $productos->where('updated_at', '<=', $this->fecha_fin);
         }
         
         $productos = $productos->where('status', 0);    

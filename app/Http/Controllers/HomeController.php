@@ -188,11 +188,13 @@ class HomeController extends Controller
     public function exportarData(Request $request)
     {
         
+        $ini = $request->fecha_inicio;
+        $fin = date("Y-m-d",strtotime($request->fecha_fin."+ 1 days"));
+        $request->fecha_fin = date("Y-m-d",strtotime($request->fecha_fin."+ 1 days"));
+        
         if($request->accion == 'Consultar'){
             $option = $request->filtro;
-            $ini = $request->fecha_inicio;
-            $fin = date("Y-m-d",strtotime($request->fecha_fin."+ 2 days"));
-            $request->fecha_fin = date("Y-m-d",strtotime($request->fecha_fin."+ 2 days"));
+            
             
             if($request->filtro == 1){
                 $users = User::all();
@@ -233,7 +235,7 @@ class HomeController extends Controller
                     $chats = $chats->where('created_at', '<=', $request->fecha_fin);
                 }
                 
-                $chats = $chats->groupBy('user_id', 'user_comprador_id');
+                $chats = $chats->groupBy('producto_id', 'user_id', 'user_comprador_id');
 
                 return view('admin.consultas')->with(compact('option','ini','fin','chats'));
             }
@@ -242,11 +244,11 @@ class HomeController extends Controller
                 $productos = Producto::all()->where('status', 0);    
 
                 if(($request->fecha_inicio != null)){
-                    $productos = $productos->where('created_at', '>=', $request->fecha_inicio);
+                    $productos = $productos->where('updated_at', '>=', $request->fecha_inicio);
                 }
 
                 if(($request->fecha_fin != null)){
-                    $productos = $productos->where('created_at', '<=', $request->fecha_fin);
+                    $productos = $productos->where('updated_at', '<=', $request->fecha_fin);
                 }
                 
                 $productos = $productos->where('status', 0);    
@@ -257,11 +259,11 @@ class HomeController extends Controller
             if($request->filtro == 5){
                 $ventas = Order::all();    
                 if(($request->fecha_inicio != null)){
-                    $ventas = Order::all()->where('created_at', '>=', $request->fecha_inicio);
+                    $ventas = $ventas->where('created_at', '>=', $request->fecha_inicio);
                 }
 
                 if(($request->fecha_fin != null)){
-                    $ventas = Order::all()->where('created_at', '<=', $request->fecha_fin);
+                    $ventas = $ventas->where('created_at', '<=', $request->fecha_fin);
                 }
                 
                 return view('admin.consultas')->with(compact('option','ini','fin','ventas'));

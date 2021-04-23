@@ -40,7 +40,7 @@
 
                 <div class="form-group col-6">
                     <label for="">Fecha Fin</label>
-                    <input class="input" type="date" @if(isset($fin)) value='{{date("Y-m-d",strtotime($fin."- 2 days"))}}' @endif name="fecha_fin"> 
+                    <input class="input" type="date" @if(isset($fin)) value='{{date("Y-m-d",strtotime($fin."- 1 days"))}}' @endif name="fecha_fin"> 
                 </div>
 
                 <br><br>

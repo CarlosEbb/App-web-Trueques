@@ -31,7 +31,7 @@
                                 <span class="tooltiptext">Editar</span>
                             </a>
                         </td>
-                        <td class="text-table">{{$producto->user->name}}</td>
+                        <td class="text-table">{{$producto->user->email}}</td>
                         <td class="text-table">{{$producto->created_at->format('d/m/Y')}}</td>
                         <td class="text-table">{{$producto->categoria->nombre}}</td>
                         <td class="text-table">{{$producto->subcategoria->nombre}}</td>

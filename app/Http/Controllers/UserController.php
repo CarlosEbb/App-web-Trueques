@@ -8,6 +8,7 @@ use Auth;
 use Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -146,5 +147,35 @@ class UserController extends Controller
         $user = User::find($id)->delete();
         Session::flash('mensaje','Eliminado correctamente');
         return back();
+    }
+
+    public function registrar(Request $request)
+    {
+        $datos = $this->validate(request()->except(['g-recaptcha-response']), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'g-recaptcha-response' => 'recaptcha',
+        ]);
+        unset($datos['g-recaptcha-response']);
+        User::create([
+            'name' => $datos['name'],
+            'email' => $datos['email'],
+            'rol_id' => 2,
+            'password' => Hash::make($datos['password']),
+            
+        ]);
+
+
+        
+        if(Auth::user() != null)
+            if(Auth::user()->rol == 1)
+                return back();
+    
+         if (Auth::attempt($datos)) {
+             return redirect('/');
+          }
+          
+       
     }
 }

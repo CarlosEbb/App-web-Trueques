@@ -12,6 +12,7 @@
 
 		gtag('config', 'G-R7L94BZ12Q');
 		</script>
+		 {!! htmlScriptTagJsApi(['lang' => 'es']) !!}
 	</head>
 	<body>
 		<header>

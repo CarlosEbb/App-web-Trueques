@@ -30,7 +30,7 @@ class ChatsExport implements FromView
             $chats = $chats->where('created_at', '<=', $this->fecha_fin);
         }
         
-        $chats = $chats->groupBy('user_id', 'user_comprador_id');
+        $chats = $chats->groupBy('producto_id', 'user_id', 'user_comprador_id');
 
         return view('admin.exports.chats', [
             'chats' => $chats,

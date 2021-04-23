@@ -118,4 +118,6 @@ Route::post("exportarData", 'HomeController@exportarData')->name('exportarData')
 
 Route::post("DestacarProducto", 'ProductoController@DestacarProducto')->name('DestacarProducto');
 
+Route::post("registrar", 'UserController@registrar')->name('registrar');
+
 
