@@ -53,11 +53,19 @@ class SocialAuthController extends Controller
             //$this->correoBienvenida();
         }
 
+        if(Session::has('redirect_to')){
+            return redirect()->to(Session::get('redirect_to'));
+        }else
+            return redirect()->to('/');
+
         if(Auth::user()->rol_id == 1){
             return redirect($this->redirectToAdmin);
         }else{
             return redirect($this->redirectToUser);
         }
+
+
+        
 
         /* if(Session::has('redirect_to')){
             return redirect()->to(Session::get('redirect_to'));

@@ -110,7 +110,7 @@
                       Calificar
                     </button>
                     @else
-                    <a class="text-center btn-rounded btn-primary btn-primary-dark tooltips p-2" href="{{route('login')}}">
+                    <a class="text-center btn-rounded btn-primary btn-primary-dark tooltips p-2" href="/login?redirect_to={{url()->current()}}">
                       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M4.01 6.03l7.51 3.22l-7.52-1l.01-2.22m7.5 8.72L4 17.97v-2.22l7.51-1M2.01 3L2 10l15 2l-15 2l.01 7L23 12L2.01 3z" fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                     </a>
                     @endauth
@@ -192,8 +192,8 @@
             <a class="d-block text-center my-2" data-toggle="modal" data-target="#modal1">Comentarios</a>
             <a class="d-block text-center my-2" data-toggle="modal" data-target="#modal2">Calificar</a>
             @else
-            <a href="/login" class="d-block text-center my-2">Comentarios</a>
-            <a href="/login" class="d-block text-center my-2">Calificar</a>
+            <a href="/login?redirect_to={{url()->current()}}" class="d-block text-center my-2">Comentarios</a>
+            <a href="/login?redirect_to={{url()->current()}}" class="d-block text-center my-2">Calificar</a>
             @endauth
           </article>
           <article class="card card-border-radius p-3 col-12 mt-3">

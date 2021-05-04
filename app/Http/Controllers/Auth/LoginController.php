@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
-
+use Session;
 
 class LoginController extends Controller
 {
@@ -22,15 +22,17 @@ class LoginController extends Controller
 
     public function showLoginForm(Request $request)
     {
-        //if ($request->has('redirect_to')) {
-        //    session()->put('redirect_to', $request->input('redirect_to'));
-        //    return redirect('/user/create');
-        //}
+        if ($request->has('redirect_to')) {
+            //Session::flash('redirect_to',url()->current());
+            session()->put('redirect_to', $request->input('redirect_to'));
+        }
+
         if(auth()->check()){
             return back();
         }else{
             return view('auth.login');
         }
+        
     }
 
     public function redirectTo()
