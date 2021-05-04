@@ -112,6 +112,7 @@ class ProductoController extends Controller
     {
         $producto = Producto::find($id);
         
+        
         $suma = 0;
         $cantidadDeElementos = \App\Models\Comentario::where('vendedor_id',$producto->user->id)->count();
         
@@ -120,8 +121,11 @@ class ProductoController extends Controller
                 $suma += $numero->estrellas;
             }
             $promedio = intval($suma / $cantidadDeElementos);
+            $imprimir = $suma / $cantidadDeElementos;
         }else{
             $promedio = 0;
+            $imprimir = 0;
+
         }
         if(!Auth::guest()){
             if(ProductoUserClick::where('producto_id', $id)->where('user_id', Auth::user()->id)->count() == 0){
@@ -129,7 +133,7 @@ class ProductoController extends Controller
             }
         }
 
-        return view('users.mostrarProducto')->with(compact('producto', 'promedio'));
+        return view('users.mostrarProducto')->with(compact('producto', 'promedio', 'imprimir'));
     }
 
     

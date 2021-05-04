@@ -9,7 +9,7 @@ use Session;
 use Auth;
 use App\Models\Producto;
 
-class ComentarioController extends Controller
+class OtrosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,7 @@ class ComentarioController extends Controller
      */
     public function index()
     {
-        $comentarios = Comentario::orderBy('created_at', 'DESC')->get();
-        return view('admin.user.listarIntercambios')->with(compact('comentarios'));
+        //
     }
 
     /**
@@ -40,11 +39,12 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
+    
         $request['user_id'] = Auth::user()->id;
         $request['vendedor_id'] = Producto::find($request->producto_id)->user->id;
 
         
-        $comentario = Comentario::create($request->all());
+        $otros = Otros::create($request->all());
 
         Session::flash('mensaje','Registrado correctamente');
         return back();
@@ -81,8 +81,8 @@ class ComentarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $comentario = Comentario::find($id);
-        $comentario->fill($request->all())->save();
+        $otros = Otros::find($id);
+        $otros->fill($request->all())->save();
         Session::flash('mensaje','Actualizado correctamente');
         return back();
     }
@@ -95,9 +95,8 @@ class ComentarioController extends Controller
      */
     public function destroy($id)
     {
-        $comentario = Comentario::find($id)->delete();
+        $otros = Otros::find($id)->delete();
         Session::flash('mensaje','Eliminado correctamente');
         return back();
     }
-    
 }

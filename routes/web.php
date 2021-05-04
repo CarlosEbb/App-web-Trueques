@@ -44,6 +44,7 @@ Route::resource('users', UserController::class);
 Route::resource('comentarios', ComentarioController::class);
 Route::resource('payment', PagoController::class);
 Route::resource('ventas', VentasController::class);
+Route::resource('otros', OtrosController::class);
 
 // productos usuarios 
 Route::get('publicar-productos', function () {
