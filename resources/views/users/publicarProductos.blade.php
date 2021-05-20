@@ -129,7 +129,7 @@
             </div>
             <div class="col-12 col-md-4 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="descripcion">Producto especifico</label>
-              <input name="produc_especifico{{$i}}" id="inputProductoEspecifico{{$i}}" type="text" class="input input-limite-25" placeholder="Raqueta de Tenis Masculina">
+              <input name="produc_especifico{{$i}}" id="inputProductoEspecifico{{$i}}" type="text" class="input input-limite-25" placeholder="Raqueta de Tenis Masculina" required>
               <p class="leed text-right" style="font-size: 10px; color:#808080; text-align: right;">Max. 25 caracteres.</p>
             </div>
           @endfor
@@ -323,11 +323,11 @@ var todasCategoriasID = [
       
     if($("#selectCategoria{{$j}}").val() == 19){
       $("#inputProductoEspecifico{{$j}}").val('Recibo Propuestas');
-      $("#inputProductoEspecifico{{$j}}").prop( "disabled", true );
+      //$("#inputProductoEspecifico{{$j}}").prop( "disabled", true );
       
     }else{
       $("#inputProductoEspecifico{{$j}}").val('')
-      $("#inputProductoEspecifico{{$j}}").prop( "disabled", false );
+      //$("#inputProductoEspecifico{{$j}}").prop( "disabled", false );
 
     }
 

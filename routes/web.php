@@ -17,6 +17,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/politica-privacidad', function () {
+    return view('politicas');
+});
+
+Route::get('/condiciones-uso', function () {
+    return view('condiciones-uso');
+});
+
+Route::get('/quienes-somos', function () {
+    return view('quienes-somos');
+});
+
+Route::get('/preguntas-frecuentes', function () {
+    return view('preguntas-frecuentes');
+});
+
+Route::get('/consejos-seguridad', function () {
+    return view('consejos-seguridad');
+});
+
+Route::get('/reglas', function () {
+    return view('reglas');
+});
+
 Route::get('/mapa', function () {
     return view('mapa');
 });

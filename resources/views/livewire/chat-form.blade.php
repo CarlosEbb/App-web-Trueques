@@ -9,11 +9,8 @@
                 <div class="col-8 col-md-10">
                     <div class="form-group mb-0">
                         <label for="mensaje" class="mb-2"><strong>Escribe tu mensaje</strong> <span></span></label>
-                        @if(Auth::user()->rol_id == 1)
-                        <input type="text" class="input" disabled > 
-                        @else
+                        
                         <input type="text" wire:model="mensaje" wire:keydown.enter="enviarMensaje" class="input" id="mensaje"> 
-                        @endif
 
                         <!-- Validación -->
                         @error("mensaje") 

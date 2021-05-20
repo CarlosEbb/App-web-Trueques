@@ -225,7 +225,7 @@ class HomeController extends Controller
             }
     
             if($request->filtro == 3){
-                $chats = Chat::all();    
+                $chats = Chat::all()->where('event', '!=', 'adjuntar-documento');    
 
                 if(($request->fecha_inicio != null)){
                     $chats = $chats->where('created_at', '>=', $request->fecha_inicio);
@@ -235,8 +235,8 @@ class HomeController extends Controller
                     $chats = $chats->where('created_at', '<=', $request->fecha_fin);
                 }
                 
-                $chats = $chats->groupBy('producto_id', 'user_id', 'user_comprador_id');
-
+                $chats = $chats->groupBy('event');
+                
                 return view('admin.consultas')->with(compact('option','ini','fin','chats'));
             }
     

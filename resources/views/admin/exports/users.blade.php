@@ -19,7 +19,7 @@
                      foreach(\App\Models\Comentario::where('vendedor_id',$user->id)->get() as $numero){
                          $suma += $numero->estrellas;
                      }
-                     $promedio = intval($suma / $cantidadDeElementos);
+                     $promedio = $suma / $cantidadDeElementos;
                  }else{
                      $promedio = 0;
                  }
@@ -28,7 +28,7 @@
                 <td align="center"  style="border: 20px solid black;">{{ $user->email }}</td>
                 <td align="center"  style="border: 20px solid black;">{{ $user->name }}</td>
                 <td align="center"  style="border: 20px solid black;">{{ $user->created_at->format('d/m/Y') }}</td>
-                <td align="center"  style="border: 20px solid black;">{{$promedio}}</td>
+                <td align="center"  style="border: 20px solid black;"><?php echo bcdiv($promedio, '1', 1); ?>/5</td>
             </tr>
         @endforeach
         </tbody>

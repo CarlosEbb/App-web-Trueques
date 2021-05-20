@@ -189,8 +189,12 @@
             </div>
             <a @Auth href="{{route('chat')}}?p={{$producto->id}}&v={{$producto->user_id}}&c={{Auth::user()->id}}" @else href="{{route('login')}}" @endauth class=" mt-3 btn-rounded btn-primary btn-primary-dark  mx-auto d-block w-100 tooltips"> <center>Chat</center></a>
             @auth
-            <a class="d-block text-center my-2" data-toggle="modal" data-target="#modal1">Comentarios</a>
-            <a class="d-block text-center my-2" data-toggle="modal" data-target="#modal2">Calificar</a>
+              @if(Auth::user()->id != $producto->user_id)
+              <a class="d-block text-center my-2" data-toggle="modal" data-target="#modal1">Comentarios</a>
+              @if(App\Models\Comentario::where('user_id', Auth::user()->id)->where('producto_id', $producto->id)->count() == 0)
+              <a class="d-block text-center my-2" data-toggle="modal" data-target="#modal2">Calificar</a>
+              @endif
+              @endif
             @else
             <a href="/login?redirect_to={{url()->current()}}" class="d-block text-center my-2">Comentarios</a>
             <a href="/login?redirect_to={{url()->current()}}" class="d-block text-center my-2">Calificar</a>
@@ -198,7 +202,7 @@
           </article>
           <article class="card card-border-radius p-3 col-12 mt-3">
             <h3 class="title-card-product">Publicado en</h3>
-            <span>{{$producto->departamento->nombre}}</span>
+            <span>{{ucwords(strtolower($producto->municipio->nombre))}}, {{ucwords(strtolower($producto->departamento->nombre))}}</span>
           </article>
         </div>
       </section>

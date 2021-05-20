@@ -40,13 +40,13 @@
                         <td class="text-table">{{$producto->departamento->nombre}}</td>
                         <td class="text-table">{{$producto->municipio->nombre}}</td>
                         <td class="text-table">@if($producto->categoria1 != null) {{\App\Models\Categoria::find($producto->categoria1)->nombre}} @endif</td>
-                        <td class="text-table">@if($producto->subCategoria1 != null) {{\App\Models\SubCategoria::find($producto->subCategoria1)->nombre}} @endif</td>
+                        <td class="text-table">@if($producto->subCategoria1 != null) @if(\App\Models\SubCategoria::find($producto->subCategoria1)->nombre == 'Otros') {{\App\Models\Categoria::find($producto->categoria1)->nombre}} @else {{\App\Models\SubCategoria::find($producto->subCategoria1)->nombre}} @endif @endif</td>
                         <td class="text-table">@if($producto->produc_especifico1 != null) {{$producto->produc_especifico1}} @endif</td>
                         <td class="text-table">@if($producto->categoria2 != null) {{\App\Models\Categoria::find($producto->categoria2)->nombre}} @endif</td>
-                        <td class="text-table">@if($producto->subCategoria2 != null) {{\App\Models\SubCategoria::find($producto->subCategoria2)->nombre}} @endif</td>
+                        <td class="text-table">@if($producto->subCategoria2 != null) @if(\App\Models\SubCategoria::find($producto->subCategoria2)->nombre == 'Otros') {{\App\Models\Categoria::find($producto->categoria2)->nombre}} @else {{\App\Models\SubCategoria::find($producto->subCategoria2)->nombre}} @endif @endif</td>
                         <td class="text-table">@if($producto->produc_especifico2 != null) {{$producto->produc_especifico2}} @endif</td>
                         <td class="text-table">@if($producto->categoria3 != null) {{\App\Models\Categoria::find($producto->categoria3)->nombre}} @endif</td>
-                        <td class="text-table">@if($producto->subCategoria3 != null) {{\App\Models\SubCategoria::find($producto->subCategoria3)->nombre}} @endif</td>
+                        <td class="text-table">@if($producto->subCategoria3 != null) @if(\App\Models\SubCategoria::find($producto->subCategoria3)->nombre == 'Otros') {{\App\Models\Categoria::find($producto->categoria3)->nombre}} @else {{\App\Models\SubCategoria::find($producto->subCategoria3)->nombre}} @endif @endif</td>
                         <td class="text-table">@if($producto->produc_especifico3 != null) {{$producto->produc_especifico3}} @endif</td>
                     </tr>
                 </tr>
