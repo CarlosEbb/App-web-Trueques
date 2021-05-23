@@ -129,7 +129,7 @@
             </div>
             <div class="col-12 col-md-4 mb-md-3 categoria{{$i}}" @if($i != 1) style="display: none;" @endif>
               <label for="descripcion">Producto especifico</label>
-              <input name="produc_especifico{{$i}}" id="inputProductoEspecifico{{$i}}" type="text" class="input input-limite-25" placeholder="Raqueta de Tenis Masculina" required>
+              <input name="produc_especifico{{$i}}" id="inputProductoEspecifico{{$i}}" type="text" class="input input-limite-25" placeholder="Raqueta de Tenis Masculina" @if($i == 1) required @endif>
               <p class="leed text-right" style="font-size: 10px; color:#808080; text-align: right;">Max. 25 caracteres.</p>
             </div>
           @endfor
@@ -407,6 +407,8 @@ $('.PrimerMayus').on('keyup', function() {
    
    $(this).val($(this).val().charAt(0).toUpperCase() + $(this).val().slice(1))
 });
+
+cambia_provincia(1);
 </script>
 
 
