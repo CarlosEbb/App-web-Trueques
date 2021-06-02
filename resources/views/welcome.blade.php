@@ -46,6 +46,8 @@
         <div class="row">
           @foreach( \App\Order::orderByRaw('RAND()')->take(12)->get(); as $destacadoPago)
             @if($destacadoPago->producto->foto->first() != null)
+            @if(strtotime(date("d-m-Y H:i:00",time())) < strtotime($destacadoPago->created_at->format('d-m-Y')."+ ".$destacadoPago->days." days"))
+            
               <article class="col-6 col-md-3  px-2 py-2">
                 <div class="card card-product">
                   <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar btn-favorito" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$destacadoPago->producto->id}}) @endauth">
@@ -74,6 +76,7 @@
                   </div>
                 </div>
               </article>
+            @endif
             @endif
           @endforeach
         </div>

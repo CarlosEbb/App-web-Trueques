@@ -22,7 +22,7 @@
                   <span class="tooltiptext">Eliminar</span>
                 </button>
                 {!! Form::close() !!}
-                <h6 class="mt-0 mb-0">De ${{number_format($favorito->producto->rango->de, 0, ",", ".")}} hasta ${{number_format($favorito->producto->rango->hasta, 0, ",", ".")}}</h6>
+                <h6 class="mt-0 mb-0">@if($favorito->producto->rango->hasta == -1) Mas de ${{number_format($favorito->producto->rango->de, 0, ",", ".")}} @else  De ${{number_format($favorito->producto->rango->de, 0, ",", ".")}} hasta ${{number_format($favorito->producto->rango->hasta, 0, ",", ".")}} @endif</h6>
                 <p class="text-muted mb-0">
                   <small>Publicado por:
                     <a href="{{route('publicaciones', $favorito->producto->user_id)}}" target="_blank" rel="noopener noreferrer">{{$favorito->producto->user->name}}</a></small>

@@ -182,10 +182,10 @@ class ProductoController extends Controller
     {
 
         if($request->busqueda != null){
-            $productos = Producto::nombre($request->busqueda)->get();
+            $productos = Producto::nombre($request->busqueda)->where('status', true)->where('created_at', '>=' , date("Y-m-d",strtotime(date("d-m-Y")."- 2 month")))->get();
 
         }else{
-            $productos = Producto::get();
+            $productos = Producto::where('status', true)->where('created_at', '>=' , date("Y-m-d",strtotime(date("d-m-Y")."- 2 month")))->get();
         }
         
         if($request->municipio != null){

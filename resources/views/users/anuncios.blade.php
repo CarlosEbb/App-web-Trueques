@@ -51,7 +51,7 @@
                 <div class="col-md-10">
                   <div class="card-body">
                     <a href="{{route('productos.show', $producto->id)}}"><h5 class="card-title mb-1">{{$producto->nombre}}</h5></a>
-                    <h6 class="card-title mb-3"><small class="text-muted">Precio</small> De ${{number_format($producto->rango->de, 0, ",", ".")}} hasta ${{number_format($producto->rango->hasta, 0, ",", ".")}}
+                    <h6 class="card-title mb-3"><small class="text-muted">Precio</small> @if($producto->rango->hasta == -1) Mas de ${{number_format($producto->rango->de, 0, ",", ".")}} @else  De ${{number_format($producto->rango->de, 0, ",", ".")}} hasta ${{number_format($producto->rango->hasta, 0, ",", ".")}} @endif
                     @if($producto->status == 1)
                       <span class="badge badge-pill badge-success">publicado</span>
                     @else
@@ -112,7 +112,7 @@
 
                                       <div class="col-12 col-md-4 my-3">
                                         <label for="">Rango de precio</label>
-                                        <select name="precio_id" class="select" id="precio">
+                                        <select name="precio" class="select" id="precio">
                                           @foreach( \App\Models\Precio::all() as $precio)
                                             <option value="{{$precio->id}}"  @if($producto->precio_id == $precio->id) selected @endif>De {{number_format($precio->de, 2, ",", ".")}} a {{number_format($precio->hasta, 2, ",", ".")}} {{$precio->moneda->nombre}}</</option>
                                           @endforeach
