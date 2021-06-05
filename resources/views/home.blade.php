@@ -36,40 +36,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-12 col-md-6">
-                <div class="card card-border-radius">
-                    <div class="card-body">
-                        <div class="header-card-dashboard d-flex mb-4" style="align-items: flex-end;">
-                            <div class="icon-card-dashboard">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="3em" height="3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z" fill="#626262"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
-                            </div>
-                            <h5 class="card-title ml-3">
-                                Productos Cambiados <br>
-                                <span class="card-text lead">{{\App\Models\Producto::where('status', 4)->count()}}</span>
-                            </h5>
-                        </div>
-                        <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                            <div class="media-body p-2">
-                                <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
-                                <span class="mt-3 text-secondary">cliente</span> 
-                            </div>
-                        </a>
-                        <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                            <div class="media-body p-2">
-                                <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
-                                <span class="mt-3 text-secondary">cliente</span> 
-                            </div>
-                        </a>
-                        <a class="media text-dark ml-3 d-flex align-items-center border-bottom py-1 list-hover" style="cursor: pointer;">
-                            <div class="media-body p-2">
-                                <p class="mb-0 text-truncate text-dark" style="font-size: 15px;">Departamentooooooooo</p>
-                                <span class="mt-3 text-secondary">cliente</span> 
-                            </div>
-                        </a>
-                        <p class="text-right mt-3"><a href="/users" class="">Ver todos</a></p>
-                    </div>
-                </div>
-            </div> --}}
             <div class="col-12 col-md-12">
                 <div class="card card-border-radius">
                     <div class="card-body">

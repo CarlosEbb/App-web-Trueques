@@ -30,10 +30,10 @@
                     <td class="text-table"><span>{{$categoria->descripcion}}</span></td>
                     <td class="text-table"><span>@if($categoria->productos->count() == 0) N/A @else <a href="/productosPorCategoriaAdmin/{{$categoria->id}}">{{$categoria->productos->count()}}</a> @endif</span></td>
                     <td class="text-table">
-                        <img src="{{$categoria->icon}}" width="100px" alt="">
+                        <img src="{{$categoria->icon}}" width="50" alt="">
                     </td>
                     <td>
-                        <img src="{{$categoria->foto}}" width="100px" alt="">
+                        <img src="{{$categoria->foto}}" width="50" alt="">
                     </td>
                     <td class="d-flex justify-content-end py-0">
                         <a class="btn btn-default tooltips action-items" href="{{route('subcategorias.show', $categoria->id)}}">
@@ -123,7 +123,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="" class="d-block" >Icono SVG</label>
+                            <label for="" class="d-block" >Icono PNG</label>
                             <input type="file" name="icono" class="input">
                         </div>
 

@@ -860,7 +860,6 @@ ul.ui-autocomplete.ui-menu {
 
 .icon-categorias {
     padding: 5px;
-    width: 600px;
     height: 90px;
     border-radius: 50px;
     display: flex;
@@ -952,6 +951,6 @@ ul.ui-autocomplete.ui-menu {
     font-size: 20px;
 }
 
-.grecaptcha-badge{
-    visibility: collapse !important;  
+.grecaptcha-badge {
+    visibility: collapse !important;
 }

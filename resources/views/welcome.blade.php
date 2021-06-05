@@ -24,7 +24,7 @@
           <div class="item d-flex justify-content-center">
             <div class="card border-0 d-flex align-items-center item-categorias" style="width: 18rem;"><a href="{{route('busqueda')}}?categoria={{$categoria->id}}">
               <div class="card-img-top icon-categorias mt-3">
-                <img src="{{$categoria->icon}}" alt="">
+                <img src="{{$categoria->icon}}" style="width: 60%; height: 100%;" alt="">
               </div>
               <div class="card-body py-1">
                 <h6 class="card-title text-center">
@@ -46,8 +46,6 @@
         <div class="row">
           @foreach( \App\Order::orderByRaw('RAND()')->take(12)->get(); as $destacadoPago)
             @if($destacadoPago->producto->foto->first() != null)
-            @if(strtotime(date("d-m-Y H:i:00",time())) < strtotime($destacadoPago->created_at->format('d-m-Y')."+ ".$destacadoPago->days." days"))
-            
               <article class="col-6 col-md-3  px-2 py-2">
                 <div class="card card-product">
                   <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar btn-favorito" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$destacadoPago->producto->id}}) @endauth">
@@ -77,7 +75,6 @@
                 </div>
               </article>
             @endif
-            @endif
           @endforeach
         </div>
       </div>
@@ -90,8 +87,7 @@
       </div>
       <div class="owl-carousel owl-theme py-2" id="owl-carousel-productos-semana">
 
-  
-        @foreach( \App\Models\Producto::where('status', true)->where('created_at', '>=' , date("Y-m-d",strtotime(date("d-m-Y")."- 2 month")))->orderByRaw('RAND()')->take(10)->get() as $destacado)
+        @foreach( \App\Models\Producto::orderByRaw('RAND()')->take(10)->get() as $destacado)
           @if(($destacado->order->count() == null) and ($destacado->foto->first() != null))
        
      
