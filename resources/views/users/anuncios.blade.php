@@ -109,12 +109,12 @@
                                           @endforeach
                                         </select>
                                       </div>
-
+                                      
                                       <div class="col-12 col-md-4 my-3">
                                         <label for="">Rango de precio</label>
                                         <select name="precio" class="select" id="precio">
                                           @foreach( \App\Models\Precio::all() as $precio)
-                                            <option value="{{$precio->id}}"  @if($producto->precio_id == $precio->id) selected @endif>De {{number_format($precio->de, 2, ",", ".")}} a {{number_format($precio->hasta, 2, ",", ".")}} {{$precio->moneda->nombre}}</</option>
+                                            <option value="{{$precio->id}}"  @if($producto->precio == $precio->id) selected @endif>De {{number_format($precio->de, 2, ",", ".")}} a {{number_format($precio->hasta, 2, ",", ".")}} {{$precio->moneda->nombre}}</</option>
                                           @endforeach
                                         </select>
                                       </div>
