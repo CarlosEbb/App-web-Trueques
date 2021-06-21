@@ -53,7 +53,7 @@
                     <span class="tooltiptext">favorito</span>
                   </a>
                   <a href="{{route('productos.show', $destacadoPago->producto->id)}}" style="height: 190px;">
-                    <img class="card-img-top card-img-product" src="{{$destacadoPago->producto->foto->first()->ruta}}" alt="Card image cap" style="height: 100%; width: 100%; object-fit: contain;" >
+                    <img class="card-img-top card-img-product" src="{{$destacadoPago->producto->foto->first()->ruta}}" alt="Card image cap" style="height: 100%; width: 100%; object-fit: contain; margin: auto;" >
                   </a>
                   <div class="card-body">
                     <a href="{{route('productos.show', $destacadoPago->producto->id)}}">
