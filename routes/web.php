@@ -33,6 +33,10 @@ Route::get('/preguntas-frecuentes', function () {
     return view('preguntas-frecuentes');
 });
 
+Route::get('/contactanos', function () {
+    return view('contactanos');
+});
+
 Route::get('/consejos-seguridad', function () {
     return view('consejos-seguridad');
 });
