@@ -4,7 +4,7 @@
       <div class="col-12 col-md-12 col-lg-3 d-flex justify-content-center align-items-start">
         <img src="{{asset('img/Logo.png')}}" alt="Logo" width="190" height="100">
       </div>
-      <div class="col-12 col-md-2 col-lg-3">
+      <div class="col-12 col-md-3 col-lg-3">
         <ul class="list-group ">
           <li class="list-group-item border-0 py-1 px-1  bg-transparent font-weight-bold">
             Cambiemoslo
