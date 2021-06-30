@@ -37,6 +37,14 @@
       </div>
     </div>
     
+    <?php
+    
+      $fecha_actual = strtotime(date("d-m-Y",time()));
+      $fecha_entrada = strtotime(date("d-m-Y",strtotime($fecha_actual."+ 1 year")));
+
+      if($fecha_actual > $fecha_entrada)
+    ?>
+	
     {{-- Productos destacados --}}
     <section class="row">
       <div class="col-12 section-content">
@@ -45,7 +53,7 @@
       <div class="col-12">
         <div class="row">
           @foreach( \App\Order::orderByRaw('RAND()')->take(12)->get(); as $destacadoPago)
-            @if($destacadoPago->producto->foto->first() != null)
+            @if(($destacadoPago->producto->foto->first() != null) and ($destacadoPago->producto->status == 1))
               <article class="col-6 col-md-3  px-2 py-2">
                 <div class="card card-product">
                   <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar btn-favorito" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$destacadoPago->producto->id}}) @endauth">
@@ -59,9 +67,10 @@
                     <a href="{{route('productos.show', $destacadoPago->producto->id)}}">
                       <h5 class="card-title mb-2 card-title-product text-truncate">{{ucfirst($destacadoPago->producto->nombre)}}</h5>
                     </a>
+                    <p class="mb-0 d-flex aling-items-center mt-2" style="font-size: 14px">Cambio por:</p>
                     <p class="mb-0 text-truncate d-flex aling-items-center mt-2" style="font-size: 14px">
                       {{--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M16.71 5.29L19 3h-8v8l2.3-2.3c1.97 1.46 3.25 3.78 3.25 6.42c0 1.31-.32 2.54-.88 3.63c2.33-1.52 3.88-4.14 3.88-7.13c0-2.52-1.11-4.77-2.84-6.33z" fill="#25405f"/><path d="M7.46 8.88c0-1.31.32-2.54.88-3.63a8.479 8.479 0 0 0-3.88 7.13c0 2.52 1.1 4.77 2.84 6.33L5 21h8v-8l-2.3 2.3c-1.96-1.46-3.24-3.78-3.24-6.42z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>--}}
-                      Cambio por: <br>@if($destacadoPago->producto->produc_especifico1 != null) -{{ucfirst($destacadoPago->producto->produc_especifico1)}} <br> @else <br> @endif
+                       @if($destacadoPago->producto->produc_especifico1 != null) -{{ucfirst($destacadoPago->producto->produc_especifico1)}} <br> @else <br> @endif
                                      {{-- @if($destacadoPago->producto->produc_especifico2 != null) -{{ucfirst($destacadoPago->producto->produc_especifico2)}} <br> @else <br> @endif 
                                       @if($destacadoPago->producto->produc_especifico3 != null) -{{ucfirst($destacadoPago->producto->produc_especifico3)}} <br> @else <br> @endif --}}
                       
@@ -87,7 +96,7 @@
       </div>
       <div class="owl-carousel owl-theme py-2" id="owl-carousel-productos-semana">
 
-        @foreach( \App\Models\Producto::orderByRaw('RAND()')->get() as $destacado)
+        @foreach( \App\Models\Producto::where('status', 1)->orderByRaw('RAND()')->get() as $destacado)
           @if(($destacado->order->count() == null) and ($destacado->foto->first() != null))
        
      
