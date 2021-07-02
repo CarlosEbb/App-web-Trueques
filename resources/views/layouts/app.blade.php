@@ -82,6 +82,16 @@
 			});
 			
 			});
+
+			$(document).ready(function() {
+			$("#myInputWelcome").on("keyup", function() {
+				var value = $(this).val().toLowerCase();
+				$("#myDIVWelcome .blog-inner").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				});
+			});
+			
+			});
 		</script>
 
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -98,6 +108,12 @@
 		<script>
 			$( function() {
 				$( "#myInput" ).autocomplete({
+					source: availableTags
+				});
+			} );
+
+			$( function() {
+				$( "#myInputWelcome" ).autocomplete({
 					source: availableTags
 				});
 			} );
