@@ -227,11 +227,15 @@ button:focus {
 }
 
 .btn-publicar {
-    font-size: 18px;
-    font-weight: 800;
+    font-size: 15px;
+    text-transform: uppercase;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--color-primary);
+    background-color: var(--bg-segundary);
+    padding: 5px 16px;
+    border-radius: 5px;
 }
 
 .btn-favorito {
