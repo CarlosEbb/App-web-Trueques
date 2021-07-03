@@ -227,7 +227,16 @@ button:focus {
 }
 
 .btn-publicar {
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-publicar-movil {
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
     display: flex;
     justify-content: center;
