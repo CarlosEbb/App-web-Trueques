@@ -98,14 +98,14 @@
       <div class="col-12 section-content">
         <h1 class="sub-title-home">Productos populares de la semana</h1> 
       </div>
-      <div class="owl-carousel owl-theme py-2 " id="owl-carousel-productos-semana">
+      <div class="owl-carousel owl-theme py-2 row" id="owl-carousel-productos-semana">
 
         @foreach( \App\Models\Producto::where('status', 1)->orderByRaw('RAND()')->get() as $destacado)
           @if(($destacado->order->count() == null) and ($destacado->foto->first() != null))
        
-     
+          
             <article class="col-12 p-3 h-100">
-              <div class="card card-product h-100">
+              <div class="card card-product">
                 <a class="btn-rounded btn-rounded-light btn-rounded-light-hover mx-1 tooltips btn-menu-buscar btn-favorito" @guest href="{{route('login')}}" @else onclick="addFavoritos({{$destacado->id}}) @endauth">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.3em" height="1.3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path class="addFavoritoCorazon_{{$destacado->id}}" d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z" @Auth @if(App\Models\ProductoFavorito::where('producto_id', $destacado->id)->where('user_id', Auth::user()->id)->first() == null) fill="#25405f" @else fill="red" @endif @else fill="#25405f" @endauth/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                   <span class="tooltiptext">favorito</span>
@@ -164,7 +164,6 @@
       loop:true,
       margin:10,
       nav:true,
-      // autoplay:true,
       autoplayTimeout:2500,
       autoplayHoverPause:true,
       responsive:{

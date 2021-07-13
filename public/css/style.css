@@ -587,6 +587,7 @@ button:focus {
     border-radius: 30px;
     box-shadow: 5px 10px 18px 0px #94919133;
     border: none;
+    height: 100%;
 }
 
 .card-img,
@@ -665,6 +666,15 @@ button:focus {
     left: 0;
     right: 0;
     display: block;
+}
+
+.owl-carousel .owl-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+    touch-action: manipulation;
+    -moz-backface-visibility: hidden;
+    display: flex;
+    align-items: stretch;
 }
 
 /* detalles de producto */
