@@ -41,7 +41,7 @@
           <h4 class="mb-4">Detalles del anuncio</h4>
 
           <label for="nombreProducto">Nombre del producto</label>
-          <input form="f1" class="input PrimerMayus" type="text" placeholder="Nombre del producto" name="nombre" id="nombreProducto" value="{{old('nombreProducto')}}">
+          <input form="f1" class="input PrimerMayus input-text-38" type="text" placeholder="Nombre del producto" name="nombre" id="nombreProducto" value="{{old('nombreProducto')}}">
 
           <label for="descripcion" class="mt-4">Descripción</label>
           <textarea form="f1" class="textarea" placeholder="Descripción" name="descripcion" id="descripcion" cols="20" rows="5" value="{{old('descripcion')}}"></textarea>
@@ -389,6 +389,11 @@ $("#selectSubCategoria3 option[value="+ 36 +"]").attr("selected",true);
 $('.input-limite-25').on('input', function () { 
   if (this.value.length > 25) 
      this.value = this.value.slice(0,25); 
+});
+
+$('.input-text-38').on('input', function () { 
+  if (this.value.length > 38) 
+     this.value = this.value.slice(0,38); 
 });
 
 function ordenarSelect(id_componente)
