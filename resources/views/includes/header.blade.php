@@ -36,21 +36,26 @@
         
           <div class="dropdown-menu dropdown-menu-right menu menu-navbar menu-buscar" aria-labelledby="dropdownMenuBuscar">
             <p class="menu-notificaciones-title">Buscar por ubicación</p>
-            <form action="{{route('busqueda')}}" method="GET" class="flex-fill">
+            <form action="{{route('busqueda')}}" method="GET" name="f2" class="flex-fill">
               @include('includes.addBuscador')
               <div class="form-row align-items-center">
                 {{-- <div class="col-md-12 ">
                   <input type="text" name="busqueda" required class="form-control input-search" placeholder="Buscar productos">
                 </div> --}}
+
+                
                 <div class="col-md-12 mt-3">
-                  <select class="form-control select-city"  name="municipio">
-                    <option selected disabled >Municipio</option>
-                      @foreach( \App\Models\Municipio::orderBy("nombre", "ASC")->get() as $ciudad)
-                        @if($ciudad->nombre != '')
-                          <option value="{{$ciudad->nombre}}">{{ucwords(strtolower($ciudad->nombre))}}</option>
-                        @endif
-                      @endforeach
-                  </select>
+                <label for="ciudad">Departamento</label>
+                <select name=departamento2 onchange="cambia2_provincia()" id="ciudad" class="select">
+                    @foreach(\App\Models\Departamento::all() as $departamento)
+                        <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                    @endforeach
+                </select>
+
+                <label for="municipio" class="mt-4">Municipio</label>
+                <select name=municipio2 id="municipio" class="select">
+                    <option>-</option>
+                </select>
                 </div>
               </div>
               <button class="btn-rounded btn-primary btn-primary-dark btn-block py-2 mt-3">Buscar</button>
@@ -162,22 +167,23 @@
         
           <div class="dropdown-menu dropdown-menu-right menu menu-navbar menu-buscar" aria-labelledby="dropdownMenuBuscar">
             <p class="menu-notificaciones-title">Buscar por ubicación</p>
-            <form action="{{route('busqueda')}}" method="GET" class="flex-fill">
+            <form action="{{route('busqueda')}}" method="GET" name="f2" class="flex-fill">
               @include('includes.addBuscador')
               <div class="form-row align-items-center">
-                {{-- <div class="col-md-12 ">
-                  <input type="text" name="busqueda" required class="form-control input-search" placeholder="Buscar productos">
-                </div> --}}
-                <div class="col-md-12 mt-3">
-                  <select class="form-control select-city"  name="municipio">
-                    <option selected disabled >Municipio</option>
-                      @foreach( \App\Models\Municipio::orderBy("nombre", "ASC")->get() as $ciudad)
-                        @if($ciudad->nombre != '')
-                          <option value="{{$ciudad->nombre}}">{{ucwords(strtolower($ciudad->nombre))}}</option>
-                        @endif
-                      @endforeach
-                  </select>
-                </div>
+                  <div class="col-md-12 mt-3">
+                    <label for="ciudad">Departamento</label>
+                    <select name=departamento2 onchange="cambia2_provincia()" id="ciudad" class="select">
+                        @foreach(\App\Models\Departamento::all() as $departamento)
+                            <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                        @endforeach
+                    </select>
+
+                    <label for="municipio" class="mt-4">Municipio</label>
+                    <select name=municipio2 id="municipio" class="select">
+                        <option>-</option>
+                    </select>
+                  </div>
+
               </div>
               <button class="btn-rounded btn-primary btn-primary-dark btn-block py-2 mt-3">Buscar</button>
             </form>

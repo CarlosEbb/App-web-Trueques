@@ -180,7 +180,9 @@ class ProductoController extends Controller
 
     public function busqueda(Request $request)
     {
-
+        
+    
+    
         if($request->busqueda != null){
             $productos = Producto::nombre($request->busqueda)->where('status', true)->where('created_at', '>=' , date("Y-m-d",strtotime(date("d-m-Y")."- 2 month")))->get();
 
@@ -195,6 +197,13 @@ class ProductoController extends Controller
                 
             }
         }
+
+        if(isset($request['municipio2'])){
+            
+            $productos = $productos->where('municipio_id',$request->municipio2);
+            
+        }
+
 
         if($request->categoria != null){
             $productos = $productos->where('categoria_id', $request->categoria);

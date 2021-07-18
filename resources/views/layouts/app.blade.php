@@ -139,7 +139,74 @@
 			
 		</script>
 
-		
+		<script>
+
+
+
+////////////
+@foreach(\App\Models\Departamento::all() as $departamento)
+
+var p2rovincias_{{$departamento->id}}=new Array(
+  @foreach($departamento->municipio as $municipio)
+  "{{ucwords(strtolower($municipio->nombre))}}",
+  @endforeach
+  )   
+@endforeach
+
+
+var todas2Provincias = [
+[],
+@foreach(\App\Models\Departamento::all() as $departamento)
+    p2rovincias_{{$departamento->id}},
+@endforeach
+
+];
+
+var todas2ProvinciasID = [
+[],
+@foreach(\App\Models\Departamento::all() as $departamentoID)
+  new Array(
+    @foreach($departamentoID->municipio as $municipioID)
+        {{$municipioID->id}},
+    @endforeach
+  ),
+@endforeach
+
+];
+
+
+function cambia2_provincia(){ 
+ //tomo el valor del select del departamento elegido 
+ var departamento 
+ departamento = document.f2.departamento2[document.f2.departamento2.selectedIndex].value 
+ //miro a ver si el departamento está definido 
+ if (departamento != 0) { 
+    //si estaba definido, entonces coloco las opciones de la provincia correspondiente. 
+    //selecciono el array de provincia adecuado 
+    mis_provincias=todas2Provincias[departamento] 
+    mis_provinciasID=todas2ProvinciasID[departamento] 
+    //calculo el numero de provincias 
+    num_provincias = mis_provincias.length 
+    //marco el número de provincias en el select 
+    document.f2.municipio2.length = num_provincias 
+    //para cada provincia del array, la introduzco en el select 
+    for(i=0;i<num_provincias;i++){ 
+       document.f2.municipio2.options[i].value=mis_provinciasID[i] 
+       document.f2.municipio2.options[i].text=mis_provincias[i] 
+    }	
+ }else{ 
+    //si no había provincia seleccionada, elimino las provincias del select 
+    document.f2.municipio2.length = 1 
+    //coloco un guión en la única opción que he dejado 
+    document.f2.municipio2.options[0].value = "-" 
+    document.f2.municipio2.options[0].text = "-" 
+ } 
+ //marco como seleccionada la opción primera de provincia 
+ document.f2.municipio2.options[0].selected = true 
+}
+
+cambia2_provincia(1);
+		</script>
 		@yield('scriptJS')
 	</body>
 </html>
