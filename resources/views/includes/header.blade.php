@@ -80,7 +80,7 @@
         </a> --}}
       </div>
     @else
-      <div class="content-menu-login d-flex">
+      <div class="content-menu-login d-flex align-items-center">
         {{-- Btn publicar producto --}}
         <a class="btn-publicar mx-1 d-none d-md-block" href="{{route('selecionar-categorias')}}" rel="noopener noreferrer">
           <span class="d-flex align-items-center">
