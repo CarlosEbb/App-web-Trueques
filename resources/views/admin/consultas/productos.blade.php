@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th class="border-top-0 text-title-table"><b>DESTACAR</b></th>
+                <th class="border-top-0 text-title-table"><b>ELIMINAR</b></th>
                 <th class="border-top-0 text-title-table"><b>CORREO DEL USUARIO</b></th>
                 <th class="border-top-0 text-title-table"><b>FECHA DE PUBLICACION</b></th>
                 <th class="border-top-0 text-title-table"><b>CATEGORIA</b></th>
@@ -30,6 +31,12 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" fill="#25405f"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                                 <span class="tooltiptext">Editar</span>
                             </a>
+                        </td>
+                        <td class="text-table">
+                           <form action="destroyAdmin/{{$producto->id}}" method="POST">@csrf
+                                <input class="btn btn-outline-danger mx-2 mt-2 rounded-pill" type="submit" value="Eliminar">
+                            </form>
+                            {!! Form::close() !!} 
                         </td>
                         <td class="text-table">{{$producto->user->email}}</td>
                         <td class="text-table">{{$producto->created_at->format('d/m/Y')}}</td>
@@ -93,6 +100,7 @@
                             </div>
                         </div>
                     </div>
+
             @endforeach
         </tbody>
     </table>  	

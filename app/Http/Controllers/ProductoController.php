@@ -178,6 +178,13 @@ class ProductoController extends Controller
         return back();
     }
 
+    public function destroyAdmin($id)
+    {
+        $producto = Producto::find($id)->delete();
+        Session::flash('mensaje','Eliminado correctamente');
+        return redirect('consultas');
+    }
+
     public function busqueda(Request $request)
     {
         

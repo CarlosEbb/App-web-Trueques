@@ -149,4 +149,7 @@ Route::post("DestacarProducto", 'ProductoController@DestacarProducto')->name('De
 
 Route::post("registrar", 'UserController@registrar')->name('registrar');
 
+Route::post("destroyAdmin/{id}", 'ProductoController@destroyAdmin');
+
+
 
