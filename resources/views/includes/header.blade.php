@@ -47,7 +47,7 @@
                 <div class="col-md-12 mt-3">
                 <label for="ciudad">Departamento</label>
                 <select name=departamento2 onchange="cambia2_provincia()" id="ciudad" class="select">
-                    @foreach(\App\Models\Departamento::all() as $departamento)
+                    @foreach(\App\Models\Departamento::orderBy('nombre', 'ASC')->get() as $departamento)
                         <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
                     @endforeach
                 </select>
@@ -265,7 +265,7 @@
               @if($categoria->subCategoria->count() > 1)
                 @foreach($categoria->subCategoria as $subCategoria)
                   <div>
-                    <a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?categoria={{$categoria->id}}">
+                    <a class="d-block" style="color: #333333;" href="{{route('busqueda')}}?subCategoria={{$subCategoria->id}}">
                       {{$subCategoria->nombre}}
                     </a>
                   </div>

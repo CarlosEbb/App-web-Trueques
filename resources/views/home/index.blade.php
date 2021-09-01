@@ -184,6 +184,10 @@ $contentChat.scrollTop = $contentChat.scrollHeight;
 @if(\App\Chat::all()->where('event', 'chat-event-'.$_GET["p"].'-'.$_GET["v"].'-'.$_GET["c"].'')->count() == 0)
     $('.bd-example-modal-lg').modal('show');
 @endif
+
+@if(\App\Chat::all()->where('event', 'chat-event-'.$_GET["p"].'-'.Auth::user()->id.'-'.$_GET["c"].'')->count() == 1)
+    $('.bd-example-modal-lg').modal('show');
+@endif
     $('#livewire-error').hide();
 </script>
 @endsection
