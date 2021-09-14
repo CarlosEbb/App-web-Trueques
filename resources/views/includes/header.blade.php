@@ -70,7 +70,7 @@
           </span>
         </a>
 
-        <a class="btn-publicar-movil mx-1 d-block d-md-none" href="{{route('selecionar-categorias')}}" rel="noopener noreferrer">
+        <a class="btn-publicar-movil mx-1 d-block d-md-none" href="{{route('login')}}" rel="noopener noreferrer">
             <span>Publicar</span>
         </a>
         

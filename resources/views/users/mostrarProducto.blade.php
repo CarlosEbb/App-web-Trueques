@@ -211,7 +211,7 @@
           <div class="col-12 section-content">
             <h1 class="title">Productos relacionados</h1> 
           </div>
-          @foreach($producto->categoria->productos as $articulo)
+          @foreach($producto->categoria->productos->where('status',1) as $articulo)
             @if(($articulo->foto->first() != null) and ($articulo->id != $producto->id))
           <article class="col-12 px-5 px-sm-3 col-sm-6 col-md-4 col-lg-3 mb-4 py-1">
             <div class="card card-product">
